@@ -46,7 +46,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="test.cc" />
+		<Unit filename="main.cc" />
 		<Extensions>
 			<code_completion />
 			<debugger />
