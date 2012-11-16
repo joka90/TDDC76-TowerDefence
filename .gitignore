@@ -12,3 +12,6 @@
 *.a
 *.dll
 *.exe
+
+# skräp från olika editors
+*~

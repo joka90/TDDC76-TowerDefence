@@ -5,8 +5,8 @@ AnimatedSprite::AnimatedSprite()
 
 }
 
-AnimatedSprite::AnimatedSprite(const Texture &inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFps = 0, bool inPlaying = false)
-:sf::Sprite(const Texture &inTexture)
+AnimatedSprite::AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFps, bool inPlaying)
+:sf::Sprite(inTexture)
 {
     spriteWidth=inSpriteWidth;
     nuberOfSprites=inNuberOfSprites;
@@ -14,8 +14,8 @@ AnimatedSprite::AnimatedSprite(const Texture &inTexture, unsigned int inSpriteWi
     playing=inPlaying;
 }
 
-AnimatedSprite::AnimatedSprite(const Texture &inTexture, const IntRect &inRectangle,  unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFps = 0, bool inPlaying = false)
-:sf::Sprite(const Texture &inTexture, const IntRect &inRectangle)
+AnimatedSprite::AnimatedSprite(const sf::Texture &inTexture, const sf::IntRect &inRectangle,  unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFps, bool inPlaying)
+:sf::Sprite(inTexture, inRectangle)
 {
     spriteWidth=inSpriteWidth;
     nuberOfSprites=inNuberOfSprites;
@@ -24,7 +24,7 @@ AnimatedSprite::AnimatedSprite(const Texture &inTexture, const IntRect &inRectan
 }
 
 AnimatedSprite::~AnimatedSprite()
-:sf::~Sprite()
+//:sf::~Sprite()//not needed?
 {
 
 }
