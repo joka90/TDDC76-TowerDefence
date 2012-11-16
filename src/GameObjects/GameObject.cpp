@@ -4,7 +4,7 @@
 /*
 *   konstruktor, skall det vara så här?
 */
-GameObject::GameObject(int x, int y, class TextureLoader* textures, sting textureReference)
+GameObject::GameObject(int x, int y, class TextureLoader* textures, string textureReference)
     : xPos(x), yPos(y)
 {
     sprite = AnimatedSprite(textures->getTexture(textureReference))

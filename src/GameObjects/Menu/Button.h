@@ -15,6 +15,7 @@ class Button : public GameObject
         void mouseButtonPressedListener(sf::event::MouseButtonPressed);
         void mouseButtonReleasedListener(sf::event::MouseButtonReleased);
         void mouseMoveListener(sf::event::MouseMoved);
+        void newIteration();
     protected:
     private:
         const int realtivePosX;
@@ -24,8 +25,8 @@ class Button : public GameObject
         bool pressed;
         bool clicked;
         bool gotPressed;
-        string mouseOverText;
         bool hoover;
+        string mouseOverText;
         sf:sound clickSound;
 
         void drawText();

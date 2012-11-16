@@ -4,7 +4,10 @@
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inMouseOverText)
     : realtivePosX(relativeX), realtivePosY(relativeY), widthX(inWidthX), widthY(inWidthY), isPressed(false), clicked(false), gotPressed(false), hoover(false) GameObject(MenuX+relativeX, MenuY+relativeY, textures, sounds, fonts)
 {
-    clicksound = Sound(sounds->getSoundBuffer(soundKey));
+    if(soundKey != NULL)
+    {
+        clicksound = Sound(sounds->getSoundBuffer(soundKey));
+    }
     sprite = Sprite(textures->getTexture(spriteKey)); //fel fixa fler argument
     mouseOverText = Text(inMouseOverText, fonts.)
 }
@@ -54,7 +57,10 @@ void mouseButtonPressedListener(sf::event::MouseButtonPressed)
                 if(pressed = false)
                 {
                     gotPressed = true;
-                    clickSound.Play();
+                    if(clickSound != NULL)
+                    {
+                        clickSound.play();
+                    }
                 }
                 pressed = true;
             }
@@ -92,4 +98,12 @@ void mouseMoveListener(sf::event::MouseMoved)
     {
         hoover = false;
     }
+}
+/*
+*   viktigt denna funktion kallas innan Sleep annars blir saker inte bra.
+*/
+void newIteration()
+{
+    clicked = false;
+    gotPressed = false;
 }
