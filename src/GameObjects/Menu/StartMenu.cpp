@@ -1,16 +1,16 @@
 #include "StartMenu.h"
 
-#DEFINE MENUSTARTX 0
-#DEFINE MENUSTARTY 0
-#DEFINE TRACKX 100
-#DEFINE TRACKY 100
-#DEFINE LOADX 100
-#DEFINE LOADY 200
-#DEFINE QUITX 100
-#DEFINE QUITY 300
-#DEFINE BUTTONWIDTH 100
-#DEFINE BUTTONHEIGHT 70
-#DEFINE CLICK "CLICK.WAW"
+#define MENUSTARTX 0
+#define MENUSTARTY 0
+#define TRACKX 100
+#define TRACKY 100
+#define LOADX 100
+#define LOADY 200
+#define QUITX 100
+#define QUITY 300
+#define BUTTONWIDTH 100
+#define BUTTONHEIGHT 70
+#define CLICK "CLICK.WAW"
 
 StartMenu::StartMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.bmp")
@@ -28,7 +28,7 @@ StartMenu::~StartMenu()
     //dtor
 }
 
-bool update()
+bool StartMenu::update()
 {
     if(buttons[0].gotPressed())
     {

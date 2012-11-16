@@ -50,7 +50,7 @@ bool AnimatedSprite::play()
 	return true;
 }
 
-bool AnimatedSprite::paus()
+bool AnimatedSprite::pause()
 {
     playing=false;
 	return true;

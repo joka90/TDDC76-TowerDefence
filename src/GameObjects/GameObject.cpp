@@ -1,5 +1,6 @@
 #include "GameObject.h"
 
+using namespace std;
 
 /*
 *   konstruktor, skall det vara så här?
@@ -7,8 +8,8 @@
 GameObject::GameObject(int x, int y, class TextureLoader* textures, string textureReference)
     : xPos(x), yPos(y)
 {
-    sprite = AnimatedSprite(textures->getTexture(textureReference))
-    sprite.setPosition(xPos, yPos);
+    //sprite = AnimatedSprite(textures->getTexture(textureReference));
+    //sprite.setPosition(xPos, yPos);
 }
 
 GameObject::~GameObject()
@@ -19,7 +20,7 @@ GameObject::~GameObject()
 /*
 *   få fram X positionen
 */
-int getPosX()
+int GameObject::getPosX()
 {
     return xPos;
 }
@@ -27,7 +28,7 @@ int getPosX()
 /*
 *   få fram Y positionen
 */
-int getPosY()
+int GameObject::getPosY()
 {
     return yPos;
 }
@@ -35,7 +36,7 @@ int getPosY()
 /*
 *   ändrar XPositionen ändra för sprite ochså
 */
-void setPos(int newPosX, int newPosY)
+void GameObject::setPos(int newPosX, int newPosY)
 {
     xPos = newPosX;
     yPos = newPosY;
@@ -46,20 +47,20 @@ void setPos(int newPosX, int newPosY)
 /*
 *   ska mer göras?
 */
-void playAnimation()
+void GameObject::playAnimation()
 {
     bool isPlaying = true;
     sprite.play();
     return;
 }
-void pauseAnimation()
+void GameObject::pauseAnimation()
 {
     bool isPlaying = false;
     sprite.pause();
     return;
 }
 
-virtual bool drawSprite(RenderWindow& canvas)
+bool GameObject::drawSprite(sf::RenderWindow& canvas)
 {
     sprite.setPosition(xPos, yPos);
     canvas.draw(sprite);

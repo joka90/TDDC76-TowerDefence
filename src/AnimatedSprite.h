@@ -12,7 +12,7 @@ public:
     bool setFrame(unsigned int inFrame);
     bool play(unsigned int inFpf);
     bool play();
-    bool paus();
+    bool pause();
     bool update();
     unsigned int currentFrame();
     unsigned int getFpf();

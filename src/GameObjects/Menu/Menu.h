@@ -1,24 +1,29 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include <GameObject.h>
+#include <string>
+#include <vector>
+
+#include "../GameObject.h"
+#include "Button.h"
 
 
 class Menu : public GameObject
 {
     public:
-        Menu(int x, int y, class TextureLoader*, string textureReference);
+        Menu(int x, int y, class TextureLoader*, std::string textureReference);
         virtual ~Menu();
-        string readState();
+        std::string readState();
         bool isButtonClicked(int buttonIndex);
         bool isButtonPressed(int buttonIndex);
         bool buttonGotPressed(int buttonIndex);
-        void drawMenu(RenderWindow);
+        void drawMenu(sf::RenderWindow);
         virtual bool update();
         void addButton(Button newButton);
+        void newIteration();
     protected:
-        string state;
-        vector<Button> buttons;
+        std::string state;
+        std::vector<Button> buttons;
     private:
 };
 
