@@ -1,7 +1,11 @@
+
+#include <SFML/Graphics.hpp>
+
 #include "Menu.h"
 
+using namespace std;
 Menu::Menu(int x, int y, class TextureLoader* textures, string textureReference)
-    :GameObject(x, y, textures, textureReference), state(""),
+    : GameObject(x, y, textures, textureReference), state("")
 {
 }
 
@@ -9,44 +13,44 @@ Menu::~Menu()
 {
     //dtor
 }
-string readState()
+string Menu::readState()
 {
-    temp = state;
+    string temp = state;
     state = "";
     return temp;
 }
-bool isButtonClicked(int buttonIndex)
+bool Menu::isButtonClicked(int buttonIndex)
 {
     return buttons[buttonIndex].gotClicked();
 }
 
-bool isButtonPressed(int buttonIndex)
+bool Menu::isButtonPressed(int buttonIndex)
 {
     return buttons[buttonIndex].isPressed();
 }
 
-bool buttonGotPressed(int buttonIndex)
+bool Menu::buttonGotPressed(int buttonIndex)
 {
     return buttons[buttonIndex].gotPressed();
 
 }
 
-void drawMenu(RenderWindow canvas)
+void Menu::drawMenu(sf::RenderWindow canvas)
 {
     for(uint i = 0; i < buttons.size(); ++i)
     {
-        buttons[i].drawButton(RenderWindow canvas);
+        buttons[i].drawButton(canvas, getPosX(), getPosY());
     }
-    this->drawSprite(RenderWindow canvas);
+    this->drawSprite(canvas);
     return;
 }
-virtual bool update()
+bool Menu::update()
 {
-   newIter();
-   return;
+   newIteration();
+   return false;
 }
 
-void newIteration()
+void Menu::newIteration()
 {
     for(uint i = 0; i < buttons.size(); ++i)
     {
@@ -54,7 +58,7 @@ void newIteration()
     }
     return;
 }
-void addButton(Button newButton)
+void Menu::addButton(Button newButton)
 {
     buttons.push_back(newButton);
     return;

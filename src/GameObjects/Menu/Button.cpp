@@ -1,15 +1,14 @@
 #include "Button.h"
-#include <Mouse.hpp>
-#include <Vector2.hpp>
+using namespace std;
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inMouseOverText)
-    : realtivePosX(relativeX), realtivePosY(relativeY), widthX(inWidthX), widthY(inWidthY), isPressed(false), clicked(false), gotPressed(false), hoover(false) GameObject(MenuX+relativeX, MenuY+relativeY, textures, sounds, fonts)
+    : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
 {
-    if(soundKey != NULL)
+    if(soundKey != "")
     {
-        clicksound = Sound(sounds->getSoundBuffer(soundKey));
+        //clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
     }
-    sprite = Sprite(textures->getTexture(spriteKey)); //fel fixa fler argument
-    mouseOverText = Text(inMouseOverText, fonts.)
+    //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
+    //mouseOverText = sf::Text(inMouseOverText, fonts.);
 }
 
 /*
@@ -19,47 +18,64 @@ Button::~Button()
 {
     //dtor
 }
-void drawButton(RenderWindow& canvas, int menuCoordX, int menuCoordY)
+
+Button& Button::operator=(const Button& inButton)
 {
-    setPosX(menuCoordX+relativeCoordX);
-    setPosY(menuCoordY+relativeCoordY);
+    relativePosX = inButton.relativePosX;
+    relativePosY = inButton.relativePosY;
+    widthX = inButton.widthX;
+    widthY = inButton.widthY;
+    pressed = inButton.pressed;
+    clicked = inButton.clicked;
+    thisIterPressed = inButton.thisIterPressed;
+    hoover = inButton.thisIterPressed;
+    mouseOverText = inButton.mouseOverText;
+    delete clickSound;
+    //clickSound = inButton.clickSound->clone(); TODO
+    return *this;
+}
+
+void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY)
+{
+    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
     drawSprite(canvas);
     if(hoover)
     {
-        drawText();
+        drawHooverText();
     }
+    return;
 }
 
-bool isPressed()
+bool Button::isPressed()
 {
     return pressed;
 }
-bool gotPressed()
+bool Button::gotPressed()
 {
-    return gotPressed;
+    return thisIterPressed;
 }
-bool gotClicked()
+bool Button::gotClicked()
 {
-    return gotPressed;
+    return clicked;
 }
-bool hoovering()
+bool Button::hoovering()
 {
     return hoover;
 }
 
-void mouseButtonPressedListener(sf::event::MouseButtonPressed)
+void Button::mouseButtonPressedListener(sf::Event event)
 {
-    sf::vector2i pos = Mouse::sf::Mouse::getPosition();
-    if(Mouse::sf::isButtonPressed(sf::Mouse::left) &&  )
+    sf::Vector2i pos = sf::Mouse::getPosition();
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             if((pos.x > getPosX()) && (pos.x < getPosX()+widthX) && (pos.y > getPosY()) && (pos.y < getPosY()+widthY))
             {
-                if(pressed = false)
+                if(pressed == false)
                 {
-                    gotPressed = true;
+                    thisIterPressed = true;
                     if(clickSound != NULL)
                     {
-                        clickSound.play();
+                       // clickSound->play(); TODO
                     }
                 }
                 pressed = true;
@@ -67,23 +83,23 @@ void mouseButtonPressedListener(sf::event::MouseButtonPressed)
         }
 }
 
-void mouseButtonReleasedListener(sf::event::MouseButtonReleased)
+void Button::mouseButtonReleasedListener(sf::Event event)
 {
-    sf::vector2i pos = Mouse::sf::Mouse::getPosition();
-    if(Mouse::sf::isButtonPressed(sf::Mouse::left) &&  )
+    sf::Vector2i pos = sf::Mouse::getPosition();
+    if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(pressed)
             {
                 clicked = true;
             }
-            pressed = false
+            pressed = false;
         }
 }
 
-void mouseMoveListener(sf::event::MouseMoved)
+void Button::mouseMoveListener(sf::Event event)
 {
-    sf::vector2i pos = Mouse::sf::Mouse::getPosition();
-    if(Mouse::sf::isButtonPressed(sf::Mouse::left) &&  )
+    sf::Vector2i pos = sf::Mouse::getPosition();
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             if(!((pos.x > getPosX()) && (pos.x < getPosX()+widthX) && (pos.y > getPosY()) && (pos.y < getPosY()+widthY)))
             {
@@ -102,8 +118,14 @@ void mouseMoveListener(sf::event::MouseMoved)
 /*
 *   viktigt denna funktion kallas innan Sleep annars blir saker inte bra.
 */
-void newIteration()
+void Button::newIteration()
 {
     clicked = false;
-    gotPressed = false;
+    thisIterPressed = false;
+    return;
+}
+
+void Button::drawHooverText()
+{
+    return; //TODO
 }

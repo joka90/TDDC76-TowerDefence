@@ -14,7 +14,7 @@ public:
     sf::Sprite getCurrentFrame();
     bool play(unsigned int inFps);
     bool play();
-    bool paus();
+    bool pause();
     bool update();
     unsigned int currentFrame();
     unsigned int currentFps();

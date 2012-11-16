@@ -1,33 +1,40 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <string>
+
+#include "../GameObject.h"
 
 class Button : public GameObject
 {
     public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inMouseOverText);
+        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string inMouseOverText);
+        Button& operator=(const Button& inButton);
         virtual ~Button();
-        void drawButton(RenderWindow& canvas, int menuCoordX, int menuCoordY);
+        void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);
         bool isPressed();
         bool gotPressed();
         bool gotClicked();
         bool hoovering();
-        void mouseButtonPressedListener(sf::event::MouseButtonPressed);
-        void mouseButtonReleasedListener(sf::event::MouseButtonReleased);
-        void mouseMoveListener(sf::event::MouseMoved);
+        void mouseButtonPressedListener(sf::Event);
+        void mouseButtonReleasedListener(sf::Event);
+        void mouseMoveListener(sf::Event);
         void newIteration();
+        void drawHooverText();
     protected:
     private:
-        const int realtivePosX;
-        const int realtivePosY;
+        int relativePosX;
+        int relativePosY;
         uint widthX;
         uint widthY;
         bool pressed;
         bool clicked;
-        bool gotPressed;
+        bool thisIterPressed;
         bool hoover;
-        string mouseOverText;
-        sf:sound clickSound;
+        std::string mouseOverText;
+        sf::Sound* clickSound;
 
         void drawText();
 };
