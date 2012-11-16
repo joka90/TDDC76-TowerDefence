@@ -34,7 +34,7 @@ test: $(OBJECTS) Makefile
 
 # Delmål (flaggan -c avbryter innan länkning, objektkodsfil erhålls)
 test.o: test.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c test.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c main.cc
 
 
 # 'make clean' tar bort objektkodsfiler och 'core' (minnesdump).
