@@ -27,8 +27,8 @@ class Button : public GameObject
     private:
         int relativePosX;
         int relativePosY;
-        uint widthX;
-        uint widthY;
+        int widthX;
+        int widthY;
         bool pressed;
         bool clicked;
         bool thisIterPressed;

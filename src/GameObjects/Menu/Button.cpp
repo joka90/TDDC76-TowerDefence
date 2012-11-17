@@ -89,7 +89,6 @@ void Button::mouseButtonPressedListener(sf::Event event)
 
 void Button::mouseButtonReleasedListener(sf::Event event)
 {
-    sf::Vector2i pos = sf::Mouse::getPosition();
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(pressed)
