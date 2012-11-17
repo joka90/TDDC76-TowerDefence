@@ -5,6 +5,11 @@
 #include <sstream>
 #include <string>
 
+
+//playing around
+#include <math.h>
+#define PI 3.14159265
+
 int main()
 {
     // Create the main window
@@ -12,7 +17,7 @@ int main()
 
     // Load a sprite to display
     sf::Texture texture;
-    sf::IntRect v1(100,100,200,200);
+    //sf::IntRect v1(100,100,200,200);
     if (!texture.loadFromFile("../../media/img/test.png"))
         return EXIT_FAILURE;
 
@@ -21,7 +26,7 @@ int main()
     if (!texture2.loadFromFile("../../media/img/sprite-sheet-mario.png"))
         return EXIT_FAILURE;
     //AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
-    AnimatedSprite sprite(texture2, 30, 20, 10, true);
+    AnimatedSprite sprite(texture2, 30, 20, 5, true);
     //sprite.move(400,400);
     sf::Sprite test(texture);
 
@@ -30,6 +35,10 @@ int main()
     if (!font.loadFromFile("../../media/font/appleberry_with_cyrillic.ttf"))
         return EXIT_FAILURE;
     sf::Text text("Hello SFML", font, 50);
+    text.move(200,200);
+
+    int param=0;
+
 
     // Limit the framerate to 60 frames per second (this step is optional)
     window.setFramerateLimit(60);
@@ -37,6 +46,11 @@ int main()
     // Start the game loop
     while (window.isOpen())
     {
+        param++;
+        if(param>360)
+        {
+            param=1;
+        }
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -48,9 +62,10 @@ int main()
 
         // Clear screen
         window.clear();
-
-        v1.left=v1.left+1;
-        test.setTextureRect(v1);
+        //test.move((int)(400+50*cos(param*PI/180)), (int)(400+50*(sin(param*PI/180))));
+        test.setColor(sf::Color(255, 255, 255, 255*pow(sin(param*PI/180),2)));
+        //v1.left=v1.left+1;
+        //test.setTextureRect(v1);
         window.draw(test);
 
         // Draw the sprite
