@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-int main()
+int test()
 {
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
