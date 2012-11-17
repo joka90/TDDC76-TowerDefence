@@ -72,7 +72,7 @@ bool LoadMenu::update()
     }
     else if(buttons[1].gotPressed())
     {
-        if(scrollLenght < loadVectorData.size()-LOADDRAWS)
+        if(scrollLenght < (int) loadVectorData.size()-LOADDRAWS)
             {
                 scrollLenght += 1;
             }
