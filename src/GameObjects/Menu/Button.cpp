@@ -1,6 +1,6 @@
 #include "Button.h"
 using namespace std;
-Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inMouseOverText)
+Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
     : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
 {
     if(soundKey != "")
@@ -9,6 +9,7 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     }
     //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
     //mouseOverText = sf::Text(inMouseOverText, fonts.);
+    //buttonText = sf::Text(inButtonText, fonts.);
 }
 
 /*
@@ -30,8 +31,11 @@ Button& Button::operator=(const Button& inButton)
     thisIterPressed = inButton.thisIterPressed;
     hoover = inButton.thisIterPressed;
     mouseOverText = inButton.mouseOverText;
-    delete clickSound;
-    //clickSound = inButton.clickSound->clone(); TODO
+    if(clickSound != NULL)
+    {
+        delete clickSound;
+        // clickSound = new sf::Sound(*(inButton.clickSound)); TODO
+    }
     return *this;
 }
 

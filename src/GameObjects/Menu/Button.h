@@ -10,7 +10,7 @@
 class Button : public GameObject
 {
     public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string inMouseOverText);
+        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string buttonText, std::string inMouseOverText);
         Button& operator=(const Button& inButton);
         virtual ~Button();
         void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);
@@ -33,7 +33,8 @@ class Button : public GameObject
         bool clicked;
         bool thisIterPressed;
         bool hoover;
-        std::string mouseOverText;
+        sf::Text mouseOverText;
+        sf::Text buttonText;
         sf::Sound* clickSound;
 
         void drawText();
