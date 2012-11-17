@@ -63,3 +63,9 @@ void Menu::addButton(Button newButton)
     buttons.push_back(newButton);
     return;
 }
+
+void Menu::removeButton(int index)
+{
+    buttons.erase(buttons.begin()+index);
+    return;
+}

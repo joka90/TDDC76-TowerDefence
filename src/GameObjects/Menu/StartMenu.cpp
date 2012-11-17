@@ -11,16 +11,17 @@
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
+#define BUTTON "MENUBUTTONBASE.BMP"
 
 StartMenu::StartMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.bmp")
 {
     addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, "TRACK.BMP", CLICK, ""));
+                      textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
     addButton(Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, "LOAD.BMP", CLICK, ""));
+                      textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
     addButton(Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, "QUIT.BMP", CLICK, ""));
+                      textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
 }
 
 StartMenu::~StartMenu()

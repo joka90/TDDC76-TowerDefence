@@ -20,6 +20,7 @@ class Menu : public GameObject
         void drawMenu(sf::RenderWindow);
         virtual bool update();
         void addButton(Button newButton);
+        void removeButton(int index);
         void newIteration();
     protected:
         std::string state;
