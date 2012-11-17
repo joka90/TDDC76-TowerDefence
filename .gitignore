@@ -12,7 +12,11 @@
 *.a
 *.dll
 *.exe
+
+# skräp från olika editors
 *.project
 *.cproject
-# skräp från olika editors
 *~
+*.prefs
+*.depend
+*.layout
