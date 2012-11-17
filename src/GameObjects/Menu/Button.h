@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef BUTTON_H
 #define BUTTON_H
 
@@ -42,47 +41,3 @@ class Button : public GameObject
 };
 
 #endif // BUTTON_H
-=======
-#ifndef BUTTON_H
-#define BUTTON_H
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <string>
-
-#include "../GameObject.h"
-
-class Button : public GameObject
-{
-    public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string inMouseOverText);
-        Button& operator=(const Button& inButton);
-        virtual ~Button();
-        void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);
-        bool isPressed();
-        bool gotPressed();
-        bool gotClicked();
-        bool hoovering();
-        void mouseButtonPressedListener(sf::Event);
-        void mouseButtonReleasedListener(sf::Event);
-        void mouseMoveListener(sf::Event);
-        void newIteration();
-        void drawHooverText();
-    protected:
-    private:
-        int relativePosX;
-        int relativePosY;
-        int widthX;
-        int widthY;
-        bool pressed;
-        bool clicked;
-        bool thisIterPressed;
-        bool hoover;
-        std::string mouseOverText;
-        sf::Sound* clickSound;
-
-        void drawText();
-};
-
-#endif // BUTTON_H
->>>>>>> 10db38ad6c828ea73e64e9ca8f2868fab55ecea1
