@@ -37,7 +37,7 @@ bool Menu::buttonGotPressed(int buttonIndex)
 
 void Menu::drawMenu(sf::RenderWindow canvas)
 {
-    for(uint i = 0; i < buttons.size(); ++i)
+    for(int i = 0; i < (int)buttons.size(); ++i)
     {
         buttons[i].drawButton(canvas, getPosX(), getPosY());
     }
@@ -52,7 +52,7 @@ bool Menu::update()
 
 void Menu::newIteration()
 {
-    for(uint i = 0; i < buttons.size(); ++i)
+    for(int i = 0; i < (int) buttons.size(); ++i)
     {
         buttons[i].newIteration();
     }
