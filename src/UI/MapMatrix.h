@@ -9,23 +9,29 @@
 #define MAPMATRIX_H
 
 #include <string>
-
+#include <vector>
 class MapMatrix
 {
     public:
-		MapMatrix(std::string value, int x, int y);
+		MapMatrix(std::string value, int row, int col);
 
 		bool isTaken(int x, int y);
 		void setCoord(int x, int y, int value);
 		bool isPath(int x, int y);
+
+		/*
+		 * Finns endast för felsökning
+		 */
+		void printMatrix();
 
     private:
 		/*
 		 * 1 = Path
 		 * 2 = Tower
 		 */
-		int matrix[0][0];
+		 std::vector<std::vector<int> > matrix;
+
 
 };
 
-#endif /* MAPMATRIX_H_ */
+#endif /* MAPMATRIX_H */
