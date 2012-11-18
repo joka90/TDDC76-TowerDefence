@@ -9,14 +9,22 @@
 #include <string>
 using namespace std;
 
-Wave::Wave(int timeDelay, string enemyName)
+Wave::Wave()
 {
-	enemyMap.insert(pair<int,string>(timeDelay,enemyName));
+
 }
 
 Wave::~Wave() {
 }
 
+string Wave::getName()
+{
+	return enemyMap.find(1)->second;
+}
+void Wave::insertEnemy(int timeDelay, string enemyName)
+{
+	enemyMap.insert(pair<int,string>(timeDelay,enemyName));
+}
 /*
 enemy* Wave::update(int xSpawn, int ySpawn, int time)
 {

@@ -11,12 +11,16 @@
 #include <map>
 class Wave {
 	public:
-		Wave(int timeDelay, std::string enemyName);
+		Wave();
 		virtual ~Wave();
 
 		//enemy* update(int xSpawn, int ySpawn)
-	private:
+		std::string getName();
+		void insertEnemy(int timeDelay, std::string enemyName);
+
 		std::map<int,std::string> enemyMap;
+
+	private:
 };
 
 #endif /* WAVE_H_ */
