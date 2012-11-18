@@ -20,3 +20,6 @@
 *.prefs
 *.depend
 *.layout
+
+# Egen main-fil
+callemain.cc
