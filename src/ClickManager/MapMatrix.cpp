@@ -8,8 +8,15 @@ using namespace std;
 #include <sstream>
 using namespace std;
 
-
+MapMatrix::MapMatrix()
+{
+}
 MapMatrix::MapMatrix(string value,int row, int col)
+{
+	setMatrix(value,row,col);
+
+}
+void MapMatrix::setMatrix(string value, int row, int col)
 {
 	int numValue;
 	std::istringstream ss(value);
@@ -38,9 +45,9 @@ bool MapMatrix::isTaken(int x, int y)
 	return !(matrix[x][y] == 0);
 }
 
-void MapMatrix::setCoord(int x, int y, int value)
+void MapMatrix::setTower(int x, int y)
 {
-	matrix[x][y] = value;
+	matrix[x][y] = 2; //Tower = 2
 }
 
 bool MapMatrix::isPath(int x, int y)

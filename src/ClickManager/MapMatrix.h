@@ -13,10 +13,11 @@
 class MapMatrix
 {
     public:
+		MapMatrix();
 		MapMatrix(std::string value, int row, int col);
-
+		void setMatrix(std::string value, int row, int col);
 		bool isTaken(int x, int y);
-		void setCoord(int x, int y, int value);
+		void setTower(int x, int y);
 		bool isPath(int x, int y);
 
 		/*
