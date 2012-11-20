@@ -16,8 +16,8 @@
 #include "Loader/SoundLoader.h"
 #include "Loader/FontLoader.h"
 
-#define WINDOWWIDTH 600
-#define WINDOWHEIGHT 800
+#define WINDOWWIDTH 800
+#define WINDOWHEIGHT 600
 #define WINDOWNAME "Tower Devence"
 #define FRAMERATE 60
 //defines for switchcase int currentState

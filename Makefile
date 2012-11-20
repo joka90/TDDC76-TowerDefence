@@ -53,6 +53,15 @@ Player.o: src/ClockManager/Player.h src/ClockManager/Player.cc
 GameObject.o: src/GameObject/GameObject.h src/GameObject/GameObject.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/GameObject.cc
 
+Tower.o: src/GameObject/Tower/Tower.h src/GameObject/Tower/Tower.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Tower/Tower.cc
+
+Enemies.o: src/GameObject/Enemies/Enemies.h src/GameObject/Enemies/Enemies.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Enemies/Enemies.cc
+
+Projectiles.o: src/GameObject/Projectiles/Projectiles.h src/GameObject/Projectiles/Projectiles.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Projectiles/Projectiles.cc
+
 Menu.o: src/GameObject/Menu/Menu.h src/Menu/Menu.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/Menu.cc
 
