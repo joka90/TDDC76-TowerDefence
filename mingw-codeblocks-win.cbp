@@ -59,6 +59,7 @@
 		<Unit filename="src/GameObjects/Menu/Menu.h" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.cpp" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.h" />
+		<Unit filename="src/testfiles/AnimatedSpriteTest.cc" />
 		<Extensions>
 			<code_completion />
 			<debugger />

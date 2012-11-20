@@ -1,7 +1,16 @@
+#include "src/AnimatedSprite.h"
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+#include <sstream>
+#include <string>
+
+#include <math.h>
+#define PI 3.14159265
 
 int main()
 {
+
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -20,5 +29,5 @@ int main()
         window.display();
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
