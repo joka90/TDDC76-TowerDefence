@@ -2,7 +2,7 @@
 CXX = g++-4.4
 
 # Kompilatorflaggor, lägg till '-g' om kompilering för avlusning ska göras.
-CCFLAGS += -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
+CCFLAGS += -std=c++0x -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 
 # Preprocessorflaggor, -I lägger till en filkatalog i inkluderingssökvägen.
 CPPFLAGS += -I../SFML/include/
@@ -13,8 +13,15 @@ LDFLAGS += -L../SFML/lib/
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
 OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o
 
-# Huvudmål - skapas med kommandot 'make' eller 'make kalkylator'.
+# Huvudmål
 TD: $(OBJECTS) Makefile
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)
+
+
+Release: $(OBJECTS) Makefile
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)
+
+Debug: $(OBJECTS) Makefile
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)
 
 # Delmål (flaggan -c avbryter innan länkning, objektkodsfil erhålls)
