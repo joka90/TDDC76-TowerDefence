@@ -11,4 +11,5 @@ private:
 
 protected:
 
-}
+};
+#endif //end TOWER_H

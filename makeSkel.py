@@ -38,6 +38,7 @@ private:
 
 protected:
 
-}
+};
+#endif //end %(classNameCAP)s_H
 """% {"className" : filename, "classNameCAP" : filename.upper()})
     f.close()

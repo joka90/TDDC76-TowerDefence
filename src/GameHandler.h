@@ -4,9 +4,9 @@
 
 #include "Level.h"
 
-#include "GameObject/Menu/StartMenu.h"
-#include "GameObject/Menu/LoadMenu.h"
-#include "GameObject/Menu/TrackMenu.h"
+#include "GameObjects/Menu/StartMenu.h"
+#include "GameObjects/Menu/LoadMenu.h"
+#include "GameObjects/Menu/TrackMenu.h"
 
 #include "ClickManager/ClickManager.h"
 #include "EventHandler.h"

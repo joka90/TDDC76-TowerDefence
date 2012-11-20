@@ -68,14 +68,14 @@ Menu.o: src/GameObject/Menu/Menu.h src/Menu/Menu.cc
 Button.o: src/GameObject/Menu/Button.h src/Menu/Button.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/Button.cc
 
-StartMenu.o: src/GameObject/Menu/StartMenu.h src/Menu/StartMenu.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/StartMenu.cc
+StartMenu.o: src/GameObject/Menu/StartMenu.h src/Menu/StartMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/StartMenu.cpp
 
-LoadMenu.o: src/GameObject/Menu/LoadMenu.h src/Menu/LoadMenu.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/LoadMenu.cc
+LoadMenu.o: src/GameObject/Menu/LoadMenu.h src/Menu/LoadMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/LoadMenu.cpp
 
-TrackMenu.o: src/GameObject/Menu/TrackMenu.h src/Menu/TrackMenu.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/TrackMenu.cc
+TrackMenu.o: src/GameObject/Menu/TrackMenu.h src/Menu/TrackMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/TrackMenu.cpp
 
 Loader.o: src/Loader/Loader.h src/Loader/Loader.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Loader/Loader.cc
