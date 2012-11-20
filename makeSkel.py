@@ -11,14 +11,15 @@ for klass in klasser:
     filename=klass[1]
     f = open(folder+filename+".cc", 'w')# ========== cc file
     f.write("""#include "%(className)s.h"
-%(className)s::%(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader class FontLoader* inFontLoader)
+%(className)s::%(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader)
+:GameObject(newX, newY, inTextureLoader, "ENFINBILD")//skall denna vara har, pure virtual senare?
 {
 
 }
 
 bool %(className)s::drawSprite(sf::RenderWindow& canvas)
 {
-   sprite.move(x,y);
+   sprite.move(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
 }
@@ -28,11 +29,12 @@ bool %(className)s::drawSprite(sf::RenderWindow& canvas)
     f.write("""#ifndef  %(classNameCAP)s_H
 #define %(classNameCAP)s_H
 #include "../GameObject.h"
+#include <SFML/Graphics.hpp>
 
 class %(className)s : public GameObject
 {
 public:
-    %(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader class FontLoader* inFontLoader)
+    %(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 

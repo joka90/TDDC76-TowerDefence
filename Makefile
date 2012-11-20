@@ -2,7 +2,7 @@
 CXX = g++-4.4
 
 # Kompilatorflaggor, lägg till '-g' om kompilering för avlusning ska göras.
-CCFLAGS += -std=c++0x -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
+CCFLAGS += -std=c++0x -pedantic -Wall -Wextra -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 
 # Preprocessorflaggor, -I lägger till en filkatalog i inkluderingssökvägen.
 CPPFLAGS += -I../SFML/include/
