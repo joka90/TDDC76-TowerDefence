@@ -11,10 +11,9 @@ class TrackMenu : public Menu
         TrackMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
         virtual ~TrackMenu();
         bool update();
+    	void draw(sf::RenderWindow& canvas);
     protected:
     private:
-        std::vector<LoadPair> loadVectorData;
-        int scrollLenght;
 };
 
 #endif // TRACKMENU_H

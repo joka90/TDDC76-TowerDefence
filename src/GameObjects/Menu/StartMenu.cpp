@@ -55,3 +55,8 @@ bool StartMenu::update()
         return false;
     }
 }
+
+void StartMenu::draw(sf::RenderWindow& canvas)
+{
+
+}

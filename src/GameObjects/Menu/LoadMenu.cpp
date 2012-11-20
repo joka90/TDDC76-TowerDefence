@@ -92,3 +92,8 @@ bool LoadMenu::update()
     }
 }
 
+void LoadMenu::draw(sf::RenderWindow& canvas)
+{
+
+}
+

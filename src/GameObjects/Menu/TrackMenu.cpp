@@ -1,56 +1,27 @@
-#include <iostream>
-#include <fstream>
-
 #include "TrackMenu.h"
 
-
+#define MENUSTARTX 0
+#define MENUSTARTY 0
+#define TRACKX 100
+#define TRACKY 100
+#define LOADX 100
+#define LOADY 200
+#define QUITX 100
+#define QUITY 300
+#define BUTTONWIDTH 100
+#define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
+#define BUTTON "MENUBUTTONBASE.BMP"
 
-#define MENULOADX 0
-#define MENULOADY 0
-
-#define LOADDRAWS 4
-
-#define ARROWWIDTH 20
-#define ARROWHEIGHT 40
-#define ARROWUPX 300
-#define ARROWUPY 300
-#define ARROWDOWNX 300
-#define ARROWDOWNY 400
-#define ARROWUP "ARROWUP.BMP"
-#define ARROWDOWN "ARROWDOWN.BMP"
-
-#define BACKX 100
-#define BACKY 400
-#define BACKWIDTH 70
-#define BACKHEIGHT 30
-#define BACKIMG "BACKBUTTON.BMP"
-#define LOADFOLDER "../../../saves"
-using namespace std;
 TrackMenu::TrackMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
-:Menu(MENULOADX, MENULOADY, textures, "TrackMenu.BMP")
+:Menu(MENUSTARTX,MENUSTARTY, textures, "TrackMenu.bmp")
 {
-    //Ladda in vilka sparfiler som finns
-    ifstream loadData;
-    char stringBuffer[256];
-    string loadDataPath = string(LOADFOLDER) + string("SaveData");
-    loadData.open(loadDataPath.c_str(), ifstream::in);
-    while(loadData.good())
-    {
-        LoadPair tempLoadPair;
-        loadData.getline(stringBuffer, 256, ' ');
-        tempLoadPair.name = stringBuffer;
-        loadData.getline(stringBuffer, 256, '\n');
-        tempLoadPair.file = stringBuffer;
-        loadVectorData.push_back(tempLoadPair);
-    }
-    //lägg till knappar
-    addButton(Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWUP, CLICK, "", ""));
-    addButton(Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWDOWN, CLICK, "", ""));
-    addButton(Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                      textures, sounds, fonts, BACKIMG, CLICK, "", ""));
+    addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
+    addButton(Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
+    addButton(Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
 }
 
 TrackMenu::~TrackMenu()
@@ -62,26 +33,19 @@ bool TrackMenu::update()
 {
     if(buttons[0].gotPressed())
     {
-        scrollLenght -= 1;
-        if(scrollLenght < 0)
-            {
-                scrollLenght = 0;
-            }
+        state = "TRACK";
         newIteration();
-        return false;
+        return true;
     }
     else if(buttons[1].gotPressed())
     {
-        if(scrollLenght < (int) loadVectorData.size()-LOADDRAWS)
-            {
-                scrollLenght += 1;
-            }
+        state = "LOAD";
         newIteration();
-        return false;
+        return true;
     }
     else if(buttons[2].gotPressed())
     {
-        state = "BACK";
+        state = "QUIT";
         newIteration();
         return true;
     }
@@ -92,3 +56,7 @@ bool TrackMenu::update()
     }
 }
 
+void TrackMenu::draw(sf::RenderWindow& canvas)
+{
+
+}

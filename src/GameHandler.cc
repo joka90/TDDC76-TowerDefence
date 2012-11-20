@@ -1,7 +1,7 @@
 #include "GameHandler.h"
 
 GameHandler::GameHandler()
-:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(*textures, *sounds, *fonts), loadMenu(*textures, *sounds, *fonts), trackMenu(*textures, *sounds, *fonts), currentState(STARTMENU)
+:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
 {
 
 }
@@ -19,7 +19,7 @@ void GameHandler::run()
     // Start the game loop
     while (canvas.isOpen())
     {
-		EventHandeler::poll(canvas);
+		EventHandler::poll(canvas);
 
 		switch(currentState){
 		case LEVEL:

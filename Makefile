@@ -35,47 +35,47 @@ EventHandler.o: src/EventHandler.h src/EventHandler.cc
 Level.o: src/Level.h src/Level.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Level.cc
 
-Wave.o: src/Wave/Wave.h src/Wave/Wave.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/Wave.cc
+Wave.o: src/Wave/Wave.h src/Wave/Wave.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/Wave.cpp
 
-WaveHandler.o: src/Wave/WaveHandler.h src/Wave/WaveHandler.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/WaveHandler.cc
+WaveHandler.o: src/Wave/WaveHandler.h src/Wave/WaveHandler.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/WaveHandler.cpp
 
-ClickManager.o: src/ClickManager/ClickManager.h src/ClickManager/ClickManager.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/ClickManager.cc
+ClickManager.o: src/ClickManager/ClickManager.h src/ClickManager/ClickManager.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/ClickManager.cpp
 
-MapMatrix.o: src/ClickManager/MapMatrix.h src/ClickManager/MapMatrix.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/MapMatrix.cc
+MapMatrix.o: src/ClickManager/MapMatrix.h src/ClickManager/MapMatrix.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/MapMatrix.cpp
 
-Player.o: src/ClickManager/Player.h src/ClickManager/Player.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/Player.cc
+Player.o: src/ClickManager/Player.h src/ClickManager/Player.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/Player.cpp
 
-GameObject.o: src/GameObject/GameObject.h src/GameObject/GameObject.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/GameObject.cc
+GameObject.o: src/GameObjects/GameObject.h src/GameObjects/GameObject.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/GameObject.cpp
 
-Tower.o: src/GameObject/Tower/Tower.h src/GameObject/Tower/Tower.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Tower/Tower.cc
+Tower.o: src/GameObjects/Tower/Tower.h src/GameObjects/Tower/Tower.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Tower/Tower.cc
 
-Enemies.o: src/GameObject/Enemies/Enemies.h src/GameObject/Enemies/Enemies.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Enemies/Enemies.cc
+Enemies.o: src/GameObjects/Enemies/Enemies.h src/GameObjects/Enemies/Enemies.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Enemies/Enemies.cc
 
-Projectiles.o: src/GameObject/Projectiles/Projectiles.h src/GameObject/Projectiles/Projectiles.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/Projectiles/Projectiles.cc
+Projectiles.o: src/GameObjects/Projectiles/Projectiles.h src/GameObjects/Projectiles/Projectiles.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Projectiles/Projectiles.cc
 
-Menu.o: src/GameObject/Menu/Menu.h src/Menu/Menu.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/Menu.cc
+Menu.o: src/GameObjects/Menu/Menu.h src/GameObjects/Menu/Menu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/Menu.cpp
 
-Button.o: src/GameObject/Menu/Button.h src/Menu/Button.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/Button.cc
+Button.o: src/GameObjects/Menu/Button.h src/GameObjects/Menu/Button.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/Button.cpp
 
-StartMenu.o: src/GameObject/Menu/StartMenu.h src/Menu/StartMenu.cpp
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/StartMenu.cpp
+StartMenu.o: src/GameObjects/Menu/StartMenu.h src/GameObjects/Menu/StartMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/StartMenu.cpp
 
-LoadMenu.o: src/GameObject/Menu/LoadMenu.h src/Menu/LoadMenu.cpp
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/LoadMenu.cpp
+LoadMenu.o: src/GameObjects/Menu/LoadMenu.h src/GameObjects/Menu/LoadMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/LoadMenu.cpp
 
-TrackMenu.o: src/GameObject/Menu/TrackMenu.h src/Menu/TrackMenu.cpp
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Menu/TrackMenu.cpp
+TrackMenu.o: src/GameObjects/Menu/TrackMenu.h src/GameObjects/Menu/TrackMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/TrackMenu.cpp
 
 Loader.o: src/Loader/Loader.h src/Loader/Loader.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Loader/Loader.cc

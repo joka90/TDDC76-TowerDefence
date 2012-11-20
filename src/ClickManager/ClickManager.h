@@ -14,6 +14,7 @@
 
 class ClickManager {
 	public:
+		ClickManager()=default;
 		ClickManager(std::string value, int row, int col);
 		virtual ~ClickManager();
 		/*

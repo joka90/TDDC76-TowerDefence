@@ -17,6 +17,7 @@ class LoadMenu : public Menu
         LoadMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
         virtual ~LoadMenu();
         bool update();
+    	void draw(sf::RenderWindow& canvas);
     protected:
     private:
         std::vector<LoadPair> loadVectorData;

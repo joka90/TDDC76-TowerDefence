@@ -3,3 +3,8 @@ EventHandler::EventHandler()
 {
 
 }
+
+void EventHandler::poll(sf::RenderWindow& canvas)
+{
+
+}
