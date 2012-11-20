@@ -23,3 +23,6 @@
 
 # Egen main-fil
 callemain.cc
+
+# Thumbs.db-filer
+Thumbs.db
