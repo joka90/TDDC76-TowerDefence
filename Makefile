@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o MusicLoader.o TextureLoader.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o
 
 # Huvudmål - skapas med kommandot 'make' eller 'make kalkylator'.
 TD: $(OBJECTS) Makefile
@@ -88,6 +88,9 @@ MusicLoader.o: src/Loader/MusicLoader.h src/Loader/MusicLoader.cc
 
 TextureLoader.o: src/Loader/TextureLoader.h src/Loader/TextureLoader.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Loader/TextureLoader.cc
+
+FontLoader.o: src/Loader/FontLoader.h src/Loader/FontLoader.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Loader/FontLoader.cc
 
 
 
