@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="SFML-2.0-test" />
+		<Option title="SFML-2.0-TD" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
 					<Add option="-DSFML_STATIC" />
 					<Add directory="../SFML/include" />
 				</Compiler>
@@ -31,6 +32,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
 					<Add option="-DSFML_STATIC" />
 					<Add directory="../SFML/include" />
 				</Compiler>
@@ -49,6 +51,12 @@
 		<Unit filename="main.cc" />
 		<Unit filename="src/AnimatedSprite.cc" />
 		<Unit filename="src/AnimatedSprite.h" />
+		<Unit filename="src/EventHandler.cc" />
+		<Unit filename="src/EventHandler.h" />
+		<Unit filename="src/GameHandler.cc" />
+		<Unit filename="src/GameHandler.h" />
+		<Unit filename="src/GameObjects/Enemies/Enemy.cc" />
+		<Unit filename="src/GameObjects/Enemies/Enemy.h" />
 		<Unit filename="src/GameObjects/GameObject.cpp" />
 		<Unit filename="src/GameObjects/GameObject.h" />
 		<Unit filename="src/GameObjects/Menu/Button.cpp" />
@@ -59,7 +67,34 @@
 		<Unit filename="src/GameObjects/Menu/Menu.h" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.cpp" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.h" />
+<<<<<<< HEAD
 		<Unit filename="src/testfiles/AnimatedSpriteTest.cc" />
+=======
+		<Unit filename="src/GameObjects/Menu/TrackMenu.cpp" />
+		<Unit filename="src/GameObjects/Menu/TrackMenu.h" />
+		<Unit filename="src/GameObjects/Projectiles/Projectile.cc" />
+		<Unit filename="src/GameObjects/Projectiles/Projectile.h" />
+		<Unit filename="src/GameObjects/Towers/Tower.cc" />
+		<Unit filename="src/GameObjects/Towers/Tower.h" />
+		<Unit filename="src/GameObjects/VisualEffects/VisualEffect.cc" />
+		<Unit filename="src/GameObjects/VisualEffects/VisualEffect.h" />
+		<Unit filename="src/Level.cc" />
+		<Unit filename="src/Level.h" />
+		<Unit filename="src/Loader/FontLoader.cc" />
+		<Unit filename="src/Loader/FontLoader.h" />
+		<Unit filename="src/Loader/Loader.cc" />
+		<Unit filename="src/Loader/Loader.h" />
+		<Unit filename="src/Loader/MusicLoader.cc" />
+		<Unit filename="src/Loader/MusicLoader.h" />
+		<Unit filename="src/Loader/SoundLoader.cc" />
+		<Unit filename="src/Loader/SoundLoader.h" />
+		<Unit filename="src/Loader/TextureLoader.cc" />
+		<Unit filename="src/Loader/TextureLoader.h" />
+		<Unit filename="src/Wave/Wave.cpp" />
+		<Unit filename="src/Wave/Wave.h" />
+		<Unit filename="src/Wave/WaveHandler.cpp" />
+		<Unit filename="src/Wave/WaveHandler.h" />
+>>>>>>> 407ba45ec53a04b9adbdb84f1dba36049fc282ee
 		<Extensions>
 			<code_completion />
 			<debugger />

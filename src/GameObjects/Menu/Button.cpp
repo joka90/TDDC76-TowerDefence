@@ -9,7 +9,12 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     }
     //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
     //mouseOverText = sf::Text(inMouseOverText, fonts.);
-    //buttonText = sf::Text(inButtonText, fonts.);
+    sf::Font font;//TEMP, TODO, until fontloader is working
+    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
+        return;
+	buttonText.setString(inButtonText);
+    buttonText.setCharacterSize(30);
+	buttonText.setFont(font);
 }
 
 /*
@@ -43,6 +48,8 @@ void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY
 {
     setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
     drawSprite(canvas);
+	buttonText.move(menuCoordX+relativePosX, menuCoordY+relativePosY);
+	//canvas.draw(buttonText);//TODO, får Seg fault om försöker som nu
     if(hoover)
     {
         drawHooverText();

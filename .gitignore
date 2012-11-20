@@ -12,7 +12,18 @@
 *.a
 *.dll
 *.exe
+
+# skräp från olika editors
 *.project
 *.cproject
-# skräp från olika editors
 *~
+*.prefs
+*.depend
+*.layout
+*.cbTemp
+
+# Egen main-fil
+callemain.cc
+
+# Thumbs.db-filer
+Thumbs.db

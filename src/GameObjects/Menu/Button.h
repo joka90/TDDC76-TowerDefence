@@ -10,7 +10,7 @@
 class Button : public GameObject
 {
     public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string buttonText, std::string inMouseOverText);
+        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);
         Button& operator=(const Button& inButton);
         virtual ~Button();
         void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);

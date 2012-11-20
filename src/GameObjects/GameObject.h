@@ -19,9 +19,10 @@ class GameObject
         virtual bool drawSprite(sf::RenderWindow& canvas);
     protected:
         AnimatedSprite sprite;
-    private:
         int xPos;
         int yPos;
+    private:
+
 };
 
 #endif // GAMEOBJECT_H

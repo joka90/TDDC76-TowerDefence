@@ -34,7 +34,7 @@ bool Menu::buttonGotPressed(int buttonIndex)
 
 }
 
-void Menu::drawMenu(sf::RenderWindow canvas)
+void Menu::drawMenu(sf::RenderWindow& canvas)
 {
     for(int i = 0; i < (int)buttons.size(); ++i)
     {

@@ -91,4 +91,3 @@ bool LoadMenu::update()
         return false;
     }
 }
-
