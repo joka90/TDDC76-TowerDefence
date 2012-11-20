@@ -49,15 +49,15 @@ void GameHandler::run()
 		  	break;
 		case LOADMENU:
 			loadMenu.update();
-			loadMenu.draw(canvas);
+			loadMenu.drawMenu(canvas);
 			break;
 		case TRACKMENU:
 			trackMenu.update();
-			trackMenu.draw(canvas);
+			trackMenu.drawMenu(canvas);
 			break;
 		case STARTMENU:
 			startMenu.update();
-			startMenu.draw(canvas);
+			startMenu.drawMenu(canvas);
 			break;
 		default:
 			// Code

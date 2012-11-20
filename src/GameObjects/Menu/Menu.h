@@ -17,7 +17,7 @@ class Menu : public GameObject
         bool isButtonClicked(int buttonIndex);
         bool isButtonPressed(int buttonIndex);
         bool buttonGotPressed(int buttonIndex);
-        void drawMenu(sf::RenderWindow);
+        void drawMenu(sf::RenderWindow&);
         virtual bool update();
         void addButton(Button newButton);
         void removeButton(int index);

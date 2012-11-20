@@ -55,8 +55,3 @@ bool TrackMenu::update()
         return false;
     }
 }
-
-void TrackMenu::draw(sf::RenderWindow& canvas)
-{
-
-}

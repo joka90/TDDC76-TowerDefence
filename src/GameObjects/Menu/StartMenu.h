@@ -9,7 +9,6 @@ class StartMenu : public Menu
         StartMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
         virtual ~StartMenu();
         bool update();
-    	void draw(sf::RenderWindow& canvas);
     protected:
     private:
 };
