@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClockManager.o MapMatrix.o Player.o GameObject.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o MusicLoader.o TextureLoader.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o MusicLoader.o TextureLoader.o
 
 # Huvudmål - skapas med kommandot 'make' eller 'make kalkylator'.
 TD: $(OBJECTS) Makefile
@@ -35,20 +35,20 @@ EventHandler.o: src/EventHandler.h src/EventHandler.cc
 Level.o: src/Level.h src/Level.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Level.cc
 
-Wave.o: src/Wave.h src/Wave.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave.cc
+Wave.o: src/Wave/Wave.h src/Wave/Wave.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/Wave.cc
 
-WaveHandler.o: src/WaveHandler.h src/WaveHandler.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/WaveHandler.cc
+WaveHandler.o: src/Wave/WaveHandler.h src/Wave/WaveHandler.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Wave/WaveHandler.cc
 
-ClockManager.o: src/ClockManager/ClockManager.h src/ClockManager/ClockManager.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClockManager/ClockManager.cc
+ClickManager.o: src/ClickManager/ClickManager.h src/ClickManager/ClickManager.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/ClickManager.cc
 
-MapMatrix.o: src/ClockManager/MapMatrix.h src/ClockManager/MapMatrix.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClockManager/MapMatrix.cc
+MapMatrix.o: src/ClickManager/MapMatrix.h src/ClickManager/MapMatrix.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/MapMatrix.cc
 
-Player.o: src/ClockManager/Player.h src/ClockManager/Player.cc
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClockManager/Player.cc
+Player.o: src/ClickManager/Player.h src/ClickManager/Player.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/ClickManager/Player.cc
 
 GameObject.o: src/GameObject/GameObject.h src/GameObject/GameObject.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObject/GameObject.cc
