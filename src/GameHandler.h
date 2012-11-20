@@ -2,6 +2,9 @@
 #define GAMEHANDLER_H
 #include <SFML/Graphics.hpp>
 
+#include <sstream>
+#include <string>
+
 #include "Level.h"
 
 #include "GameObjects/Menu/StartMenu.h"
@@ -18,7 +21,7 @@
 
 #define WINDOWWIDTH 800
 #define WINDOWHEIGHT 600
-#define WINDOWNAME "Tower Devence"
+#define WINDOWNAME "Tower Defence"
 #define FRAMERATE 60
 //defines for switchcase int currentState
 #define STARTMENU 	0

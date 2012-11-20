@@ -16,10 +16,31 @@ void GameHandler::run()
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
 
+    // Create a graphical text to display
+    sf::Font font;
+    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
+        return;
+    sf::Text text("Hello SFML", font, 50);
+    text.move(20,20);
+	sf::Clock frameTime;
+
     // Start the game loop
     while (canvas.isOpen())
     {
+		sf::Time renderTime = frameTime.getElapsedTime();
+		frameTime.restart();
 		EventHandler::poll(canvas);
+
+        // Process events, until working EventHandler
+        sf::Event event;
+        while (canvas.pollEvent(event))
+        {
+            // Close window : exit
+            if (event.type == sf::Event::Closed)
+                canvas.close();
+        }
+
+        canvas.clear();
 
 		switch(currentState){
 		case LEVEL:
@@ -42,6 +63,13 @@ void GameHandler::run()
 			// Code
 			break;
 		}
+        // SHOW FPS
+        std::stringstream ss;
+        ss <<  1/renderTime.asSeconds() << " fps";
+        text.setString(ss.str());
+		// Update the canvas
+		canvas.draw(text);
+		canvas.display();
 
 	}
 	return;
