@@ -6,16 +6,16 @@
 #include <iostream>
 
 using namespace std;
-///Klass för att ladda in texturer
+///Klass för att ladda in fonter
 
 /**
 * Tillfällig konstruktor, tar in ett directory och ett filnamn och laddar sedan in
 * filen i en map ex:
 *
-* #define IMAGEDIRECTORY "../media/img/"
-* FontLoader* test = new FontLoader(IMAGEDIRECTORY,"apa.JPG")
-* En referens till en textur kan sedan fås ur map:en med funktionen getTexture, ex
-* test->getTexture(IMAGEDIRECTORY,"apa.JPG")
+* #define FONTDIRECTORY "../media/fonts/"
+* FontLoader* test = new FontLoader(FONTDIRECTORY,"arial.ttf")
+* En referens till en font kan sedan fås ur map:en med funktionen getFont, ex
+* test->getFont(FONTDIRECTORY,"arial.ttf")
 * om filen inte finns inladdad så laddas den in
 */
 /*
@@ -23,7 +23,7 @@ using namespace std;
 */
 FontLoader::FontLoader(const std::string directory, const std::string filename)
 {
-     load(directory, filename);
+    load(directory, filename);
 }
 
 /*
@@ -35,47 +35,47 @@ void FontLoader::load(const std::string& directory, const std::string& filename)
     {
         return;
     }
-    sf::Texture texture;
-    if (!texture.loadFromFile(directory+filename))
+    sf::Font font;
+    if (!font.loadFromFile(directory+filename))
     {
-        cout << "Loading of texture failed" << endl;
+        cout << "Loading of font failed" << endl;
         return;
     }
-    insert(filename, texture);
+    insert(filename, font);
     return;
 }
 
 /*
-* Privat funktion, Lägger in texturen i map:en
+* Privat funktion, Lägger in fonten i map:en
 */
-void FontLoader::insert(const std::string& key, sf::Texture inTexture)
+void FontLoader::insert(const std::string& key, sf::Font inFont)
 {
     if(!find(key))
     {
-      textures[key]=inTexture;
+      fonts[key]=inFont;
     }
   return;
 }
 
 /*
-* Privat funktion, kollar om texturen finns i map:en
+* Privat funktion, kollar om fonten finns i map:en
 */
 bool FontLoader::find(const std::string& key) const
 {
-    map<std::string, sf::Texture>::const_iterator it  = textures.find(key);
-    return (it != textures.end());
+    map<std::string, sf::Font>::const_iterator it  = fonts.find(key);
+    return (it != fonts.end());
 }
 
 /*
-* Tar bort en textur från map:en
+* Tar bort en font från map:en
 */
 void FontLoader::remove(const std::string& key)
 {
    if(!find(key))
     {
-    cout << "Removal of texture failed, texture doesn't exist" << endl;
+    cout << "Removal of font failed, font doesn't exist" << endl;
     }
-  textures.erase(key);
+  fonts.erase(key);
   return;
 }
 
@@ -84,7 +84,7 @@ void FontLoader::remove(const std::string& key)
 */
 void FontLoader::clear()
 {
-    textures.clear();
+    fonts.clear();
 }
 
 /*
@@ -92,16 +92,16 @@ void FontLoader::clear()
 */
 bool FontLoader::empty() const
 {
-    return(textures.empty());
+    return(fonts.empty());
 }
 
 /*
-* Printar ut det alla keys i map:en, kan vara bra till debug
+* Printar ut alla keys i map:en, kan vara bra till debug
 */
 void FontLoader::print() const
 {
-    map<std::string, sf::Texture>::const_iterator pos;
-    for(pos = textures.begin(); pos != textures.end(); ++pos)
+    map<std::string, sf::Font>::const_iterator pos;
+    for(pos = fonts.begin(); pos != fonts.end(); ++pos)
         {
         cout << "Key: " << pos->first << endl;
         //cout << "Value:" << pos->second << endl;
@@ -109,16 +109,16 @@ void FontLoader::print() const
 }
 
 /*
-* Hämtar ut en referens till en textur i map:en
+* Hämtar ut en referens till en font i map:en
 */
-sf::Texture& FontLoader::getTexture(const std::string directory, const std::string& key)
+sf::Font& FontLoader::getFont(const std::string directory, const std::string& key)
 {
     if(find(key))
     {
-      return textures[key];
+      return fonts[key];
     }
   load(directory, key);
-  return textures[key];
+  return fonts[key];
 }
 
 
