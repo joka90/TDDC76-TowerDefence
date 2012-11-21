@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#define FONTS "media/font/"
+
 using namespace std;
 ///Klass för att ladda in fonter
 
@@ -21,15 +23,15 @@ using namespace std;
 /*
 * Konstruktor
 */
-FontLoader::FontLoader(const std::string directory, const std::string filename)
+FontLoader::FontLoader()
 {
-    load(directory, filename);
+    directory = FONTS;
 }
 
 /*
 * Laddar in en fil i map:en, tar in ett directory och namnet på filen.
 */
-void FontLoader::load(const std::string& directory, const std::string& filename)
+void FontLoader::load(const std::string& filename)
 {
     if(find(filename))
     {
@@ -38,6 +40,7 @@ void FontLoader::load(const std::string& directory, const std::string& filename)
     sf::Font font;
     if (!font.loadFromFile(directory+filename))
     {
+
         cout << "Loading of font failed" << endl;
         return;
     }
@@ -111,13 +114,13 @@ void FontLoader::print() const
 /*
 * Hämtar ut en referens till en font i map:en
 */
-sf::Font& FontLoader::getFont(const std::string directory, const std::string& key)
+sf::Font& FontLoader::getFont(const std::string& key)
 {
     if(find(key))
     {
       return fonts[key];
     }
-  load(directory, key);
+  load(key);
   return fonts[key];
 }
 

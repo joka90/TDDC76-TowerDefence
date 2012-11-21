@@ -29,6 +29,11 @@
 #define TRACKMENU 	2
 #define LEVEL 		3
 
+struct funcTest {
+    void operator()(sf::Event e) {
+    }
+};
+
 class GameHandler
 {
 public:
@@ -42,6 +47,7 @@ protected:
 	TextureLoader textures;
 	SoundLoader sounds;
 	FontLoader fonts;
+	void quitListen(sf::Event);
 
 	Level* currentLevel;
 

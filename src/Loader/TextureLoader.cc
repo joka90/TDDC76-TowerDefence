@@ -21,15 +21,14 @@ using namespace std;
 /*
 * Konstruktor
 */
-TextureLoader::TextureLoader(const std::string directory, const std::string filename)
+TextureLoader::TextureLoader()
 {
-     load(directory, filename);
 }
 
 /*
 * Laddar in en fil i map:en, tar in ett directory och namnet på filen.
 */
-void TextureLoader::load(const std::string& directory, const std::string& filename)
+void TextureLoader::load(const std::string& filename)
 {
     if(find(filename))
     {
@@ -111,13 +110,13 @@ void TextureLoader::print() const
 /*
 * Hämtar ut en referens till en textur i map:en
 */
-sf::Texture& TextureLoader::getTexture(const std::string directory, const std::string& key)
+sf::Texture& TextureLoader::getTexture(const std::string& key)
 {
     if(find(key))
     {
       return textures[key];
     }
-  load(directory, key);
+  load(key);
   return textures[key];
 }
 

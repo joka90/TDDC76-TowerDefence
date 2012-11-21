@@ -11,12 +11,12 @@
 class FontLoader : public Loader
 {
     public:
-     FontLoader(const std::string directory, const std::string filename);
+     FontLoader();
      void remove(const std::string& key);
      void clear();
      bool empty() const;
-     void load(const std::string& directory, const std::string& filename);
-     sf::Font& getFont(const std::string directory, const std::string& key);
+     void load(const std::string& filename);
+     sf::Font& getFont(const std::string& key);
      void print() const; //debug
     private:
      std::map<std::string, sf::Font> fonts;

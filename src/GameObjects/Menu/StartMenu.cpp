@@ -11,7 +11,8 @@
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
-#define BUTTON "MENUBUTTONBASE.BMP"
+#define BUTTON "button.png"
+#define MENUSBACKGROUND "StartMenu.png"
 
 StartMenu::StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.bmp")

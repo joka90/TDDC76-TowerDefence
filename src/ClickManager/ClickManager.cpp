@@ -13,6 +13,7 @@ using namespace std;
 /*
  * Fler saker ska in in konstruktorn så fort den koden är klar!
  */
+
 ClickManager::ClickManager(string value, int row, int col)
 {
 	mapMatrix.setMatrix(value,row,col);
@@ -35,5 +36,4 @@ void ClickManager::createTower(int x, int y)
 		//Ge nått visuellt att det inte går att placera tornet på given plats?
 	}
 }
-
 
