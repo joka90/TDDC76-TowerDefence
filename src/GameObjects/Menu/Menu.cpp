@@ -6,6 +6,7 @@ using namespace std;
 Menu::Menu(int x, int y, TextureLoader& textures, string textureReference)
     : GameObject(x, y, textures, textureReference), state("")
 {
+    sprite.setTexture(textures.getTexture(textureReference));
 }
 
 Menu::~Menu()
@@ -36,11 +37,11 @@ bool Menu::buttonGotPressed(int buttonIndex)
 
 void Menu::drawMenu(sf::RenderWindow& canvas)
 {
+    this->drawSprite(canvas);
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
         buttons[i].drawButton(canvas, getPosX(), getPosY());
     }
-    this->drawSprite(canvas);
     return;
 }
 bool Menu::update()

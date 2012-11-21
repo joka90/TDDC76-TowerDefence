@@ -6,10 +6,13 @@ using namespace std;
 *   konstruktor, skall det vara så här?
 */
 GameObject::GameObject(int x, int y, TextureLoader& inTextures, string textureReference)
-    : xPos(x), yPos(y), textures(inTextures)
+    : xPos(x), yPos(y), textures(inTextures), sprite()/*, sprite(inTextures.getTexture(textureReference))*/ //TODO, segfault here
 {
-    //sprite = AnimatedSprite(textures.getTexture(textureReference));
+    //sprite.setTexture(textures.getTexture(textureReference),true);//TODO, segfault here
     //sprite.setPosition(xPos, yPos);
+    /*
+    * NOOOOOOOOOOOOOOOOOOOOOOOO segfault if initialised in sub classes.
+    */
 }
 
 GameObject::~GameObject()

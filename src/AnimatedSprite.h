@@ -17,6 +17,7 @@ public:
     AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
     ~AnimatedSprite();
 
+    //void setTexture(const sf::Texture& texture, bool resetRect);// not working m_texture is private
     /**
     * setFrame
     * @param inFrame set a specific frame.
