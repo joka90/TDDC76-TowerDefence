@@ -8,6 +8,12 @@ GameHandler::GameHandler()
 
 }
 */
+
+void GameHandler::quitListen(sf::Event)
+{
+    canvas.close();
+}
+
 GameHandler::GameHandler()
 :canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
 {
@@ -30,6 +36,8 @@ void GameHandler::run()
     text.move(20,20);
 	sf::Clock frameTime;
 
+    EventHandler::addListener(sf::Event::Closed, new funcTest());
+    //EventHandler::addListener(sf::Event::Closed, quitListen);
     // Start the game loop
     while (canvas.isOpen())
     {
@@ -37,15 +45,6 @@ void GameHandler::run()
 		std::string nextState;
 		frameTime.restart();
 		EventHandler::poll(canvas);
-
-        // Process events, until working EventHandler
-        sf::Event event;
-        while (canvas.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                canvas.close();
-        }
 
         canvas.clear();
 

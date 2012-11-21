@@ -6,7 +6,6 @@ EventHandler::EventHandler()
 
 }
 
-
 std::vector<eventHandlerFunction> EventHandler::closedHandlers;
 std::vector<eventHandlerFunction> EventHandler::keyPressedHandlers;
 std::vector<eventHandlerFunction> EventHandler::keyReleasedHandlers;
