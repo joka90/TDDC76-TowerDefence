@@ -15,7 +15,7 @@
 #define MENUSBACKGROUND "StartMenu.png"
 
 StartMenu::StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
-:Menu(MENUSTARTX,MENUSTARTY, textures, MENUSBACKGROUND)
+:Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.png")
 {
     addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
                       textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
