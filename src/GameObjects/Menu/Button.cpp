@@ -7,10 +7,6 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     {
         //clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
     }
-    //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
-    //mouseOverText = sf::Text(inMouseOverText, fonts.);
-    //inFonts->load("media/font/", "appleberry_with_cyrillic.ttf");
-
 	fonts.load("appleberry_with_cyrillic.ttf");
 	buttonText=sf::Text(inButtonText,fonts.getFont("appleberry_with_cyrillic.ttf"),30);
 }
@@ -44,9 +40,9 @@ Button& Button::operator=(const Button& inButton)
 
 void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY)
 {
-    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
+    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);// some thing wrong here, looping....
     drawSprite(canvas);
-	buttonText.move(menuCoordX+relativePosX, menuCoordY+relativePosY);
+	buttonText.move(0, 0);// fixed for now because looping away..
 	canvas.draw(buttonText);
     if(hoover)
     {
