@@ -12,7 +12,7 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     //inFonts->load("media/font/", "appleberry_with_cyrillic.ttf");
 
 	//fonts.load("media/font/", "appleberry_with_cyrillic.ttf");
-	//buttonText=sf::Text(inButtonText,inFonts.getFont("media/font/", "appleberry_with_cyrillic.ttf"),30);
+	//buttonText=sf::Text(inButtonText,fonts.getFont("media/font/", "appleberry_with_cyrillic.ttf"),30);
 }
 
 /*

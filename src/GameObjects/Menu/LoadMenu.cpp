@@ -28,7 +28,7 @@
 #define LOADFOLDER "../../../saves"
 using namespace std;
 LoadMenu::LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
-:Menu(MENULOADX, MENULOADY, textures, "LOADMENU.BMP")
+:Menu(MENULOADX, MENULOADY, textures, "StartMenu.png")
 {
     //Ladda in vilka sparfiler som finns
     ifstream loadData;

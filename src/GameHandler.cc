@@ -1,7 +1,7 @@
 #include "GameHandler.h"
 
 GameHandler::GameHandler()
-:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts), currentState(STARTMENU)
+:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), currentState(STARTMENU)
 {
     // init all loaders
     fonts.load(std::string("appleberry_with_cyrillic.ttf"));
@@ -24,9 +24,11 @@ void GameHandler::run()
 {
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
+    // Create a graphical text to display
+
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", fonts.getFont(std::string("appleberry_with_cyrillic.ttf")), 50);
+    sf::Text text("Hello SFML", fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
     text.move(20,20);
 	sf::Clock frameTime;
 
@@ -38,6 +40,7 @@ void GameHandler::run()
 		sf::Time renderTime = frameTime.getElapsedTime();
 		std::string nextState;
 		frameTime.restart();
+        canvas.clear();
 		EventHandler::poll(canvas);
 
         // Process events, until working EventHandler
@@ -49,8 +52,8 @@ void GameHandler::run()
                 canvas.close();
         }
 
-        canvas.clear();
 
+/*
 		switch(currentState){
 		case LEVEL:
 			currentLevel->update();
@@ -75,7 +78,7 @@ void GameHandler::run()
 			{
 				nextState=startMenu.readState();
 			}
-			startMenu.drawMenu(canvas);
+			//startMenu.drawMenu(canvas);
 			break;
 		default:
 			// Code
@@ -96,7 +99,7 @@ void GameHandler::run()
 		else if(nextState=="QUIT")
 		{
 			canvas.close();//do some more?
-		}
+		}*/
 
         // SHOW FPS
         std::stringstream ss;

@@ -22,11 +22,10 @@ class GameObject
         void pauseAnimation();
         virtual bool drawSprite(sf::RenderWindow& canvas);
     protected:
+	TextureLoader& textures;
         AnimatedSprite sprite;
         int xPos;
         int yPos;
-    private:
-	TextureLoader& textures;
 
 };
 
