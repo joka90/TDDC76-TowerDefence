@@ -5,7 +5,6 @@
 		<Option title="SFML-2.0-TD" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="src/Loader/;src/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/SFML-2" prefix_auto="1" extension_auto="1" />
@@ -51,9 +50,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="main.cc" />
-		<Unit filename="src/AnimatedSprite.cc">
-			<Option virtualFolder="src/Loader/" />
-		</Unit>
+		<Unit filename="src/AnimatedSprite.cc" />
 		<Unit filename="src/AnimatedSprite.h" />
 		<Unit filename="src/ClickManager/ClickManager.cpp" />
 		<Unit filename="src/ClickManager/ClickManager.h" />
@@ -95,9 +92,7 @@
 		<Unit filename="src/Loader/MusicLoader.h" />
 		<Unit filename="src/Loader/SoundLoader.cc" />
 		<Unit filename="src/Loader/SoundLoader.h" />
-		<Unit filename="src/Loader/TextureLoader.cc">
-			<Option virtualFolder="src/" />
-		</Unit>
+		<Unit filename="src/Loader/TextureLoader.cc" />
 		<Unit filename="src/Loader/TextureLoader.h" />
 		<Unit filename="src/Wave/Wave.cpp" />
 		<Unit filename="src/Wave/Wave.h" />
