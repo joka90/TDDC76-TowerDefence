@@ -34,6 +34,7 @@ void GameHandler::run()
     while (canvas.isOpen())
     {
 		sf::Time renderTime = frameTime.getElapsedTime();
+		std::string nextState;
 		frameTime.restart();
 		EventHandler::poll(canvas);
 
@@ -54,21 +55,47 @@ void GameHandler::run()
 			currentLevel->draw(canvas);
 		  	break;
 		case LOADMENU:
-			loadMenu.update();
+			if(loadMenu.update())
+			{
+				nextState=loadMenu.readState();
+			}
 			loadMenu.drawMenu(canvas);
 			break;
 		case TRACKMENU:
-			trackMenu.update();
+			if(trackMenu.update())
+			{
+				nextState=trackMenu.readState();
+			}
 			trackMenu.drawMenu(canvas);
 			break;
 		case STARTMENU:
-			startMenu.update();
+			if(startMenu.update())
+			{
+				nextState=startMenu.readState();
+			}
 			startMenu.drawMenu(canvas);
 			break;
 		default:
 			// Code
 			break;
 		}
+		if(nextState=="TRACK")
+		{
+			currentState=TRACKMENU;
+		}
+		else if(nextState=="START")
+		{
+			currentState=STARTMENU;
+		}
+		else if(nextState=="LOAD")
+		{
+			currentState=LOADMENU;
+		}
+		else if(nextState=="QUIT")
+		{
+			canvas.close();//do some more?
+		}
+
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";

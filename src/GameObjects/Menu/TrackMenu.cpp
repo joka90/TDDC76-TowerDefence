@@ -45,7 +45,7 @@ bool TrackMenu::update()
     }
     else if(buttons[2].gotPressed())
     {
-        state = "QUIT";
+        state = "START";
         newIteration();
         return true;
     }
