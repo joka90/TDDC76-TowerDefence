@@ -26,17 +26,24 @@ AnimatedSprite::AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpri
     }
 
 }
-/* NOT WORKING, m_texture is private
-////////////////////////////////////////////////////////////
-void AnimatedSprite::setTexture(const sf::Texture& texture, bool resetRect)
-{
-    animationMask.height=texture.getSize().y;
-    animationMask.width=texture.getSize().x;
-    setTextureRect(sf::IntRect(0, 0, texture.getSize().x, texture.getSize().y));
 
-    // Assign the new texture
-    m_texture = &texture;
-}*/
+void AnimatedSprite::setTextureAnimation(const sf::Texture& texture, unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFpf, bool inPlaying)
+{
+    setTexture(texture);
+    imgSize = texture.getSize();//get full image size
+    if(inSpriteWidth!=0||inNuberOfSprites!=0)
+    {
+        animationMask.width=inSpriteWidth;//set mask size
+        animationMask.height=imgSize.y;
+        setTextureRect(animationMask);
+    }
+    else
+    {
+        animationMask.height=imgSize.y;
+        animationMask.width=imgSize.x;
+        setTextureRect(animationMask);
+    }
+}
 
 AnimatedSprite::~AnimatedSprite()
 //:sf::~Sprite()//not needed?

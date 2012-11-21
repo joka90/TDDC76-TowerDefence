@@ -6,7 +6,7 @@ using namespace std;
 *   konstruktor, skall det vara så här?
 */
 GameObject::GameObject(int x, int y, TextureLoader& inTextures, string textureReference)
-    : xPos(x), yPos(y), textures(inTextures), sprite()/*, sprite(inTextures.getTexture(textureReference))*/ //TODO, segfault here
+    : xPos(x), yPos(y), textures(inTextures)/*, sprite(inTextures.getTexture(textureReference))*/ //TODO, segfault here
 {
     //sprite.setTexture(textures.getTexture(textureReference),true);//TODO, segfault here
     //sprite.setPosition(xPos, yPos);

@@ -3,10 +3,10 @@
 #include "Menu.h"
 
 using namespace std;
-Menu::Menu(int x, int y, TextureLoader& textures, string textureReference)
-    : GameObject(x, y, textures, textureReference), state("")
+Menu::Menu(int x, int y, TextureLoader& inTextures, string textureReference)
+    : GameObject(x, y, inTextures, textureReference), state("")
 {
-    sprite.setTexture(textures.getTexture(textureReference));
+    sprite.setTextureAnimation(textures.getTexture(textureReference));
 }
 
 Menu::~Menu()
