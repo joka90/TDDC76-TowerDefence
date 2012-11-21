@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#define SOUND "media/sound/"
+
 using namespace std;
 ///Klass för att ladda in sounds
 
@@ -23,12 +25,13 @@ using namespace std;
 */
 SoundLoader::SoundLoader()
 {
+    directory = SOUND;
 }
 
 /*
 * Laddar in en fil i map:en, tar in ett directory och namnet på filen.
 */
-void SoundLoader::load(const std::string& directory, const std::string& filename)
+void SoundLoader::load(const std::string& filename)
 {
     if(find(filename))
     {
@@ -105,13 +108,13 @@ void SoundLoader::print() const
 /*
 * Hämtar ut en referens till en soundbuffer i map:en
 */
-sf::SoundBuffer& SoundLoader::getSoundBuffer(const std::string directory, const std::string& key)
+sf::SoundBuffer& SoundLoader::getSoundBuffer(const std::string& key)
 {
     if(find(key))
     {
       return sounds[key];
     }
-  load(directory, key);
+  load(key);
   return sounds[key];
 }
 

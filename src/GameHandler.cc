@@ -18,7 +18,7 @@ GameHandler::GameHandler()
 :canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
 {
     // init all loaders
-    fonts.load(string("media/font/"), string("appleberry_with_cyrillic.ttf"));
+    fonts.load(string("appleberry_with_cyrillic.ttf"));
 }
 
 GameHandler::~GameHandler()
@@ -32,11 +32,11 @@ void GameHandler::run()
     canvas.setFramerateLimit(FRAMERATE);
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", fonts.getFont(string("media/font/"), string("appleberry_with_cyrillic.ttf")), 50);
+    sf::Text text("Hello SFML", fonts.getFont(string("appleberry_with_cyrillic.ttf")), 50);
     text.move(20,20);
 	sf::Clock frameTime;
 
-    EventHandler::addListener(sf::Event::Closed, new funcTest());
+    //EventHandler::addListener(sf::Event::Closed, new funcTest());
     //EventHandler::addListener(sf::Event::Closed, quitListen);
     // Start the game loop
     while (canvas.isOpen())
