@@ -5,7 +5,7 @@ using namespace std;
 /*
 *   konstruktor, skall det vara så här?
 */
-GameObject::GameObject(int x, int y, class TextureLoader* textures, string textureReference)
+GameObject::GameObject(int x, int y, TextureLoader& textures, string textureReference)
     : xPos(x), yPos(y)
 {
     //sprite = AnimatedSprite(textures->getTexture(textureReference));

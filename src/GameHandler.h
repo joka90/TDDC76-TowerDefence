@@ -38,6 +38,11 @@ public:
     void run();
 
 protected:
+	MusicLoader music;
+	TextureLoader textures;
+	SoundLoader sounds;
+	FontLoader fonts;
+
 	Level* currentLevel;
 
 	int currentState;
@@ -48,11 +53,6 @@ protected:
 
 	ClickManager clickManager;
 	sf::RenderWindow canvas;
-
-	MusicLoader music;
-	TextureLoader textures;
-	SoundLoader sounds;
-	FontLoader fonts;
 
 };
 

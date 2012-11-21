@@ -6,11 +6,16 @@
 #include <string>
 
 #include "../GameObject.h"
+#include "../../Loader/MusicLoader.h"
+#include "../../Loader/TextureLoader.h"
+#include "../../Loader/SoundLoader.h"
+#include "../../Loader/FontLoader.h"
+
 
 class Button : public GameObject
 {
     public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);
+        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);
         Button& operator=(const Button& inButton);
         virtual ~Button();
         void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);
@@ -36,7 +41,9 @@ class Button : public GameObject
         sf::Text mouseOverText;
         sf::Text buttonText;
         sf::Sound* clickSound;
-
+	TextureLoader& textures;
+	SoundLoader& sounds;
+	FontLoader& fonts;
         void drawText();
 };
 

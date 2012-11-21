@@ -1,5 +1,5 @@
 #include "VisualEffect.h"
-VisualEffect::VisualEffect(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader)
+VisualEffect::VisualEffect(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
 :GameObject(newX, newY, inTextureLoader, "ENFINBILD")//skall denna vara har, pure virtual senare?
 {
 

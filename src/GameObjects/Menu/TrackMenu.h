@@ -8,7 +8,7 @@
 class TrackMenu : public Menu
 {
     public:
-        TrackMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
+        TrackMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
         virtual ~TrackMenu();
         bool update();
     protected:

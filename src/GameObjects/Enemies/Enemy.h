@@ -6,7 +6,7 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader);
+    Enemy(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 

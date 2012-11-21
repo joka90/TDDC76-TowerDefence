@@ -13,7 +13,7 @@
 #define CLICK "CLICK.WAW"
 #define BUTTON "MENUBUTTONBASE.BMP"
 
-StartMenu::StartMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
+StartMenu::StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.bmp")
 {
     addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,

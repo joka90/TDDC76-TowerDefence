@@ -2,6 +2,10 @@
 #define GAMEOBJECT_H
 
 #include "../AnimatedSprite.h"
+#include "../Loader/MusicLoader.h"
+#include "../Loader/TextureLoader.h"
+#include "../Loader/SoundLoader.h"
+#include "../Loader/FontLoader.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -9,7 +13,7 @@
 class GameObject
 {
     public:
-        GameObject(int x, int y, class TextureLoader* textures, std::string textureReference);
+        GameObject(int x, int y, TextureLoader& textures, std::string textureReference);
         virtual ~GameObject();
         int getPosX();
         int getPosY();

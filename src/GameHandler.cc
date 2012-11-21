@@ -1,7 +1,7 @@
 #include "GameHandler.h"
 
 GameHandler::GameHandler()
-:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
+:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts), currentState(STARTMENU)
 {
 
 }
@@ -16,11 +16,9 @@ void GameHandler::run()
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
 
-    // Create a graphical text to display
-    sf::Font font;
-    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
-        return;
-    sf::Text text("Hello SFML", font, 50);
+	fonts.load("media/font/", "appleberry_with_cyrillic.ttf");
+	//buttonText=sf::Text(inButtonText,inFonts->getFont("media/font/", "appleberry_with_cyrillic.ttf"),30);
+    sf::Text text("Hello SFML", fonts.getFont("media/font/", "appleberry_with_cyrillic.ttf"), 50);
     text.move(20,20);
 	sf::Clock frameTime;
 

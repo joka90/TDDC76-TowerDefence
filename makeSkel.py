@@ -11,7 +11,7 @@ for klass in klasser:
     filename=klass[1]
     f = open(folder+filename+".cc", 'w')# ========== cc file
     f.write("""#include "%(className)s.h"
-%(className)s::%(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader)
+%(className)s::%(className)s(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
 :GameObject(newX, newY, inTextureLoader, "ENFINBILD")//skall denna vara har, pure virtual senare?
 {
 
@@ -34,7 +34,7 @@ bool %(className)s::drawSprite(sf::RenderWindow& canvas)
 class %(className)s : public GameObject
 {
 public:
-    %(className)s(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader);
+    %(className)s(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 

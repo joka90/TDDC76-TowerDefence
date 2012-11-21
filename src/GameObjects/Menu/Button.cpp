@@ -1,7 +1,7 @@
 #include "Button.h"
 using namespace std;
-Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
-    : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
+Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
+    : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false), fonts(inFonts), textures(inTextures), sounds(inSounds)
 {
     if(soundKey != "")
     {
@@ -9,12 +9,10 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     }
     //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
     //mouseOverText = sf::Text(inMouseOverText, fonts.);
-    sf::Font font;//TEMP, TODO, until fontloader is working
-    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
-        return;
-	buttonText.setString(inButtonText);
-    buttonText.setCharacterSize(30);
-	buttonText.setFont(font);
+    //inFonts->load("media/font/", "appleberry_with_cyrillic.ttf");
+
+	//fonts.load("media/font/", "appleberry_with_cyrillic.ttf");
+	//buttonText=sf::Text(inButtonText,inFonts.getFont("media/font/", "appleberry_with_cyrillic.ttf"),30);
 }
 
 /*
@@ -49,6 +47,10 @@ void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY
     setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
     drawSprite(canvas);
 	buttonText.move(menuCoordX+relativePosX, menuCoordY+relativePosY);
+    /*sf::Font font;//TEMP, TODO, until fontloader is working
+    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
+        return;*/
+	//buttonText.setFont(fonts->getFont("media/font/", "appleberry_with_cyrillic.ttf"));
 	//canvas.draw(buttonText);//TODO, får Seg fault om försöker som nu
     if(hoover)
     {

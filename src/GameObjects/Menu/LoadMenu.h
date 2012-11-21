@@ -14,7 +14,7 @@ struct LoadPair
 class LoadMenu : public Menu
 {
     public:
-        LoadMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
+        LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
         virtual ~LoadMenu();
         bool update();
     protected:
