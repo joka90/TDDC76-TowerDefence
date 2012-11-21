@@ -40,7 +40,6 @@ void TextureLoader::load(const std::string& filename)
     sf::Texture texture;
     if (!texture.loadFromFile(directory+filename))
     {
-        throw;
         cout << "Loading of texture failed" << endl;
         return;
     }
