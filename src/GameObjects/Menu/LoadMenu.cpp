@@ -27,7 +27,7 @@
 #define BACKIMG "BACKBUTTON.BMP"
 #define LOADFOLDER "../../../saves"
 using namespace std;
-LoadMenu::LoadMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
+LoadMenu::LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENULOADX, MENULOADY, textures, "LOADMENU.BMP")
 {
     //Ladda in vilka sparfiler som finns

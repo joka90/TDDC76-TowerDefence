@@ -43,7 +43,11 @@ public:
     void run();
 
 protected:
-    void quitListen(sf::Event);
+	MusicLoader music;
+	TextureLoader textures;
+	SoundLoader sounds;
+	FontLoader fonts;
+	void quitListen(sf::Event);
 
 	Level* currentLevel;
 
@@ -55,11 +59,6 @@ protected:
 
 	ClickManager clickManager;
 	sf::RenderWindow canvas;
-
-	MusicLoader music;
-	TextureLoader textures;
-	SoundLoader sounds;
-	FontLoader fonts;
 
 };
 

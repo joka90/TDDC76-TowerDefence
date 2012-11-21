@@ -1,25 +1,19 @@
 #include "GameHandler.h"
-#include <string>
-using namespace std;
-/*
-GameHandler::GameHandler()
-:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
-{
 
+GameHandler::GameHandler()
+:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts), currentState(STARTMENU)
+{
+    // init all loaders
+    fonts.load(std::string("appleberry_with_cyrillic.ttf"));
 }
-*/
+
 
 void GameHandler::quitListen(sf::Event)
 {
     canvas.close();
 }
 
-GameHandler::GameHandler()
-:canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
-{
-    // init all loaders
-    fonts.load(string("appleberry_with_cyrillic.ttf"));
-}
+
 
 GameHandler::~GameHandler()
 {
@@ -32,7 +26,7 @@ void GameHandler::run()
     canvas.setFramerateLimit(FRAMERATE);
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", fonts.getFont(string("appleberry_with_cyrillic.ttf")), 50);
+    sf::Text text("Hello SFML", fonts.getFont(std::string("appleberry_with_cyrillic.ttf")), 50);
     text.move(20,20);
 	sf::Clock frameTime;
 
@@ -45,6 +39,15 @@ void GameHandler::run()
 		std::string nextState;
 		frameTime.restart();
 		EventHandler::poll(canvas);
+
+        // Process events, until working EventHandler
+        sf::Event event;
+        while (canvas.pollEvent(event))
+        {
+            // Close window : exit
+            if (event.type == sf::Event::Closed)
+                canvas.close();
+        }
 
         canvas.clear();
 
