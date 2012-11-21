@@ -1,5 +1,5 @@
-#ifndef FONTLOADER_H
-#define FONTLOADER_H
+#ifndef FONTLOADER
+#define FONTLOADER
 
 #include "Loader.h"
 #include <SFML/Graphics.hpp>
@@ -16,12 +16,12 @@ class FontLoader : public Loader
      void clear();
      bool empty() const;
      void load(const std::string& directory, const std::string& filename);
-     sf::Texture& getTexture(const std::string directory, const std::string& key);
+     sf::Font& getFont(const std::string directory, const std::string& key);
      void print() const; //debug
     private:
-     std::map<std::string, sf::Texture> textures;
+     std::map<std::string, sf::Font> fonts;
      bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::Texture inTexture);
+     void insert(const std::string& key, sf::Font inFont);
 };
 
 #endif

@@ -18,7 +18,6 @@ class Loader
   virtual bool empty() const = 0;
 protected:
   virtual bool find(const std::string& key) const = 0;
-  //virtual void insert(const std::string& key, sf::Texture inTexture) = 0;
 };
 
 #endif
