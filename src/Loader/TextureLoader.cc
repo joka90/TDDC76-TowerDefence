@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#define IMG "media/img/"
+
 using namespace std;
 ///Klass för att ladda in texturer
 
@@ -23,6 +25,7 @@ using namespace std;
 */
 TextureLoader::TextureLoader()
 {
+    directory = IMG;
 }
 
 /*

@@ -5,11 +5,11 @@ using namespace std;
 /*
 *   konstruktor, skall det vara så här?
 */
-GameObject::GameObject(int x, int y, TextureLoader& textures, string textureReference)
-    : xPos(x), yPos(y)
+GameObject::GameObject(int x, int y, TextureLoader& inTextures, string textureReference)
+    : xPos(x), yPos(y), textures(inTextures)
 {
-    //sprite = AnimatedSprite(textures->getTexture(textureReference));
-    //sprite.setPosition(xPos, yPos);
+    sprite = AnimatedSprite(textures.getTexture(textureReference));
+    sprite.setPosition(xPos, yPos);
 }
 
 GameObject::~GameObject()

@@ -13,7 +13,7 @@
 class GameObject
 {
     public:
-        GameObject(int x, int y, TextureLoader& textures, std::string textureReference);
+        GameObject(int x, int y, TextureLoader& inTextures, std::string textureReference);
         virtual ~GameObject();
         int getPosX();
         int getPosY();
@@ -26,6 +26,7 @@ class GameObject
         int xPos;
         int yPos;
     private:
+	TextureLoader& textures;
 
 };
 
