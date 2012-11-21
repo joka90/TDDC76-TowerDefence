@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include "../AnimatedSprite.h"
+#include "../Loader/TextureLoader.h"
 
 #include <SFML/Graphics.hpp>
 #include <string>

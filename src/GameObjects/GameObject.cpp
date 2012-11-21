@@ -8,8 +8,8 @@ using namespace std;
 GameObject::GameObject(int x, int y, class TextureLoader* textures, string textureReference)
     : xPos(x), yPos(y)
 {
-    //sprite = AnimatedSprite(textures->getTexture(textureReference));
-    //sprite.setPosition(xPos, yPos);
+    sprite = AnimatedSprite(textures->getTexture(textureReference));
+    sprite.setPosition(xPos, yPos);
 }
 
 GameObject::~GameObject()
