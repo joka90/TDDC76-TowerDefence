@@ -11,7 +11,7 @@
 class FontLoader : public Loader
 {
     public:
-     FontLoader(const std::string directory, const std::string filename);
+     FontLoader();
      void remove(const std::string& key);
      void clear();
      bool empty() const;

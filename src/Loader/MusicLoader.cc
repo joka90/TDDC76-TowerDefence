@@ -21,9 +21,8 @@ using namespace std;
 /*
 * Konstruktor
 */
-MusicLoader::MusicLoader(const std::string directory, const std::string filename)
+MusicLoader::MusicLoader()
 {
-    load(directory, filename);
 }
 
 /*

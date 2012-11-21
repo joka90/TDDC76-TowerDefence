@@ -11,7 +11,7 @@
 class SoundLoader : public Loader
 {
     public:
-     SoundLoader(const std::string directory, const std::string filename);
+     SoundLoader();
      void remove(const std::string& key);
      void clear();
      bool empty() const;

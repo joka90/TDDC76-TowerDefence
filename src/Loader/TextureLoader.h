@@ -11,7 +11,7 @@
 class TextureLoader : public Loader
 {
     public:
-     TextureLoader(const std::string directory, const std::string filename);
+     TextureLoader();
      void remove(const std::string& key);
      void clear();
      bool empty() const;

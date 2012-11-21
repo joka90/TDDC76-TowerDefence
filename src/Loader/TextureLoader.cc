@@ -21,9 +21,8 @@ using namespace std;
 /*
 * Konstruktor
 */
-TextureLoader::TextureLoader(const std::string directory, const std::string filename)
+TextureLoader::TextureLoader()
 {
-     load(directory, filename);
 }
 
 /*

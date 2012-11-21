@@ -21,9 +21,8 @@ using namespace std;
 /*
 * Konstruktor
 */
-FontLoader::FontLoader(const std::string directory, const std::string filename)
+FontLoader::FontLoader()
 {
-    load(directory, filename);
 }
 
 /*

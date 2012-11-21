@@ -11,7 +11,7 @@
 class MusicLoader : public Loader
 {
     public:
-     MusicLoader(const std::string directory, const std::string filename);
+     MusicLoader();
      void remove(const std::string& key);
      void clear();
      bool empty() const;
