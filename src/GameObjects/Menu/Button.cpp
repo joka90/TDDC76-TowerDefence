@@ -47,11 +47,7 @@ void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY
     setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
     drawSprite(canvas);
 	buttonText.move(menuCoordX+relativePosX, menuCoordY+relativePosY);
-    /*sf::Font font;//TEMP, TODO, until fontloader is working
-    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
-        return;*/
-	//buttonText.setFont(fonts->getFont("media/font/", "appleberry_with_cyrillic.ttf"));
-	canvas.draw(buttonText);//TODO, får Seg fault om försöker som nu
+	canvas.draw(buttonText);
     if(hoover)
     {
         drawHooverText();

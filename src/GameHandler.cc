@@ -78,7 +78,7 @@ void GameHandler::run()
 			{
 				nextState=startMenu.readState();
 			}
-			//startMenu.drawMenu(canvas);
+			startMenu.drawMenu(canvas);
 			break;
 		default:
 			// Code
