@@ -81,7 +81,7 @@ bool LoadMenu::update()
     }
     else if(buttons[2].gotPressed())
     {
-        state = "BACK";
+        state = "START";
         newIteration();
         return true;
     }
