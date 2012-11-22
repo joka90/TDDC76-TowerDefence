@@ -24,6 +24,7 @@ void EventHandler::poll(sf::RenderWindow& canvas)
                 {
                     (*it)(event);
                 }
+                canvas.close();
         }
         else if (event.type == sf::Event::KeyPressed)
         {
@@ -159,5 +160,8 @@ bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunctio
                 break;
             }
         }
+    }else{
+        return false;
     }
+    return true;
 }
