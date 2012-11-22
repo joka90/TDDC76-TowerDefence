@@ -53,9 +53,9 @@ protected:
 
 	int currentState;
 
-	/*StartMenu startMenu;
+	StartMenu startMenu;
 	LoadMenu loadMenu;
-	TrackMenu trackMenu;*/
+	TrackMenu trackMenu;
 
 	ClickManager clickManager;
 	sf::RenderWindow canvas;

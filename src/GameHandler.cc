@@ -1,7 +1,7 @@
 #include "GameHandler.h"
 
 GameHandler::GameHandler()
-:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), currentState(STARTMENU)
+:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), currentState(STARTMENU), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
 {
     // init all loaders
     fonts.load(std::string("appleberry_with_cyrillic.ttf"));
@@ -53,7 +53,7 @@ void GameHandler::run()
         }
 
 
-/*
+
 		switch(currentState){
 		case LEVEL:
 			currentLevel->update();
@@ -78,7 +78,7 @@ void GameHandler::run()
 			{
 				nextState=startMenu.readState();
 			}
-			//startMenu.drawMenu(canvas);
+			startMenu.drawMenu(canvas);
 			break;
 		default:
 			// Code
@@ -99,7 +99,7 @@ void GameHandler::run()
 		else if(nextState=="QUIT")
 		{
 			canvas.close();//do some more?
-		}*/
+		}
 
         // SHOW FPS
         std::stringstream ss;

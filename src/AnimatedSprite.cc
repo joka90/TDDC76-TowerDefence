@@ -8,10 +8,10 @@ AnimatedSprite::AnimatedSprite()
 
 }
 
-AnimatedSprite::AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFpf, bool inPlaying)
-    :sf::Sprite(inTexture), spriteWidth(inSpriteWidth), nuberOfSprites(inNuberOfSprites), fpf(inFpf), playing(inPlaying), animationMask(0,0,1,1), fpfCounter(0), frame(0)
+AnimatedSprite::AnimatedSprite(const sf::Texture* inTexture, unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFpf, bool inPlaying)
+    :sf::Sprite(*inTexture), spriteWidth(inSpriteWidth), nuberOfSprites(inNuberOfSprites), fpf(inFpf), playing(inPlaying), animationMask(0,0,1,1), fpfCounter(0), frame(0)
 {
-    imgSize = inTexture.getSize();//get full image size
+    imgSize = inTexture->getSize();//get full image size
     animationMask.width=inSpriteWidth;//set mask size
     animationMask.height=imgSize.y;
     setTextureRect(animationMask);

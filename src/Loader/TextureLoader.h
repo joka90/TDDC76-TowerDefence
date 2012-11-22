@@ -16,12 +16,12 @@ class TextureLoader : public Loader
      void clear();
      bool empty() const;
      void load(const std::string& filename);
-     sf::Texture& getTexture(const std::string& key);
+     sf::Texture* getTexture(const std::string& key);
      void print() const; //debug
     private:
-     std::map<std::string, sf::Texture> textures;
+     std::map<std::string, sf::Texture*> textures;
      bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::Texture inTexture);
+     void insert(const std::string& key, sf::Texture* inTexture);
 };
 
 #endif
