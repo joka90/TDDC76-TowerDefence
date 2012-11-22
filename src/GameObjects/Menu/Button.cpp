@@ -3,16 +3,13 @@ using namespace std;
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
     : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false), fonts(inFonts), textures(inTextures), sounds(inSounds)
 {
+    sprite.setTextureAnimation(textures.getTexture(spriteKey)); // varför funkar inte detta i GameObject???
     if(soundKey != "")
     {
-        //clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
+       // clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
     }
-    //sprite = AnimatedSprite(textures->getTexture(spriteKey)); //fel fixa fler argument
-    //mouseOverText = sf::Text(inMouseOverText, fonts.);
-    //inFonts->load("media/font/", "appleberry_with_cyrillic.ttf");
-
-	//fonts.load("media/font/", "appleberry_with_cyrillic.ttf");
-	//buttonText=sf::Text(inButtonText,fonts.getFont("media/font/", "appleberry_with_cyrillic.ttf"),30);
+	fonts.load("appleberry_with_cyrillic.ttf");
+	buttonText=sf::Text(inButtonText,fonts.getFont("appleberry_with_cyrillic.ttf"),30);
 }
 
 /*
@@ -44,14 +41,10 @@ Button& Button::operator=(const Button& inButton)
 
 void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY)
 {
-    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
+    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);// some thing wrong here, looping....
     drawSprite(canvas);
-	buttonText.move(menuCoordX+relativePosX, menuCoordY+relativePosY);
-    /*sf::Font font;//TEMP, TODO, until fontloader is working
-    if (!font.loadFromFile("media/font/appleberry_with_cyrillic.ttf"))
-        return;*/
-	//buttonText.setFont(fonts->getFont("media/font/", "appleberry_with_cyrillic.ttf"));
-	//canvas.draw(buttonText);//TODO, får Seg fault om försöker som nu
+	buttonText.setPosition(menuCoordX+relativePosX, menuCoordY+relativePosY);// fixed for now because looping away..
+	canvas.draw(buttonText);
     if(hoover)
     {
         drawHooverText();

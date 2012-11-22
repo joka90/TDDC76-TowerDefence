@@ -1,7 +1,8 @@
 #include "GameHandler.h"
 
 GameHandler::GameHandler()
-:music(), textures(), sounds(), fonts(), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), currentState(STARTMENU), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
+
+:music(), textures(), sounds(), fonts(), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
 {
     // init all loaders
     fonts.load(std::string("appleberry_with_cyrillic.ttf"));

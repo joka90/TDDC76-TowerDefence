@@ -43,22 +43,22 @@ public:
     void run();
 
 protected:
+    void quitListen(sf::Event);
 	MusicLoader music;
 	TextureLoader textures;
 	SoundLoader sounds;
 	FontLoader fonts;
-	void quitListen(sf::Event);
 
 	Level* currentLevel;
 
 	int currentState;
 
+	sf::RenderWindow canvas;
+	ClickManager clickManager;
+
 	StartMenu startMenu;
 	LoadMenu loadMenu;
 	TrackMenu trackMenu;
-
-	ClickManager clickManager;
-	sf::RenderWindow canvas;
 
 };
 

@@ -14,9 +14,11 @@ public:
     * @param inFpf number of frames(how often update() get called) the same image will show.
     * @param inPlaying start counting frames.
     */
-    AnimatedSprite(const sf::Texture* inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
+    AnimatedSprite(const sf::Texture& inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
     ~AnimatedSprite();
 
+    //void setTexture(const sf::Texture& texture, bool resetRect);// not working m_texture is private
+	void setTextureAnimation(const sf::Texture& texture,unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
     /**
     * setFrame
     * @param inFrame set a specific frame.

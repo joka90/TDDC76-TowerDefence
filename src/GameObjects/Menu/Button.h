@@ -41,9 +41,9 @@ class Button : public GameObject
         sf::Text mouseOverText;
         sf::Text buttonText;
         sf::Sound* clickSound;
-	TextureLoader& textures;
-	SoundLoader& sounds;
-	FontLoader& fonts;
+        FontLoader& fonts;
+        TextureLoader& textures;
+        SoundLoader& sounds;
         void drawText();
 };
 

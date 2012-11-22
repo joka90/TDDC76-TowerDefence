@@ -5,11 +5,16 @@ using namespace std;
 /*
 *   konstruktor, skall det vara så här?
 */
-GameObject::GameObject(int x, int y, TextureLoader& inTextures, string textureReference)
-    : xPos(x), yPos(y), textures(inTextures)
+GameObject::GameObject(int x, int y, TextureLoader& inTextures, const string textureReference)
+    : xPos(x), yPos(y), textures(inTextures)/*, sprite(inTextures.getTexture(textureReference))*/ //TODO, segfault here
 {
-    sprite = AnimatedSprite(textures.getTexture(textureReference), 100, 10, true);
-    sprite.setPosition(xPos, yPos);
+    //sprite = AnimatedSprite();
+    //sprite.setTextureAnimation(inTextures.getTexture(textureReference));
+    //sprite.setTexture(textures.getTexture(textureReference),true);//TODO, segfault here
+    //sprite.setPosition(xPos, yPos);
+    /*
+    * NOOOOOOOOOOOOOOOOOOOOOOOO segfault if initialised in sub classes.
+    */
 }
 
 GameObject::~GameObject()

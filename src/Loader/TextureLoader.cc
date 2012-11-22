@@ -37,8 +37,8 @@ void TextureLoader::load(const std::string& filename)
     {
         return;
     }
-    sf::Texture* texture = new sf::Texture();
-    if (!texture->loadFromFile(directory+filename))
+    sf::Texture texture;
+    if (!texture.loadFromFile(directory+filename))
     {
         cout << "Loading of texture failed" << endl;
         return;
@@ -50,7 +50,7 @@ void TextureLoader::load(const std::string& filename)
 /*
 * Privat funktion, Lägger in texturen i map:en
 */
-void TextureLoader::insert(const std::string& key, sf::Texture* inTexture)
+void TextureLoader::insert(const std::string& key, sf::Texture& inTexture)
 {
     if(!find(key))
     {
@@ -64,7 +64,7 @@ void TextureLoader::insert(const std::string& key, sf::Texture* inTexture)
 */
 bool TextureLoader::find(const std::string& key) const
 {
-    map<std::string, sf::Texture*>::const_iterator it  = textures.find(key);
+    map<std::string, sf::Texture>::const_iterator it  = textures.find(key);
     return (it != textures.end());
 }
 
@@ -102,7 +102,7 @@ bool TextureLoader::empty() const
 */
 void TextureLoader::print() const
 {
-    map<std::string, sf::Texture*>::const_iterator pos;
+    map<std::string, sf::Texture>::const_iterator pos;
     for(pos = textures.begin(); pos != textures.end(); ++pos)
         {
         cout << "Key: " << pos->first << endl;
@@ -113,7 +113,7 @@ void TextureLoader::print() const
 /*
 * Hämtar ut en referens till en textur i map:en
 */
-sf::Texture* TextureLoader::getTexture(const std::string& key)
+sf::Texture& TextureLoader::getTexture(const std::string& key)
 {
     if(find(key))
     {

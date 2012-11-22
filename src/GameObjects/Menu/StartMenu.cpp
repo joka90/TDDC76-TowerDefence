@@ -7,7 +7,7 @@
 #define LOADX 100
 #define LOADY 200
 #define QUITX 100
-#define QUITY 300
+#define QUITY 400
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
