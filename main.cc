@@ -11,14 +11,8 @@
 
 #include "src/EventHandler.h"
 
-void quitListen(sf::Event)
-{
-    throw;
-}
-
 int main()
 {
-    EventHandler::addListener(sf::Event::Closed, quitListen);
 	GameHandler currentGame;
 	currentGame.run();
     return 0;

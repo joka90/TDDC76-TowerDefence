@@ -33,8 +33,7 @@ void GameHandler::run()
     text.move(20,20);
 	sf::Clock frameTime;
 
-    //EventHandler::addListener(sf::Event::Closed, new funcTest());
-    //EventHandler::addListener(sf::Event::Closed, quitListen);
+    EventHandler::addListener(sf::Event::Closed, (eventHandlerFunction)&GameHandler::quitListen);
     // Start the game loop
     while (canvas.isOpen())
     {
