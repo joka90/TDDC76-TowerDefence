@@ -41,19 +41,11 @@ void GameHandler::run()
 		std::string nextState;
 		frameTime.restart();
         canvas.clear();
+
+        // Polls the EventHandler to handle eventual events
 		EventHandler::poll(canvas);
 
-        // Process events, until working EventHandler
-        sf::Event event;
-        while (canvas.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed)
-                canvas.close();
-        }
-
-
-
+        // handle current state
 		switch(currentState){
 		case LEVEL:
 			currentLevel->update();
