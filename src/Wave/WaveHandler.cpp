@@ -17,17 +17,10 @@ WaveHandler::WaveHandler(int newSpawnX, int newSpawnY, string newWavesString)
 	//Hur ska WaveHandler initieras?
 	/*
 	 * Förslag:
-	 * Matris:
-	 *(EnemyName1 antal waveNumber
-	 * EnemyName2 	-
-	 * EnemyName1 	-
-	 * NULL			-)
-	 * -> Först skapas antal EN1 med 1 timedelay mellan varje i våg nr waveNumber
-	 * -> sen antal EN2 med 1 timedelay mellan varje osv.
-	 * -> NULL för att få lite hopp i tiden
+	 * Sträng:
+	 *"EnemyName1 antal waveNumber EnemyName2 ... "
 	 *
 	 */
-
 	spawnX = newSpawnX;
 	spawnY = newSpawnY;
 	time = 0;
@@ -39,7 +32,18 @@ WaveHandler::WaveHandler(int newSpawnX, int newSpawnY, string newWavesString)
 WaveHandler::~WaveHandler() {
 }
 
-void WaveHandler::createWaves( string newWavesString)
+void WaveHandler::startNextWave()
+{
+	//TODO
+}
+bool WaveHandler::isDone()
+{
+	return (waveNumber == (int) wavesVector.size());
+}
+
+
+
+void WaveHandler::createWaves(string newWavesString)
 {
 	string enemyName;
 	int number, waveNumber(0), timeDelay(0), oldWaveNumber(0);
