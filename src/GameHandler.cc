@@ -3,7 +3,7 @@
 
 GameHandler::GameHandler()
 
-:music(), textures(), sounds(), fonts(), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
+:music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
 {
     // init all loaders
     fonts.load(std::string("appleberry_with_cyrillic.ttf"));
@@ -16,11 +16,12 @@ void GameHandler::closedListener(sf::Event)
     canvas.close();
 }
 
-
-
 GameHandler::~GameHandler()
 {
-	delete currentLevel;
+	if(currentLevel!=NULL)
+	{
+		delete currentLevel;
+	}
 }
 
 void GameHandler::run()
