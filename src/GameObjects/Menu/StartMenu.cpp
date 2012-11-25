@@ -1,4 +1,5 @@
 #include "StartMenu.h"
+#include <iostream>
 
 #define MENUSTARTX 0
 #define MENUSTARTY 0
@@ -13,15 +14,15 @@
 #define CLICK "CLICK.WAW"
 #define BUTTON "button.png"
 #define MENUSBACKGROUND "StartMenu.png"
-
+using namespace std;
 StartMenu::StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.png")
 {
-    addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
+    addButton(new Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
                       textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
+    addButton(new Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
                       textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
+    addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
                       textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
 }
 
@@ -30,23 +31,28 @@ StartMenu::~StartMenu()
     //dtor
 }
 
+using namespace std;
+
 bool StartMenu::update()
 {
-    if(buttons[0].gotPressed())
+    if(buttons[0]->gotPressed())
     {
         state = "TRACK";
+        cout << "track" << endl;
         newIteration();
         return true;
     }
-    else if(buttons[1].gotPressed())
+    else if(buttons[1]->gotPressed())
     {
         state = "LOAD";
+        cout << "load" << endl;
         newIteration();
         return true;
     }
-    else if(buttons[2].gotPressed())
+    else if(buttons[2]->gotPressed())
     {
         state = "QUIT";
+        cout << "quit" << endl;
         newIteration();
         return true;
     }

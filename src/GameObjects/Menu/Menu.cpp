@@ -21,17 +21,17 @@ string Menu::readState()
 }
 bool Menu::isButtonClicked(int buttonIndex)
 {
-    return buttons[buttonIndex].gotClicked();
+    return buttons[buttonIndex]->gotClicked();
 }
 
 bool Menu::isButtonPressed(int buttonIndex)
 {
-    return buttons[buttonIndex].isPressed();
+    return buttons[buttonIndex]->isPressed();
 }
 
 bool Menu::buttonGotPressed(int buttonIndex)
 {
-    return buttons[buttonIndex].gotPressed();
+    return buttons[buttonIndex]->gotPressed();
 
 }
 
@@ -40,7 +40,7 @@ void Menu::drawMenu(sf::RenderWindow& canvas)
     this->drawSprite(canvas);
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
-        buttons[i].drawButton(canvas, getPosX(), getPosY());
+        buttons[i]->drawButton(canvas, getPosX(), getPosY());
     }
     return;
 }
@@ -54,11 +54,11 @@ void Menu::newIteration()
 {
     for(int i = 0; i < (int) buttons.size(); ++i)
     {
-        buttons[i].newIteration();
+        buttons[i]->newIteration();
     }
     return;
 }
-void Menu::addButton(Button newButton)
+void Menu::addButton(Button* newButton)
 {
     buttons.push_back(newButton);
     return;

@@ -19,10 +19,10 @@ TD: $(OBJECTS) Makefile
 
 
 Release: $(OBJECTS) Makefile
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)  -g -00
 
 Debug: $(OBJECTS) Makefile
-	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS)
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) $(LDFLAGS) -o TD $(OBJECTS) -g -00
 
 # Delmål (flaggan -c avbryter innan länkning, objektkodsfil erhålls)
 main.o: main.cc

@@ -16,12 +16,12 @@
 TrackMenu::TrackMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "TrackMenu.bmp")
 {
-    addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "YOU", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "ARE", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
+                      textures, sounds, fonts, BUTTON, CLICK, "ON TRACK", ""));
 }
 
 TrackMenu::~TrackMenu()
@@ -31,19 +31,19 @@ TrackMenu::~TrackMenu()
 
 bool TrackMenu::update()
 {
-    if(buttons[0].gotPressed())
+    if(buttons[0]->gotPressed())
     {
         state = "TRACK";
         newIteration();
         return true;
     }
-    else if(buttons[1].gotPressed())
+    else if(buttons[1]->gotPressed())
     {
         state = "LOAD";
         newIteration();
         return true;
     }
-    else if(buttons[2].gotPressed())
+    else if(buttons[2]->gotPressed())
     {
         state = "START";
         newIteration();

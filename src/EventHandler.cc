@@ -1,4 +1,5 @@
 #include "EventHandler.h"
+#include <iostream>
 
 using namespace std;
 EventHandler::EventHandler()
@@ -6,12 +7,19 @@ EventHandler::EventHandler()
 
 }
 
-std::vector<eventHandlerFunction> EventHandler::closedHandlers;
-std::vector<eventHandlerFunction> EventHandler::keyPressedHandlers;
-std::vector<eventHandlerFunction> EventHandler::keyReleasedHandlers;
-std::vector<eventHandlerFunction> EventHandler::mouseButtonPressedHandlers;
-std::vector<eventHandlerFunction> EventHandler::mouseButtonReleasedHandlers;
-std::vector<eventHandlerFunction> EventHandler::mouseMovedHandlers;
+    static std::vector<ClosedUser*> closedHandlers;
+    static std::vector<KeyPressedUser*> keyPressedHandlers;
+    static std::vector<KeyReleasedUser*> keyReleasedHandlers;
+    static std::vector<MouseButtonPressedUser*> mouseButtonPressedHandlers;
+    static std::vector<MouseButtonReleasedUser*> mouseButtonReleasedHandlers;
+std::vector<MouseMovedUser*> mouseMovedHandlers;
+
+std::vector<ClosedUser*> EventHandler::closedHandlers;
+std::vector<KeyPressedUser*> EventHandler::keyPressedHandlers;
+std::vector<KeyReleasedUser*> EventHandler::keyReleasedHandlers;
+std::vector<MouseButtonPressedUser*> EventHandler::mouseButtonPressedHandlers;
+std::vector<MouseButtonReleasedUser*> EventHandler::mouseButtonReleasedHandlers;
+std::vector<MouseMovedUser*> EventHandler::mouseMovedHandlers;
 
 void EventHandler::poll(sf::RenderWindow& canvas)
 {
@@ -20,86 +28,88 @@ void EventHandler::poll(sf::RenderWindow& canvas)
     {
         if (event.type == sf::Event::Closed)
         {
-            for(vector<eventHandlerFunction>::iterator it = closedHandlers.begin(); it != closedHandlers.end(); ++it)
+            for(vector<ClosedUser*>::iterator it = closedHandlers.begin(); it != closedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->closedListener(event);
                 }
                 canvas.close();
         }
         else if (event.type == sf::Event::KeyPressed)
         {
-            for(vector<eventHandlerFunction>::iterator it = keyPressedHandlers.begin(); it != keyPressedHandlers.end(); ++it)
+            for(vector<KeyPressedUser*>::iterator it = keyPressedHandlers.begin(); it != keyPressedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->keyPressedListener(event);
                 }
         }
         else if (event.type == sf::Event::KeyReleased)
         {
-            for(vector<eventHandlerFunction>::iterator it = keyReleasedHandlers.begin(); it != keyReleasedHandlers.end(); ++it)
+            for(vector<KeyReleasedUser*>::iterator it = keyReleasedHandlers.begin(); it != keyReleasedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->keyReleasedListener(event);
                 }
         }
         else if (event.type == sf::Event::MouseButtonPressed)
         {
-            for(vector<eventHandlerFunction>::iterator it = mouseButtonPressedHandlers.begin(); it != mouseButtonPressedHandlers.end(); ++it)
+            for(vector<MouseButtonPressedUser*>::iterator it = mouseButtonPressedHandlers.begin(); it != mouseButtonPressedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->mouseButtonPressedListener(event);
                 }
         }
         else if (event.type == sf::Event::MouseButtonReleased)
         {
-            for(vector<eventHandlerFunction>::iterator it = mouseButtonReleasedHandlers.begin(); it != mouseButtonReleasedHandlers.end(); ++it)
+            for(vector<MouseButtonReleasedUser*>::iterator it = mouseButtonReleasedHandlers.begin(); it != mouseButtonReleasedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->mouseButtonReleasedListener(event);
                 }
         }
         else if (event.type == sf::Event::MouseMoved)
         {
-            for(vector<eventHandlerFunction>::iterator it = mouseMovedHandlers.begin(); it != mouseMovedHandlers.end(); ++it)
+            for(vector<MouseMovedUser*>::iterator it = mouseMovedHandlers.begin(); it != mouseMovedHandlers.end(); ++it)
                 {
-                    (*it)(event);
+                    (*it)->mouseMoveListener(event);
                 }
         }
     }
 
 }
 
-void EventHandler::addListener(sf::Event::EventType type, eventHandlerFunction inFunc)
+void EventHandler::addListener(sf::Event::EventType type, EventUser* inObj)
 {
+
     if (type == sf::Event::Closed)
     {
-        closedHandlers.push_back(inFunc);
+        closedHandlers.push_back((ClosedUser*)inObj);
     }
     else if (type == sf::Event::KeyPressed)
     {
-        keyPressedHandlers.push_back(inFunc);
+        keyPressedHandlers.push_back((KeyPressedUser*)inObj);
     }
     else if (type == sf::Event::KeyReleased)
     {
-        keyReleasedHandlers.push_back(inFunc);
+        keyReleasedHandlers.push_back((KeyReleasedUser*)inObj);
     }
     else if (type == sf::Event::MouseButtonPressed)
     {
-        mouseButtonPressedHandlers.push_back(inFunc);
+        mouseButtonPressedHandlers.push_back((MouseButtonPressedUser*)inObj);
+        cout << mouseButtonPressedHandlers.size() << "add" << endl;
     }
     else if (type == sf::Event::MouseButtonReleased)
     {
-        mouseButtonReleasedHandlers.push_back(inFunc);
+        mouseButtonReleasedHandlers.push_back((MouseButtonReleasedUser*)inObj);
     }
     else if (type == sf::Event::MouseMoved)
     {
-        mouseMovedHandlers.push_back(inFunc);
+        mouseMovedHandlers.push_back((MouseMovedUser*)inObj);
     }
 }
 
-bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunction deleteFunc)
+bool EventHandler::removeListener(sf::Event::EventType type, EventUser* removeObj)
 {
     if (type == sf::Event::Closed)
     {
-        for(vector<eventHandlerFunction>::iterator it = closedHandlers.begin(); it != closedHandlers.end(); ++it)
+        for(vector<ClosedUser*>::iterator it = closedHandlers.begin(); it != closedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 closedHandlers.erase(it);
                 break;
@@ -108,9 +118,9 @@ bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunctio
     }
     else if (type == sf::Event::KeyPressed)
     {
-        for(vector<eventHandlerFunction>::iterator it = keyPressedHandlers.begin(); it != keyPressedHandlers.end(); ++it)
+        for(vector<KeyPressedUser*>::iterator it = keyPressedHandlers.begin(); it != keyPressedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 keyPressedHandlers.erase(it);
                 break;
@@ -119,9 +129,9 @@ bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunctio
     }
     else if (type == sf::Event::KeyReleased)
     {
-        for(vector<eventHandlerFunction>::iterator it = keyReleasedHandlers.begin(); it != keyReleasedHandlers.end(); ++it)
+        for(vector<KeyReleasedUser*>::iterator it = keyReleasedHandlers.begin(); it != keyReleasedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 keyReleasedHandlers.erase(it);
                 break;
@@ -130,20 +140,21 @@ bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunctio
     }
     else if (type == sf::Event::MouseButtonPressed)
     {
-        for(vector<eventHandlerFunction>::iterator it = mouseButtonPressedHandlers.begin(); it != mouseButtonPressedHandlers.end(); ++it)
+        for(vector<MouseButtonPressedUser*>::iterator it = mouseButtonPressedHandlers.begin(); it != mouseButtonPressedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 mouseButtonPressedHandlers.erase(it);
+                cout << mouseButtonPressedHandlers.size() << "remove" << endl;
                 break;
             }
         }
     }
     else if (type == sf::Event::MouseButtonReleased)
     {
-        for(vector<eventHandlerFunction>::iterator it = mouseButtonReleasedHandlers.begin(); it != mouseButtonReleasedHandlers.end(); ++it)
+        for(vector<MouseButtonReleasedUser*>::iterator it = mouseButtonReleasedHandlers.begin(); it != mouseButtonReleasedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 mouseButtonReleasedHandlers.erase(it);
                 break;
@@ -152,9 +163,9 @@ bool EventHandler::removeListener(sf::Event::EventType type, eventHandlerFunctio
     }
     else if (type == sf::Event::MouseMoved)
     {
-        for(vector<eventHandlerFunction>::iterator it = mouseMovedHandlers.begin(); it != mouseMovedHandlers.end(); ++it)
+        for(vector<MouseMovedUser*>::iterator it = mouseMovedHandlers.begin(); it != mouseMovedHandlers.end(); ++it)
         {
-            if((*it) == deleteFunc)
+            if((*it) == removeObj)
             {
                 mouseMovedHandlers.erase(it);
                 break;

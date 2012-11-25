@@ -45,11 +45,11 @@ LoadMenu::LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fon
         loadVectorData.push_back(tempLoadPair);
     }
     //lägg till knappar
-    addButton(Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
+    addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
                       textures, sounds, fonts, ARROWUP, CLICK, "", ""));
-    addButton(Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
+    addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
                       textures, sounds, fonts, ARROWDOWN, CLICK, "", ""));
-    addButton(Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
+    addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
                       textures, sounds, fonts, BACKIMG, CLICK, "", ""));
 }
 
@@ -60,7 +60,7 @@ LoadMenu::~LoadMenu()
 
 bool LoadMenu::update()
 {
-    if(buttons[0].gotPressed())
+    if(buttons[0]->gotPressed())
     {
         scrollLenght -= 1;
         if(scrollLenght < 0)
@@ -70,7 +70,7 @@ bool LoadMenu::update()
         newIteration();
         return false;
     }
-    else if(buttons[1].gotPressed())
+    else if(buttons[1]->gotPressed())
     {
         if(scrollLenght < (int) loadVectorData.size()-LOADDRAWS)
             {
@@ -79,7 +79,7 @@ bool LoadMenu::update()
         newIteration();
         return false;
     }
-    else if(buttons[2].gotPressed())
+    else if(buttons[2]->gotPressed())
     {
         state = "START";
         newIteration();

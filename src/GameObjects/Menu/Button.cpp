@@ -1,4 +1,6 @@
 #include "Button.h"
+#include "../../EventHandler.h"
+#include <iostream>
 using namespace std;
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
     : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false), fonts(inFonts), textures(inTextures), sounds(inSounds)
@@ -10,6 +12,10 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     }
 	fonts.load("appleberry_with_cyrillic.ttf");
 	buttonText=sf::Text(inButtonText,fonts.getFont("appleberry_with_cyrillic.ttf"),30);
+	EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
+    EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
+    EventHandler::addListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
+
 }
 
 /*
@@ -17,7 +23,11 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
 */
 Button::~Button()
 {
-    //dtor
+
+    EventHandler::removeListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
+    EventHandler::removeListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
+    EventHandler::removeListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
+
 }
 
 Button& Button::operator=(const Button& inButton)
@@ -31,6 +41,9 @@ Button& Button::operator=(const Button& inButton)
     thisIterPressed = inButton.thisIterPressed;
     hoover = inButton.thisIterPressed;
     mouseOverText = inButton.mouseOverText;
+    EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
+    EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
+    EventHandler::addListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
     if(clickSound != NULL)
     {
         delete clickSound;
@@ -71,10 +84,9 @@ bool Button::hoovering()
 
 void Button::mouseButtonPressedListener(sf::Event event)
 {
-    sf::Vector2i pos = sf::Mouse::getPosition();
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if(event.mouseButton.button == sf::Mouse::Left)
         {
-            if((pos.x > getPosX()) && (pos.x < getPosX()+widthX) && (pos.y > getPosY()) && (pos.y < getPosY()+widthY))
+            if(hoover)
             {
                 if(pressed == false)
                 {
@@ -103,15 +115,15 @@ void Button::mouseButtonReleasedListener(sf::Event event)
 
 void Button::mouseMoveListener(sf::Event event)
 {
-    sf::Vector2i pos = sf::Mouse::getPosition();
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if(event.mouseButton.button == sf::Mouse::Left)
         {
-            if(!((pos.x > getPosX()) && (pos.x < getPosX()+widthX) && (pos.y > getPosY()) && (pos.y < getPosY()+widthY)))
+            if(!(((event.mouseMove.x > getPosX()) && (event.mouseMove.x < getPosX()+widthX)) && ((event.mouseMove.y > getPosY()) && (event.mouseMove.y < getPosY()+widthY))))
             {
                 pressed = false;
+                hoover = false;
             }
         }
-    else if((pos.x > getPosX()) && (pos.x < getPosX()+widthX) && (pos.y > getPosY()) && (pos.y < getPosY()+widthY))
+    else if(((event.mouseMove.x > getPosX()) && (event.mouseMove.x < getPosX()+widthX)) && ((event.mouseMove.y > getPosY()) && (event.mouseMove.y < getPosY()+widthY)))
     {
         hoover = true;
     }

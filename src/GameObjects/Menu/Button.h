@@ -10,9 +10,10 @@
 #include "../../Loader/TextureLoader.h"
 #include "../../Loader/SoundLoader.h"
 #include "../../Loader/FontLoader.h"
+#include "../../EventUser.h"
 
 
-class Button : public GameObject
+class Button : public GameObject, public MouseButtonPressedUser, public MouseButtonReleasedUser, public MouseMovedUser
 {
     public:
         Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);

@@ -6,6 +6,7 @@ Level::Level()
 }
 bool Level::update()
 {
+    /*
     // Update Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
@@ -16,10 +17,12 @@ bool Level::update()
     {
         (*it).update();
     }
+    */
 
 }
 void Level::draw(sf::RenderWindow& canvas)
 {
+    /*
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
@@ -30,6 +33,7 @@ void Level::draw(sf::RenderWindow& canvas)
     {
         (*it).drawSprite(canvas);
     }
+    */
 }
 
 void Level::runWave()

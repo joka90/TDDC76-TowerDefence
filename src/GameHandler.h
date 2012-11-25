@@ -29,12 +29,7 @@
 #define TRACKMENU 	2
 #define LEVEL 		3
 
-struct funcTest {
-    void operator()(sf::Event e) {
-    }
-};
-
-class GameHandler
+class GameHandler : ClosedUser
 {
 public:
     GameHandler();
@@ -43,7 +38,7 @@ public:
     void run();
 
 protected:
-    void quitListen(sf::Event);
+    void closedListener(sf::Event);
 	MusicLoader music;
 	TextureLoader textures;
 	SoundLoader sounds;

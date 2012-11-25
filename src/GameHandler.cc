@@ -1,4 +1,5 @@
 #include "GameHandler.h"
+#include <iostream>
 
 GameHandler::GameHandler()
 
@@ -9,8 +10,9 @@ GameHandler::GameHandler()
 }
 
 
-void GameHandler::quitListen(sf::Event)
+void GameHandler::closedListener(sf::Event)
 {
+    cout << "quit" << endl;
     canvas.close();
 }
 
@@ -33,7 +35,7 @@ void GameHandler::run()
     text.move(20,20);
 	sf::Clock frameTime;
 
-    EventHandler::addListener(sf::Event::Closed, (eventHandlerFunction)&GameHandler::quitListen);
+    EventHandler::addListener(sf::Event::Closed, this);
     // Start the game loop
     while (canvas.isOpen())
     {
@@ -92,7 +94,6 @@ void GameHandler::run()
 		{
 			canvas.close();//do some more?
 		}
-
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";
