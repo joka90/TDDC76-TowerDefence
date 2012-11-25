@@ -21,6 +21,7 @@
 *.depend
 *.layout
 *.cbTemp
+*.orig
 
 # Egen main-fil
 callemain.cc
