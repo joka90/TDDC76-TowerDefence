@@ -38,21 +38,18 @@ bool StartMenu::update()
     if(buttons[0]->gotPressed())
     {
         state = "TRACK";
-        cout << "track" << endl;
         newIteration();
         return true;
     }
     else if(buttons[1]->gotPressed())
     {
         state = "LOAD";
-        cout << "load" << endl;
         newIteration();
         return true;
     }
     else if(buttons[2]->gotPressed())
     {
         state = "QUIT";
-        cout << "quit" << endl;
         newIteration();
         return true;
     }

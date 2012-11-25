@@ -23,11 +23,9 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
 */
 Button::~Button()
 {
-
     EventHandler::removeListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::removeListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
     EventHandler::removeListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
-
 }
 
 Button& Button::operator=(const Button& inButton)

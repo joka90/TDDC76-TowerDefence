@@ -11,7 +11,7 @@
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
-#define BUTTON "MENUBUTTONBASE.BMP"
+#define BUTTON "button.bmp"
 
 TrackMenu::TrackMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
 :Menu(MENUSTARTX,MENUSTARTY, textures, "TrackMenu.bmp")
@@ -21,7 +21,7 @@ TrackMenu::TrackMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& f
     addButton(new Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
                       textures, sounds, fonts, BUTTON, CLICK, "ARE", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "ON TRACK", ""));
+                      textures, sounds, fonts, BUTTON, CLICK, "HERE", ""));
 }
 
 TrackMenu::~TrackMenu()

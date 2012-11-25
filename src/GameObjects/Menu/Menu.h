@@ -19,12 +19,12 @@ class Menu : public GameObject
         bool buttonGotPressed(int buttonIndex);
         void drawMenu(sf::RenderWindow&);
         virtual bool update();
-        void addButton(Button newButton);
+        void addButton(Button* newButton);
         void removeButton(int index);
         void newIteration();
     protected:
         std::string state;
-        std::vector<Button> buttons;
+        std::vector<Button*> buttons;
     private:
 };
 

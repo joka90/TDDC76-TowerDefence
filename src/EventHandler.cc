@@ -91,7 +91,6 @@ void EventHandler::addListener(sf::Event::EventType type, EventUser* inObj)
     else if (type == sf::Event::MouseButtonPressed)
     {
         mouseButtonPressedHandlers.push_back((MouseButtonPressedUser*)inObj);
-        cout << mouseButtonPressedHandlers.size() << "add" << endl;
     }
     else if (type == sf::Event::MouseButtonReleased)
     {
@@ -145,7 +144,6 @@ bool EventHandler::removeListener(sf::Event::EventType type, EventUser* removeOb
             if((*it) == removeObj)
             {
                 mouseButtonPressedHandlers.erase(it);
-                cout << mouseButtonPressedHandlers.size() << "remove" << endl;
                 break;
             }
         }
