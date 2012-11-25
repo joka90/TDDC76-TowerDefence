@@ -21,6 +21,12 @@ class LoadMenu : public Menu
     private:
         std::vector<LoadPair> loadVectorData;
         int scrollLenght;
+
+        TextureLoader& textures;
+        SoundLoader& sounds;
+        FontLoader& fonts;
+
+        void updateLoadButtons();
 };
 
 #endif // LOADMENU_H
