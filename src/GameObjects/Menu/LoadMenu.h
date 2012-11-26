@@ -5,22 +5,22 @@
 
 #include "Menu.h"
 
-struct LoadPair
-{
-    std::string name;
-    std::string file;
-};
-
 class LoadMenu : public Menu
 {
     public:
-        LoadMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
+        LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
         virtual ~LoadMenu();
         bool update();
     protected:
     private:
         std::vector<LoadPair> loadVectorData;
         int scrollLenght;
+
+        TextureLoader& textures;
+        SoundLoader& sounds;
+        FontLoader& fonts;
+
+        void updateLoadButtons();
 };
 
 #endif // LOADMENU_H

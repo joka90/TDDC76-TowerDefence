@@ -1,10 +1,11 @@
 #include "Tower.h"
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange,
-              class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader,
-               class FontLoader* inFontLoader)
+              TextureLoader& inTextureLoader, SoundLoader& inSoundLoader,
+               FontLoader& inFontLoader)
     :GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
      price(newPrice), damage(newDamage), range(newRange)
 {
+
 }
 
 Tower::~Tower()

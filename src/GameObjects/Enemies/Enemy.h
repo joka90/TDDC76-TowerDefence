@@ -7,8 +7,8 @@ class Enemy : public GameObject
 {
 public:
     Enemy(int newX, int newY, int newLife, int newSpeed, int newValue,
-          int newDirX, int newDirY, class TextureLoader* inTextureLoader,
-          class SoundLoader* inSoundLoader, class FontLoader* inFontLoader);
+          int newDirX, int newDirY, TextureLoader& inTextureLoader,
+          SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     ~Enemy();
 

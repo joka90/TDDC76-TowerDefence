@@ -8,11 +8,19 @@
 class TrackMenu : public Menu
 {
     public:
-        TrackMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts);
+        TrackMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
         virtual ~TrackMenu();
         bool update();
     protected:
     private:
+        std::vector<LoadPair> trackVectorData;
+        int scrollLenght;
+
+        TextureLoader& textures;
+        SoundLoader& sounds;
+        FontLoader& fonts;
+
+        void updateLoadButtons();
 };
 
 #endif // TRACKMENU_H

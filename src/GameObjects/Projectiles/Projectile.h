@@ -6,7 +6,7 @@
 class Projectile : public GameObject
 {
 public:
-    Projectile(int newX, int newY, class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader, class FontLoader* inFontLoader);
+    Projectile(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 

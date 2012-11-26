@@ -11,8 +11,8 @@ class Tower : public GameObject
 {
 public:
     Tower(int newX, int newY, int newPrice, int newDamage, int newRange,
-           class TextureLoader* inTextureLoader, class SoundLoader* inSoundLoader
-           , class FontLoader* inFontLoader);
+           TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
+           , FontLoader& inFontLoader);
 
     ~Tower();
 

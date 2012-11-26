@@ -7,11 +7,16 @@
 #include "../GameObject.h"
 #include "Button.h"
 
+struct LoadPair
+{
+    std::string name;
+    std::string file;
+};
 
 class Menu : public GameObject
 {
     public:
-        Menu(int x, int y, class TextureLoader*, std::string textureReference);
+        Menu(int x, int y, TextureLoader&, std::string textureReference);
         virtual ~Menu();
         std::string readState();
         bool isButtonClicked(int buttonIndex);
@@ -19,12 +24,12 @@ class Menu : public GameObject
         bool buttonGotPressed(int buttonIndex);
         void drawMenu(sf::RenderWindow&);
         virtual bool update();
-        void addButton(Button newButton);
+        void addButton(Button* newButton);
         void removeButton(int index);
         void newIteration();
     protected:
         std::string state;
-        std::vector<Button> buttons;
+        std::vector<Button*> buttons;
     private:
 };
 

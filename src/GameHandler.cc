@@ -1,53 +1,54 @@
 #include "GameHandler.h"
-#include <string>
-using namespace std;
-/*
-GameHandler::GameHandler()
-:music("media/music/","VAD SKALL IN HÄR?"), textures("media/img/","VAD SKALL IN HÄR?"), sounds("media/sound/","VAD SKALL IN HÄR?"), fonts("media/font/","VAD SKALL IN HÄR?"), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
-{
-
-}
-*/
-
-void GameHandler::quitListen(sf::Event)
-{
-    canvas.close();
-}
+#include <iostream>
 
 GameHandler::GameHandler()
-:canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(&textures, &sounds, &fonts), loadMenu(&textures, &sounds, &fonts), trackMenu(&textures, &sounds, &fonts), currentState(STARTMENU)
+
+:music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
 {
     // init all loaders
-    fonts.load(string("media/font/"), string("appleberry_with_cyrillic.ttf"));
+    fonts.load(std::string("appleberry_with_cyrillic.ttf"));
+}
+
+
+void GameHandler::closedListener(sf::Event)
+{
+    cout << "quit" << endl;
+    canvas.close();
 }
 
 GameHandler::~GameHandler()
 {
-	delete currentLevel;
+	if(currentLevel!=NULL)
+	{
+		delete currentLevel;
+	}
 }
 
 void GameHandler::run()
 {
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
+    // Create a graphical text to display
+
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", fonts.getFont(string("media/font/"), string("appleberry_with_cyrillic.ttf")), 50);
+    sf::Text text("Hello SFML", fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
     text.move(20,20);
 	sf::Clock frameTime;
 
-    //EventHandler::addListener(sf::Event::Closed, new funcTest());
-    //EventHandler::addListener(sf::Event::Closed, quitListen);
+    EventHandler::addListener(sf::Event::Closed, this);
     // Start the game loop
     while (canvas.isOpen())
     {
 		sf::Time renderTime = frameTime.getElapsedTime();
 		std::string nextState;
 		frameTime.restart();
-		EventHandler::poll(canvas);
-
         canvas.clear();
 
+        // Polls the EventHandler to handle eventual events
+		EventHandler::poll(canvas);
+
+        // handle current state
 		switch(currentState){
 		case LEVEL:
 			currentLevel->update();
@@ -78,23 +79,44 @@ void GameHandler::run()
 			// Code
 			break;
 		}
-		if(nextState=="TRACK")
+		// handle events sent by menu
+		if(nextState!="")
 		{
-			currentState=TRACKMENU;
+			std::cout << nextState << endl;
+			if(nextState=="TRACK")
+			{
+				currentState=TRACKMENU;
+				trackMenu.newIteration();
+			}
+			else if(nextState=="START")
+			{
+				currentState=STARTMENU;
+				startMenu.newIteration();
+			}
+			else if(nextState=="LOAD")
+			{
+				currentState=LOADMENU;
+				loadMenu.newIteration();
+			}
+			else if(nextState=="QUIT")
+			{
+				canvas.close();//do some more?
+			}
+			else
+			{
+				if(currentState == LOADMENU && nextState != "")
+				{
+				    cout << "loading: " << nextState << endl;
+				    //level = new level(nextState); // hur man nu laddar/initierar banor
+				}
+				if(currentState == TRACKMENU && nextState != "")
+				{
+				    cout << "starting: " << nextState << endl;
+				    //level = new level(nextState);
+				}
+			}
+			nextState="";
 		}
-		else if(nextState=="START")
-		{
-			currentState=STARTMENU;
-		}
-		else if(nextState=="LOAD")
-		{
-			currentState=LOADMENU;
-		}
-		else if(nextState=="QUIT")
-		{
-			canvas.close();//do some more?
-		}
-
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";

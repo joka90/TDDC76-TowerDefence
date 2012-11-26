@@ -1,27 +1,63 @@
 #include "TrackMenu.h"
+#include <iostream>
+#include <fstream>
 
-#define MENUSTARTX 0
-#define MENUSTARTY 0
-#define TRACKX 100
-#define TRACKY 100
-#define LOADX 100
-#define LOADY 200
-#define QUITX 100
-#define QUITY 300
-#define BUTTONWIDTH 100
-#define BUTTONHEIGHT 70
+
 #define CLICK "CLICK.WAW"
-#define BUTTON "MENUBUTTONBASE.BMP"
 
-TrackMenu::TrackMenu(class TextureLoader* textures, class SoundLoader* sounds, class FontLoader* fonts)
-:Menu(MENUSTARTX,MENUSTARTY, textures, "TrackMenu.bmp")
+#define MENULOADX 0
+#define MENULOADY 0
+
+#define TRACKLEVELIMG "TRACKLEVELIMG.png"
+#define LEVELDRAWS 4
+#define LEVELSTARTX 100
+#define LEVELSTARTY 100
+#define LEVELGAPY 50
+#define LEVELWIDTHX 300
+#define LEVELWIDTHY 40
+
+#define ARROWWIDTH 40
+#define ARROWHEIGHT 80
+#define ARROWUPX 600
+#define ARROWUPY 100
+#define ARROWDOWNX 600
+#define ARROWDOWNY 200
+#define ARROWUP "ARROWUP.png"
+#define ARROWDOWN "ARROWDOWN.png"
+#define LOADBUTTON "LOADBUTTON.png"
+
+#define BACKX 100
+#define BACKY 500
+#define BACKWIDTH 70
+#define BACKHEIGHT 70
+#define BACKIMG "BACKBUTTON.png"
+#define LEVELFOLDER "levels/"
+using namespace std;
+TrackMenu::TrackMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts)
+:Menu(MENULOADX, MENULOADY, inTextures, "StartMenu.png"), scrollLenght(0), textures(inTextures), sounds(inSounds), fonts(inFonts)
 {
-    addButton(Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
-    addButton(Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
+    //Ladda in vilka sparfiler som finns
+    ifstream loadData;
+    char stringBuffer[256];
+    string loadDataPath = string(LEVELFOLDER) + string("LevelData.dat");
+    loadData.open(loadDataPath.c_str(), ifstream::in);
+    while(loadData.good())
+    {
+        LoadPair tempLoadPair;
+        loadData.getline(stringBuffer, 256, ' ');
+        tempLoadPair.name = stringBuffer;
+        loadData.getline(stringBuffer, 256, '\n');
+        tempLoadPair.file = stringBuffer;
+        trackVectorData.push_back(tempLoadPair);
+    }
+    //lägg till knappar
+    addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
+                      textures, sounds, fonts, ARROWUP, CLICK, "", ""));
+    addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
+                      textures, sounds, fonts, ARROWDOWN, CLICK, "", ""));
+    addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
+                      textures, sounds, fonts, BACKIMG, CLICK, "", ""));
+    updateLoadButtons();
 }
 
 TrackMenu::~TrackMenu()
@@ -29,29 +65,61 @@ TrackMenu::~TrackMenu()
     //dtor
 }
 
+void TrackMenu::updateLoadButtons()
+{
+    cout << trackVectorData.size() << endl;
+    while(buttons.size() > 3)
+    {
+        removeButton(3);
+    }
+    for(int i = 0; i < LEVELDRAWS; ++i)
+        {
+            if(i+scrollLenght < (int) trackVectorData.size() -1)
+            {
+                addButton(new Button(MENULOADX, MENULOADY, LEVELSTARTX, LEVELSTARTY+LEVELGAPY*i, LEVELWIDTHX, LEVELWIDTHY,
+                      textures, sounds, fonts, TRACKLEVELIMG, CLICK, (trackVectorData[scrollLenght+i]).name, ""));
+            }
+        }
+}
+
 bool TrackMenu::update()
 {
-    if(buttons[0].gotPressed())
+    if(buttons[0]->gotPressed())
     {
-        state = "TRACK";
+        scrollLenght -= 1;
+        if(scrollLenght < 0)
+            {
+                scrollLenght = 0;
+            }
+        updateLoadButtons();
         newIteration();
-        return true;
+        return false;
     }
-    else if(buttons[1].gotPressed())
+    else if(buttons[1]->gotPressed())
     {
-        state = "LOAD";
+        if(scrollLenght < (int) trackVectorData.size()-LEVELDRAWS-1)
+            {
+                scrollLenght += 1;
+                updateLoadButtons();
+            }
         newIteration();
-        return true;
+        return false;
     }
-    else if(buttons[2].gotPressed())
+    else if(buttons[2]->gotPressed())
     {
         state = "START";
         newIteration();
         return true;
     }
-    else
+    for(int i = 0; i < LEVELDRAWS; ++i)
     {
-        newIteration();
-        return false;
+        if(buttons[i+3]->gotPressed())
+        {
+            state = ((trackVectorData[scrollLenght+i]).file).c_str();
+            newIteration();
+            return true;
+        }
     }
+    newIteration();
+    return false;
 }

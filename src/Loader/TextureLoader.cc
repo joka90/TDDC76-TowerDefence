@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#define IMG "media/img/"
+
 using namespace std;
 ///Klass för att ladda in texturer
 
@@ -23,12 +25,13 @@ using namespace std;
 */
 TextureLoader::TextureLoader()
 {
+    directory = IMG;
 }
 
 /*
 * Laddar in en fil i map:en, tar in ett directory och namnet på filen.
 */
-void TextureLoader::load(const std::string& directory, const std::string& filename)
+void TextureLoader::load(const std::string& filename)
 {
     if(find(filename))
     {
@@ -47,7 +50,7 @@ void TextureLoader::load(const std::string& directory, const std::string& filena
 /*
 * Privat funktion, Lägger in texturen i map:en
 */
-void TextureLoader::insert(const std::string& key, sf::Texture inTexture)
+void TextureLoader::insert(const std::string& key, sf::Texture& inTexture)
 {
     if(!find(key))
     {
@@ -83,7 +86,7 @@ void TextureLoader::remove(const std::string& key)
 */
 void TextureLoader::clear()
 {
-    textures.clear();
+    textures.clear(); // fixa med pekare istället blir det stora minnesläckor
 }
 
 /*
@@ -110,13 +113,13 @@ void TextureLoader::print() const
 /*
 * Hämtar ut en referens till en textur i map:en
 */
-sf::Texture& TextureLoader::getTexture(const std::string directory, const std::string& key)
+sf::Texture& TextureLoader::getTexture(const std::string& key)
 {
     if(find(key))
     {
       return textures[key];
     }
-  load(directory, key);
+  load(key);
   return textures[key];
 }
 
