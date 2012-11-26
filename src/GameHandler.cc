@@ -79,21 +79,27 @@ void GameHandler::run()
 			// Code
 			break;
 		}
-		if(nextState=="TRACK")
+		// handle events sent by menu
+		if(nextState!="")
 		{
-			currentState=TRACKMENU;
-		}
-		else if(nextState=="START")
-		{
-			currentState=STARTMENU;
-		}
-		else if(nextState=="LOAD")
-		{
-			currentState=LOADMENU;
-		}
-		else if(nextState=="QUIT")
-		{
-			canvas.close();//do some more?
+			std::cout << nextState << endl;
+			if(nextState=="TRACK")
+			{
+				currentState=TRACKMENU;
+			}
+			else if(nextState=="START")
+			{
+				currentState=STARTMENU;
+			}
+			else if(nextState=="LOAD")
+			{
+				currentState=LOADMENU;
+			}
+			else if(nextState=="QUIT")
+			{
+				canvas.close();//do some more?
+			}
+			nextState="";
 		}
         // SHOW FPS
         std::stringstream ss;
