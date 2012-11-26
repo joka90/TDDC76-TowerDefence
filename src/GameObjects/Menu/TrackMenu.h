@@ -13,6 +13,14 @@ class TrackMenu : public Menu
         bool update();
     protected:
     private:
+        std::vector<LoadPair> trackVectorData;
+        int scrollLenght;
+
+        TextureLoader& textures;
+        SoundLoader& sounds;
+        FontLoader& fonts;
+
+        void updateLoadButtons();
 };
 
 #endif // TRACKMENU_H

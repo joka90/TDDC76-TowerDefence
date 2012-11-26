@@ -63,7 +63,7 @@ LoadMenu::LoadMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader&
 
 LoadMenu::~LoadMenu()
 {
-    //dtor
+
 }
 
 void LoadMenu::updateLoadButtons()
@@ -98,7 +98,7 @@ bool LoadMenu::update()
     }
     else if(buttons[1]->gotPressed())
     {
-        if(scrollLenght < (int) loadVectorData.size())
+        if(scrollLenght < (int) loadVectorData.size()-LOADDRAWS-1)
             {
                 scrollLenght += 1;
                 updateLoadButtons();
@@ -112,9 +112,16 @@ bool LoadMenu::update()
         newIteration();
         return true;
     }
-    else
+    for(int i = 0; i < LOADDRAWS; ++i)
     {
-        newIteration();
-        return false;
+        if(buttons[i+3]->gotPressed())
+        {
+            state = ((loadVectorData[scrollLenght+i]).file).c_str();
+            newIteration();
+            return true;
+        }
+
     }
+    newIteration();
+    return false;
 }

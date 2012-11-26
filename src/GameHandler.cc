@@ -81,18 +81,34 @@ void GameHandler::run()
 		if(nextState=="TRACK")
 		{
 			currentState=TRACKMENU;
+			trackMenu.newIteration();
 		}
 		else if(nextState=="START")
 		{
 			currentState=STARTMENU;
+			startMenu.newIteration();
 		}
 		else if(nextState=="LOAD")
 		{
 			currentState=LOADMENU;
+			loadMenu.newIteration();
 		}
 		else if(nextState=="QUIT")
 		{
 			canvas.close();//do some more?
+		}
+		else
+		{
+		    if(currentState == LOADMENU && nextState != "")
+		    {
+		        cout << "loading: " << nextState << endl;
+		        //level = new level(nextState); // hur man nu laddar/initierar banor
+		    }
+		    if(currentState == TRACKMENU && nextState != "")
+		    {
+		        cout << "starting: " << nextState << endl;
+		        //level = new level(nextState);
+		    }
 		}
         // SHOW FPS
         std::stringstream ss;
