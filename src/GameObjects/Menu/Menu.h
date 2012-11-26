@@ -7,6 +7,11 @@
 #include "../GameObject.h"
 #include "Button.h"
 
+struct LoadPair
+{
+    std::string name;
+    std::string file;
+};
 
 class Menu : public GameObject
 {

@@ -5,12 +5,6 @@
 
 #include "Menu.h"
 
-struct LoadPair
-{
-    std::string name;
-    std::string file;
-};
-
 class LoadMenu : public Menu
 {
     public:
