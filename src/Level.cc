@@ -1,5 +1,9 @@
 #include "Level.h"
 
+#define createObjectFromType(parm,type) if(parm==#type) {  \
+tmpPtr=new type(); \
+}
+
 using namespace std;
 
 Level::Level()
@@ -36,30 +40,31 @@ void createObject(std::string type, std::string subType, std::string parms)
 {
 	if(type=="T")
 	{
-		Tower* tmpTower=NULL;
+		Tower* tmpPtr=NULL;
 		//allot of elsifs for all difftent subtypes //TODO
+		//createObjectFromType(subType,MegaTower) //macro
 		// new Tower(parms, textureLoader, soundLoader, fontLoader)
-		if(tmpTower!=NULL)
+		if(tmpPtr!=NULL)
 		{
-			//towers.push_back(tmpTower);
+			//towers.push_back(tmpPtr);
 		}
 	}
 /*	else if(type=="E")
 	{
-		Tower* tmpTower=NULL;
+		Tower* tmpPtr=NULL;
 		//allot of elsifs for all difftent subtypes
-		if(tmpTower!=NULL)
+		if(tmpPtr!=NULL)
 		{
-			towers.push_back(tmpTower);
+			towers.push_back(tmpPtr);
 		}
 	}*/
 	else  if(type=="P")
 	{
-		Projectile* tmpProjectile=NULL;
+		Projectile* tmpPtr=NULL;
 		//allot of elsifs for all difftent subtypes
-		if(tmpProjectile!=NULL)
+		if(tmpPtr!=NULL)
 		{
-			//towers.push_back(tmpProjectile);
+			//towers.push_back(tmpPtr);
 		}
 	}
 	else if(type=="Player")
