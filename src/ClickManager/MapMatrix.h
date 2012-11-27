@@ -31,7 +31,7 @@ class MapMatrix
 		 * 2 = Tower
 		 */
 		 std::vector<std::vector<int> > matrix;
-		 std::vector<std::pair<int,int>> path; // Beskriver vägen i koordinater, för ex nedan så blir vägen: (0,1) , (1,1) , (2,1) , (2,2) , (3,2) osv..
+		 std::vector<std::pair<int,int> > path; // Beskriver vägen i koordinater, för ex nedan så blir vägen: (0,1) , (1,1) , (2,1) , (2,2) , (3,2) osv..
                                                // Denna vector skulle kunna sparas i filen som beskriver varje level.
 
          // Ex: 0 0 0 0 0 0 0
