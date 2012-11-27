@@ -8,7 +8,7 @@ using namespace std;
 
 Level::Level()
 {
-
+    //waves = new WaveHandler();
 }
 
 Level::Level(string filename)
@@ -25,6 +25,39 @@ Level::Level(string filename)
   		while (!feof(pFile))
   		{
 			fscanf(pFile, "%s %s %s", type, subType, parms);
+            if(type=="T")
+            {
+                Tower* tmpPtr=NULL;
+                //allot of elsifs for all difftent subtypes //TODO
+                //createObjectFromType(subType,MegaTower) //macro
+                // new Tower(parms, textureLoader, soundLoader, fontLoader)
+                if(tmpPtr!=NULL)
+                {
+                    //towers.push_back(tmpPtr);
+                }
+            }
+        /*	else if(type=="E")
+            {
+                Tower* tmpPtr=NULL;
+                //allot of elsifs for all difftent subtypes
+                if(tmpPtr!=NULL)
+                {
+                    towers.push_back(tmpPtr);
+                }
+            }*/
+            else  if(type=="P")
+            {
+                Projectile* tmpPtr=NULL;
+                //allot of elsifs for all difftent subtypes
+                if(tmpPtr!=NULL)
+                {
+                    //towers.push_back(tmpPtr);
+                }
+            }
+            else if(type=="Player")
+            {
+
+            }
 			//createObject(string(type), string(subType), string(parms)); //TODO
 			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
@@ -36,76 +69,41 @@ Level::Level(string filename)
 	fclose(pFile);
 }
 
-void createObject(std::string type, std::string subType, std::string parms)
-{
-	if(type=="T")
-	{
-		Tower* tmpPtr=NULL;
-		//allot of elsifs for all difftent subtypes //TODO
-		//createObjectFromType(subType,MegaTower) //macro
-		// new Tower(parms, textureLoader, soundLoader, fontLoader)
-		if(tmpPtr!=NULL)
-		{
-			//towers.push_back(tmpPtr);
-		}
-	}
-/*	else if(type=="E")
-	{
-		Tower* tmpPtr=NULL;
-		//allot of elsifs for all difftent subtypes
-		if(tmpPtr!=NULL)
-		{
-			towers.push_back(tmpPtr);
-		}
-	}*/
-	else  if(type=="P")
-	{
-		Projectile* tmpPtr=NULL;
-		//allot of elsifs for all difftent subtypes
-		if(tmpPtr!=NULL)
-		{
-			//towers.push_back(tmpPtr);
-		}
-	}
-	else if(type=="Player")
-	{
-	
-	}
-
-
-}
-
 bool Level::update()
 {
-    /*
-    // Update Tower
+
+    // Update towers
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
-        (*it).update();
+        Projectile* p = (*it)->update(enemies);
+        if(p != NULL){
+            projectiles.push_back(p);
+        }
+
     }
     // Update projectiles
     for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
     {
-        (*it).update();
+        (*it)->update(enemies);
     }
-    */
+
 
 }
 
 void Level::draw(sf::RenderWindow& canvas)
 {
-    /*
+
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
-        (*it).drawSprite(canvas);
+        (*it)->drawSprite(canvas);
     }
     // draw projectiles
     for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
     {
-        (*it).drawSprite(canvas);
+        (*it)->drawSprite(canvas);
     }
-    */
+
 }
 
 void Level::runWave()

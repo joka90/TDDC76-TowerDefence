@@ -12,7 +12,11 @@ public:
 
     ~Enemy();
 
-    virtual bool drawSprite(sf::RenderWindow& canvas);
+    //virtual bool drawSprite(sf::RenderWindow& canvas); Ärvs från GameObject, behövs ej.. /T
+
+    // - Enligt hur jag har föreslagit hur path-findingen ska fungera i MapMatrix.h så behövs ej dirX och dirY.
+    // - Det är oklart vad som är skillnaden på update() och move(), jag föreslår att move tas bort och att all
+    // flyttning sker i update.
 
     int getLife() const;
     void setLife(int newLife);

@@ -13,7 +13,7 @@ Tower::Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inS
 {
 		int dummyInt;
 		//How to scan parameters in towers an other stuff
-		sscanf (parms,"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+		//sscanf (parms,"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
 }
 
 Tower::~Tower()
@@ -53,9 +53,9 @@ void Tower::setRange(int newRange)
     return;
 }
 
-bool Tower::drawSprite(sf::RenderWindow& canvas)
+/*bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
 {
    sprite.move(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
-}
+}*/

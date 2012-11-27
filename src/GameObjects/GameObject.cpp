@@ -77,3 +77,4 @@ bool GameObject::drawSprite(sf::RenderWindow& canvas)
     canvas.draw(sprite);
     return true;
 }
+

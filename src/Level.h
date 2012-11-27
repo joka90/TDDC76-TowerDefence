@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Wave/Wave.h"
 #include "Wave/WaveHandler.h"
+#include "ClickManager/MapMatrix.h"
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 
@@ -23,13 +24,11 @@ public:
 
 private:
 
-    //MapMatrix map;
-    std::vector<Wave*> waves;
+    MapMatrix map;
+    std::vector<Enemy*> enemies;
     std::vector<Tower*> towers;
     std::vector<Projectile*> projectiles;
-    //WaveHandler* waves; ??
-    
-    void createObject(std::string type, std::string subType,std::string parms);
+    WaveHandler* waves;
 
     void runWave();
     void saveMap();

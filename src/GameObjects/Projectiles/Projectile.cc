@@ -5,9 +5,9 @@ Projectile::Projectile(int newX, int newY, TextureLoader& inTextureLoader, Sound
 
 }
 
-bool Projectile::drawSprite(sf::RenderWindow& canvas)
+/*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T
 {
    sprite.move(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
-}
+}*/

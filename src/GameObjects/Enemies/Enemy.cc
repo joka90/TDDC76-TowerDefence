@@ -12,12 +12,12 @@ Enemy::~Enemy()
 {
 }
 
-bool Enemy::drawSprite(sf::RenderWindow& canvas)
+/*bool Enemy::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject, behövs ej.. /T
 {
    sprite.move(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
-}
+}*/
 
 
 

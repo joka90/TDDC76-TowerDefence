@@ -1,6 +1,8 @@
 #ifndef  TOWER_H
 #define TOWER_H
 #include "../GameObject.h"
+#include "../Enemies/Enemy.h"
+#include "../Projectiles/Projectile.h"
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 
@@ -18,8 +20,8 @@ public:
 
     ~Tower();
 
-
-    virtual bool drawSprite(sf::RenderWindow& canvas);
+    virtual Projectile* update(std::vector<Enemy*>) = 0;
+    //virtual bool drawSprite(sf::RenderWindow& canvas); //Ärvs från GameObject ist.. /T
 
     int getPrice() const;
     void setPrice(int newPrice);
