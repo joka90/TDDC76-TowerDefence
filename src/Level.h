@@ -6,11 +6,15 @@
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 
+#include <stdio.h>
+#include <iostream>
+
 class Level
 {
 public:
 
     Level();
+    Level(string filename);
 
     string name;
 
@@ -24,6 +28,8 @@ private:
     std::vector<Tower*> towers;
     std::vector<Projectile*> projectiles;
     //WaveHandler* waves; ??
+    
+    void createObject(std::string type, std::string subType,std::string parms);
 
     void runWave();
     void saveMap();

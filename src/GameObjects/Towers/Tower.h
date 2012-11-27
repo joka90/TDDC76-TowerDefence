@@ -2,6 +2,7 @@
 #define TOWER_H
 #include "../GameObject.h"
 #include <SFML/Graphics.hpp>
+#include <stdio.h>
 
 /**
  * @author Mikael Karlsson
@@ -13,6 +14,7 @@ public:
     Tower(int newX, int newY, int newPrice, int newDamage, int newRange,
            TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
            , FontLoader& inFontLoader);
+	Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     ~Tower();
 

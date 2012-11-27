@@ -9,11 +9,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <stdio.h>
 
 class GameObject
 {
     public:
         GameObject(int x, int y, TextureLoader& inTextures, std::string textureReference);
+        GameObject(std::string parms, TextureLoader& inTextures, std::string textureReference);
         virtual ~GameObject();
         int getPosX();
         int getPosY();

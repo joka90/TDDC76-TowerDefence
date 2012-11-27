@@ -1,7 +1,72 @@
 #include "Level.h"
 
+using namespace std;
+
 Level::Level()
 {
+
+}
+
+Level::Level(string filename)
+{
+	char type[20];
+	char subType[20];
+	char parms[100];
+
+	FILE * pFile;
+
+	pFile = fopen(filename.c_str(),"r");
+	if (pFile!=NULL)
+  	{
+  		while (!feof(pFile))
+  		{
+			fscanf(pFile, "%s %s %s", type, subType, parms);
+			//createObject(string(type), string(subType), string(parms)); //TODO
+			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
+		}
+	}
+	else
+	{
+		cout << "error reading file: " << filename << endl;
+	}
+	fclose(pFile);
+}
+
+void createObject(std::string type, std::string subType, std::string parms)
+{
+	if(type=="T")
+	{
+		Tower* tmpTower=NULL;
+		//allot of elsifs for all difftent subtypes //TODO
+		// new Tower(parms, textureLoader, soundLoader, fontLoader)
+		if(tmpTower!=NULL)
+		{
+			//towers.push_back(tmpTower);
+		}
+	}
+/*	else if(type=="E")
+	{
+		Tower* tmpTower=NULL;
+		//allot of elsifs for all difftent subtypes
+		if(tmpTower!=NULL)
+		{
+			towers.push_back(tmpTower);
+		}
+	}*/
+	else  if(type=="P")
+	{
+		Projectile* tmpProjectile=NULL;
+		//allot of elsifs for all difftent subtypes
+		if(tmpProjectile!=NULL)
+		{
+			//towers.push_back(tmpProjectile);
+		}
+	}
+	else if(type=="Player")
+	{
+	
+	}
+
 
 }
 

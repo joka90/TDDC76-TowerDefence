@@ -16,6 +16,12 @@ GameObject::GameObject(int x, int y, TextureLoader& inTextures, const string tex
     * NOOOOOOOOOOOOOOOOOOOOOOOO segfault if initialised in sub classes.
     */
 }
+GameObject::GameObject(std::string parms, TextureLoader& inTextures, const string textureReference)
+:textures(inTextures)
+{
+	char dummyStr[100];
+	sscanf(parms.c_str(),"%i,%i,%s",&xPos,&yPos,dummyStr);
+}
 
 GameObject::~GameObject()
 {

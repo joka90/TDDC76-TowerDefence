@@ -8,6 +8,14 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange,
 
 }
 
+Tower::Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
+:GameObject(parms, inTextureLoader, "ENFINBILD")
+{
+		int dummyInt;
+		//How to scan parameters in towers an other stuff
+		sscanf (parms,"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+}
+
 Tower::~Tower()
 {
 }
