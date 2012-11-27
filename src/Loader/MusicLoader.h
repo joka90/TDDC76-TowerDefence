@@ -16,12 +16,12 @@ class MusicLoader : public Loader
      void clear();
      bool empty() const;
      void load(const std::string& filename);
-     sf::SoundBuffer& getSoundBuffer(const std::string& key);
+     sf::Music* getMusic(const std::string& key);
      void print() const; //debug*/
     private:
-     std::map<std::string, sf::SoundBuffer> sounds;
+     std::map<std::string, sf::Music*> songs;
      bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::SoundBuffer inSoundBuffer);
+     void insert(const std::string& key, sf::Music* inMusic);
 };
 
 #endif

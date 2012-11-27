@@ -8,18 +8,8 @@
 #define MUSIC "media/music/"
 
 using namespace std;
-///Klass för att ladda in sounds
+///Klass för att ladda in musik
 
-/**
-* Tillfällig konstruktor, tar in ett directory och ett filnamn och laddar sedan in
-* filen i en map ex:
-*
-* #define SOUNDDIRECTORY "../media/sounds/"
-* MusicLoader* test = new MusicLoader(SOUNDDIRECTORY,"poff.WAV")
-* En referens till en Soundbuffer kan sedan fås ur map:en med funktionen getSoundBuffer, ex
-* test->getSoundBuffer(SOUNDDIRECTORY,"poff.WAV")
-* om filen inte finns inladdad så laddas den in
-*/
 /*
 * Konstruktor
 */
@@ -29,7 +19,7 @@ MusicLoader::MusicLoader()
 }
 
 /*
-* Laddar in en fil i map:en, tar in ett directory och namnet på filen.
+* Laddar in en pekare till musik i map:en, tar in ett directory och namnet på filen.
 */
 void MusicLoader::load(const std::string& filename)
 {
@@ -37,45 +27,46 @@ void MusicLoader::load(const std::string& filename)
     {
         return;
     }
-    sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile(directory+filename))
+    sf::Music* song = new sf::Music();
+    if (!song->openFromFile(directory+filename))
     {
-        cout << "Loading of Soundbuffer failed" << endl;
+        delete song;
+        cout << "Loading of song failed" << endl;
         return;
     }
-    insert(filename, buffer);
+    insert(filename, song);
     return;
 }
 
 /*
-* Privat funktion, Lägger in soundbuffer i map:en
+* Privat funktion, Lägger in pekare till en sång i map:en
 */
-void MusicLoader::insert(const std::string& key, sf::SoundBuffer inSoundBuffer)
+void MusicLoader::insert(const std::string& key, sf::Music* inMusic)
 {
     if(!find(key))
     {
-      sounds[key]=inSoundBuffer;
+      songs[key]=inMusic;
     }
   return;
 }
 /*
-* Privat funktion, kollar om soundbuffern finns i map:en
+* Privat funktion, kollar om sången finns i map:en
 */
 bool MusicLoader::find(const std::string& key) const
 {
-    map<std::string, sf::SoundBuffer>::const_iterator it  = sounds.find(key);
-    return (it != sounds.end());
+    map<std::string, sf::Music*>::const_iterator it  = songs.find(key);
+    return (it != songs.end());
 }
 /*
-* Tar bort en soundbuffer från map:en
+* Tar bort en sång från map:en
 */
 void MusicLoader::remove(const std::string& key)
 {
    if(!find(key))
     {
-    cout << "Removal of soundbuffer failed, soundbuffer doesn't exist" << endl;
+    cout << "Removal of music failed, soundbuffer doesn't exist" << endl;
     }
-  sounds.erase(key);
+  songs.erase(key);
   return;
 }
 /*
@@ -83,7 +74,7 @@ void MusicLoader::remove(const std::string& key)
 */
 void MusicLoader::clear()
 {
-    sounds.clear();
+    songs.clear();
 }
 
 /*
@@ -91,15 +82,15 @@ void MusicLoader::clear()
 */
 bool MusicLoader::empty() const
 {
-    return(sounds.empty());
+    return(songs.empty());
 }
 /*
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
 void MusicLoader::print() const
 {
-    map<std::string, sf::SoundBuffer>::const_iterator pos;
-    for(pos = sounds.begin(); pos != sounds.end(); ++pos)
+    map<std::string, sf::Music*>::const_iterator pos;
+    for(pos = songs.begin(); pos != songs.end(); ++pos)
         {
         cout << "Key: " << pos->first << endl;
         //cout << "Value:" << pos->second << endl;
@@ -108,14 +99,14 @@ void MusicLoader::print() const
 /*
 * Hämtar ut en referens till en soundbuffer i map:en
 */
-sf::SoundBuffer& MusicLoader::getSoundBuffer(const std::string& key)
+sf::Music* MusicLoader::getMusic(const std::string& key)
 {
     if(find(key))
     {
-      return sounds[key];
+      return songs[key];
     }
   load(key);
-  return sounds[key];
+  return songs[key];
 }
 
 
