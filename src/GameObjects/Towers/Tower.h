@@ -13,14 +13,15 @@
 class Tower : public GameObject
 {
 public:
-    Tower(int newX, int newY, int newPrice, int newDamage, int newRange,
+    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,
            TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
            , FontLoader& inFontLoader);
+
 	Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     ~Tower();
 
-    virtual Projectile* update(std::vector<Enemy*>) = 0;
+   // virtual Projectile* update(std::vector<Enemy*>) = 0;
     //virtual bool drawSprite(sf::RenderWindow& canvas); //Ärvs från GameObject ist.. /T
 
     int getPrice() const;
@@ -30,12 +31,21 @@ public:
     int getRange() const;
     void setRange(int newRange);
 
+    //Projectile* update(std::vector<Enemy*> enemyVector);
+
+
+
 private:
+
+
+protected:
     int price;
     int damage;
     int range;
+    int counter;
+    int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
+    Enemy* getClosestEnemy(std::vector<Enemy*> enemyVector);
 
-protected:
 
 };
 #endif //end TOWER_H
