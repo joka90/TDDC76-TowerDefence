@@ -50,6 +50,9 @@ protected:
     Enemy* getClosestEnemy(std::vector<Enemy*> enemyVector);
     std::string towerType;
 
+    SoundLoader& sounds;
+    FontLoader& fonts;
+
 
 };
 #endif //end TOWER_H
