@@ -122,7 +122,7 @@ void GameHandler::run()
 				{
 				    currentState=LEVEL;
 				    cout << "starting: " << nextState << endl;
-				    //level = new level(nextState);
+				    currentLevel = new Level(nextState, 0, textures, sounds, music, fonts);
 				}
 			}
 			nextState="";
