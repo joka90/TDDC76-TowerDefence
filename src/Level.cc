@@ -32,18 +32,19 @@ void Level::loadBase(string trackFile, int index)
     loadData>>row;
     loadData>>col;
     loadData.ignore();
+    //ladda mapMatrix
     string MapMatrixData;
     for(int i = 0; i < row; ++i)
     {
         loadData.getline(stringBuffer, 256, '\n');
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
-    map.setMatrix(MapMatrixData, row, col);
-    //ladda waveHandler
-    //ladda mapMatrix
-    int spawnX, spawnY;
+    spawnX, spawnY;
     loadData>>spawnX;
     loadData>>spawnY;
+    map.setMatrix(MapMatrixData, row, col, spawnX, spawnY);
+    //ladda waveHandler
+
     string waveHandlerData;
     while(loadData.good())
     {
@@ -52,7 +53,7 @@ void Level::loadBase(string trackFile, int index)
         waveHandlerData = waveHandlerData+temp;
     }
     loadData.ignore();
-    waves = new WaveHandler(spawnX, spawnY, waveHandlerData, index);
+    waves = new WaveHandler(waveHandlerData, index);
 }
 
 Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
