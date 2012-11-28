@@ -37,6 +37,9 @@ void GameHandler::run()
 	sf::Clock frameTime;
 
     EventHandler::addListener(sf::Event::Closed, this);
+    //sleep all the inactive menus
+        loadMenu.sleep();
+        trackMenu.sleep();
     // Start the game loop
     while (canvas.isOpen())
     {
@@ -58,6 +61,7 @@ void GameHandler::run()
 			if(loadMenu.update())
 			{
 				nextState=loadMenu.readState();
+				loadMenu.sleep();
 			}
 			loadMenu.drawMenu(canvas);
 			break;
@@ -65,6 +69,7 @@ void GameHandler::run()
 			if(trackMenu.update())
 			{
 				nextState=trackMenu.readState();
+				trackMenu.sleep();
 			}
 			trackMenu.drawMenu(canvas);
 			break;
@@ -72,6 +77,7 @@ void GameHandler::run()
 			if(startMenu.update())
 			{
 				nextState=startMenu.readState();
+				startMenu.sleep();
 			}
 			startMenu.drawMenu(canvas);
 			break;
@@ -86,17 +92,17 @@ void GameHandler::run()
 			if(nextState=="TRACK")
 			{
 				currentState=TRACKMENU;
-				trackMenu.newIteration();
+				trackMenu.activate();
 			}
 			else if(nextState=="START")
 			{
 				currentState=STARTMENU;
-				startMenu.newIteration();
+				startMenu.activate();
 			}
 			else if(nextState=="LOAD")
 			{
 				currentState=LOADMENU;
-				loadMenu.newIteration();
+				loadMenu.activate();
 			}
 			else if(nextState=="QUIT")
 			{
@@ -106,11 +112,13 @@ void GameHandler::run()
 			{
 				if(currentState == LOADMENU && nextState != "")
 				{
+				    currentState=LEVEL;
 				    cout << "loading: " << nextState << endl;
 				    //level = new level(nextState); // hur man nu laddar/initierar banor
 				}
 				if(currentState == TRACKMENU && nextState != "")
 				{
+				    currentState=LEVEL;
 				    cout << "starting: " << nextState << endl;
 				    //level = new level(nextState);
 				}
