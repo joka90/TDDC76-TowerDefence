@@ -26,7 +26,7 @@ Musens rörs, släpps, trycks ned.
 ClickManager::ClickManager(string value, int row, int col, vector<Tower*>* newTowervector)
 {
     towerVector = newTowervector;
-	mapMatrix.setMatrix(value,row,col, 0, 0);
+    mapMatrix = newMapMatrix;
 }
 
 ClickManager::~ClickManager()
