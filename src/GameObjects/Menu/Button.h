@@ -29,8 +29,11 @@ class Button : public GameObject, public MouseButtonPressedUser, public MouseBut
         void mouseMoveListener(sf::Event);
         void newIteration();
         void drawHooverText();
+        void sleep();
+        void activate();
     protected:
     private:
+        bool sleeping;
         int relativePosX;
         int relativePosY;
         int widthX;

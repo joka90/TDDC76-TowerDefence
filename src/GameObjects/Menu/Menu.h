@@ -27,6 +27,8 @@ class Menu : public GameObject
         void addButton(Button* newButton);
         void removeButton(int index);
         void newIteration();
+        void sleep();
+        void activate();
     protected:
         std::string state;
         std::vector<Button*> buttons;

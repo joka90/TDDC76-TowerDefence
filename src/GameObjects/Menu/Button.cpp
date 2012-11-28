@@ -5,6 +5,7 @@ using namespace std;
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
     : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false), fonts(inFonts), textures(inTextures), sounds(inSounds)
 {
+    sleeping = false;
     sprite.setTextureAnimation(textures.getTexture(spriteKey)); // varför funkar inte detta i GameObject???
     if(soundKey != "")
     {
@@ -79,9 +80,23 @@ bool Button::hoovering()
 {
     return hoover;
 }
+void Button::sleep()
+{
+    sleeping = true;
+}
+
+void Button::activate()
+{
+    sleeping = false;
+}
+
 
 void Button::mouseButtonPressedListener(sf::Event event)
 {
+    if(sleeping)
+    {
+        return;
+    }
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(hoover)

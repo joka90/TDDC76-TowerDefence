@@ -70,3 +70,21 @@ void Menu::removeButton(int index)
     buttons.erase(buttons.begin()+index);
     return;
 }
+
+void Menu::sleep()
+{
+    for(int i = 0; i < (int) buttons.size(); ++i)
+    {
+        buttons[i]->sleep();
+    }
+    return;
+}
+
+void Menu::activate()
+{
+    for(int i = 0; i < (int) buttons.size(); ++i)
+    {
+        buttons[i]->activate();
+    }
+    return;
+}
