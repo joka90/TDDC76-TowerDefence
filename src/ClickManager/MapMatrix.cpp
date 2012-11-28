@@ -11,9 +11,12 @@ using namespace std;
 MapMatrix::MapMatrix()
 {
 }
-MapMatrix::MapMatrix(string value,int row, int col)
+MapMatrix::MapMatrix(string value,int row, int col, int newSpawnX, int newSpawnY)
 {
 	setMatrix(value,row,col);
+	spawnX = newSpawnX;
+	spawnY = newSpawnY;
+
 
 }
 void MapMatrix::setMatrix(string value, int row, int col)
