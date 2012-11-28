@@ -17,7 +17,7 @@ class Level
 public:
 
     Level();
-    Level(string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+    Level(std::string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     std::string name;
 
