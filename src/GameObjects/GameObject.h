@@ -23,6 +23,7 @@ class GameObject
         void playAnimation();
         void pauseAnimation();
         virtual bool drawSprite(sf::RenderWindow& canvas);
+
     protected:
         int xPos;
         int yPos;

@@ -81,10 +81,11 @@ void Enemy::hit(int damage)
     return;
 }
 
-// LITE OKLART MED ARV
+
 void Enemy::move()
 {
-    //setPos(getPosX + dirX, getPosY() + dirY);
+    xPos = xPos + dirX;
+    yPos = yPos + dirY;
     return;
 }
 

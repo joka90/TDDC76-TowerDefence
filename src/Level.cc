@@ -1,5 +1,4 @@
 #include "Level.h"
-#include "ClickManager/Player.h"
 
 #define createObjectFromType(parm,type) if(parm==#type) {  \
 tmpPtr=new type(); \
@@ -7,12 +6,57 @@ tmpPtr=new type(); \
 
 using namespace std;
 
-Level::Level()
+Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
+ {
+     loadBase(trackFile);
+ }
+
+void Level::loadBase(string trackFile)
 {
-	//waves = new WaveHandler();
+    trackName = trackFile;
+    ifstream loadData;
+    char stringBuffer[256];
+    loadData.open(trackFile);
+    loadData.getline(stringBuffer, 256, '\n');
+    //ladda bakgrund
+    background.setTextureAnimation(textures.getTexture(stringBuffer));
+    background.setPosition(0,0);
+    //initiera spelaren
+    int money, lives;
+    loadData>>money;
+    loadData>>lives;
+    Player(money, lives);
+    //ladda mapMatrix
+    int row, col;
+    loadData>>row;
+    loadData>>col;
+    loadData.ignore();
+    string MapMatrixData;
+    for(int i = 0; i < row; ++i)
+    {
+        loadData.getline(stringBuffer, 256, '\n');
+        MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
+    }
+    map.setMatrix(MapMatrixData, row, col);
+    //ladda waveHandler
+    //ladda mapMatrix
+    int spawnX, spawnY;
+    loadData>>spawnX;
+    loadData>>spawnY;
+    string waveHandlerData;
+    while(loadData.good())
+    {
+        char temp;
+        loadData>>temp;
+        waveHandlerData = waveHandlerData+temp;
+    }
+    loadData.ignore();
+    waves = new WaveHandler(spawnX, spawnY, waveHandlerData);
 }
 
-Level::Level(string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
+Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
 {
 	char type[20];
 	char subType[20];
@@ -85,17 +129,17 @@ bool Level::update()
 
 void Level::draw(sf::RenderWindow& canvas)
 {
-
-	// draw Tower
-	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
-	{
-		(*it)->drawSprite(canvas);
-	}
-	// draw projectiles
-	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
-	{
-		(*it)->drawSprite(canvas);
-	}
+    canvas.draw(background);
+    // draw Tower
+    for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+    {
+        (*it)->drawSprite(canvas);
+    }
+    // draw projectiles
+    for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+    {
+        (*it)->drawSprite(canvas);
+    }
 
 }
 

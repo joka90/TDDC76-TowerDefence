@@ -1,19 +1,15 @@
-#include "src/AnimatedSprite.h"
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-#include "src/GameHandler.h"
-
 #include <sstream>
 #include <string>
 
-#include <math.h>
-#define PI 3.14159265
-
 #include "src/EventHandler.h"
+#include "src/GameObjects/GameObject.h"
+#include "src/GameObjects/Enemies/Enemy.h"
+#include "src/GameObjects/Towers/Tower.h"
+#include "src/GameObjects/VisualEffects/VisualEffect.h"
+#include "src/GameObjects/Projectiles/Projectile.h"
+
 
 int main()
 {
-	GameHandler currentGame;
-	currentGame.run();
     return 0;
 }
