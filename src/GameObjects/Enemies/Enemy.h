@@ -35,12 +35,12 @@ public:
 
 
 private:
+
+protected:
     int life;
     int speed;
     int value;
     int dirX;
     int dirY;
-protected:
-
 };
 #endif //end ENEMY_H

@@ -23,7 +23,7 @@ Musens rörs, släpps, trycks ned.
 */
 
 
-ClickManager::ClickManager(string value, int row, int col, vector<Tower*> newTowervector)
+ClickManager::ClickManager(string value, int row, int col, vector<Tower*>* newTowervector)
 {
     towerVector = newTowervector;
 	mapMatrix.setMatrix(value,row,col);
@@ -34,24 +34,21 @@ ClickManager::~ClickManager()
 }
 void ClickManager::mouseButtonPressedListener(sf::Event event)
 {
-    //sf::Vector2i localPosition = sf::Mouse::getPosition();
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     vector<Tower*>::iterator it;
-    for (it = towerVector.begin() ; it != towerVector.end(); ++it)
+    for (it = towerVector->begin() ; it != towerVector->end(); ++it)
     {
-
+        //Gå igenom tornvektor för träffar på dessa koordinater
+        //Sätt träffen till markedTower
     }
-    //vector<Tower*>::iterator it;
-    //for ( it = towerVector.begin() ; it != towerVector.end(); ++it)
-    //Gå igenom tornvektor för träffar på dessa koordinater
-    //Sätt träffen till markedTower
+
+
 
 }
 void ClickManager::mouseButtonReleasedListener(sf::Event event)
 {
 
-    //sf::Vector2i localPosition = sf::Mouse::getPosition();
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     if(markedTower != NULL)
