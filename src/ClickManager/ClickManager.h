@@ -11,24 +11,32 @@
 #include "MapMatrix.h"
 
 #include <string>
+#include "../EventUser.h"
+#include "../GameObjects/Towers/Tower.h"
+#include <SFML/Graphics.hpp>
 
-class ClickManager {
+class ClickManager : public MouseButtonPressedUser {
 	public:
 		ClickManager()=default;
 		ClickManager(std::string value, int row, int col);
 		virtual ~ClickManager();
+		void mouseButtonPressedListener(sf::Event event);
+		void mouseButtonReleasedListener(sf::Event event);
+		void update();
+
 		/*
+		vector<tower*>& towerVector;
 		void update(MapMatrix& matrix, vector<tower*>& towerVector);
 		void drawMenu(RenderWindow& canvas);
-		BuyMenu buyMeny;
+		BuyMenu buyMenu;
 		UpgradeMeny upgradeMenu;
-		Tower* towerBuffer;
-		string towerPlaceName;
 		 */
 	private:
 		//void updateMenu()
+		Tower* markedTower;
 		void createTower(int x, int y);
 		MapMatrix mapMatrix;
+
 
 };
 

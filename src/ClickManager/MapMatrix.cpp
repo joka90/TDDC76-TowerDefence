@@ -36,6 +36,10 @@ void MapMatrix::setMatrix(string value, int row, int col)
 			}
 			ss >> numValue;
 			matrix[r][c] = numValue;
+			if(numValue == 1)
+			{
+                path.push_back(make_pair(r,c));
+			}
 		}
 	}
 }
@@ -54,6 +58,16 @@ bool MapMatrix::isPath(int x, int y)
 {
 	return (matrix[x][y] == 1);
 }
+
+pair<int, int> MapMatrix::getNextCoord(int newPosition)
+{
+    int x = path[newPosition].first;
+    int y = path[newPosition].second;
+    return make_pair(x,y);
+}
+
+
+
 //Finns endast för felsökning
 void MapMatrix::printMatrix(){
 	int row = matrix.size();

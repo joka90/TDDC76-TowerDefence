@@ -19,6 +19,7 @@ class MapMatrix
 		bool isTaken(int x, int y);
 		void setTower(int x, int y);
 		bool isPath(int x, int y);
+		std::pair<int, int> getNextCoord(int currentPosition); //EJ pixelkoordinater utan matrixkoordinator
 
 		/*
 		 * Finns endast för felsökning
