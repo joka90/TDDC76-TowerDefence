@@ -49,7 +49,6 @@ protected:
 	int currentState;
 
 	sf::RenderWindow canvas;
-	ClickManager clickManager;
 
 	StartMenu startMenu;
 	LoadMenu loadMenu;

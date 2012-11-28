@@ -23,10 +23,10 @@ Musens rörs, släpps, trycks ned.
 */
 
 
-ClickManager::ClickManager(vector<Tower*>* newTowervector, MapMatrix* newMapMatrix)
+ClickManager::ClickManager(vector<Tower*>* newTowervector, MapMatrix& newMapMatrix)
+:    mapMatrix(newMapMatrix)
 {
     towerVector = newTowervector;
-    mapMatrix = newMapMatrix;
 }
 
 ClickManager::~ClickManager()
@@ -53,7 +53,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     int y = event.mouseButton.y;
     if(markedTower != NULL)
     {
-        if(not mapMatrix->isTaken(x,y))
+        if(not mapMatrix.isTaken(x,y))
         {
             //
         }
@@ -80,9 +80,9 @@ void ClickManager::update()
 void ClickManager::createTower(int x, int y)
 {
 
-	if(! mapMatrix->isTaken(x,y))
+	if(! mapMatrix.isTaken(x,y))
 	{
-			mapMatrix->setTower(x,y);
+			mapMatrix.setTower(x,y);
 			//TODO Skapa torn, lägga det i vectorn, placera ut det på kartan
 	}
 	else
