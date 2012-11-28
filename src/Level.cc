@@ -86,7 +86,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				char tmpTrackFile[40];
 				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
 				//Init Level and wave, load from file
-				//loadBase(string(tmpTrackFile),tmpWave);
+				loadBase(string(tmpTrackFile),tmpWave);
 			}
 			else if(type=="Player")
 			{
@@ -158,12 +158,11 @@ bool Level::saveLevel(string saveFile)
 		return false;
 	}
 	ostream os(&fb);
-	//save wave
-	//os << "Wave" << " Wave " << "waves.getCurrentWaveIndex()" << endl;
+
 	//save player
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
-	//save level
-	os << "Level" << " Level " << "waves.getCurrentWaveIndex()" << ","  << "CURRENTLEVELFILENAME" endl;
+	//save level and waveHandler
+	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
 	
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
