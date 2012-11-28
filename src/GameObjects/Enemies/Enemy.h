@@ -8,7 +8,7 @@ class Enemy : public GameObject
 public:
     Enemy(int newX, int newY, int newLife, int newSpeed, int newValue,
           int newDirX, int newDirY, TextureLoader& inTextureLoader,
-          SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+          SoundLoader& inSoundLoader);
 
     ~Enemy();
 
@@ -42,5 +42,8 @@ protected:
     int value;
     int dirX;
     int dirY;
+    SoundLoader& sounds;
+
+
 };
 #endif //end ENEMY_H

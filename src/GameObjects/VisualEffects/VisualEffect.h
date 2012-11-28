@@ -6,11 +6,14 @@
 class VisualEffect : public GameObject
 {
 public:
-    VisualEffect(int newX, int newY, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+    VisualEffect(int newX, int newY, int newSpeed, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 
 protected:
+    int timer;
+    int speed;
+    SoundLoader& sounds;
 
 };
 #endif //end VISUALEFFECT_H

@@ -1,9 +1,9 @@
 #include "Enemy.h"
 Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue,
           int newDirX, int newDirY, TextureLoader& inTextureLoader,
-          SoundLoader& inSoundLoader, FontLoader& inFontLoader)
+          SoundLoader& inSoundLoader)
     : GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
-      life(newLife), speed(newSpeed), value(newValue), dirX(newDirX), dirY(newDirY)
+      life(newLife), speed(newSpeed), value(newValue), dirX(newDirX), dirY(newDirY), sounds(inSoundLoader)
 {
 
 }
