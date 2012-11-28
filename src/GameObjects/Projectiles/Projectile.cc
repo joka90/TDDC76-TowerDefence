@@ -1,7 +1,7 @@
 #include "Projectile.h"
-Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
+Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader)
 : GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
-  damage(newDamage), speed(newSpeed), enemy(newEnemy)
+  damage(newDamage), speed(newSpeed), enemy(newEnemy), sounds(inSoundLoader)
 {
 
 }
