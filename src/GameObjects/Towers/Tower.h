@@ -23,7 +23,7 @@ public:
 
     ~Tower();
 
-   // virtual Projectile* update(std::vector<Enemy*>) = 0;
+    virtual Projectile* update(std::vector<Enemy*>) = 0;
     //virtual bool drawSprite(sf::RenderWindow& canvas); //Ärvs från GameObject ist.. /T
 
     int getPrice() const;

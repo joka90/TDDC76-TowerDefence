@@ -46,7 +46,7 @@ private:
     std::string trackName;
     void runWave();
     bool saveLevel(std::string saveFile);
-	void loadBase(string trackFile);
+	void loadBase(std::string trackFile);
 };
 
 #endif //end H
