@@ -6,7 +6,6 @@ using namespace std;
 Menu::Menu(int x, int y, TextureLoader& inTextures, string textureReference)
     : GameObject(x, y, inTextures, textureReference), state("")
 {
-    sprite.setTextureAnimation(textures.getTexture(textureReference));
 }
 
 Menu::~Menu()
@@ -44,6 +43,7 @@ void Menu::drawMenu(sf::RenderWindow& canvas)
     }
     return;
 }
+
 bool Menu::update()
 {
    newIteration();

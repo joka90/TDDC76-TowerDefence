@@ -3,16 +3,15 @@
 #include <iostream>
 using namespace std;
 Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
-    : GameObject(MenuX+relativeX, MenuY+relativeY, textures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false), fonts(inFonts), textures(inTextures), sounds(inSounds)
+    : GameObject(MenuX+relativeX, MenuY+relativeY, inTextures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
 {
     sleeping = false;
-    sprite.setTextureAnimation(textures.getTexture(spriteKey)); // varför funkar inte detta i GameObject???
     if(soundKey != "")
     {
        // clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
     }
-	fonts.load("appleberry_with_cyrillic.ttf");
-	buttonText=sf::Text(inButtonText,fonts.getFont("appleberry_with_cyrillic.ttf"),30);
+	inFonts.load("appleberry_with_cyrillic.ttf");
+	buttonText=sf::Text(inButtonText,inFonts.getFont("appleberry_with_cyrillic.ttf"),30);
 	EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));

@@ -10,7 +10,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <stdio.h>
-
 class GameObject
 {
     public:
@@ -25,9 +24,9 @@ class GameObject
         virtual bool drawSprite(sf::RenderWindow& canvas);
 
     protected:
+        bool isPlaying;
         int xPos;
         int yPos;
-        TextureLoader& textures;
         AnimatedSprite sprite;
 
 

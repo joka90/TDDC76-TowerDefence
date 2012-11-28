@@ -90,7 +90,6 @@ void GameHandler::run()
 		// handle events sent by menu
 		if(nextState!="")
 		{
-			std::cout << nextState << endl;
 			if(nextState=="TRACK")
 			{
 				currentState=TRACKMENU;

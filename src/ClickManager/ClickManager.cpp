@@ -23,10 +23,9 @@ Musens rörs, släpps, trycks ned.
 */
 
 
-ClickManager::ClickManager(vector<Tower*>* newTowervector, MapMatrix& newMapMatrix)
-:    mapMatrix(newMapMatrix)
+ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(textures, sounds, fonts)
 {
-    towerVector = newTowervector;
 }
 
 ClickManager::~ClickManager()
@@ -37,7 +36,7 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     vector<Tower*>::iterator it;
-    for (it = towerVector->begin() ; it != towerVector->end(); ++it)
+    for (it = towerVector.begin() ; it != towerVector.end(); ++it)
     {
         //Gå igenom tornvektor för träffar på dessa koordinater
         //Sätt träffen till markedTower
@@ -64,7 +63,6 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
 }
 void ClickManager::update()
 {
-
     /*
     string ETTBRANAMN;
     if(buyMenu.update())
@@ -91,3 +89,7 @@ void ClickManager::createTower(int x, int y)
 	}
 }
 
+void ClickManager::drawMenus(sf::RenderWindow& canvas)
+{
+    buyMenu.drawMenu(canvas);
+}

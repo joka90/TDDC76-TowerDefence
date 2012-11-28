@@ -6,8 +6,9 @@ using namespace std;
 *   konstruktor, skall det vara så här?
 */
 GameObject::GameObject(int x, int y, TextureLoader& inTextures, const string textureReference)
-    : xPos(x), yPos(y), textures(inTextures)/*, sprite(inTextures.getTexture(textureReference))*/ //TODO, segfault here
+    : isPlaying(true), xPos(x), yPos(y), sprite(inTextures.getTexture(textureReference))
 {
+    //sprite.setTextureAnimation(inTextures.getTexture(textureReference));
     //sprite = AnimatedSprite();
     //sprite.setTextureAnimation(inTextures.getTexture(textureReference));
     //sprite.setTexture(textures.getTexture(textureReference),true);//TODO, segfault here
@@ -17,7 +18,6 @@ GameObject::GameObject(int x, int y, TextureLoader& inTextures, const string tex
     */
 }
 GameObject::GameObject(std::string parms, TextureLoader& inTextures, const string textureReference)
-:textures(inTextures)
 {
 	char dummyStr[100];
 	sscanf(parms.c_str(),"%i,%i,%s",&xPos,&yPos,dummyStr);
@@ -60,13 +60,13 @@ void GameObject::setPos(int newPosX, int newPosY)
 */
 void GameObject::playAnimation()
 {
-    bool isPlaying = true;
+    isPlaying = true;
     sprite.play();
     return;
 }
 void GameObject::pauseAnimation()
 {
-    bool isPlaying = false;
+    isPlaying = false;
     sprite.pause();
     return;
 }

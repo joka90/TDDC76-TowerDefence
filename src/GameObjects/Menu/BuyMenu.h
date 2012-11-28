@@ -3,6 +3,8 @@
 
 #include "Menu.h"
 
+#include <iostream>
+
 
 class BuyMenu : public Menu
 {

@@ -7,9 +7,9 @@ tmpPtr=new type(); \
 using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
+ : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, textures, sounds, fonts)
  {
-     loadBase(trackFile);
+     loadBase(trackFile, 0);
  }
 
 void Level::loadBase(string trackFile, int index)
@@ -57,7 +57,7 @@ void Level::loadBase(string trackFile, int index)
 }
 
 Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
+ : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, inTextures, inSounds, inFonts)
 {
 	char type[20];
 	char subType[20];
@@ -71,7 +71,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 		while (!feof(pFile))
 		{
 			fscanf(pFile, "%s %s %s", type, subType, parms);
-			if(type=="T")
+			if(string(type)=="T")
 			{
 				Tower* tmpPtr=NULL;
 				//allot of elsifs for all difftent subtypes //TODO
@@ -124,8 +124,7 @@ bool Level::update()
 	{
 		(*it)->update(enemies);
 	}
-
-
+    return true;
 }
 
 void Level::draw(sf::RenderWindow& canvas)
@@ -141,7 +140,7 @@ void Level::draw(sf::RenderWindow& canvas)
     {
         (*it)->drawSprite(canvas);
     }
-
+    clickManager.drawMenus(canvas);
 }
 
 void Level::runWave()

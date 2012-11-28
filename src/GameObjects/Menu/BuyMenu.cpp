@@ -1,21 +1,23 @@
 #include "BuyMenu.h"
+#include <iostream>
 
 #define BUYMENUSTARTX 100
-#define BUYMENUSTARTY 500
+#define BUYMENUSTARTY 400
 
 #define TOWERDRAWSTARTX 40
 #define TOWERDRAWSTARTY 40
 #define TOWERWIDTH 100
 #define TOWERHEIGHT 100
-#define TOWERDRAWSPACEX 120
-#define TOWERBUTTON "button.png"
+#define TOWERDRAWSPACEX 160
+#define TOWERBUTTON "BuyButton.png"
 #define CLICKSOUND "CLICK.WAW"
 
-#define BASTORN "Sprites/Bunny/Blue(bunny_1.png"
-#define ANNATTORN "Sprites/Bunny/TowenBunnie(tower_bunnies.png"
+#define BASTORN "Sprites/Bunny/Blue/bunny_1.png"
+#define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies.png"
 
+using namespace std;
 BuyMenu::BuyMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
- : Menu(BUYMENUSTARTX, BUYMENUSTARTY, textures, "BuyMenu.png")
+ : Menu(BUYMENUSTARTX, BUYMENUSTARTY, textures, "StartMenu.png")
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
@@ -25,11 +27,9 @@ BuyMenu::BuyMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts
 
     //lägg till låsatsknappar för utritandet
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, BASTORN, "", "", ""));
+                      textures, sounds, fonts, BASTORN, CLICKSOUND, "", ""));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, ANNATTORN, "", "", ""));
-    buttons[3]->sleep();
-    buttons[4]->sleep();
+                      textures, sounds, fonts, ANNATTORN, CLICKSOUND, "", ""));
     // lägg till priserna på tornen
     priceVector.push_back(100);
     priceVector.push_back(300);
@@ -45,7 +45,7 @@ BuyMenu::~BuyMenu()
 
 bool BuyMenu::update()
 {
-    for(int i = 0; i < priceVector.size(); ++i)
+    for(unsigned int i = 0; i < priceVector.size(); ++i)
     {
         if(buttons[i]->gotPressed())
         {
@@ -54,4 +54,5 @@ bool BuyMenu::update()
             return true;
         }
     }
+    return false;
 }
