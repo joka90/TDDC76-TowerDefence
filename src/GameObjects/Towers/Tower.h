@@ -5,6 +5,8 @@
 #include "../Projectiles/Projectile.h"
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
+#include <string>
+#include <sstream>
 
 /**
  * @author Mikael Karlsson
@@ -29,11 +31,13 @@ public:
     void setDamage(int newDamage);
     int getRange() const;
     void setRange(int newRange);
+    std::string getSaveString();
 
 private:
     int price;
     int damage;
     int range;
+    std::string towerType;
 
 protected:
 
