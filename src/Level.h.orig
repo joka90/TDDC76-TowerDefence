@@ -12,7 +12,6 @@
 #include "Loader/SoundLoader.h"
 #include "Loader/FontLoader.h"
 #include "ClickManager/Player.h"
-#include "ClickManager/ClickManager.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -46,9 +45,13 @@ private:
     Player player;
     std::string trackName;
     void runWave();
-    bool saveLevel(std::string saveFile);
+<<<<<<< HEAD
+    bool saveLevel(string saveFile);
 	void loadBase(std::string trackFile, int index = 0);
-	ClickManager clickManager;
+=======
+    bool saveLevel(std::string saveFile);
+	void loadBase(std::string trackFile);
+>>>>>>> 9f568c93724825cf523d5c0cc0646092ae730e52
 };
 
 #endif //end H

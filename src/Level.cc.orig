@@ -7,7 +7,7 @@ tmpPtr=new type(); \
 using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
  {
      loadBase(trackFile);
  }
@@ -39,7 +39,7 @@ void Level::loadBase(string trackFile, int index)
         loadData.getline(stringBuffer, 256, '\n');
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
-    int spawnX, spawnY;
+    spawnX, spawnY;
     loadData>>spawnX;
     loadData>>spawnY;
     map.setMatrix(MapMatrixData, row, col, spawnX, spawnY);
@@ -53,11 +53,15 @@ void Level::loadBase(string trackFile, int index)
         waveHandlerData = waveHandlerData+temp;
     }
     loadData.ignore();
+<<<<<<< HEAD
     waves = new WaveHandler(waveHandlerData, index);
+=======
+    waves = new WaveHandler(waveHandlerData);
+>>>>>>> cdcdda61bef3e05dea8a7592b49eb6834aa2cbbb
 }
 
 Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
 {
 	char type[20];
 	char subType[20];
@@ -83,19 +87,15 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 			}
 			else if(type=="Level")
 			{
-				int tmpWave;
-				char tmpTrackFile[40];
-				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
-				//Init Level and wave, load from file
-				loadBase(string(tmpTrackFile),tmpWave);
+				//Init Level, load from file
+			}
+			else if(type=="Wave")
+			{
+				//Init waves
 			}
 			else if(type=="Player")
 			{
 				//Init Player
-				int tmpLife;
-				int tmpMoney;
-				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
-				player=Player(tmpLife, tmpMoney);
 			}
 			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
@@ -159,16 +159,10 @@ bool Level::saveLevel(string saveFile)
 		return false;
 	}
 	ostream os(&fb);
-
-	//save player
-	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
-	//save level and waveHandler
-	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
-
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 	{
-		os << (*it)->getSaveString() << endl;
+		std::cout << (*it)->getSaveString() << endl;
 	}
 
 	fb.close();

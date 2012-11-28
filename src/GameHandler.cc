@@ -5,7 +5,7 @@ using namespace std;
 
 GameHandler::GameHandler()
 
-:music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
+:music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
 {
     // init all loaders
     fonts.load(std::string("appleberry_with_cyrillic.ttf"));
