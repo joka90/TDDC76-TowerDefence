@@ -19,8 +19,7 @@
 class ClickManager : public MouseButtonPressedUser {
 	public:
 		ClickManager()=default;
-		ClickManager(int row, int col,
-               std::vector<Tower*>* newTowervector, MapMatrix* newMapMatrix);
+		ClickManager(std::vector<Tower*>* newTowervector, MapMatrix* newMapMatrix);
 		virtual ~ClickManager();
 		void mouseButtonPressedListener(sf::Event event);
 		void mouseButtonReleasedListener(sf::Event event);
