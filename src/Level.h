@@ -10,13 +10,14 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 
 class Level
 {
 public:
 
     Level();
-    Level(string filename);
+    Level(string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     string name;
 
@@ -34,7 +35,7 @@ private:
     WaveHandler* waves;
 
     void runWave();
-    void saveMap();
+    bool saveLevel(string saveFile);
 };
 
 #endif //end H
