@@ -19,7 +19,7 @@ public:
     Level();
     Level(string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
-    string name;
+    std::string name;
 
     Player player;
 
@@ -35,7 +35,7 @@ private:
     WaveHandler* waves;
 
     void runWave();
-    bool saveLevel(string saveFile);
+    bool saveLevel(std::string saveFile);
 };
 
 #endif //end H
