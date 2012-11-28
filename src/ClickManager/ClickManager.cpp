@@ -23,7 +23,7 @@ Musens rörs, släpps, trycks ned.
 */
 
 
-ClickManager::ClickManager(int row, int col, vector<Tower*>* newTowervector, MapMatrix* newMapMatrix)
+ClickManager::ClickManager(vector<Tower*>* newTowervector, MapMatrix* newMapMatrix)
 {
     towerVector = newTowervector;
     mapMatrix = newMapMatrix;
@@ -52,7 +52,8 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     if(markedTower != NULL)
-    {        if(not mapMatrix->isTaken(x,y))
+    {
+        if(not mapMatrix->isTaken(x,y))
         {
             //
         }
@@ -63,11 +64,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
 }
 void ClickManager::update()
 {
-    vector<Tower*>::iterator it;
-    for (it = towerVector->begin() ; it != towerVector->end(); ++it)
-    {
-        it->update();
-    }
+
     /*
     string ETTBRANAMN;
     if(buyMenu.update())

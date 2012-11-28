@@ -13,14 +13,12 @@ MapMatrix::MapMatrix()
 }
 MapMatrix::MapMatrix(string value,int row, int col, int newSpawnX, int newSpawnY)
 {
-	setMatrix(value,row,col);
-	spawnX = newSpawnX;
-	spawnY = newSpawnY;
-
-
+	setMatrix(value,row,col, newSpawnX, newSpawnY);
 }
-void MapMatrix::setMatrix(string value, int row, int col)
+void MapMatrix::setMatrix(string value, int row, int col, int inSpawnX, int inSpawnY)
 {
+    spawnX = inSpawnX;
+    spawnY = inSpawnY;
 	int numValue;
 	std::istringstream ss(value);
 	// Sätter storleken row x col
