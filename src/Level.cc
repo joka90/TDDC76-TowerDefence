@@ -38,15 +38,19 @@ Level::Level(string saveFile, TextureLoader& inTextureLoader, SoundLoader& inSou
 			}
 			else if(type=="Level")
 			{
-				//Init Level, load from file
-			}
-			else if(type=="Wave")
-			{
-				//Init waves
+				int tmpWave;
+				char tmpTrackFile[40];
+				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
+				//Init Level and wave, load from file
+				//loadBase(string(tmpTrackFile),tmpWave);
 			}
 			else if(type=="Player")
 			{
 				//Init Player
+				int tmpLife;
+				int tmpMoney;
+				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
+				player=Player(tmpLife, tmpMoney);
 			}
 			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
@@ -110,10 +114,17 @@ bool Level::saveLevel(string saveFile)
 		return false;
 	}
 	ostream os(&fb);
+	//save wave
+	//os << "Wave" << " Wave " << "waves.getCurrentWaveIndex()" << endl;
+	//save player
+	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
+	//save level
+	os << "Level" << " Level " << "waves.getCurrentWaveIndex()" << ","  << "CURRENTLEVELFILENAME" endl;
+	
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 	{
-		std::cout << (*it)->getSaveString() << endl;
+		os << (*it)->getSaveString() << endl;
 	}
 
 	fb.close();
