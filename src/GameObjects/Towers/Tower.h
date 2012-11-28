@@ -5,6 +5,8 @@
 #include "../Projectiles/Projectile.h"
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
+#include <string>
+#include <sstream>
 
 /**
  * @author Mikael Karlsson
@@ -30,6 +32,7 @@ public:
     void setDamage(int newDamage);
     int getRange() const;
     void setRange(int newRange);
+    std::string getSaveString();
 
     //Projectile* update(std::vector<Enemy*> enemyVector);
 
@@ -45,6 +48,7 @@ protected:
     int counter;
     int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
     Enemy* getClosestEnemy(std::vector<Enemy*> enemyVector);
+    std::string towerType;
 
 
 };

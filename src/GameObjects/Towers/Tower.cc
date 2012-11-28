@@ -7,18 +7,18 @@
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,
               TextureLoader& inTextureLoader, SoundLoader& inSoundLoader,
                FontLoader& inFontLoader)
-    :GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
-     price(newPrice), damage(newDamage), range(newRange), counter(0), counterMax(newCounterMax)
+:GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
+     price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax), towerType("SubType")
 {
 
 }
 
 Tower::Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
-:GameObject(parms, inTextureLoader, "ENFINBILD")
+:GameObject(parms, inTextureLoader, "ENFINBILD"), towerType("SubType")
 {
-		int dummyInt;
-		//How to scan parameters in towers an other stuff
-		//sscanf (parms,"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+	int dummyInt;
+	//How to scan parameters in towers an other stuff
+	sscanf(parms.c_str(),"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
 }
 
 Tower::~Tower()
@@ -81,6 +81,14 @@ Projectile* Tower::update(std::vector<Enemy*> enemyVector)
     }
 }
 */
+
+std::string Tower::getSaveString()
+{
+    std::stringstream saveString;
+    saveString <<  "T " << towerType << " " << getPosX() << "," << getPosY() << "," << price << "," << damage << "," << range;
+	return saveString.str();
+}
+
 
 
 // -------------- Protected .----------------
