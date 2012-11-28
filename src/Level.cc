@@ -52,7 +52,7 @@ void Level::loadBase(string trackFile)
         waveHandlerData = waveHandlerData+temp;
     }
     loadData.ignore();
-    waves = new WaveHandler(spawnX, spawnY, waveHandlerData);
+    waves = new WaveHandler(waveHandlerData);
 }
 
 Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)

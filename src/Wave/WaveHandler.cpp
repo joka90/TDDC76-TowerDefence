@@ -12,36 +12,45 @@
 
 using namespace std;
 
-WaveHandler::WaveHandler(int newSpawnX, int newSpawnY, string newWavesString)
+WaveHandler::WaveHandler(string wavesString)
 {
-	//Hur ska WaveHandler initieras?
-	/*
-	 * Förslag:
-	 * Sträng:
-	 *"EnemyName1 antal waveNumber EnemyName2 ... "
-	 *
-	 */
-	spawnX = newSpawnX;
-	spawnY = newSpawnY;
-	time = 0;
-	waveNumber = 0;
-	createWaves(newWavesString);
+    string w, waveString;
+    stringstream ss;
 
+    ss << wavesString;
+
+    while(std::getline(ss, waveString)){
+        wavesVector.push_back(Wave(waveString));
+    }
 }
 
-WaveHandler::~WaveHandler() {
+WaveHandler::~WaveHandler(){
+}
+
+WaveHandler::WaveHandler(string wavesString, int startIndex)
+{
+    string w, waveString;
+    stringstream ss;
+
+    ss << wavesString;
+
+    while(std::getline(ss, waveString)){
+        wavesVector.push_back(Wave(waveString));
+    }
+
+    currentWaveIndex = startIndex +1;
 }
 
 void WaveHandler::startNextWave()
 {
 	//TODO
 }
+
+
 bool WaveHandler::isDone()
 {
-	return (waveNumber == (int) wavesVector.size());
+	return (currentWaveIndex == (int) wavesVector.size());
 }
-
-
 
 void WaveHandler::createWaves(string newWavesString)
 {
@@ -49,4 +58,7 @@ void WaveHandler::createWaves(string newWavesString)
 
 }
 
+int WaveHandler::getCurrentWaveIndex(){
+    return currentWaveIndex;
+}
 

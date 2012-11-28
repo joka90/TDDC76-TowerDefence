@@ -1,6 +1,8 @@
 #include "GameHandler.h"
 #include <iostream>
 
+using namespace std;
+
 GameHandler::GameHandler()
 
 :music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), clickManager(), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
