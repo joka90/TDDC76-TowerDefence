@@ -70,8 +70,7 @@ void ClickManager::update()
     if(buyMenu.update())
     {
         ETTBRANAMN = buyMenu.readState();
-        gör ett torn av ETTBRANAMN;
-        markedTower = createTower;
+        markedTower = Skapa ett torn
     }
     //Kör update på menyer
     //Om TRUE, kör readState

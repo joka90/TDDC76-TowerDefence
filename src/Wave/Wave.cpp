@@ -27,6 +27,7 @@ Wave::Wave(string waveString) // str1 str2 str3 ..
 Wave::~Wave() {
 }
 
-Enemy* Wave::getEnemy(int timeDelta){
+Enemy* Wave::getEnemy(int timeDelta)
+{
     return ClassManager::createEnemyInstance(enemyMap[timeDelta]);
 }
