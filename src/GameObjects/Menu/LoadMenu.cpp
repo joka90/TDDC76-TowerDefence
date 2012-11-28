@@ -51,6 +51,7 @@ LoadMenu::LoadMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader&
         tempLoadPair.file = stringBuffer;
         loadVectorData.push_back(tempLoadPair);
     }
+    loadData.close();
     //lägg till knappar
     addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
                       textures, sounds, fonts, ARROWUP, CLICK, "", ""));
