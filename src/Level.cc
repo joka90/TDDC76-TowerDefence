@@ -7,7 +7,7 @@ tmpPtr=new type(); \
 using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
  {
      loadBase(trackFile);
  }
@@ -57,7 +57,7 @@ void Level::loadBase(string trackFile, int index)
 }
 
 Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
+ : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0), clickManager(&towers, map)
 {
 	char type[20];
 	char subType[20];
@@ -164,7 +164,7 @@ bool Level::saveLevel(string saveFile)
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
-	
+
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 	{
