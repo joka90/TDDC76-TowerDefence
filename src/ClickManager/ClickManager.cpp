@@ -6,23 +6,77 @@
  */
 
 #include "ClickManager.h"
+#include "../GameObjects/Towers/Tower.h"
 #include "MapMatrix.h"
 #include <string>
-
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <vector>
 using namespace std;
 /*
  * Fler saker ska in in konstruktorn så fort den koden är klar!
  */
+/*
+Musens rörs, släpps, trycks ned.
 
-ClickManager::ClickManager(string value, int row, int col)
+
+*/
+
+
+ClickManager::ClickManager(string value, int row, int col, vector<Tower*>* newTowervector)
 {
+    towerVector = newTowervector;
 	mapMatrix.setMatrix(value,row,col);
 }
 
 ClickManager::~ClickManager()
 {
 }
+void ClickManager::mouseButtonPressedListener(sf::Event event)
+{
+    int x = event.mouseButton.x;
+    int y = event.mouseButton.y;
+    vector<Tower*>::iterator it;
+    for (it = towerVector->begin() ; it != towerVector->end(); ++it)
+    {
+        //Gå igenom tornvektor för träffar på dessa koordinater
+        //Sätt träffen till markedTower
+    }
 
+
+
+}
+void ClickManager::mouseButtonReleasedListener(sf::Event event)
+{
+
+    int x = event.mouseButton.x;
+    int y = event.mouseButton.y;
+    if(markedTower != NULL)
+    {
+        if(not mapMatrix.isTaken(x,y))
+        {
+            //
+        }
+    }
+    //Kolla om torn ska placeras ut
+
+
+}
+void ClickManager::update()
+{
+
+    /*
+    string ETTBRANAMN;
+    if(buyMenu.update())
+    {
+        ETTBRANAMN = buyMenu.readState();
+        gör ett torn av ETTBRANAMN;
+        markedTower = createTower;
+    }
+    //Kör update på menyer
+    //Om TRUE, kör readState
+    */
+}
 void ClickManager::createTower(int x, int y)
 {
 
