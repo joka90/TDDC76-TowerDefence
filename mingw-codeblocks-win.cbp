@@ -72,6 +72,8 @@
 		<Unit filename="src/GameObjects/GameObject.h" />
 		<Unit filename="src/GameObjects/Menu/Button.cpp" />
 		<Unit filename="src/GameObjects/Menu/Button.h" />
+		<Unit filename="src/GameObjects/Menu/BuyMenu.cpp" />
+		<Unit filename="src/GameObjects/Menu/BuyMenu.h" />
 		<Unit filename="src/GameObjects/Menu/LoadMenu.cpp" />
 		<Unit filename="src/GameObjects/Menu/LoadMenu.h" />
 		<Unit filename="src/GameObjects/Menu/Menu.cpp" />
