@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <iostream>
 #include <fstream>
 
 class Level
@@ -25,7 +26,7 @@ public:
     Level(std::string saveFile, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
     Level(std::string trackName, int, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
 
-    string name;
+    std::string name;
 
     bool update();
     void draw(sf::RenderWindow& canvas);
@@ -44,7 +45,7 @@ private:
     Player player;
     std::string trackName;
     void runWave();
-    bool saveLevel(string saveFile);
+    bool saveLevel(std::string saveFile);
 	void loadBase(string trackFile);
 };
 
