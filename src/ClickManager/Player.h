@@ -10,6 +10,7 @@
 
 class Player {
 	public:
+        Player();
 		Player(int life, int money);
 		virtual ~Player();
 

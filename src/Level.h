@@ -15,13 +15,14 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 
 class Level
 {
 public:
 
     Level() = delete;
-    Level(std::string filename, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
+    Level(std::string saveFile, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
     Level(std::string trackName, int, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
 
     string name;
@@ -43,8 +44,8 @@ private:
     Player player;
     std::string trackName;
     void runWave();
-    void saveMap();
-    void loadBase(string trackFile);
+    bool saveLevel(string saveFile);
+	void loadBase(string trackFile);
 };
 
 #endif //end H

@@ -1,9 +1,4 @@
 #include "Level.h"
-#include <string>
-#include <iostream>
-#include <fstream>
-
-#define TRACKFOLDER "levels/"
 
 #define createObjectFromType(parm,type) if(parm==#type) {  \
 tmpPtr=new type(); \
@@ -13,9 +8,9 @@ using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
  : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
-{
-    loadBase(trackFile);
-}
+ {
+     loadBase(trackFile);
+ }
 
 void Level::loadBase(string trackFile)
 {
@@ -60,7 +55,7 @@ void Level::loadBase(string trackFile)
     waves = new WaveHandler(spawnX, spawnY, waveHandlerData);
 }
 
-Level::Level(string filename, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
+Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
  : textures(inTextures), sounds(inSounds), music(inMusic), fonts(inFonts), player(0,0)
 {
 	char type[20];
@@ -69,52 +64,40 @@ Level::Level(string filename, TextureLoader& inTextures, SoundLoader& inSounds, 
 
 	FILE * pFile;
 
-	pFile = fopen(filename.c_str(),"r");
+	pFile = fopen(saveFile.c_str(),"r");
 	if (pFile!=NULL)
-  	{
-  		while (!feof(pFile))
-  		{
+	{
+		while (!feof(pFile))
+		{
 			fscanf(pFile, "%s %s %s", type, subType, parms);
-            if(type=="T")
-            {
-                Tower* tmpPtr=NULL;
-                //allot of elsifs for all difftent subtypes //TODO
-                //createObjectFromType(subType,MegaTower) //macro
-                // new Tower(parms, textureLoader, soundLoader, fontLoader)
-                if(tmpPtr!=NULL)
-                {
-                    //towers.push_back(tmpPtr);
-                }
-            }
-        /*	else if(type=="E")
-            {
-                Tower* tmpPtr=NULL;
-                //allot of elsifs for all difftent subtypes
-                if(tmpPtr!=NULL)
-                {
-                    towers.push_back(tmpPtr);
-                }
-            }*/
-            else  if(type=="P")
-            {
-                Projectile* tmpPtr=NULL;
-                //allot of elsifs for all difftent subtypes
-                if(tmpPtr!=NULL)
-                {
-                    //towers.push_back(tmpPtr);
-                }
-            }
-            else if(type=="Player")
-            {
-
-            }
-			//createObject(string(type), string(subType), string(parms)); //TODO
+			if(type=="T")
+			{
+				Tower* tmpPtr=NULL;
+				//allot of elsifs for all difftent subtypes //TODO
+				// new Tower(parms, textureLoader, soundLoader, fontLoader)
+				if(tmpPtr!=NULL)
+				{
+					//towers.push_back(tmpPtr);
+				}
+			}
+			else if(type=="Level")
+			{
+				//Init Level, load from file
+			}
+			else if(type=="Wave")
+			{
+				//Init waves
+			}
+			else if(type=="Player")
+			{
+				//Init Player
+			}
 			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
 	}
 	else
 	{
-		cout << "error reading file: " << filename << endl;
+		cout << "error reading file: " << saveFile << endl;
 	}
 	fclose(pFile);
 }
@@ -122,20 +105,20 @@ Level::Level(string filename, TextureLoader& inTextures, SoundLoader& inSounds, 
 bool Level::update()
 {
 
-    // Update towers
-    for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
-    {
-        Projectile* p = (*it)->update(enemies);
-        if(p != NULL){
-            projectiles.push_back(p);
-        }
+	// Update towers
+	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+	{
+		Projectile* p = (*it)->update(enemies);
+		if(p != NULL){
+			projectiles.push_back(p);
+		}
 
-    }
-    // Update projectiles
-    for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
-    {
-        (*it)->update(enemies);
-    }
+	}
+	// Update projectiles
+	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+	{
+		(*it)->update(enemies);
+	}
 
 
 }
@@ -161,8 +144,22 @@ void Level::runWave()
 
 }
 
-void Level::saveMap()
+bool Level::saveLevel(string saveFile)
 {
+	filebuf fb;
+	fb.open(saveFile,ios::out);
+	if (!fb.is_open())
+	{
+		cout << "Error opening file" << endl;
+		return false;
+	}
+	ostream os(&fb);
+	//save all towers
+	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+	{
+		std::cout << (*it)->getSaveString() << endl;
+	}
 
-
+	fb.close();
+	return true;
 }

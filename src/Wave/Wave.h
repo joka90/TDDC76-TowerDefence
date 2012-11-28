@@ -9,18 +9,24 @@
 #define WAVE_H
 #include <string>
 #include <map>
+#include "../GameObjects/Enemies/Enemy.h"
 class Wave {
 	public:
-		Wave();
+
+        // Constructs a wave with the enemies and their insertion times (offset from wave start) described as:
+        //  "EnemyName 0 EnemyName 100"
+        // Remark: Only ONE enemy can be placed at a certain time
+		Wave(std::string waveString);
+
 		virtual ~Wave();
 
-		//enemy* update(int xSpawn, int ySpawn)
-		std::string getName();
-		void insertEnemy(int timeDelay, std::string enemyName);
-
-		std::map<int,std::string> enemyMap;
+        // Returns the enemy that should be placed to the track at the time given by timeDelta.
+        //   timeDelta - the time (in ms) since the start of the wave.
+		Enemy* getEnemy(int timeDelta);
 
 	private:
+
+        std::map<int,std::string> enemyMap;
 };
 
 #endif /* WAVE_H_ */
