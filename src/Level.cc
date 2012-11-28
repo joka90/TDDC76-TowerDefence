@@ -74,11 +74,15 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 			if(type=="T")
 			{
 				Tower* tmpPtr=NULL;
-				//allot of elsifs for all difftent subtypes //TODO
-				// new Tower(parms, textureLoader, soundLoader, fontLoader)
+				if(subType=="LongTower")
+				{
+					//tmpPtr=new LongTower(string(parms), textureLoader, soundLoader, fontLoader);
+				}
+				
+				//add tower if created
 				if(tmpPtr!=NULL)
 				{
-					//towers.push_back(tmpPtr);
+					towers.push_back(tmpPtr);
 				}
 			}
 			else if(type=="Level")
@@ -131,6 +135,14 @@ bool Level::update()
 void Level::draw(sf::RenderWindow& canvas)
 {
     canvas.draw(background);
+	// Create a graphical text to display
+	std::stringstream ss;
+	ss << "Money:" << player.getMoney() << " Life: " << player.getLife();
+    sf::Text text(ss.str(), fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
+    text.move(300,20);
+
+	// Update the canvas
+	canvas.draw(text);
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
