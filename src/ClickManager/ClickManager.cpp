@@ -66,7 +66,7 @@ void ClickManager::update()
     vector<Tower*>::iterator it;
     for (it = towerVector->begin() ; it != towerVector->end(); ++it)
     {
-        update();
+        it->update();
     }
     /*
     string ETTBRANAMN;
