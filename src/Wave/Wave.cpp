@@ -8,6 +8,7 @@
 #include "Wave.h"
 #include <string>
 #include <sstream>
+#include "../ClassManager.h"
 using namespace std;
 
 Wave::Wave(string waveString) // str1 str2 str3 ..
@@ -19,18 +20,13 @@ Wave::Wave(string waveString) // str1 str2 str3 ..
     while(ss >> w)
     {
         int timeDelta = atoi(w.c_str());
-        //w?
+        enemyMap.insert(pair<int,string>(timeDelta, w));
     }
 }
 
 Wave::~Wave() {
 }
 
-/*
-enemy* Wave::update(int xSpawn, int ySpawn, int time)
-{
-	Kolla time = timeDelay för Skapa fiende
-	time++
-	return fiende
+Enemy* Wave::getEnemy(int timeDelta){
+    return ClassManager::createEnemyInstance(enemyMap[timeDelta]);
 }
-*/
