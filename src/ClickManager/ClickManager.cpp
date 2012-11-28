@@ -11,6 +11,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 using namespace std;
 /*
  * Fler saker ska in in konstruktorn så fort den koden är klar!
@@ -22,8 +23,9 @@ Musens rörs, släpps, trycks ned.
 */
 
 
-ClickManager::ClickManager(string value, int row, int col)
+ClickManager::ClickManager(string value, int row, int col, vector<Tower*> newTowervector)
 {
+    towerVector = newTowervector;
 	mapMatrix.setMatrix(value,row,col);
 }
 
@@ -35,6 +37,13 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     //sf::Vector2i localPosition = sf::Mouse::getPosition();
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
+    vector<Tower*>::iterator it;
+    for (it = towerVector.begin() ; it != towerVector.end(); ++it)
+    {
+
+    }
+    //vector<Tower*>::iterator it;
+    //for ( it = towerVector.begin() ; it != towerVector.end(); ++it)
     //Gå igenom tornvektor för träffar på dessa koordinater
     //Sätt träffen till markedTower
 

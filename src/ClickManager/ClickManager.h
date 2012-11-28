@@ -14,11 +14,12 @@
 #include "../EventUser.h"
 #include "../GameObjects/Towers/Tower.h"
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 class ClickManager : public MouseButtonPressedUser {
 	public:
 		ClickManager()=default;
-		ClickManager(std::string value, int row, int col);
+		ClickManager(std::string value, int row, int col, std::vector<Tower*> newTowervector);
 		virtual ~ClickManager();
 		void mouseButtonPressedListener(sf::Event event);
 		void mouseButtonReleasedListener(sf::Event event);
@@ -33,6 +34,7 @@ class ClickManager : public MouseButtonPressedUser {
 		 */
 	private:
 		//void updateMenu()
+		std::vector<Tower*> towerVector;
 		Tower* markedTower;
 		void createTower(int x, int y);
 		MapMatrix mapMatrix;
