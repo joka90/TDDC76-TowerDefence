@@ -67,7 +67,6 @@ TrackMenu::~TrackMenu()
 
 void TrackMenu::updateLoadButtons()
 {
-    cout << trackVectorData.size() << endl;
     while(buttons.size() > 3)
     {
         removeButton(3);

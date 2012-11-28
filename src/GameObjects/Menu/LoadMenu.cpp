@@ -68,7 +68,6 @@ LoadMenu::~LoadMenu()
 
 void LoadMenu::updateLoadButtons()
 {
-    cout << loadVectorData.size() << endl;
     while(buttons.size() > 3)
     {
         removeButton(3);
