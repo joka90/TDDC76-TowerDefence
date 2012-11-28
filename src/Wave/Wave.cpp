@@ -7,24 +7,25 @@
 
 #include "Wave.h"
 #include <string>
+#include <sstream>
 using namespace std;
 
-Wave::Wave()
+Wave::Wave(string waveString) // str1 str2 str3 ..
 {
+    string w;
+    stringstream ss;
 
+    ss << waveString;
+    while(ss >> w)
+    {
+        int timeDelta = atoi(w.c_str());
+        //w?
+    }
 }
 
 Wave::~Wave() {
 }
 
-string Wave::getName()
-{
-	return enemyMap.find(1)->second;
-}
-void Wave::insertEnemy(int timeDelay, string enemyName)
-{
-	enemyMap.insert(pair<int,string>(timeDelay,enemyName));
-}
 /*
 enemy* Wave::update(int xSpawn, int ySpawn, int time)
 {

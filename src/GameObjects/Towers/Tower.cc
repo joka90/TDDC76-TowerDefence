@@ -13,7 +13,7 @@ Tower::Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inS
 {
 		int dummyInt;
 		//How to scan parameters in towers an other stuff
-		//sscanf (parms,"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+		sscanf(parms.c_str(),"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
 }
 
 Tower::~Tower()

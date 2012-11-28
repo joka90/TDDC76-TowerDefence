@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Wave/Wave.h"
 #include "Wave/WaveHandler.h"
+#include "ClickManager/Player.h"
 #include "ClickManager/MapMatrix.h"
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Projectiles/Projectile.h"
@@ -18,6 +19,8 @@ public:
     Level(string filename);
 
     string name;
+
+    Player player;
 
     bool update();
     void draw(sf::RenderWindow& canvas);

@@ -13,6 +13,8 @@ Player::Player(int newMoney,int newLife) {
 	money = newMoney;
 }
 
+Player::Player() { }
+
 Player::~Player() {
 }
 bool Player::canAfford(int cost)

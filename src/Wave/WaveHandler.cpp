@@ -45,26 +45,7 @@ bool WaveHandler::isDone()
 
 void WaveHandler::createWaves(string newWavesString)
 {
-	string enemyName;
-	int number, waveNumber(0), timeDelay(0), oldWaveNumber(0);
-	stringstream ss(newWavesString);
-	while(ss.good())
-	{
-		ss >> enemyName;
-		ss >> number;
-		ss >> waveNumber;
-		if(oldWaveNumber != waveNumber)
-		{
-			timeDelay = 0;
-		}
-		oldWaveNumber = waveNumber;
-		wavesVector.resize(waveNumber + 1);
-		for(int i = 0; i < number; i++)
-		{
-			wavesVector[waveNumber].insertEnemy(timeDelay+i, enemyName);
-		}
-		timeDelay = timeDelay + number;
-	}
+
 
 }
 

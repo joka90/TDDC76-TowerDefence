@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "ClickManager/Player.h"
 
 #define createObjectFromType(parm,type) if(parm==#type) {  \
 tmpPtr=new type(); \
