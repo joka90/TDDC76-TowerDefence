@@ -12,7 +12,7 @@
 
 using namespace std;
 
-WaveHandler::WaveHandler(string wavesString)
+WaveHandler::WaveHandler(string wavesString) : isRunning(false)
 {
     string w, waveString;
     stringstream ss;
@@ -24,10 +24,7 @@ WaveHandler::WaveHandler(string wavesString)
     }
 }
 
-WaveHandler::~WaveHandler(){
-}
-
-WaveHandler::WaveHandler(string wavesString, int startIndex)
+WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
     string w, waveString;
     stringstream ss;
@@ -41,24 +38,31 @@ WaveHandler::WaveHandler(string wavesString, int startIndex)
     currentWaveIndex = startIndex +1;
 }
 
+WaveHandler::~WaveHandler(){
+}
+
+
+/* Starts a new wave
+ *
+ */
 void WaveHandler::startNextWave()
 {
-	//TODO
+	clock.restart();
+	isRunning = true;
 }
 
-
-bool WaveHandler::isDone()
-{
-	return (currentWaveIndex == (int) wavesVector.size());
-}
-
-void WaveHandler::createWaves(string newWavesString)
-{
-
-
+/* Returns the Enemy that should be placed at the time time
+ */
+Enemy* WaveHandler::update(){
+    if(isRunning)
+        return wavesVector[currentWaveIndex].getEnemy(clock.getElapsedTime().asMilliseconds());
 }
 
 int WaveHandler::getCurrentWaveIndex(){
     return currentWaveIndex;
+}
+
+bool WaveHandler::getIsRunning(){
+    return isRunning;
 }
 

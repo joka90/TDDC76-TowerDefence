@@ -39,10 +39,7 @@ void Level::loadBase(string trackFile, int index)
         loadData.getline(stringBuffer, 256, '\n');
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
-    int spawnX, spawnY;
-    loadData>>spawnX;
-    loadData>>spawnY;
-    map.setMatrix(MapMatrixData, row, col, spawnX, spawnY);
+    map.setMatrix(MapMatrixData, row, col);
     //ladda waveHandler
 
     string waveHandlerData;
@@ -123,6 +120,16 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 
 bool Level::update()
 {
+    // Update WaveHandler (place new enemy if one)
+    Enemy* enemyToBePlaced = waves->update();
+    if(enemyToBePlaced != NULL)
+        enemies.push_back(enemyToBePlaced);
+
+    //Update enemies
+    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+    {
+        //(*it)->update(map);
+    }
 
 	// Update towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
