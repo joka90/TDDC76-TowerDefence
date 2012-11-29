@@ -10,6 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <stdio.h>
+
 class GameObject
 {
     public:

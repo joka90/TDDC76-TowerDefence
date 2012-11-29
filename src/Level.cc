@@ -60,6 +60,12 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 	char subType[20];
 	char parms[200];
 
+	//Temp variabels to load into	
+	int tmpLife;
+	int tmpMoney;
+	int tmpWave;
+	char tmpTrackFile[50];
+
 	FILE * pFile;
 
 	pFile = fopen(saveFile.c_str(),"r");
@@ -78,7 +84,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				{
 					tmpPtr=new LongTower(parmsStr, textures, sounds, fonts);
 				}
-				cout << "New tower " << typeStr <<  " parms: " << parmsStr << endl;
+				cout << "New tower " << subTypeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
@@ -87,28 +93,27 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 			}
 			else if(typeStr=="Level")
 			{
-				int tmpWave;
-				char tmpTrackFile[50];
 				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
-				//Init Level and wave, load from file
-				loadBase(string(tmpTrackFile),tmpWave);
-				cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
 			}
-			else if(typeStr=="Player")// TODO, fixa så att inte level kan råka skriva över player, ty players init poäng ligger där
+			else if(typeStr=="Player")
 			{
-				//Init Player
-				int tmpLife;
-				int tmpMoney;
 				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
-				player=Player(tmpMoney, tmpLife);
-				cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 			}
-			cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
+			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
+
+		//Init Level and wave, load from file
+		loadBase(string(tmpTrackFile),tmpWave);
+		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
+	
+		//init player after Level to overwrite life and money
+		player=Player(tmpMoney, tmpLife);
+		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
+
 	}
 	else
 	{
-		cout << "error reading file: " << saveFile << endl;
+		cout << "error reading save file: " << saveFile << endl;
 	}
 	fclose(pFile);
 }
@@ -178,15 +183,15 @@ bool Level::saveLevel(string saveFile)
 	fb.open(saveFile,ios::out);
 	if (!fb.is_open())
 	{
-		cout << "Error opening file" << endl;
+		cout << "Error opening save file" << endl;
 		return false;
 	}
 	ostream os(&fb);
 
-	//save player
-	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
+	//save player
+	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)

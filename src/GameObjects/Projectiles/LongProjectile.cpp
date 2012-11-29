@@ -5,7 +5,7 @@
 LongProjectile::LongProjectile(int newX, int newY, int newDamage,
                                Enemy* newEnemy, TextureLoader& inTextureLoader,
                                SoundLoader& inSoundLoader)
-: Projectile(newX, newY, newDamage, 15, newEnemy, inTextureLoader, inSoundLoader)
+: Projectile(newX, newY, newDamage, 15, newEnemy,"Sprites/arrow.png", inTextureLoader, inSoundLoader)
 {
 
 }

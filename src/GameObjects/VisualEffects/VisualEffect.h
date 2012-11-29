@@ -6,7 +6,7 @@
 class VisualEffect : public GameObject
 {
 public:
-    VisualEffect(int newX, int newY, int newSpeed, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
+    VisualEffect(int newX, int newY, int newSpeed,  std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
     virtual bool drawSprite(sf::RenderWindow& canvas);
 private:
 
