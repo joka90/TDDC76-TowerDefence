@@ -1,9 +1,7 @@
 #include "Enemy.h"
-Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue,
-          TextureLoader& inTextureLoader,
-          SoundLoader& inSoundLoader)
-    : GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
-      life(newLife), speed(newSpeed), value(newValue), sounds(inSoundLoader)
+Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader)
+
+ : GameObject(newX, newY, inTextureLoader, textureReference), life(newLife), speed(newSpeed), value(newValue), sounds(inSoundLoader)
 {
 
 }
