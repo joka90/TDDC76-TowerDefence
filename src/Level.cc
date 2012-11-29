@@ -116,7 +116,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 	}
 	else
 	{
-		cout << "error reading file: " << saveFile << endl;
+		cout << "error reading save file: " << saveFile << endl;
 	}
 	fclose(pFile);
 }
@@ -176,15 +176,15 @@ bool Level::saveLevel(string saveFile)
 	fb.open(saveFile,ios::out);
 	if (!fb.is_open())
 	{
-		cout << "Error opening file" << endl;
+		cout << "Error opening save file" << endl;
 		return false;
 	}
 	ostream os(&fb);
 
-	//save player
-	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
+	//save player
+	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 
 	//save all towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)

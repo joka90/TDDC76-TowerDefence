@@ -6,19 +6,22 @@
 LongTower::LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,
            TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
            , FontLoader& inFontLoader)
-: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax, inTextureLoader, inSoundLoader, inFontLoader)
+: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/tower_bunnies.png", inTextureLoader, inSoundLoader, inFontLoader)
 {
+	towerType="LongTower";
 }
 
 LongTower::LongTower(std::string parms, TextureLoader& inTextureLoader,
                      SoundLoader& inSoundLoader, FontLoader& inFontLoader)
-: Tower(parms, inTextureLoader, inSoundLoader, inFontLoader)
+: Tower(parms,"Sprites/Bunny/tower_bunnies.png", inTextureLoader, inSoundLoader, inFontLoader)
 {
+	towerType="LongTower";
 }
 
 
 LongTower::~LongTower()
 {
+
 }
 
 

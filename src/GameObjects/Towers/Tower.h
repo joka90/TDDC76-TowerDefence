@@ -15,11 +15,11 @@
 class Tower : public GameObject
 {
 public:
-    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,
+    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,  std::string textureReference,
            TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
            , FontLoader& inFontLoader);
 
-	Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+	Tower(std::string parms,  std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
 
     ~Tower();
 
