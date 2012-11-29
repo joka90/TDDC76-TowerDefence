@@ -6,9 +6,7 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(int newX, int newY, int newLife, int newSpeed, int newValue,
-          int newDirX, int newDirY, TextureLoader& inTextureLoader,
-          SoundLoader& inSoundLoader);
+    Enemy(int newX, int newY, int newLife, int newSpeed, int newValue, int newDirX, int newDirY, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
 
     ~Enemy();
 
