@@ -34,22 +34,26 @@ public:
     void draw(sf::RenderWindow& canvas);
 
 private:
-    TextureLoader& textures;
-    SoundLoader& sounds;
-    FontLoader& fonts;
-    MusicLoader& music;
-    AnimatedSprite background;
+    WaveHandler* waves;
     MapMatrix map;
+    Player player;
+    ClickManager clickManager;
+
+    std::string trackName;
+
     std::vector<Enemy*> enemies;
     std::vector<Tower*> towers;
     std::vector<Projectile*> projectiles;
-    WaveHandler* waves;
-    Player player;
-    std::string trackName;
+
     void runWave();
     bool saveLevel(std::string saveFile);
 	void loadBase(std::string trackFile, int index = 0);
-	ClickManager clickManager;
+
+	AnimatedSprite background;
+	TextureLoader& textures;
+    SoundLoader& sounds;
+    FontLoader& fonts;
+    MusicLoader& music;
 };
 
 #endif //end H

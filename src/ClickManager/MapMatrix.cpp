@@ -11,14 +11,12 @@ using namespace std;
 MapMatrix::MapMatrix()
 {
 }
-MapMatrix::MapMatrix(string value,int row, int col, int newSpawnX, int newSpawnY)
+MapMatrix::MapMatrix(string value,int row, int col)
 {
-	setMatrix(value,row,col, newSpawnX, newSpawnY);
+	setMatrix(value,row,col);
 }
-void MapMatrix::setMatrix(string value, int row, int col, int inSpawnX, int inSpawnY)
+void MapMatrix::setMatrix(string value, int row, int col)
 {
-    spawnX = inSpawnX;
-    spawnY = inSpawnY;
 	int numValue;
 	std::istringstream ss(value);
 	// Sätter storleken row x col
@@ -60,10 +58,10 @@ bool MapMatrix::isPath(int x, int y)
 	return (matrix[x][y] == 1);
 }
 
-pair<int, int> MapMatrix::getNextCoord(int newPosition)
+pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
 {
-    int x = path[newPosition].first;
-    int y = path[newPosition].second;
+    int x = path[currentPathPosition+1].first;
+    int y = path[currentPathPosition+1].second;
     return make_pair(x,y);
 }
 

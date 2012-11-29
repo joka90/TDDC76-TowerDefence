@@ -1,9 +1,9 @@
 #include "Enemy.h"
 Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue,
-          int newDirX, int newDirY, TextureLoader& inTextureLoader,
+          TextureLoader& inTextureLoader,
           SoundLoader& inSoundLoader)
     : GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
-      life(newLife), speed(newSpeed), value(newValue), dirX(newDirX), dirY(newDirY), sounds(inSoundLoader)
+      life(newLife), speed(newSpeed), value(newValue), sounds(inSoundLoader)
 {
 
 }
@@ -11,14 +11,6 @@ Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue,
 Enemy::~Enemy()
 {
 }
-
-/*bool Enemy::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject, behövs ej.. /T
-{
-   sprite.move(xPos,xPos);
-   canvas.draw(sprite);//game object always have a sprite
-   return true;
-}*/
-
 
 
 int Enemy::getLife() const
@@ -53,26 +45,9 @@ void Enemy::setValue(int newValue)
     return;
 }
 
-int Enemy::getDirX() const
-{
-    return dirX;
-}
 
-void Enemy::setDirX(int newDirX)
-{
-    dirX = newDirX;
-    return;
-}
+void update(MapMatrix& map){
 
-int Enemy::getDirY() const
-{
-    return dirY;
-}
-
-void Enemy::setDirY(int newDirY)
-{
-    dirY = newDirY;
-    return;
 }
 
 void Enemy::hit(int damage)
@@ -82,11 +57,5 @@ void Enemy::hit(int damage)
 }
 
 
-void Enemy::move()
-{
-    xPos = xPos + dirX;
-    yPos = yPos + dirY;
-    return;
-}
 
 

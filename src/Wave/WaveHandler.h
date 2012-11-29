@@ -17,23 +17,21 @@ class WaveHandler {
         WaveHandler(std::string wavesString, int startIndex);
 		virtual ~WaveHandler();
 
-		void startNextWave();
+        // Starts the next wave
+        void startNextWave();
+
+        // If a new enemy should be placed, it is returned
+		Enemy* update();
+
 		int getCurrentWaveIndex();
-
-		Enemy* update(int time);
-
-		bool isDone();
+        bool getIsRunning();
 
 	private:
-		/*
-		 * Tar en sträng på formen "enemyName number" waveNumber osv på samma sätt
-		 * och skapar Waves som läggs i wavesVectorn
-		 */
-		void createWaves(std::string newWavesString);
 		void printMatrix();
 
 		int currentWaveIndex;
-		int time;
+		bool isRunning;
+		sf::Clock clock;
 		std::vector<Wave> wavesVector; //Innehåller Waves
 
 };

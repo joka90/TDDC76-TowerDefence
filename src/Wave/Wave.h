@@ -18,7 +18,7 @@ class Wave {
         // Remark: Only ONE enemy can be placed at a certain time
 		Wave(std::string waveString);
 
-		virtual ~Wave();
+		~Wave();
 
         // Returns the enemy that should be placed to the track at the time given by timeDelta.
         //   timeDelta - the time (in ms) since the start of the wave.
@@ -26,7 +26,8 @@ class Wave {
 
 	private:
 
-        std::map<int,std::string> enemyMap;
+        std::vector<std::pair<int,std::string> > enemies;
+        int nextIndex;
 };
 
 #endif /* WAVE_H_ */

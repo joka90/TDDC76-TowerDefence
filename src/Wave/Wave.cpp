@@ -11,7 +11,7 @@
 #include "../ClassManager.h"
 using namespace std;
 
-Wave::Wave(string waveString) // str1 str2 str3 ..
+Wave::Wave(string waveString) : nextIndex(0) // str1 str2 str3 ..
 {
     string w;
     stringstream ss;
@@ -20,7 +20,7 @@ Wave::Wave(string waveString) // str1 str2 str3 ..
     while(ss >> w)
     {
         int timeDelta = atoi(w.c_str());
-        enemyMap.insert(pair<int,string>(timeDelta, w));
+        enemies.push_back(pair<int,string>(timeDelta, w));
     }
 }
 
@@ -29,5 +29,9 @@ Wave::~Wave() {
 
 Enemy* Wave::getEnemy(int timeDelta)
 {
-    return ClassManager::createEnemyInstance(enemyMap[timeDelta]);
+    // If the next enemy shall be placed
+    if(enemies[nextIndex].first <= timeDelta){
+        nextIndex++;
+        return ClassManager::createEnemyInstance(enemies[nextIndex-1].second);
+    }
 }

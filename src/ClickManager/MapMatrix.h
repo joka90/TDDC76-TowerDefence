@@ -14,17 +14,17 @@ class MapMatrix
 {
     public:
 		MapMatrix();
-		MapMatrix(std::string value, int row, int col, int inSpawnX, int inSpawnY);
-		void setMatrix(std::string value, int row, int col, int inSpawnX, int inSpawnY);
+		MapMatrix(std::string value, int row, int col);
+		void setMatrix(std::string value, int row, int col);
 		bool isTaken(int x, int y);
 		void setTower(int x, int y);
 		bool isPath(int x, int y);
-		std::pair<int, int> getNextCoord(int currentPosition); //EJ pixelkoordinater utan matrixkoordinator
+		std::pair<int, int> getNextCoord(int currentPathPosition); //EJ pixelkoordinater utan matrixkoordinator
 
 		/*
 		 * Finns endast för felsökning
 		 */
-        int spawnX,spawnY;
+
 		void printMatrix();
 
     private:
