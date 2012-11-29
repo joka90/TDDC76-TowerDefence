@@ -6,6 +6,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <sstream>
+#define SIDE 50
 using namespace std;
 
 MapMatrix::MapMatrix()
@@ -45,26 +46,42 @@ void MapMatrix::setMatrix(string value, int row, int col, int inSpawnX, int inSp
 	}
 }
 
-bool MapMatrix::isTaken(int x, int y)
+bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
-	return !(matrix[x][y] == 0);
+    pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
+	return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
 }
 
-void MapMatrix::setTower(int x, int y)
+void MapMatrix::setTower(int pixelX, int pixelY)
 {
-	matrix[x][y] = 2; //Tower = 2
+	matrix[pixelX][pixelY] = 2; //Tower = 2
 }
 
-bool MapMatrix::isPath(int x, int y)
+bool MapMatrix::isPath(int pixelX, int pixelY)
 {
-	return (matrix[x][y] == 1);
+    pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
+	return (matrix[matrixPixel.first][matrixPixel.second] == 1);
 }
 
 pair<int, int> MapMatrix::getNextCoord(int newPosition)
 {
-    int x = path[newPosition].first;
-    int y = path[newPosition].second;
+    int x = ((path[newPosition].first + 0.5) * SIDE);
+    int y = ((path[newPosition].second + 0.5) * SIDE);
     return make_pair(x,y);
+}
+int MapMatrix::getHeight()
+{
+    return matrix[0].size();
+}
+int MapMatrix::getWidth()
+{
+    return matrix.size();
+}
+pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
+{
+    int matrixX = (pixelX * getWidth() / SIDE);
+    int matrixY = (pixelY * getHeight() / SIDE);
+    return make_pair(matrixX,matrixY);
 }
 
 

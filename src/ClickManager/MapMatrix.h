@@ -10,6 +10,8 @@
 
 #include <string>
 #include <vector>
+
+
 class MapMatrix
 {
     public:
@@ -19,7 +21,8 @@ class MapMatrix
 		bool isTaken(int x, int y);
 		void setTower(int x, int y);
 		bool isPath(int x, int y);
-		std::pair<int, int> getNextCoord(int currentPosition); //EJ pixelkoordinater utan matrixkoordinator
+		std::pair<int, int> getNextCoord(int currentPosition);  //Pixelkoordinater mitt i rutan
+                                                                //Tex. (0.0) -> (25.25) med 50px-rutor
 
 		/*
 		 * Finns endast för felsökning
@@ -28,6 +31,9 @@ class MapMatrix
 		void printMatrix();
 
     private:
+        int getHeight();
+		int getWidth();
+		std::pair<int,int> convertPixelToMatrix(int pixelX,int pixelY);
 		/*
 		 * 1 = Path
 		 * 2 = Tower
@@ -39,8 +45,6 @@ class MapMatrix
          // Ex: 0 0 0 0 0 0 0
          //     1 1 1 0 1 1 1
          //     0 0 1 1 1 0 0
-
-
 
 };
 

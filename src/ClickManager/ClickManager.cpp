@@ -18,15 +18,13 @@ using namespace std;
  * Fler saker ska in in konstruktorn så fort den koden är klar!
  */
 /*
-Musens rörs, släpps, trycks ned.
-
-
-*/
+ * Musens rörs, släpps, trycks ned.
+ */
 
 
 
 ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
-:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(textures, sounds, fonts)
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(textures, sounds, fonts), markedTower(NULL)
 {
 }
 
@@ -43,20 +41,16 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
         //Gå igenom tornvektor för träffar på dessa koordinater
         //Sätt träffen till markedTower
     }
-
-
-
 }
 void ClickManager::mouseButtonReleasedListener(sf::Event event)
 {
-
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     if(markedTower != NULL)
     {
         if(not mapMatrix.isTaken(x,y))
         {
-            //
+            //Lägga sätt towerX och towerY till x,y och lägg till det i towerVector
         }
     }
     //Kolla om torn ska placeras ut
@@ -69,7 +63,7 @@ void ClickManager::update()
     if(buyMenu.update())
     {
     	buyMenuState = buyMenu.readState();
-    	//Skapa ett torn
+
     }
 }
 void ClickManager::createTower(int x, int y)
@@ -78,7 +72,6 @@ void ClickManager::createTower(int x, int y)
 	if(! mapMatrix.isTaken(x,y))
 	{
 			mapMatrix.setTower(x,y);
-			//TODO Skapa torn, lägga det i vectorn, placera ut det på kartan
 	}
 	else
 	{

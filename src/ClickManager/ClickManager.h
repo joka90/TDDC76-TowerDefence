@@ -34,10 +34,12 @@ class ClickManager : public MouseButtonPressedUser {
 		 */
 	private:
 		//void updateMenu()
+		void createTower(int x, int y);
+
 		MapMatrix& mapMatrix;
 		std::vector<Tower*>& towerVector;
 		Tower* markedTower;
-		void createTower(int x, int y);
+
 		BuyMenu buyMenu;
 
 
