@@ -61,7 +61,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 {
 	char type[20];
 	char subType[20];
-	char parms[100];
+	char parms[200];
 
 	FILE * pFile;
 
@@ -71,37 +71,42 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 		while (!feof(pFile))
 		{
 			fscanf(pFile, "%s %s %s", type, subType, parms);
-			if(string(type)=="T")
+			string typeStr= string(type);
+			string subTypeStr = string(subType);
+			string parmsStr = string(parms);
+			if(typeStr=="T")
 			{
 				Tower* tmpPtr=NULL;
-				if(subType=="LongTower")
+				if(subTypeStr=="LongTower")
 				{
-					//tmpPtr=new LongTower(string(parms), textureLoader, soundLoader, fontLoader);
+					tmpPtr=new LongTower(parmsStr, textures, sounds, fonts);
 				}
-
+				cout << "New tower " << typeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
 					towers.push_back(tmpPtr);
 				}
 			}
-			else if(type=="Level")
+			else if(typeStr=="Level")
 			{
 				int tmpWave;
-				char tmpTrackFile[40];
+				char tmpTrackFile[50];
 				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
 				//Init Level and wave, load from file
 				loadBase(string(tmpTrackFile),tmpWave);
+				cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
 			}
-			else if(type=="Player")
+			else if(typeStr=="Player")
 			{
 				//Init Player
 				int tmpLife;
 				int tmpMoney;
 				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
 				player=Player(tmpLife, tmpMoney);
+				cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 			}
-			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
+			cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
 	}
 	else

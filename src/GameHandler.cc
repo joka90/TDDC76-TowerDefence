@@ -115,7 +115,7 @@ void GameHandler::run()
 				{
 				    currentState=LEVEL;
 				    cout << "loading: " << nextState << endl;
-				    //level = new level(nextState); // hur man nu laddar/initierar banor
+				    currentLevel = new Level(nextState, textures, sounds, music, fonts); // hur man nu laddar/initierar banor
 				}
 				if(currentState == TRACKMENU && nextState != "")
 				{

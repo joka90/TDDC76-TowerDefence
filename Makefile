@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o
 
 # Huvudmål
 TD: $(OBJECTS) Makefile
@@ -62,12 +62,18 @@ GameObject.o: src/GameObjects/GameObject.h src/GameObjects/GameObject.cpp
 
 Tower.o: src/GameObjects/Towers/Tower.h src/GameObjects/Towers/Tower.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Towers/Tower.cc
+	
+LongTower.o: src/GameObjects/Towers/LongTower.h src/GameObjects/Towers/LongTower.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Towers/LongTower.cpp
 
 Enemy.o: src/GameObjects/Enemies/Enemy.h src/GameObjects/Enemies/Enemy.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Enemies/Enemy.cc
 
 Projectile.o: src/GameObjects/Projectiles/Projectile.h src/GameObjects/Projectiles/Projectile.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Projectiles/Projectile.cc
+
+LongProjectile.o: src/GameObjects/Projectiles/LongProjectile.h src/GameObjects/Projectiles/LongProjectile.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Projectiles/LongProjectile.cpp
 
 Menu.o: src/GameObjects/Menu/Menu.h src/GameObjects/Menu/Menu.cpp
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/Menu.cpp

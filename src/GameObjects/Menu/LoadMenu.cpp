@@ -116,7 +116,7 @@ bool LoadMenu::update()
     {
         if(buttons[i+3]->gotPressed())
         {
-            state = ((loadVectorData[scrollLenght+i]).file).c_str();
+            state =  string(LOADFOLDER) + ((loadVectorData[scrollLenght+i]).file).c_str();
             newIteration();
             return true;
         }

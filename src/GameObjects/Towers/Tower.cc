@@ -107,8 +107,10 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*> enemyVector)
 }
 
 
-
-
+Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
+{
+   return NULL;//TODO
+}
 
 
 /*bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T

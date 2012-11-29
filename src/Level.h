@@ -5,6 +5,7 @@
 #include "Wave/WaveHandler.h"
 #include "ClickManager/MapMatrix.h"
 #include "GameObjects/Towers/Tower.h"
+#include "GameObjects/Towers/LongTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 #include "AnimatedSprite.h"
 #include "Loader/MusicLoader.h"
