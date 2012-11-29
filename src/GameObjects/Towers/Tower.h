@@ -45,7 +45,7 @@ protected:
     int range;
     int counter;
     int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
-    Enemy* getClosestEnemy(std::vector<Enemy*> enemyVector);
+    Enemy* getClosestEnemy(std::vector<Enemy*>& enemyVector);
     std::string towerType;
 
     TextureLoader& textures;

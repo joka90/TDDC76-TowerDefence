@@ -74,7 +74,7 @@ std::string Tower::getSaveString()
 
 // Returnerar en pekare till den fiende som är närmast, fast endast om fienden
 // ligger inom tornets range. Annars returnerar den NULL.
-Enemy* Tower::getClosestEnemy(std::vector<Enemy*> enemyVector)
+Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
 {
     Enemy* closestEnemy = NULL;
     double closestRange = 0;
