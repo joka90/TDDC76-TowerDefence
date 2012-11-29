@@ -104,21 +104,21 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 			}
 			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
+
+		//Init Level and wave, load from file
+		loadBase(string(tmpTrackFile),tmpWave);
+		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
+	
+		//init player after Level to overwrite life and money
+		player=Player(tmpMoney, tmpLife);
+		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
+
 	}
 	else
 	{
 		cout << "error reading file: " << saveFile << endl;
 	}
 	fclose(pFile);
-
-	//Init Level and wave, load from file
-	loadBase(string(tmpTrackFile),tmpWave);
-	cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
-	
-	//init player after Level to overwrite life and money
-	player=Player(tmpMoney, tmpLife);
-	cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
-	
 }
 
 bool Level::update()
