@@ -7,6 +7,7 @@
 
 #include "ClickManager.h"
 #include "../GameObjects/Towers/Tower.h"
+#include "../GameObjects/Towers/LongTower.h"
 #include "MapMatrix.h"
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -21,6 +22,7 @@ Musens rörs, släpps, trycks ned.
 
 
 */
+
 
 
 ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
@@ -63,16 +65,12 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
 }
 void ClickManager::update()
 {
-    /*
-    string ETTBRANAMN;
+    string buyMenuState,upgradeMenuState;
     if(buyMenu.update())
     {
-        ETTBRANAMN = buyMenu.readState();
-        markedTower = Skapa ett torn
+    	buyMenuState = buyMenu.readState();
+    	//Skapa ett torn
     }
-    //Kör update på menyer
-    //Om TRUE, kör readState
-    */
 }
 void ClickManager::createTower(int x, int y)
 {
