@@ -97,13 +97,13 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				loadBase(string(tmpTrackFile),tmpWave);
 				cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
 			}
-			else if(typeStr=="Player")
+			else if(typeStr=="Player")// TODO, fixa så att inte level kan råka skriva över player, ty players init poäng ligger där
 			{
 				//Init Player
 				int tmpLife;
 				int tmpMoney;
 				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
-				player=Player(tmpLife, tmpMoney);
+				player=Player(tmpMoney, tmpLife);
 				cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 			}
 			cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
