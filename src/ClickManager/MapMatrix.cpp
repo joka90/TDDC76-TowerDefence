@@ -63,10 +63,8 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 
 pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
 {
-
-    int x = ((path[newPosition].first + 0.5) * SIDE);
-    int y = ((path[newPosition].second + 0.5) * SIDE);
-
+    int x = ((path[currentPathPosition].first + 0.5) * SIDE);
+    int y = ((path[currentPathPosition].second + 0.5) * SIDE);
     return make_pair(x,y);
 }
 int MapMatrix::getHeight()

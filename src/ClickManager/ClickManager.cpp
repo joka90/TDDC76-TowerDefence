@@ -13,6 +13,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+
 using namespace std;
 /*
  * Fler saker ska in in konstruktorn så fort den koden är klar!
@@ -36,11 +37,13 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     vector<Tower*>::iterator it;
-    for (it = towerVector.begin() ; it != towerVector.end(); ++it)
+    /*
+    for (it = towerVector.begin ; it != towerVector.end(); ++it)
     {
         //Gå igenom tornvektor för träffar på dessa koordinater
         //Sätt träffen till markedTower
     }
+    */
 }
 void ClickManager::mouseButtonReleasedListener(sf::Event event)
 {
