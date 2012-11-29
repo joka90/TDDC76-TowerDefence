@@ -9,13 +9,13 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
                FontLoader& inFontLoader)
 : GameObject(newX, newY, inTextureLoader, "ENFINBILD"), //skall denna vara har, pure virtual senare?
   price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax),
-  towerType("SubType"), sounds(inSoundLoader), fonts(inFontLoader)
+  towerType("SubType"), textures(inTextureLoader), sounds(inSoundLoader), fonts(inFontLoader)
 {
 
 }
 
 Tower::Tower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
-:GameObject(parms, inTextureLoader, "ENFINBILD"), towerType("SubType"), sounds(inSoundLoader), fonts(inFontLoader)
+:GameObject(parms, inTextureLoader, "ENFINBILD"), towerType("SubType"), textures(inTextureLoader), sounds(inSoundLoader), fonts(inFontLoader)
 {
 	int dummyInt;
 	//How to scan parameters in towers an other stuff

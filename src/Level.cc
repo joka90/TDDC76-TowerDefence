@@ -26,7 +26,7 @@ void Level::loadBase(string trackFile, int index)
     int money, lives;
     loadData>>money;
     loadData>>lives;
-    Player(money, lives);
+    player = Player(money, lives);
     //ladda mapMatrix
     int row, col;
     loadData>>row;
@@ -78,7 +78,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				{
 					//tmpPtr=new LongTower(string(parms), textureLoader, soundLoader, fontLoader);
 				}
-				
+
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
