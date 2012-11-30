@@ -1,9 +1,5 @@
 #include "Level.h"
 
-#define createObjectFromType(parm,type) if(parm==#type) {  \
-tmpPtr=new type(); \
-}
-
 using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
@@ -110,6 +106,13 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 		player=Player(tmpMoney, tmpLife);
 		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 
+		//load towers into map matrix
+		// get pos from towers
+		for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+		{
+			//map.setTower((*it)->getPosX(), (*it)->getPosY()); //TODO uncomment this when mapmatrix is working. Now it's just throwing a seg fault...
+			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;
+		}
 	}
 	else
 	{

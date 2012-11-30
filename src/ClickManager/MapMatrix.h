@@ -11,7 +11,6 @@
 #include <string>
 #include <vector>
 
-
 class MapMatrix
 {
     public:
@@ -23,7 +22,6 @@ class MapMatrix
 		bool isPath(int x, int y);
 		std::pair<int, int> getNextCoord(int currentPosition);  //Pixelkoordinater mitt i rutan
                                                                 //Tex. (0.0) -> (25.25) med 50px-rutor
-
 
 		/*
 		 * Finns endast för felsökning
