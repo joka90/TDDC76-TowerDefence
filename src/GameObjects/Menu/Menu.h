@@ -16,7 +16,7 @@ struct LoadPair
 class Menu : public GameObject
 {
     public:
-        Menu(int x, int y, TextureLoader&, std::string textureReference);
+        Menu(int x, int y, std::string textureReference);
         virtual ~Menu();
         std::string readState();
         bool isButtonClicked(int buttonIndex);

@@ -7,6 +7,8 @@
 
 #define MUSIC "media/music/"
 
+std::string MusicLoader::directory = MUSIC;
+std::map<std::string, sf::Music*> MusicLoader::songs;
 using namespace std;
 ///Klass för att ladda in musik
 
@@ -52,7 +54,7 @@ void MusicLoader::insert(const std::string& key, sf::Music* inMusic)
 /*
 * Privat funktion, kollar om sången finns i map:en
 */
-bool MusicLoader::find(const std::string& key) const
+bool MusicLoader::find(const std::string& key)
 {
     map<std::string, sf::Music*>::const_iterator it  = songs.find(key);
     return (it != songs.end());
@@ -80,14 +82,14 @@ void MusicLoader::clear()
 /*
 * Kollar om map:en är tom
 */
-bool MusicLoader::empty() const
+bool MusicLoader::empty()
 {
     return(songs.empty());
 }
 /*
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
-void MusicLoader::print() const
+void MusicLoader::print()
 {
     map<std::string, sf::Music*>::const_iterator pos;
     for(pos = songs.begin(); pos != songs.end(); ++pos)

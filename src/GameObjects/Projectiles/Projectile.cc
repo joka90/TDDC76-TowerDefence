@@ -1,7 +1,7 @@
 #include "Projectile.h"
-Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader)
-: GameObject(newX, newY, inTextureLoader, textureReference), 
-  damage(newDamage), speed(newSpeed), enemy(newEnemy), sounds(inSoundLoader)
+Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
+: GameObject(newX, newY, textureReference),
+  damage(newDamage), speed(newSpeed), enemy(newEnemy)
 {
 
 }

@@ -7,7 +7,7 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(int newX, int newY, int newLife, int newSpeed, int newValue, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
+    Enemy(int newX, int newY, int newLife, int newSpeed, int newValue, std::string textureReference);
 
     ~Enemy();
 
@@ -30,7 +30,5 @@ protected:
     int speed;
     int value;
     int stepsMoved;
-
-    SoundLoader& sounds;
 };
 #endif //end ENEMY_H

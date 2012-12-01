@@ -23,6 +23,10 @@ using namespace std;
 /*
 * Konstruktor
 */
+
+std::string FontLoader::directory = FONTS;
+std::map<std::string, sf::Font> FontLoader::fonts;
+
 FontLoader::FontLoader()
 {
     directory = FONTS;
@@ -63,7 +67,7 @@ void FontLoader::insert(const std::string& key, sf::Font inFont)
 /*
 * Privat funktion, kollar om fonten finns i map:en
 */
-bool FontLoader::find(const std::string& key) const
+bool FontLoader::find(const std::string& key)
 {
     map<std::string, sf::Font>::const_iterator it  = fonts.find(key);
     return (it != fonts.end());
@@ -93,7 +97,7 @@ void FontLoader::clear()
 /*
 * Kollar om map:en är tom
 */
-bool FontLoader::empty() const
+bool FontLoader::empty()
 {
     return(fonts.empty());
 }
@@ -101,7 +105,7 @@ bool FontLoader::empty() const
 /*
 * Printar ut alla keys i map:en, kan vara bra till debug
 */
-void FontLoader::print() const
+void FontLoader::print()
 {
     map<std::string, sf::Font>::const_iterator pos;
     for(pos = fonts.begin(); pos != fonts.end(); ++pos)

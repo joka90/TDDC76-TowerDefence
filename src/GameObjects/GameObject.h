@@ -14,8 +14,8 @@
 class GameObject
 {
     public:
-        GameObject(int x, int y, TextureLoader& inTextures, std::string textureReference);
-        GameObject(std::string parms, TextureLoader& inTextures, std::string textureReference);
+        GameObject(int x, int y, std::string textureReference);
+        GameObject(std::string parms, std::string textureReference);
         virtual ~GameObject();
         int getPosX();
         int getPosY();

@@ -12,16 +12,17 @@ class SoundLoader : public Loader
 {
     public:
      SoundLoader();
-     void remove(const std::string& key);
-     void clear();
-     bool empty() const;
-     void load(const std::string& filename);
-     sf::SoundBuffer& getSoundBuffer(const std::string& key);
-     void print() const; //debug*/
+     static void remove(const std::string& key);
+     static void clear();
+     static bool empty();
+     static void load(const std::string& filename);
+     static sf::SoundBuffer& getSoundBuffer(const std::string& key);
+     static void print(); //debug*/
     private:
-     std::map<std::string, sf::SoundBuffer> sounds;
-     bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::SoundBuffer inSoundBuffer);
+     static std::string directory;
+     static std::map<std::string, sf::SoundBuffer> sounds;
+     static bool find(const std::string& key);
+     static void insert(const std::string& key, sf::SoundBuffer inSoundBuffer);
 };
 
 #endif

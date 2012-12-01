@@ -24,8 +24,8 @@ using namespace std;
 
 
 
-ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
-:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(textures, sounds, fonts), markedTower(NULL)
+ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix)
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(), markedTower(NULL)
 {
 }
 

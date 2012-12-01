@@ -7,6 +7,9 @@
 
 #define IMG "media/img/"
 
+std::string TextureLoader::directory = IMG;
+std::map<std::string, sf::Texture> TextureLoader::textures;
+
 using namespace std;
 ///Klass för att ladda in texturer
 
@@ -62,7 +65,7 @@ void TextureLoader::insert(const std::string& key, sf::Texture& inTexture)
 /*
 * Privat funktion, kollar om texturen finns i map:en
 */
-bool TextureLoader::find(const std::string& key) const
+bool TextureLoader::find(const std::string& key)
 {
     map<std::string, sf::Texture>::const_iterator it  = textures.find(key);
     return (it != textures.end());
@@ -92,7 +95,7 @@ void TextureLoader::clear()
 /*
 * Kollar om map:en är tom
 */
-bool TextureLoader::empty() const
+bool TextureLoader::empty()
 {
     return(textures.empty());
 }
@@ -100,7 +103,7 @@ bool TextureLoader::empty() const
 /*
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
-void TextureLoader::print() const
+void TextureLoader::print()
 {
     map<std::string, sf::Texture>::const_iterator pos;
     for(pos = textures.begin(); pos != textures.end(); ++pos)

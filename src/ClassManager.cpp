@@ -17,7 +17,7 @@ ClassManager::~ClassManager()
   *
   * (documentation goes here)
   */
-Tower* ClassManager::createTowerInstance(string towerTypeName)
+Tower* ClassManager::createTowerInstance(const string& towerTypeName)
 {
     return NULL;
 }
@@ -26,7 +26,7 @@ Tower* ClassManager::createTowerInstance(string towerTypeName)
   *
   * (documentation goes here)
   */
-Enemy* ClassManager::createEnemyInstance(string enemyTypeName)
+Enemy* ClassManager::createEnemyInstance(const string& enemyTypeName)
 {
     //switch(enemyTypeName){
 

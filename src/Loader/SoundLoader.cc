@@ -7,6 +7,9 @@
 
 #define SOUND "media/sound/"
 
+std::string SoundLoader::directory = SOUND;
+std::map<std::string, sf::SoundBuffer> SoundLoader::sounds;
+
 using namespace std;
 ///Klass för att ladda in sounds
 
@@ -61,7 +64,7 @@ void SoundLoader::insert(const std::string& key, sf::SoundBuffer inSoundBuffer)
 /*
 * Privat funktion, kollar om soundbuffern finns i map:en
 */
-bool SoundLoader::find(const std::string& key) const
+bool SoundLoader::find(const std::string& key)
 {
     map<std::string, sf::SoundBuffer>::const_iterator it  = sounds.find(key);
     return (it != sounds.end());
@@ -89,14 +92,14 @@ void SoundLoader::clear()
 /*
 * Kollar om map:en är tom
 */
-bool SoundLoader::empty() const
+bool SoundLoader::empty()
 {
     return(sounds.empty());
 }
 /*
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
-void SoundLoader::print() const
+void SoundLoader::print()
 {
     map<std::string, sf::SoundBuffer>::const_iterator pos;
     for(pos = sounds.begin(); pos != sounds.end(); ++pos)

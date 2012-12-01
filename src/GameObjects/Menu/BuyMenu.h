@@ -9,7 +9,7 @@
 class BuyMenu : public Menu
 {
     public:
-        BuyMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
+        BuyMenu();
         virtual ~BuyMenu();
         bool update();
     protected:

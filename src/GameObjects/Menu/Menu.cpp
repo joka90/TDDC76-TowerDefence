@@ -3,8 +3,8 @@
 #include "Menu.h"
 
 using namespace std;
-Menu::Menu(int x, int y, TextureLoader& inTextures, string textureReference)
-    : GameObject(x, y, inTextures, textureReference), state("")
+Menu::Menu(int x, int y, string textureReference)
+    : GameObject(x, y, textureReference), state("")
 {
 }
 

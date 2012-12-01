@@ -6,7 +6,7 @@
 class StartMenu : public Menu
 {
     public:
-        StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
+        StartMenu();
         virtual ~StartMenu();
         bool update();
     protected:

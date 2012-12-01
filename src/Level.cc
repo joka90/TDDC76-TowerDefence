@@ -2,8 +2,8 @@
 
 using namespace std;
 
-Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, inTextures, inSounds, inFonts)
+Level::Level(string trackFile, int)
+ : player(0,0), clickManager(towers, map), nextWaveMenu()
  {
      loadBase(trackFile, 0);
  }
@@ -16,7 +16,7 @@ void Level::loadBase(string trackFile, int index)
     loadData.open(trackFile);
     loadData.getline(stringBuffer, 256, '\n');
     //ladda bakgrund
-    background.setTextureAnimation(textures.getTexture(stringBuffer));
+    background.setTextureAnimation(TextureLoader::getTexture(stringBuffer));
     background.setPosition(0,0);
     //initiera spelaren
     int money, lives;
@@ -49,8 +49,8 @@ void Level::loadBase(string trackFile, int index)
     waves = new WaveHandler(waveHandlerData, index);
 }
 
-Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, inTextures, inSounds, inFonts)
+Level::Level(string saveFile)
+ : player(0,0), clickManager(towers, map), nextWaveMenu()
 {
 	char type[20];
 	char subType[20];
@@ -78,7 +78,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				Tower* tmpPtr=NULL;
 				if(subTypeStr=="LongTower")
 				{
-					tmpPtr=new LongTower(parmsStr, textures, sounds, fonts);
+					tmpPtr=new LongTower(parmsStr);
 				}
 				cout << "New tower " << subTypeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
@@ -126,10 +126,11 @@ bool Level::update()
     // Update WaveHandler (place new enemy if one)
     Enemy* enemyToBePlaced = waves->update();
     if(enemyToBePlaced != NULL)
+    {
         enemies.push_back(enemyToBePlaced);
+    }
 
     //Update enemies
-    cout << enemies.size() << endl;
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
         //(*it)->update(map);
@@ -149,6 +150,14 @@ bool Level::update()
 	{
 		(*it)->update(enemies);
 	}
+	if(nextWaveMenu.update())
+    {
+        string message = nextWaveMenu.readState();
+        if(message == "NEXTWAVE")
+        {
+            waves->startNextWave();
+        }
+    }
     return true;
 }
 
@@ -157,8 +166,8 @@ void Level::draw(sf::RenderWindow& canvas)
     canvas.draw(background);
 	// Create a graphical text to display
 	std::stringstream ss;
-	ss << "Money:" << player.getMoney() << " Life: " << player.getLife();
-    sf::Text text(ss.str(), fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
+	ss << "Money:" << waves->getIsRunning() << " Life: " << enemies.size();
+    sf::Text text(ss.str(), FontLoader::getFont("appleberry_with_cyrillic.ttf"), 50);
     text.move(300,20);
 
 	// Update the canvas
@@ -174,6 +183,7 @@ void Level::draw(sf::RenderWindow& canvas)
         (*it)->drawSprite(canvas);
     }
     clickManager.drawMenus(canvas);
+    nextWaveMenu.drawMenu(canvas);
 }
 
 void Level::runWave()

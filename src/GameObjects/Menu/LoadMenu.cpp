@@ -34,8 +34,8 @@
 #define BACKIMG "BACKBUTTON.png"
 #define LOADFOLDER "saves/"
 using namespace std;
-LoadMenu::LoadMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts)
-:Menu(MENULOADX, MENULOADY, inTextures, "StartMenu.png"), scrollLenght(0), textures(inTextures), sounds(inSounds), fonts(inFonts)
+LoadMenu::LoadMenu()
+:Menu(MENULOADX, MENULOADY, "StartMenu.png"), scrollLenght(0)
 {
     //Ladda in vilka sparfiler som finns
     ifstream loadData;
@@ -54,11 +54,11 @@ LoadMenu::LoadMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader&
     loadData.close();
     //lägg till knappar
     addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWUP, CLICK, "", ""));
+                      ARROWUP, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWDOWN, CLICK, "", ""));
+                      ARROWDOWN, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                      textures, sounds, fonts, BACKIMG, CLICK, "", ""));
+                      BACKIMG, CLICK, "", ""));
     updateLoadButtons();
 }
 
@@ -78,7 +78,7 @@ void LoadMenu::updateLoadButtons()
             if(i+scrollLenght < (int) loadVectorData.size()-1)
             {
                 addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY,
-                      textures, sounds, fonts, LOADIMG, CLICK, (loadVectorData[scrollLenght+i]).name, ""));
+                      LOADIMG, CLICK, (loadVectorData[scrollLenght+i]).name, ""));
             }
         }
 }

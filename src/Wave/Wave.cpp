@@ -30,10 +30,9 @@ Wave::~Wave() {
 Enemy* Wave::getEnemy(int timeDelta)
 {
     // If the next enemy shall be placed
-    cout << enemies[nextIndex].first << endl;
-    cout << timeDelta << endl;
     if(enemies[nextIndex].first <= timeDelta){
         nextIndex++;
         return ClassManager::createEnemyInstance(enemies[nextIndex-1].second);
     }
+    return NULL;
 }

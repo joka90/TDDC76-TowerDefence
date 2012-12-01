@@ -8,17 +8,13 @@
 class LoadMenu : public Menu
 {
     public:
-        LoadMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
+        LoadMenu();
         virtual ~LoadMenu();
         bool update();
     protected:
     private:
         std::vector<LoadPair> loadVectorData;
         int scrollLenght;
-
-        TextureLoader& textures;
-        SoundLoader& sounds;
-        FontLoader& fonts;
 
         void updateLoadButtons();
 };

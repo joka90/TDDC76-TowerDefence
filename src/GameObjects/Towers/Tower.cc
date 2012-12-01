@@ -4,18 +4,15 @@
 
 //--------------- Public -----------------
 
-Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference,
-              TextureLoader& inTextureLoader, SoundLoader& inSoundLoader,
-               FontLoader& inFontLoader)
-: GameObject(newX, newY, inTextureLoader, textureReference), //skall denna vara har, pure virtual senare?
-  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax),
-  textures(inTextureLoader), sounds(inSoundLoader), fonts(inFontLoader)
+Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference)
+: GameObject(newX, newY, textureReference), //skall denna vara har, pure virtual senare?
+  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
 {
 
 }
 
-Tower::Tower(std::string parms, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader)
-:GameObject(parms, inTextureLoader, textureReference), textures(inTextureLoader), sounds(inSoundLoader), fonts(inFontLoader)
+Tower::Tower(std::string parms, std::string textureReference)
+:GameObject(parms, textureReference)
 {
 	int dummyInt;
 	//How to scan parameters in towers an other stuff

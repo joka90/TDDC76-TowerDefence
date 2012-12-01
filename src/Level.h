@@ -7,6 +7,7 @@
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Towers/LongTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
+#include "GameObjects/Menu/NextWaveMenu.h"
 #include "AnimatedSprite.h"
 #include "Loader/MusicLoader.h"
 #include "Loader/TextureLoader.h"
@@ -25,8 +26,8 @@ class Level
 public:
 
     Level() = delete;
-    Level(std::string saveFile, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
-    Level(std::string trackName, int, TextureLoader& textures, SoundLoader& sounds, MusicLoader& music, FontLoader& fonts);
+    Level(std::string saveFile);
+    Level(std::string trackName, int);
 
     std::string name;
 
@@ -50,10 +51,8 @@ private:
 	void loadBase(std::string trackFile, int index = 0);
 
 	AnimatedSprite background;
-	TextureLoader& textures;
-    SoundLoader& sounds;
-    FontLoader& fonts;
-    MusicLoader& music;
+
+    NextWaveMenu nextWaveMenu;
 };
 
 #endif //end H

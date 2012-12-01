@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o
 
 # Huvudmål
 TD: $(OBJECTS) Makefile
@@ -111,6 +111,8 @@ ClassManager.o: src/ClassManager.h src/ClassManager.cpp
 BuyMenu.o: src/GameObjects/Menu/BuyMenu.h src/GameObjects/Menu/BuyMenu.cpp
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/BuyMenu.cpp
 
+NextWaveMenu.o: src/GameObjects/Menu/NextWaveMenu.h src/GameObjects/Menu/NextWaveMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/NextWaveMenu.cpp
 
 
 # 'make clean' tar bort objektkodsfiler och 'core' (minnesdump).

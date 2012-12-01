@@ -14,11 +14,9 @@
 class LongTower : public Tower
 {
 public:
-    LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,
-        TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
-        , FontLoader& inFontLoader);
+    LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax);
 
-    LongTower(std::string parms, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+    LongTower(std::string parms);
 
     ~LongTower();
 

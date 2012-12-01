@@ -16,20 +16,20 @@
 #define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies.png"
 
 using namespace std;
-BuyMenu::BuyMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
- : Menu(BUYMENUSTARTX, BUYMENUSTARTY, textures, "StartMenu.png")
+BuyMenu::BuyMenu()
+ : Menu(BUYMENUSTARTX, BUYMENUSTARTY, "StartMenu.png")
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                      textures, sounds, fonts, TOWERBUTTON, CLICKSOUND, "", "ett billigt och bra torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "ett billigt och bra torn"));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                      textures, sounds, fonts, TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
 
     //lägg till låsatsknappar för utritandet
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, BASTORN, CLICKSOUND, "", ""));
+                       BASTORN, CLICKSOUND, "", ""));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, ANNATTORN, CLICKSOUND, "", ""));
+                       ANNATTORN, CLICKSOUND, "", ""));
     // lägg till priserna på tornen
     priceVector.push_back(100);
     priceVector.push_back(300);

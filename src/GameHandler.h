@@ -39,10 +39,6 @@ public:
 
 protected:
     void closedListener(sf::Event);
-	MusicLoader music;
-	TextureLoader textures;
-	SoundLoader sounds;
-	FontLoader fonts;
 
 	Level* currentLevel;
 
