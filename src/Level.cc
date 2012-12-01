@@ -3,7 +3,7 @@
 using namespace std;
 
 Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, textures, sounds, fonts)
+ : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, inTextures, inSounds, inFonts)
  {
      loadBase(trackFile, 0);
  }
@@ -56,7 +56,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 	char subType[20];
 	char parms[200];
 
-	//Temp variabels to load into	
+	//Temp variabels to load into
 	int tmpLife;
 	int tmpMoney;
 	int tmpWave;
@@ -101,7 +101,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 		//Init Level and wave, load from file
 		loadBase(string(tmpTrackFile),tmpWave);
 		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
-	
+
 		//init player after Level to overwrite life and money
 		player=Player(tmpMoney, tmpLife);
 		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
@@ -129,6 +129,7 @@ bool Level::update()
         enemies.push_back(enemyToBePlaced);
 
     //Update enemies
+    cout << enemies.size() << endl;
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
         //(*it)->update(map);
