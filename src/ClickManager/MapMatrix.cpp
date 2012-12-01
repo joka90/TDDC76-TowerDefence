@@ -6,7 +6,6 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <sstream>
-#define SIDE 50
 using namespace std;
 
 MapMatrix::MapMatrix()
@@ -52,7 +51,8 @@ bool MapMatrix::isTaken(int pixelX, int pixelY)
 
 void MapMatrix::setTower(int pixelX, int pixelY)
 {
-	matrix[pixelX][pixelY] = 2; //Tower = 2
+    pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
+	matrix[matrixPixel.first][matrixPixel.second] = 2; //Tower = 2
 }
 
 bool MapMatrix::isPath(int pixelX, int pixelY)
@@ -77,8 +77,8 @@ int MapMatrix::getWidth()
 }
 pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
 {
-    int matrixX = (pixelX * getWidth() / SIDE);
-    int matrixY = (pixelY * getHeight() / SIDE);
+    int matrixX = pixelX/SIDE; //(pixelX * getWidth() / SIDE);
+    int matrixY = pixelY/SIDE; //(pixelY * getHeight() / SIDE);
     return make_pair(matrixX,matrixY);
 }
 

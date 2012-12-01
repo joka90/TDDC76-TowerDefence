@@ -3,7 +3,7 @@
 using namespace std;
 
 Level::Level(string trackFile, int)
- : player(0,0), clickManager(towers, map), nextWaveMenu()
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu()
  {
      loadBase(trackFile, 0);
  }
@@ -50,7 +50,7 @@ void Level::loadBase(string trackFile, int index)
 }
 
 Level::Level(string saveFile)
- : player(0,0), clickManager(towers, map), nextWaveMenu()
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu()
 {
 	char type[20];
 	char subType[20];
@@ -166,7 +166,7 @@ void Level::draw(sf::RenderWindow& canvas)
     canvas.draw(background);
 	// Create a graphical text to display
 	std::stringstream ss;
-	ss << "Money:" << waves->getIsRunning() << " Life: " << enemies.size();
+	ss << "Money:" << player.getMoney() << " Life: " << player.getLife();
     sf::Text text(ss.str(), FontLoader::getFont("appleberry_with_cyrillic.ttf"), 50);
     text.move(300,20);
 
@@ -182,6 +182,7 @@ void Level::draw(sf::RenderWindow& canvas)
     {
         (*it)->drawSprite(canvas);
     }
+    clickManager.update();
     clickManager.drawMenus(canvas);
     nextWaveMenu.drawMenu(canvas);
 }

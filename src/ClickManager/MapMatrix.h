@@ -7,6 +7,7 @@
 
 #ifndef MAPMATRIX_H
 #define MAPMATRIX_H
+#define SIDE 50
 
 #include <string>
 #include <vector>

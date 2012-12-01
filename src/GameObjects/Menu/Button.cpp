@@ -115,6 +115,10 @@ void Button::mouseButtonPressedListener(sf::Event event)
 
 void Button::mouseButtonReleasedListener(sf::Event event)
 {
+    if(sleeping)
+        {
+            return;
+        }
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(pressed)
@@ -127,6 +131,10 @@ void Button::mouseButtonReleasedListener(sf::Event event)
 
 void Button::mouseMoveListener(sf::Event event)
 {
+    if(sleeping)
+    {
+        return;
+    }
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(!(((event.mouseMove.x > getPosX()) && (event.mouseMove.x < getPosX()+widthX)) && ((event.mouseMove.y > getPosY()) && (event.mouseMove.y < getPosY()+widthY))))

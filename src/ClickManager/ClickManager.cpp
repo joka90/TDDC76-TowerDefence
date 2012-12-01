@@ -8,6 +8,8 @@
 #include "ClickManager.h"
 #include "../GameObjects/Towers/Tower.h"
 #include "../GameObjects/Towers/LongTower.h"
+#include "../ClassManager.h"
+#include "../EventHandler.h"
 #include "MapMatrix.h"
 #include <string>
 #include <SFML/Graphics.hpp>
@@ -24,13 +26,17 @@ using namespace std;
 
 
 
-ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix)
-:    mapMatrix(newMapMatrix), towerVector(newTowervector), buyMenu(), markedTower(NULL)
+ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, Player& player)
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player)
 {
+    EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
+    EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
 }
 
 ClickManager::~ClickManager()
 {
+    EventHandler::removeListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
+    EventHandler::removeListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
 }
 void ClickManager::mouseButtonPressedListener(sf::Event event)
 {
@@ -51,10 +57,27 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     int y = event.mouseButton.y;
     if(markedTower != NULL)
     {
-        if(not mapMatrix.isTaken(x,y))
+        cout << "test" << endl;
+        if(!mapMatrix.isTaken(x,y))
         {
-            //Lägga sätt towerX och towerY till x,y och lägg till det i towerVector
+            if(buyMenu.purchase())
+            {
+                markedTower->setPos((x/SIDE)*SIDE ,(y/SIDE)*SIDE);
+                mapMatrix.setTower(x, y);
+                towerVector.push_back(markedTower);
+            }
+            else
+            {
+                delete(markedTower);
+            }
         }
+        else
+        {
+            cout << "occupied" << endl;
+            delete(markedTower);
+        }
+        markedTower = NULL;
+
     }
     //Kolla om torn ska placeras ut
 
@@ -66,7 +89,10 @@ void ClickManager::update()
     if(buyMenu.update())
     {
     	buyMenuState = buyMenu.readState();
-
+    }
+    if(ClassManager::createTowerInstance(buyMenuState) != NULL)
+    {
+        markedTower = ClassManager::createTowerInstance(buyMenuState);
     }
 }
 void ClickManager::createTower(int x, int y)
