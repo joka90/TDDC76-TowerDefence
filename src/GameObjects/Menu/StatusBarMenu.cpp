@@ -3,12 +3,12 @@
 #define MENUSTARTY 0
 #define SAVEX 50
 #define SAVEY 0
-#define NEWWAVEX 160
-#define NEWWAVEY 0
+#define QUITX 160
+#define QUITY 0
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
-#define BUTTON "statusbar.png"
+#define BUTTON "statusbarButton.png"
 #include <iostream>
 
 using namespace std;
@@ -18,11 +18,11 @@ StatusBarMenu::StatusBarMenu()
 {
 	playerMoney=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
 	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
-	playerMoney.move(250, 0);
+	playerMoney.move(300, 0);
 	playerLife.move(400, 0);
 	
-    addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "Save", ""));
-    addButton(new Button(MENUSTARTX, MENUSTARTY, NEWWAVEX, NEWWAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "Quit", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Quit", ""));
 }
 
 StatusBarMenu::~StatusBarMenu()
