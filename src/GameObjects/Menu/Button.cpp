@@ -52,7 +52,15 @@ Button& Button::operator=(const Button& inButton)
 
 void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY)
 {
-    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);// some thing wrong here, looping....
+    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
+    if(hoover)
+    {
+    	sprite.setColor(sf::Color(200, 200, 255, 200));
+    }
+    else
+    {
+    	sprite.setColor(sf::Color(255, 255, 255, 255));
+    }
     drawSprite(canvas);
 	buttonText.setPosition(menuCoordX+relativePosX, menuCoordY+relativePosY);// fixed for now because looping away..
 	canvas.draw(buttonText);
