@@ -3,7 +3,7 @@
 using namespace std;
 
 Level::Level(string trackFile, int)
- : player(0,0), clickManager(towers, map, player), nextWaveMenu()
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state("")
  {
      loadBase(trackFile, 0);
  }
@@ -50,7 +50,7 @@ void Level::loadBase(string trackFile, int index)
 }
 
 Level::Level(string saveFile)
- : player(0,0), clickManager(towers, map, player), nextWaveMenu()
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state("")
 {
 	char type[20];
 	char subType[20];
@@ -158,20 +158,29 @@ bool Level::update()
             waves->startNextWave();
         }
     }
+    if(statusBarMenu.update())
+    {
+        string message = statusBarMenu.readState();
+        if(message == "SAVE")
+        {
+            cout << "SAVING" << endl;
+            saveLevel("saves/testSave.txt");//TODO non const save path
+            cout << "Saveing done. Quiting." << endl;
+            state="START";
+        }
+        if(message == "QUIT")
+        {
+            cout << "Quiting" << endl;
+            state="START";
+        }
+    }
     return true;
 }
 
 void Level::draw(sf::RenderWindow& canvas)
 {
     canvas.draw(background);
-	// Create a graphical text to display
-	std::stringstream ss;
-	ss << "Money:" << player.getMoney() << " Life: " << player.getLife();
-    sf::Text text(ss.str(), FontLoader::getFont("appleberry_with_cyrillic.ttf"), 50);
-    text.move(300,20);
 
-	// Update the canvas
-	canvas.draw(text);
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
@@ -185,6 +194,14 @@ void Level::draw(sf::RenderWindow& canvas)
     clickManager.update();
     clickManager.drawMenus(canvas);
     nextWaveMenu.drawMenu(canvas);
+    statusBarMenu.drawMenu(canvas, player);
+}
+
+string Level::readState()
+{
+    string temp = state;
+    state = "";
+    return temp;
 }
 
 void Level::runWave()

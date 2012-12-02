@@ -34,7 +34,7 @@ void GameHandler::run()
 
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 50);
+    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 20);
     text.move(20,20);
 	sf::Clock frameTime;
 
@@ -56,7 +56,10 @@ void GameHandler::run()
         // handle current state
 		switch(currentState){
 		case LEVEL:
-			currentLevel->update();
+			if(currentLevel->update())
+			{
+				nextState=currentLevel->readState();
+			}
 			currentLevel->draw(canvas);
 		  	break;
 		case LOADMENU:

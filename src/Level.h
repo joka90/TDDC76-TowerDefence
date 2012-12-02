@@ -8,6 +8,7 @@
 #include "GameObjects/Towers/LongTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 #include "GameObjects/Menu/NextWaveMenu.h"
+#include "GameObjects/Menu/StatusBarMenu.h"
 #include "AnimatedSprite.h"
 #include "Loader/MusicLoader.h"
 #include "Loader/TextureLoader.h"
@@ -33,6 +34,7 @@ public:
 
     bool update();
     void draw(sf::RenderWindow& canvas);
+    std::string readState();
 
 private:
     WaveHandler* waves;
@@ -53,6 +55,9 @@ private:
 	AnimatedSprite background;
 
     NextWaveMenu nextWaveMenu;
+    StatusBarMenu statusBarMenu;
+    
+    std::string state;
 };
 
 #endif //end H

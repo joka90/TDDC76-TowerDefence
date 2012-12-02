@@ -1,0 +1,62 @@
+#include "StatusBarMenu.h"
+#define MENUSTARTX 0
+#define MENUSTARTY 0
+#define SAVEX 50
+#define SAVEY 0
+#define NEWWAVEX 160
+#define NEWWAVEY 0
+#define BUTTONWIDTH 100
+#define BUTTONHEIGHT 70
+#define CLICK "CLICK.WAW"
+#define BUTTON "button.png"
+#include <iostream>
+
+using namespace std;
+
+StatusBarMenu::StatusBarMenu()
+ : Menu(MENUSTARTX,MENUSTARTY, "StartMenu.png")
+{
+	playerMoney=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
+	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
+	playerMoney.move(250, 0);
+	playerLife.move(400, 0);
+	
+    addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "Save", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, NEWWAVEX, NEWWAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "Quit", ""));
+}
+
+StatusBarMenu::~StatusBarMenu()
+{
+
+}
+void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
+{
+    this->drawSprite(canvas);
+    for(int i = 0; i < (int)buttons.size(); ++i)
+    {
+        buttons[i]->drawButton(canvas, getPosX(), getPosY());
+    }
+    stringstream moneyStr, lifeStr;
+    moneyStr << "M: " << player.getMoney();
+	playerMoney.setString(moneyStr.str());
+	lifeStr <<  "L: " << player.getLife();
+	playerLife.setString(lifeStr.str());
+	canvas.draw(playerMoney);
+	canvas.draw(playerLife);
+    return;
+}
+bool StatusBarMenu::update()
+{
+    if(buttons[0]->gotPressed())
+    {
+        state = "SAVE";
+        return true;
+    }
+    if(buttons[1]->gotPressed())
+    {
+        state = "QUIT";
+        return true;
+    }
+    newIteration();//TODO
+    return false;
+}
