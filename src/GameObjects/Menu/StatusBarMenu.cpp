@@ -8,13 +8,13 @@
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
 #define CLICK "CLICK.WAW"
-#define BUTTON "button.png"
+#define BUTTON "statusbar.png"
 #include <iostream>
 
 using namespace std;
 
 StatusBarMenu::StatusBarMenu()
- : Menu(MENUSTARTX,MENUSTARTY, "StartMenu.png")
+ : Menu(MENUSTARTX,MENUSTARTY, "statusbar.png")
 {
 	playerMoney=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
 	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
@@ -31,7 +31,9 @@ StatusBarMenu::~StatusBarMenu()
 }
 void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
 {
-    this->drawSprite(canvas);
+    sprite.setPosition(MENUSTARTX, MENUSTARTY);//Fult
+    sprite.setScale(800,1);
+    canvas.draw(sprite);
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
         buttons[i]->drawButton(canvas, getPosX(), getPosY());

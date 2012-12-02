@@ -34,8 +34,8 @@ void GameHandler::run()
 
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 20);
-    text.move(20,20);
+    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 30);
+    text.move(600,0);
 	sf::Clock frameTime;
 
     EventHandler::addListener(sf::Event::Closed, this);
