@@ -71,4 +71,8 @@ bool GameObject::drawSprite(sf::RenderWindow& canvas)
     canvas.draw(sprite);
     return true;
 }
+void GameObject::setColor(const sf::Color& color)
+{
+	sprite.setColor(color);
+}
 

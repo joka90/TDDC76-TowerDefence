@@ -23,6 +23,7 @@ class GameObject
         void playAnimation();
         void pauseAnimation();
         virtual bool drawSprite(sf::RenderWindow& canvas);
+        void setColor(const sf::Color& color);
 
     protected:
         bool isPlaying;
