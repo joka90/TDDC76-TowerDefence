@@ -18,8 +18,8 @@ StatusBarMenu::StatusBarMenu()
 {
 	playerMoney=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
 	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
-	playerMoney.move(300, 0);
-	playerLife.move(400, 0);
+	playerMoney.setPosition(300, 0);
+	playerLife.setPosition(400, 0);
 	
     addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Quit", ""));

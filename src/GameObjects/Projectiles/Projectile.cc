@@ -8,7 +8,7 @@ Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* n
 
 /*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T
 {
-   sprite.move(xPos,xPos);
+   sprite.setPosition(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
 }*/
@@ -53,7 +53,7 @@ void Projectile::setDirection(int newDirX, int newDirY)
     return;
 }
 
-void Projectile::move()
+void Projectile::move()//SFML's move fungerar som denna. använda den istället för setPosition?
 {
     xPos = xPos + dirX;
     yPos = yPos +dirY;

@@ -112,7 +112,7 @@ Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
 
 /*bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
 {
-   sprite.move(xPos,xPos);
+   sprite.setPosition(xPos,xPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
 }*/
