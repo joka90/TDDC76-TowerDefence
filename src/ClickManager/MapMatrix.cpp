@@ -105,7 +105,28 @@ pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
     return make_pair(matrixX,matrixY);
 }
 
+void MapMatrix::draw(sf::RenderWindow& canvas)
+{
+	int row = matrix.size();
+	int col = matrix[0].size();
+    for ( int i = 0; i < row; i++ )
+    {
+        for ( int j = 0; j < col; j++ )
+		{
+			if(matrix[i][j]==1)
+			{
+				sf::RectangleShape rectangle;
+				rectangle.setFillColor(sf::Color::Green);
+				rectangle.setSize(sf::Vector2f(SIDE, SIDE));
+				rectangle.setOutlineColor(sf::Color::Black);
+				rectangle.setOutlineThickness(5);
+				rectangle.setPosition(i*SIDE, j*SIDE);
+				canvas.draw(rectangle);
+			}
+		}
+    }
 
+}
 
 //Finns endast för felsökning
 void MapMatrix::printMatrix(){

@@ -4,6 +4,7 @@
  *  Created on: 17 nov 2012
  *      Author: Calle
  */
+#include <SFML/Graphics.hpp>
 
 #ifndef MAPMATRIX_H
 #define MAPMATRIX_H
@@ -27,7 +28,7 @@ class MapMatrix
 		/*
 		 * Finns endast för felsökning
 		 */
-
+		void draw(sf::RenderWindow& canvas);
 		void printMatrix();
 
     private:

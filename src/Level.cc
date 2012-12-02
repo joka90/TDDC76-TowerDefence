@@ -180,7 +180,7 @@ bool Level::update()
 void Level::draw(sf::RenderWindow& canvas)
 {
     canvas.draw(background);
-
+	map.draw(canvas);//For debuging
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
