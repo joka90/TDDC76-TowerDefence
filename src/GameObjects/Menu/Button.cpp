@@ -12,6 +12,7 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     }
 	FontLoader::load("appleberry_with_cyrillic.ttf");
 	buttonText=sf::Text(inButtonText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
+	mouseOverText=sf::Text(inMouseOverText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),20);
 	EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
@@ -66,7 +67,7 @@ void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY
 	canvas.draw(buttonText);
     if(hoover)
     {
-        drawHooverText();
+        drawHooverText(canvas);
     }
     return;
 }
@@ -170,7 +171,10 @@ void Button::newIteration()
     return;
 }
 
-void Button::drawHooverText()
+void Button::drawHooverText(sf::RenderWindow& canvas)
 {
+	sf::Vector2i pos=sf::Mouse::getPosition(canvas);
+	mouseOverText.setPosition(pos.x+10,pos.y+10);
+	canvas.draw(mouseOverText);
     return; //TODO
 }
