@@ -27,7 +27,7 @@ using namespace std;
 
 
 ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, Player& player)
-:    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player)
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player), upgradeMenu(player)
 {
     EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
@@ -87,6 +87,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
 void ClickManager::update()
 {
     string buyMenuState,upgradeMenuState;
+    upgradeMenu.update();
     if(buyMenu.update())
     {
     	buyMenuState = buyMenu.readState();
@@ -112,6 +113,7 @@ void ClickManager::createTower(int x, int y)
 void ClickManager::drawMenus(sf::RenderWindow& canvas)
 {
     buyMenu.drawMenu(canvas);
+    upgradeMenu.drawMenu(canvas);
     if(markedTower != NULL)
     {
 		sf::Vector2i pos=sf::Mouse::getPosition(canvas);

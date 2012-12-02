@@ -1,5 +1,5 @@
 #include "NextWaveMenu.h"
-#define MENUSTARTX 500
+#define MENUSTARTX 600
 #define MENUSTARTY 400
 #define NEWWAVEX 50
 #define NEWWAVEY 40
