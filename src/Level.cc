@@ -110,8 +110,8 @@ Level::Level(string saveFile)
 		// get pos from towers
 		for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 		{
-			//map.setTower((*it)->getPosX(), (*it)->getPosY()); //TODO uncomment this when mapmatrix is working. Now it's just throwing a seg fault...
-			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;
+			map.setTower((*it)->getPosX(), (*it)->getPosY()); 
+			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;//TODO reomve this line when mapmatrix is working.
 		}
 	}
 	else

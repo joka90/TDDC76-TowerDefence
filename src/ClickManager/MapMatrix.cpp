@@ -46,19 +46,42 @@ void MapMatrix::setMatrix(string value, int row, int col)
 bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-	return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
+    if(matrixPixel.first<= getWidth() && matrixPixel.second <= getHeight())
+	{	
+		return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
+	}
+	else
+	{
+		cout << "ERROR: Outside MapMatrix" << endl;
+		return true;//To make it inpossible to place tower there
+	}
 }
 
 void MapMatrix::setTower(int pixelX, int pixelY)
 {
-    pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-	matrix[matrixPixel.first][matrixPixel.second] = 2; //Tower = 2
+	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
+	if(matrixPixel.first<= getWidth() && matrixPixel.second <= getHeight())
+	{	
+		matrix[matrixPixel.first][matrixPixel.second] = 2; //Tower = 2
+	}
+	else
+	{
+		cout << "ERROR: Outside MapMatrix" << endl;
+	}
 }
 
 bool MapMatrix::isPath(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-	return (matrix[matrixPixel.first][matrixPixel.second] == 1);
+    if(matrixPixel.first<= getWidth() && matrixPixel.second <= getHeight())
+	{	
+		return (matrix[matrixPixel.first][matrixPixel.second] == 1);
+	}
+	else
+	{
+		cout << "ERROR: Outside MapMatrix" << endl;
+		return true;//To make it inpossible to place tower there
+	}
 }
 
 pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
