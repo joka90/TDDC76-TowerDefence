@@ -53,6 +53,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     {
         if(not mapMatrix.isTaken(x,y))
         {
+            //Fråga mapMatrix om rätt pixelkoordinater så tornet hamnar mitt i en ruta
             //Lägga sätt towerX och towerY till x,y och lägg till det i towerVector
         }
     }
