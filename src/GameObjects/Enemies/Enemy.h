@@ -7,7 +7,6 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(int newX, int newY, int newLife, int newSpeed, int newValue, std::string textureReference);
 
     ~Enemy();
 
@@ -26,9 +25,14 @@ public:
 private:
 
 protected:
+    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference);
+
     int life;
-    int speed;
+    int speed; // Ex: speed = 10: flyttar 1 pixel var 10:e frame
     int value;
     int stepsMoved;
+    int frames; // Antalet frames sedan enemyn påbörjat animering från senaste ruta
+
+    std::pair<int, int> nextCoord;
 };
 #endif //end ENEMY_H

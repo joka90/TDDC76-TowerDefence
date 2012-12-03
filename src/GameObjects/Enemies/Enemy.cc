@@ -1,9 +1,13 @@
 #include "Enemy.h"
-Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue, std::string textureReference)
 
- : GameObject(newX, newY, textureReference), life(newLife), speed(newSpeed), value(newValue)
+using namespace std;
+
+Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReference)
+
+ : GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
 {
-
+    nextCoord = make_pair(0,0);
+    stepsMoved = 0;
 }
 
 Enemy::~Enemy()
@@ -44,8 +48,23 @@ void Enemy::setValue(int newValue)
 }
 
 
-void update(MapMatrix& map){
+void Enemy::update(MapMatrix& map){
+    // If arrived at a coord, start walk to next
+    if(xPos == nextCoord.first && yPos == nextCoord.second){
+        stepsMoved = stepsMoved +1;
+        frames = 0;
 
+        nextCoord = map.getNextCoord(stepsMoved);
+    }
+    // if we should move this iteration
+    if(frames % speed == 0){
+        if(xPos != nextCoord.first){
+            xPos = (nextCoord.first > xPos)? xPos + 1: xPos - 1;
+        }
+        if(yPos != nextCoord.second){
+            yPos = (nextCoord.second > yPos)? yPos + 1: yPos - 1;
+        }
+    }
 }
 
 void Enemy::hit(int damage)
