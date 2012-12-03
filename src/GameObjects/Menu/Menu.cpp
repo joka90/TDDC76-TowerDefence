@@ -41,6 +41,10 @@ void Menu::drawMenu(sf::RenderWindow& canvas)
     {
         buttons[i]->drawButton(canvas, getPosX(), getPosY());
     }
+    for(int i = 0; i < (int)buttons.size(); ++i)
+    {
+        buttons[i]->drawHooverText(canvas);
+    }
     return;
 }
 

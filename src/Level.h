@@ -56,7 +56,7 @@ private:
 
     NextWaveMenu nextWaveMenu;
     StatusBarMenu statusBarMenu;
-    
+
     std::string state;
 };
 

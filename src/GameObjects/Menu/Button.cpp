@@ -65,10 +65,6 @@ void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY
     drawSprite(canvas);
 	buttonText.setPosition(menuCoordX+relativePosX, menuCoordY+relativePosY);// fixed for now because looping away..
 	canvas.draw(buttonText);
-    if(hoover)
-    {
-        drawHooverText(canvas);
-    }
     return;
 }
 
@@ -173,8 +169,12 @@ void Button::newIteration()
 
 void Button::drawHooverText(sf::RenderWindow& canvas)
 {
+    if(!hoover)
+    {
+        return;
+    }
 	sf::Vector2i pos=sf::Mouse::getPosition(canvas);
 	mouseOverText.setPosition(pos.x+10,pos.y+10);
 	canvas.draw(mouseOverText);
-    return; //TODO
+    return;
 }
