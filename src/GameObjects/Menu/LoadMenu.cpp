@@ -4,7 +4,7 @@
 #include "LoadMenu.h"
 
 
-#define CLICK "CLICK.WAW"
+#define CLICK "CLICK.WAV"
 
 #define MENULOADX 0
 #define MENULOADY 0

@@ -41,13 +41,12 @@ void MapMatrix::setMatrix(string value, int row, int col)
 			}
 		}
 	}
-	printMatrix();
 }
 
 bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-     if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight()
+     if(matrixPixel.first < getWidth()  && matrixPixel.second < getHeight()
        && matrixPixel.first >= 0 && matrixPixel.second >= 0)
 	{
 		return !(matrix[matrixPixel.second][matrixPixel.first] == 0);
@@ -62,7 +61,7 @@ bool MapMatrix::isTaken(int pixelX, int pixelY)
 void MapMatrix::setTower(int pixelX, int pixelY)
 {
 	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX ,pixelY );
-	 if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight()
+	 if(matrixPixel.first < getWidth()  && matrixPixel.second < getHeight()
        && matrixPixel.first >= 0 && matrixPixel.second >= 0)
 	{
 		matrix[matrixPixel.second][matrixPixel.first] = 2; //Tower = 2
@@ -104,31 +103,36 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 
 pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
 {
-    int pixelX = ((path[currentPathPosition].first + 0.5) * SIDE);
-    int pixelY = ((path[currentPathPosition].second + 0.5) * SIDE);
-    return make_pair(pixelX,pixelY);
+    if(currentPathPosition < path.size())
+    {
+        int pixelX = ((path[currentPathPosition].first + 0.5) * SIDE);
+        int pixelY = ((path[currentPathPosition].second + 0.5) * SIDE);
+        return make_pair(pixelX,pixelY);
+    }
+    else
+    {
+        return make_pair(NULL,NULL); //Ta bort ett liv
+    }
 }
 int MapMatrix::getHeight()
 {
-    return matrix[0].size();
+    return matrix.size();
 }
 int MapMatrix::getWidth()
 {
-    return matrix.size();
+    return matrix[0].size();
 }
 pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
 {
     int matrixX = pixelX/SIDE; //(pixelX * getWidth() / SIDE);
     int matrixY = pixelY/SIDE; //(pixelY * getHeight() / SIDE);
-    cout << matrixX << " . " << matrixY << endl;
     return make_pair(matrixX,matrixY);
 }
 
 void MapMatrix::draw(sf::RenderWindow& canvas)
 {
-    printMatrix();
-	int row = matrix.size();
-	int col = matrix[0].size();
+	int row = getHeight();
+	int col = getWidth();
     for ( int i = 0; i < row; i++ )
     {
         for ( int j = 0; j < col; j++ )

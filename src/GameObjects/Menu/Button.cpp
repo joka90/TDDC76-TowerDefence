@@ -8,7 +8,7 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
     sleeping = false;
     if(soundKey != "")
     {
-       // clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
+       clickSound = new sf::Sound(SoundLoader::getSoundBuffer(soundKey));
     }
 	FontLoader::load("appleberry_with_cyrillic.ttf");
 	buttonText=sf::Text(inButtonText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
@@ -46,7 +46,7 @@ Button& Button::operator=(const Button& inButton)
     if(clickSound != NULL)
     {
         delete clickSound;
-        // clickSound = new sf::Sound(*(inButton.clickSound)); TODO
+        clickSound = new sf::Sound(*(inButton.clickSound));
     }
     return *this;
 }
@@ -114,7 +114,7 @@ void Button::mouseButtonPressedListener(sf::Event event)
                     thisIterPressed = true;
                     if(clickSound != NULL)
                     {
-                       // clickSound->play(); TODO
+                        clickSound->play();
                     }
                 }
                 pressed = true;

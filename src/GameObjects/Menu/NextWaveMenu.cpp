@@ -5,7 +5,7 @@
 #define NEWWAVEY 40
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 70
-#define CLICK "CLICK.WAW"
+#define CLICK "CLICK.WAV"
 #define BUTTON "button.png"
 #include <iostream>
 
