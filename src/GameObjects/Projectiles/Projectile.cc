@@ -1,4 +1,5 @@
 #include "Projectile.h"
+#include <cmath>
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),
   damage(newDamage), speed(newSpeed), enemy(newEnemy)
@@ -59,3 +60,38 @@ void Projectile::move()//SFML's move fungerar som denna. använda den istället fö
     yPos = yPos +dirY;
     return;
 }
+
+void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
+{
+    Enemy* closestEnemy = NULL;
+    double closestRange = 0;
+    double rangeToEnemy;
+
+    if(!enemyVector.empty())
+    {
+        Enemy* closestEnemy = enemyVector[0];
+        closestRange = sqrt(((enemyVector[0]->getPosX() - xPos)^2) + ((enemyVector[0]->getPosY() - yPos)^2));
+
+        for (unsigned int i = 1; i < enemyVector.size(); ++i)
+        {
+            rangeToEnemy = sqrt(((enemyVector[i]->getPosX() - xPos)^2) + ((enemyVector[i]->getPosY() - yPos)^2));
+            if (rangeToEnemy < closestRange)
+            {
+                closestRange = rangeToEnemy;
+                closestEnemy = enemyVector[i];
+            }
+        }
+    }
+
+    enemy = closestEnemy;
+
+    return;
+}
+
+
+
+
+
+
+
+

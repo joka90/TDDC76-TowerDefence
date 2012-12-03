@@ -9,9 +9,8 @@
 			<Target title="Debug">
 				<Option output="bin\Debug\SFML-2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Debug\" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
@@ -53,7 +52,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="callemain.cc" />
 		<Unit filename="main.cc" />
 		<Unit filename="src\AnimatedSprite.cc" />
 		<Unit filename="src\AnimatedSprite.h" />
@@ -70,8 +68,6 @@
 		<Unit filename="src\EventUser.h" />
 		<Unit filename="src\GameHandler.cc" />
 		<Unit filename="src\GameHandler.h" />
-		<Unit filename="src\GameObjects\Enemies\BadgerEnemy.cpp" />
-		<Unit filename="src\GameObjects\Enemies\BadgerEnemy.h" />
 		<Unit filename="src\GameObjects\Enemies\Enemy.cc" />
 		<Unit filename="src\GameObjects\Enemies\Enemy.h" />
 		<Unit filename="src\GameObjects\GameObject.cpp" />
@@ -88,8 +84,12 @@
 		<Unit filename="src\GameObjects\Menu\NextWaveMenu.h" />
 		<Unit filename="src\GameObjects\Menu\StartMenu.cpp" />
 		<Unit filename="src\GameObjects\Menu\StartMenu.h" />
+		<Unit filename="src\GameObjects\Menu\StatusBarMenu.cpp" />
+		<Unit filename="src\GameObjects\Menu\StatusBarMenu.h" />
 		<Unit filename="src\GameObjects\Menu\TrackMenu.cpp" />
 		<Unit filename="src\GameObjects\Menu\TrackMenu.h" />
+		<Unit filename="src\GameObjects\Menu\UpgradeMenu.cpp" />
+		<Unit filename="src\GameObjects\Menu\UpgradeMenu.h" />
 		<Unit filename="src\GameObjects\Projectiles\LongProjectile.cpp" />
 		<Unit filename="src\GameObjects\Projectiles\LongProjectile.h" />
 		<Unit filename="src\GameObjects\Projectiles\Projectile.cc" />

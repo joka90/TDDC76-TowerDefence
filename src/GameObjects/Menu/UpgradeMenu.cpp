@@ -1,16 +1,10 @@
 #include "UpgradeMenu.h"
-
-#define UPPGMENUSTARTX 600
+#define UPPGMENUSTARTX 500
 #define UPPGMENUSTARTY 0
 
-#define UPPGWIDTH 50
-#define UPPGHEIGHT 50
-#define UPPGBUTTON "BuyButton.png"
-<<<<<<< HEAD
-#define CLICKSOUND "CLICK.WAW"
-
+using namespace std;
 UpgradeMenu::UpgradeMenu(Player& inPlayer)
- : Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), player(inPlayer)
+: Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), selectedTower(NULL), player(inPlayer)
 {
     //TODO
 }
@@ -19,24 +13,19 @@ UpgradeMenu::~UpgradeMenu()
 {
     //dtor
 }
-=======
-#define CLICKSOUND "CLICK.WAW"
 
-UpgradeMenu::UpgradeMenu(Player& inPlayer)
- : Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), player(inPlayer)
+#define CLICKSOUND "CLICK.WAV"
+
+bool UpgradeMenu::upgrade()
 {
-    //TODO
+    return true;
 }
 
-UpgradeMenu::~UpgradeMenu()
+void UpgradeMenu::selectTower(Tower* inTower)
 {
-    //dtor
+    //selectedTower = inTower;
 }
->>>>>>> 92373cb6ee561863f2e3f71b1c513743f9651484
-
-bool UpgradeMenu::update()
+void UpgradeMenu::deselectTower()
 {
-    //TODO
-    newIteration();
-    return false;
+    //selectedTower = NULL;
 }

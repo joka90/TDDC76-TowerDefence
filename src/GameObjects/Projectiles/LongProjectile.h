@@ -5,7 +5,12 @@
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
 
-
+/**
+ * class LongProjectile
+ *
+ * Beskrivning: Tanken är att den skjuter långt och målsöker på närmaste fiende.
+ * Om sökt fiende dör söker den en ny.
+ */
 class LongProjectile : public Projectile
 {
 public:

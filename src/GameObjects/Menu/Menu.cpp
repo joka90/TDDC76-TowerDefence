@@ -4,13 +4,17 @@
 
 using namespace std;
 Menu::Menu(int x, int y, string textureReference)
-    : GameObject(x, y, textureReference), state("")
+    : GameObject(x, y, textureReference), state(""), buttons()
 {
+    buttons.clear();
 }
 
 Menu::~Menu()
 {
-    //dtor
+    for(unsigned int i = 0; i < buttons.size(); ++i)
+    {
+        delete(buttons[i]);
+    }
 }
 string Menu::readState()
 {

@@ -42,8 +42,7 @@ class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUs
 		Tower* markedTower;
 
 		BuyMenu buyMenu;
-		UpgradeMenu upgradeMenu;
-
+        UpgradeMenu upgradeMenu;
 
 };
 
