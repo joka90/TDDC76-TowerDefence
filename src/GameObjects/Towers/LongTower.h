@@ -20,6 +20,12 @@ public:
 
     ~LongTower();
 
+    /**
+     * update(std::vector<Enemy*>& enemies>
+     *
+     * Returnerar en LongProjectile* om det finns en fiende tillräckligt nära tornet.
+     * Annars returnerar den NULL.
+     */
     LongProjectile* update(std::vector<Enemy*>& enemies);
 
 protected:

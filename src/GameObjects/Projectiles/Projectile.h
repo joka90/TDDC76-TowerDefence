@@ -38,6 +38,7 @@ protected:
     int dirX;
     int dirY;
     Enemy* enemy;
+    void setClosestEnemy(std::vector<Enemy*>& enemyVector);
 
 };
 #endif //end PROJECTILE_H
