@@ -32,7 +32,7 @@ class WaveHandler {
 		int currentWaveIndex;
 		bool isRunning;
 		sf::Clock clock;
-		std::vector<Wave> wavesVector; //Innehåller Waves
+		std::vector<Wave*> wavesVector; //Innehåller Waves
 
 };
 

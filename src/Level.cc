@@ -134,7 +134,7 @@ bool Level::update()
     //Update enemies
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
-        //(*it)->update(map);
+        (*it)->update(map);
     }
 
 	// Update towers
@@ -161,6 +161,7 @@ bool Level::update()
             waves->startNextWave();
         }
     }
+    nextWaveMenu.newIteration();
     if(statusBarMenu.update())
     {
         string message = statusBarMenu.readState();
