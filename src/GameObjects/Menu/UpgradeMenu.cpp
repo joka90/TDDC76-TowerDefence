@@ -6,11 +6,15 @@ using namespace std;
 UpgradeMenu::UpgradeMenu(Player& inPlayer)
 : Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), selectedTower(NULL), player(inPlayer)
 {
+    //TODO
 }
 
 UpgradeMenu::~UpgradeMenu()
 {
+    //dtor
 }
+=======
+#define CLICKSOUND "CLICK.WAW"
 
 bool UpgradeMenu::upgrade()
 {
