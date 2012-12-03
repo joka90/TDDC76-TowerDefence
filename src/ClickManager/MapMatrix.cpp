@@ -47,7 +47,7 @@ bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
     if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
-	{	
+	{
 		return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
 	}
 	else
@@ -61,7 +61,7 @@ void MapMatrix::setTower(int pixelX, int pixelY)
 {
 	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
 	if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
-	{	
+	{
 		matrix[matrixPixel.first][matrixPixel.second] = 2; //Tower = 2
 	}
 	else
@@ -74,7 +74,7 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
     if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
-	{	
+	{
 		return (matrix[matrixPixel.first][matrixPixel.second] == 1);
 	}
 	else
@@ -117,6 +117,16 @@ void MapMatrix::draw(sf::RenderWindow& canvas)
 			{
 				sf::RectangleShape rectangle;
 				rectangle.setFillColor(sf::Color::Green);
+				rectangle.setSize(sf::Vector2f(SIDE, SIDE));
+				rectangle.setOutlineColor(sf::Color::Black);
+				rectangle.setOutlineThickness(5);
+				rectangle.setPosition(i*SIDE, j*SIDE);
+				canvas.draw(rectangle);
+			}
+			else if(matrix[i][j]==2)
+			{
+				sf::RectangleShape rectangle;
+				rectangle.setFillColor(sf::Color::Red);
 				rectangle.setSize(sf::Vector2f(SIDE, SIDE));
 				rectangle.setOutlineColor(sf::Color::Black);
 				rectangle.setOutlineThickness(5);
