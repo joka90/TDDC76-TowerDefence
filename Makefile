@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o UpgradeMenu.o
 
 # Huvudmål
 TD: $(OBJECTS) Makefile
@@ -117,6 +117,8 @@ NextWaveMenu.o: src/GameObjects/Menu/NextWaveMenu.h src/GameObjects/Menu/NextWav
 StatusBarMenu.o: src/GameObjects/Menu/StatusBarMenu.h src/GameObjects/Menu/StatusBarMenu.cpp
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/StatusBarMenu.cpp
 
+UpgradeMenu.o: src/GameObjects/Menu/UpgradeMenu.h src/GameObjects/Menu/UpgradeMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/UpgradeMenu.cpp
 
 # 'make clean' tar bort objektkodsfiler och 'core' (minnesdump).
 clean:

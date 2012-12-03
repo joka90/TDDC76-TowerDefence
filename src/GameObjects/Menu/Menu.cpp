@@ -4,13 +4,17 @@
 
 using namespace std;
 Menu::Menu(int x, int y, string textureReference)
-    : GameObject(x, y, textureReference), state("")
+    : GameObject(x, y, textureReference), state(""), buttons()
 {
+    buttons.clear();
 }
 
 Menu::~Menu()
 {
-    //dtor
+    for(unsigned int i = 0; i < buttons.size(); ++i)
+    {
+        delete(buttons[i]);
+    }
 }
 string Menu::readState()
 {
@@ -40,6 +44,10 @@ void Menu::drawMenu(sf::RenderWindow& canvas)
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
         buttons[i]->drawButton(canvas, getPosX(), getPosY());
+    }
+    for(int i = 0; i < (int)buttons.size(); ++i)
+    {
+        buttons[i]->drawHooverText(canvas);
     }
     return;
 }

@@ -14,6 +14,7 @@
 #include "../EventUser.h"
 #include "../GameObjects/Towers/Tower.h"
 #include "../GameObjects/Menu/BuyMenu.h"
+#include "../GameObjects/Menu/UpgradeMenu.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -41,7 +42,7 @@ class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUs
 		Tower* markedTower;
 
 		BuyMenu buyMenu;
-
+        UpgradeMenu upgradeMenu;
 
 };
 
