@@ -1,13 +1,9 @@
 #include "Level.h"
 
-#define createObjectFromType(parm,type) if(parm==#type) {  \
-tmpPtr=new type(); \
-}
-
 using namespace std;
 
-Level::Level(string trackFile, int, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, textures, sounds, fonts)
+Level::Level(string trackFile, int)
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state("")
  {
      loadBase(trackFile, 0);
  }
@@ -20,7 +16,7 @@ void Level::loadBase(string trackFile, int index)
     loadData.open(trackFile);
     loadData.getline(stringBuffer, 256, '\n');
     //ladda bakgrund
-    background.setTextureAnimation(textures.getTexture(stringBuffer));
+    background.setTextureAnimation(TextureLoader::getTexture(stringBuffer));
     background.setPosition(0,0);
     //initiera spelaren
     int money, lives;
@@ -53,14 +49,14 @@ void Level::loadBase(string trackFile, int index)
     waves = new WaveHandler(waveHandlerData, index);
 }
 
-Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, MusicLoader& inMusic, FontLoader& inFonts)
- : textures(inTextures), sounds(inSounds), fonts(inFonts), music(inMusic), player(0,0), clickManager(towers, map, inTextures, inSounds, inFonts)
+Level::Level(string saveFile)
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state("")
 {
 	char type[20];
 	char subType[20];
 	char parms[200];
 
-	//Temp variabels to load into	
+	//Temp variabels to load into
 	int tmpLife;
 	int tmpMoney;
 	int tmpWave;
@@ -82,7 +78,7 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 				Tower* tmpPtr=NULL;
 				if(subTypeStr=="LongTower")
 				{
-					tmpPtr=new LongTower(parmsStr, textures, sounds, fonts);
+					tmpPtr=new LongTower(parmsStr);
 				}
 				cout << "New tower " << subTypeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
@@ -105,11 +101,18 @@ Level::Level(string saveFile, TextureLoader& inTextures, SoundLoader& inSounds, 
 		//Init Level and wave, load from file
 		loadBase(string(tmpTrackFile),tmpWave);
 		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
-	
+
 		//init player after Level to overwrite life and money
 		player=Player(tmpMoney, tmpLife);
 		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 
+		//load towers into map matrix
+		// get pos from towers
+		for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+		{
+			map.setTower((*it)->getPosX(), (*it)->getPosY()); 
+			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;//TODO reomve this line when mapmatrix is working.
+		}
 	}
 	else
 	{
@@ -123,7 +126,9 @@ bool Level::update()
     // Update WaveHandler (place new enemy if one)
     Enemy* enemyToBePlaced = waves->update();
     if(enemyToBePlaced != NULL)
+    {
         enemies.push_back(enemyToBePlaced);
+    }
 
     //Update enemies
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
@@ -145,20 +150,37 @@ bool Level::update()
 	{
 		(*it)->update(enemies);
 	}
+	if(nextWaveMenu.update())
+    {
+        string message = nextWaveMenu.readState();
+        if(message == "NEXTWAVE")
+        {
+            waves->startNextWave();
+        }
+    }
+    if(statusBarMenu.update())
+    {
+        string message = statusBarMenu.readState();
+        if(message == "SAVE")
+        {
+            cout << "SAVING" << endl;
+            saveLevel("saves/testSave.txt");//TODO non const save path
+            cout << "Saveing done. Quiting." << endl;
+            state="START";
+        }
+        if(message == "QUIT")
+        {
+            cout << "Quiting" << endl;
+            state="START";
+        }
+    }
     return true;
 }
 
 void Level::draw(sf::RenderWindow& canvas)
 {
     canvas.draw(background);
-	// Create a graphical text to display
-	std::stringstream ss;
-	ss << "Money:" << player.getMoney() << " Life: " << player.getLife();
-    sf::Text text(ss.str(), fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
-    text.move(300,20);
-
-	// Update the canvas
-	canvas.draw(text);
+	map.draw(canvas);//For debuging
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
@@ -169,7 +191,17 @@ void Level::draw(sf::RenderWindow& canvas)
     {
         (*it)->drawSprite(canvas);
     }
+    clickManager.update();
     clickManager.drawMenus(canvas);
+    nextWaveMenu.drawMenu(canvas);
+    statusBarMenu.drawMenu(canvas, player);
+}
+
+string Level::readState()
+{
+    string temp = state;
+    state = "";
+    return temp;
 }
 
 void Level::runWave()

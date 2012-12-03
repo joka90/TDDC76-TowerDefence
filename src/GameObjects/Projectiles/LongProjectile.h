@@ -9,7 +9,7 @@
 class LongProjectile : public Projectile
 {
 public:
-    LongProjectile(int newX, int newY, int newDamage, Enemy* newEnemy, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
+    LongProjectile(int newX, int newY, int newDamage, Enemy* newEnemy);
     ~LongProjectile();
 
     void update(std::vector<Enemy*>& enemies);

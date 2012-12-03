@@ -12,16 +12,17 @@ class TextureLoader : public Loader
 {
     public:
      TextureLoader();
-     void remove(const std::string& key);
-     void clear();
-     bool empty() const;
-     void load(const std::string& filename);
-     sf::Texture& getTexture(const std::string& key);
-     void print() const; //debug
+     static void remove(const std::string& key);
+     static void clear();
+     static bool empty();
+     static void load(const std::string& filename);
+     static sf::Texture& getTexture(const std::string& key);
+     static void print(); //debug
     private:
-     std::map<std::string, sf::Texture> textures;
-     bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::Texture& inTexture);
+     static std::string directory;
+     static std::map<std::string, sf::Texture> textures;
+     static bool find(const std::string& key);
+     static void insert(const std::string& key, sf::Texture& inTexture);
 };
 
 #endif

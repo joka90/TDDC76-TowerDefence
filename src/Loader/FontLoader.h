@@ -12,16 +12,17 @@ class FontLoader : public Loader
 {
     public:
      FontLoader();
-     void remove(const std::string& key);
-     void clear();
-     bool empty() const;
-     void load(const std::string& filename);
-     sf::Font& getFont(const std::string& key);
-     void print() const; //debug
+     static void remove(const std::string& key);
+     static void clear();
+     static bool empty();
+     static void load(const std::string& filename);
+     static sf::Font& getFont(const std::string& key);
+     static void print(); //debug
     private:
-     std::map<std::string, sf::Font> fonts;
-     bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::Font inFont);
+     static std::string directory;
+     static std::map<std::string, sf::Font> fonts;
+     static bool find(const std::string& key);
+     static void insert(const std::string& key, sf::Font inFont);
 };
 
 #endif

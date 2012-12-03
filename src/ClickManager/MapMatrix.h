@@ -4,13 +4,14 @@
  *  Created on: 17 nov 2012
  *      Author: Calle
  */
+#include <SFML/Graphics.hpp>
 
 #ifndef MAPMATRIX_H
 #define MAPMATRIX_H
+#define SIDE 50
 
 #include <string>
 #include <vector>
-
 
 class MapMatrix
 {
@@ -25,10 +26,11 @@ class MapMatrix
                                                                 //Tex. (0.0) -> (25.25) med 50px-rutor
         std::pair<int,int> convertPixelToMatrix(int pixelX,int pixelY);
 
+
 		/*
 		 * Finns endast för felsökning
 		 */
-
+		void draw(sf::RenderWindow& canvas);
 		void printMatrix();
 
     private:

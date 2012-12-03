@@ -33,8 +33,8 @@
 #define BACKIMG "BACKBUTTON.png"
 #define LEVELFOLDER "levels/"
 using namespace std;
-TrackMenu::TrackMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts)
-:Menu(MENULOADX, MENULOADY, inTextures, "StartMenu.png"), scrollLenght(0), textures(inTextures), sounds(inSounds), fonts(inFonts)
+TrackMenu::TrackMenu()
+:Menu(MENULOADX, MENULOADY, "StartMenu.png"), scrollLenght(0)
 {
     //Ladda in vilka sparfiler som finns
     ifstream loadData;
@@ -52,11 +52,11 @@ TrackMenu::TrackMenu(TextureLoader& inTextures, SoundLoader& inSounds, FontLoade
     }
     //lägg till knappar
     addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWUP, CLICK, "", ""));
+                      ARROWUP, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
-                      textures, sounds, fonts, ARROWDOWN, CLICK, "", ""));
+                       ARROWDOWN, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                      textures, sounds, fonts, BACKIMG, CLICK, "", ""));
+                       BACKIMG, CLICK, "", ""));
     updateLoadButtons();
 }
 
@@ -76,7 +76,7 @@ void TrackMenu::updateLoadButtons()
             if(i+scrollLenght < (int) trackVectorData.size() -1)
             {
                 addButton(new Button(MENULOADX, MENULOADY, LEVELSTARTX, LEVELSTARTY+LEVELGAPY*i, LEVELWIDTHX, LEVELWIDTHY,
-                      textures, sounds, fonts, TRACKLEVELIMG, CLICK, (trackVectorData[scrollLenght+i]).name, ""));
+                      TRACKLEVELIMG, CLICK, (trackVectorData[scrollLenght+i]).name, ""));
             }
         }
 }

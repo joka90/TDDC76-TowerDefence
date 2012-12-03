@@ -5,10 +5,10 @@ using namespace std;
 
 GameHandler::GameHandler()
 
-:music(), textures(), sounds(), fonts(), currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(textures, sounds, fonts), loadMenu(textures, sounds, fonts), trackMenu(textures, sounds, fonts)
+:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu()
 {
     // init all loaders
-    fonts.load(std::string("appleberry_with_cyrillic.ttf"));
+    FontLoader::load(std::string("appleberry_with_cyrillic.ttf"));
 }
 
 
@@ -34,8 +34,8 @@ void GameHandler::run()
 
 
     // Create a graphical text to display
-    sf::Text text("Hello SFML", fonts.getFont("appleberry_with_cyrillic.ttf"), 50);
-    text.move(20,20);
+    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 30);
+    text.move(600,0);
 	sf::Clock frameTime;
 
     EventHandler::addListener(sf::Event::Closed, this);
@@ -56,7 +56,10 @@ void GameHandler::run()
         // handle current state
 		switch(currentState){
 		case LEVEL:
-			currentLevel->update();
+			if(currentLevel->update())
+			{
+				nextState=currentLevel->readState();
+			}
 			currentLevel->draw(canvas);
 		  	break;
 		case LOADMENU:
@@ -115,13 +118,13 @@ void GameHandler::run()
 				{
 				    currentState=LEVEL;
 				    cout << "loading: " << nextState << endl;
-				    currentLevel = new Level(nextState, textures, sounds, music, fonts); // hur man nu laddar/initierar banor
+				    currentLevel = new Level(nextState); // hur man nu laddar/initierar banor
 				}
 				if(currentState == TRACKMENU && nextState != "")
 				{
 				    currentState=LEVEL;
 				    cout << "starting: " << nextState << endl;
-				    currentLevel = new Level(nextState, 0, textures, sounds, music, fonts);
+				    currentLevel = new Level(nextState, 0);
 				}
 			}
 			nextState="";

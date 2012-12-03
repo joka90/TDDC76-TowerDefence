@@ -10,9 +10,9 @@ class ClassManager
         ClassManager();
         virtual ~ClassManager();
 
-        static Enemy* createEnemyInstance(std::string enemyTypeName);
+        static Enemy* createEnemyInstance(const std::string& enemyTypeName);
 
-        static Tower* createTowerInstance(std::string towerTypeName);
+        static Tower* createTowerInstance(const std::string& towerTypeName);
 
 };
 

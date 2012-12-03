@@ -15,11 +15,9 @@
 class Tower : public GameObject
 {
 public:
-    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,  std::string textureReference,
-           TextureLoader& inTextureLoader, SoundLoader& inSoundLoader
-           , FontLoader& inFontLoader);
+    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,  std::string textureReference);
 
-	Tower(std::string parms,  std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader, FontLoader& inFontLoader);
+	Tower(std::string parms,  std::string textureReference);
 
     ~Tower();
 
@@ -47,11 +45,6 @@ protected:
     int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
     Enemy* getClosestEnemy(std::vector<Enemy*>& enemyVector);
     std::string towerType;
-
-    TextureLoader& textures;
-    SoundLoader& sounds;
-    FontLoader& fonts;
-
 
 };
 #endif //end TOWER_H

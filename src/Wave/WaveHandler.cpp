@@ -55,7 +55,10 @@ void WaveHandler::startNextWave()
  */
 Enemy* WaveHandler::update(){
     if(isRunning)
+    {
         return wavesVector[currentWaveIndex].getEnemy(clock.getElapsedTime().asMilliseconds());
+    }
+    return NULL;
 }
 
 int WaveHandler::getCurrentWaveIndex(){

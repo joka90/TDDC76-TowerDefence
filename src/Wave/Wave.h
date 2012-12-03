@@ -25,7 +25,6 @@ class Wave {
 		Enemy* getEnemy(int timeDelta);
 
 	private:
-
         std::vector<std::pair<int,std::string> > enemies;
         int nextIndex;
 };

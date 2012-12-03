@@ -5,13 +5,13 @@ using namespace std;
 /*
 *   konstruktor, skall det vara så här?
 */
-GameObject::GameObject(int x, int y, TextureLoader& inTextures, const string textureReference)
-    : isPlaying(true), xPos(x), yPos(y), sprite(inTextures.getTexture(textureReference))
+GameObject::GameObject(int x, int y, const string textureReference)
+    : isPlaying(true), xPos(x), yPos(y), sprite(TextureLoader::getTexture(textureReference))
 {
 
 }
-GameObject::GameObject(std::string parms, TextureLoader& inTextures, const string textureReference)
-:isPlaying(true), sprite(inTextures.getTexture(textureReference))
+GameObject::GameObject(std::string parms, const string textureReference)
+:isPlaying(true), sprite(TextureLoader::getTexture(textureReference))
 {
 	char dummyStr[100];
 	sscanf(parms.c_str(),"%i,%i,%s",&xPos,&yPos,dummyStr);
@@ -70,5 +70,9 @@ bool GameObject::drawSprite(sf::RenderWindow& canvas)
     sprite.setPosition(xPos, yPos);
     canvas.draw(sprite);
     return true;
+}
+void GameObject::setColor(const sf::Color& color)
+{
+	sprite.setColor(color);
 }
 

@@ -6,7 +6,6 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include <sstream>
-#define SIDE 50
 using namespace std;
 
 MapMatrix::MapMatrix()
@@ -47,18 +46,42 @@ void MapMatrix::setMatrix(string value, int row, int col)
 bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-	return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
+    if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
+	{	
+		return !(matrix[matrixPixel.first][matrixPixel.second] == 0);
+	}
+	else
+	{
+		//cout << "ERROR: Outside MapMatrix" << endl;
+		return true;//To make it inpossible to place tower there
+	}
 }
 
 void MapMatrix::setTower(int pixelX, int pixelY)
 {
-	matrix[pixelX][pixelY] = 2; //Tower = 2
+	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
+	if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
+	{	
+		matrix[matrixPixel.first][matrixPixel.second] = 2; //Tower = 2
+	}
+	else
+	{
+		cout << "ERROR: Outside MapMatrix" << endl;
+	}
 }
 
 bool MapMatrix::isPath(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-	return (matrix[matrixPixel.first][matrixPixel.second] == 1);
+    if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight())
+	{	
+		return (matrix[matrixPixel.first][matrixPixel.second] == 1);
+	}
+	else
+	{
+		//cout << "ERROR: Outside MapMatrix" << endl;
+		return true;//To make it inpossible to place tower there
+	}
 }
 
 pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
@@ -77,12 +100,33 @@ int MapMatrix::getWidth()
 }
 pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
 {
-    int matrixX = (pixelX * getWidth() / SIDE);
-    int matrixY = (pixelY * getHeight() / SIDE);
+    int matrixX = pixelX/SIDE; //(pixelX * getWidth() / SIDE);
+    int matrixY = pixelY/SIDE; //(pixelY * getHeight() / SIDE);
     return make_pair(matrixX,matrixY);
 }
 
+void MapMatrix::draw(sf::RenderWindow& canvas)
+{
+	int row = matrix.size();
+	int col = matrix[0].size();
+    for ( int i = 0; i < row; i++ )
+    {
+        for ( int j = 0; j < col; j++ )
+		{
+			if(matrix[i][j]==1)
+			{
+				sf::RectangleShape rectangle;
+				rectangle.setFillColor(sf::Color::Green);
+				rectangle.setSize(sf::Vector2f(SIDE, SIDE));
+				rectangle.setOutlineColor(sf::Color::Black);
+				rectangle.setOutlineThickness(5);
+				rectangle.setPosition(i*SIDE, j*SIDE);
+				canvas.draw(rectangle);
+			}
+		}
+    }
 
+}
 
 //Finns endast för felsökning
 void MapMatrix::printMatrix(){

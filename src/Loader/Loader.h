@@ -11,15 +11,9 @@
 
 class Loader
 {
- public:
-  virtual void load(const std::string& filename) = 0;
-  virtual void remove (const std::string& key) = 0;
-  virtual void clear() = 0;
-  virtual bool empty() const = 0;
-protected:
-  virtual bool find(const std::string& key) const = 0;
-  std::string directory;
 };
+
+
 
 #endif
 

@@ -1,7 +1,7 @@
 #include "Enemy.h"
-Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader)
+Enemy::Enemy(int newX, int newY,int newLife, int newSpeed, int newValue, std::string textureReference)
 
- : GameObject(newX, newY, inTextureLoader, textureReference), life(newLife), speed(newSpeed), value(newValue), sounds(inSoundLoader)
+ : GameObject(newX, newY, textureReference), life(newLife), speed(newSpeed), value(newValue)
 {
 
 }

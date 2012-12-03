@@ -14,13 +14,14 @@
 #include "../EventUser.h"
 #include "../GameObjects/Towers/Tower.h"
 #include "../GameObjects/Menu/BuyMenu.h"
+#include "../GameObjects/Menu/UpgradeMenu.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-class ClickManager : public MouseButtonPressedUser {
+class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUser {
 	public:
 		ClickManager()=delete;
-		ClickManager(std::vector<Tower*>& newTowervector, MapMatrix& newMapMatrixTextureLoader, TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts);
+		ClickManager(std::vector<Tower*>& newTowervector, MapMatrix& newMapMatrixTextureLoader, Player& player);
 		virtual ~ClickManager();
 		void mouseButtonPressedListener(sf::Event event);
 		void mouseButtonReleasedListener(sf::Event event);
@@ -41,6 +42,7 @@ class ClickManager : public MouseButtonPressedUser {
 		Tower* markedTower;
 
 		BuyMenu buyMenu;
+		UpgradeMenu upgradeMenu;
 
 
 };

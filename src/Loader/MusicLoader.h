@@ -12,16 +12,17 @@ class MusicLoader : public Loader
 {
     public:
      MusicLoader();
-     void remove(const std::string& key);
-     void clear();
-     bool empty() const;
-     void load(const std::string& filename);
-     sf::Music* getMusic(const std::string& key);
-     void print() const; //debug*/
+     static void remove(const std::string& key);
+     static void clear();
+     static bool empty();
+     static void load(const std::string& filename);
+     static sf::Music* getMusic(const std::string& key);
+     static void print(); //debug*/
     private:
-     std::map<std::string, sf::Music*> songs;
-     bool find(const std::string& key) const;
-     void insert(const std::string& key, sf::Music* inMusic);
+     static std::string directory;
+     static std::map<std::string, sf::Music*> songs;
+     static bool find(const std::string& key);
+     static void insert(const std::string& key, sf::Music* inMusic);
 };
 
 #endif

@@ -2,16 +2,17 @@
 #include "../../EventHandler.h"
 #include <iostream>
 using namespace std;
-Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
-    : GameObject(MenuX+relativeX, MenuY+relativeY, inTextures, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
+Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, string spriteKey, string soundKey, string inButtonText, string inMouseOverText)
+    : GameObject(MenuX+relativeX, MenuY+relativeY, spriteKey), relativePosX(relativeX), relativePosY(relativeY), widthX(inWidthX), widthY(inWidthY), pressed(false), clicked(false), thisIterPressed(false), hoover(false)
 {
     sleeping = false;
     if(soundKey != "")
     {
        // clickSound = new sf::Sound(sounds->getSoundBuffer(soundKey));
     }
-	inFonts.load("appleberry_with_cyrillic.ttf");
-	buttonText=sf::Text(inButtonText,inFonts.getFont("appleberry_with_cyrillic.ttf"),30);
+	FontLoader::load("appleberry_with_cyrillic.ttf");
+	buttonText=sf::Text(inButtonText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
+	mouseOverText=sf::Text(inMouseOverText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),20);
 	EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
@@ -52,14 +53,18 @@ Button& Button::operator=(const Button& inButton)
 
 void Button::drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY)
 {
-    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);// some thing wrong here, looping....
+    setPos(menuCoordX+relativePosX, menuCoordY+relativePosY);
+    if(hoover)
+    {
+    	sprite.setColor(sf::Color(200, 200, 255, 200));
+    }
+    else
+    {
+    	sprite.setColor(sf::Color(255, 255, 255, 255));
+    }
     drawSprite(canvas);
 	buttonText.setPosition(menuCoordX+relativePosX, menuCoordY+relativePosY);// fixed for now because looping away..
 	canvas.draw(buttonText);
-    if(hoover)
-    {
-        drawHooverText();
-    }
     return;
 }
 
@@ -115,6 +120,10 @@ void Button::mouseButtonPressedListener(sf::Event event)
 
 void Button::mouseButtonReleasedListener(sf::Event event)
 {
+    if(sleeping)
+        {
+            return;
+        }
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(pressed)
@@ -127,6 +136,10 @@ void Button::mouseButtonReleasedListener(sf::Event event)
 
 void Button::mouseMoveListener(sf::Event event)
 {
+    if(sleeping)
+    {
+        return;
+    }
     if(event.mouseButton.button == sf::Mouse::Left)
         {
             if(!(((event.mouseMove.x > getPosX()) && (event.mouseMove.x < getPosX()+widthX)) && ((event.mouseMove.y > getPosY()) && (event.mouseMove.y < getPosY()+widthY))))
@@ -154,7 +167,14 @@ void Button::newIteration()
     return;
 }
 
-void Button::drawHooverText()
+void Button::drawHooverText(sf::RenderWindow& canvas)
 {
-    return; //TODO
+    if(!hoover)
+    {
+        return;
+    }
+	sf::Vector2i pos=sf::Mouse::getPosition(canvas);
+	mouseOverText.setPosition(pos.x+10,pos.y+10);
+	canvas.draw(mouseOverText);
+    return;
 }

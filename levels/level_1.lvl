@@ -8,4 +8,5 @@ test.png
 0 1 0 1 0 0
 0 1 1 1 0 0
 0 2
-grunt 100 grunt 1000
+grunt 8000
+grunt 10000

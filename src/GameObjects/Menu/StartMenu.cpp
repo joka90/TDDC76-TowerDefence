@@ -15,15 +15,15 @@
 #define BUTTON "button.png"
 #define MENUSBACKGROUND "StartMenu.png"
 using namespace std;
-StartMenu::StartMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
-:Menu(MENUSTARTX,MENUSTARTY, textures, "StartMenu.png")
+StartMenu::StartMenu()
+:Menu(MENUSTARTX,MENUSTARTY, "StartMenu.png")
 {
     addButton(new Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Tracks", ""));
+                      BUTTON, CLICK, "Tracks", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, LOADX, LOADY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Load", ""));
+                      BUTTON, CLICK, "Load", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT,
-                      textures, sounds, fonts, BUTTON, CLICK, "Quit", ""));
+                      BUTTON, CLICK, "Quit", ""));
 }
 
 StartMenu::~StartMenu()

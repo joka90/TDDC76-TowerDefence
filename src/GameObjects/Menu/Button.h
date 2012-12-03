@@ -16,7 +16,7 @@
 class Button : public GameObject, public MouseButtonPressedUser, public MouseButtonReleasedUser, public MouseMovedUser
 {
     public:
-        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, TextureLoader& inTextures, SoundLoader& inSounds, FontLoader& inFonts, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);
+        Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX, int inWidthY, std::string spriteKey, std::string soundKey, std::string inButtonText, std::string inMouseOverText);
         Button& operator=(const Button& inButton);
         virtual ~Button();
         void drawButton(sf::RenderWindow& canvas, int menuCoordX, int menuCoordY);
@@ -28,7 +28,7 @@ class Button : public GameObject, public MouseButtonPressedUser, public MouseBut
         void mouseButtonReleasedListener(sf::Event);
         void mouseMoveListener(sf::Event);
         void newIteration();
-        void drawHooverText();
+        void drawHooverText(sf::RenderWindow& canvas);
         void sleep();
         void activate();
     protected:

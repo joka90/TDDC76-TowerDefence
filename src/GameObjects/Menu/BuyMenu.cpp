@@ -16,20 +16,20 @@
 #define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies.png"
 
 using namespace std;
-BuyMenu::BuyMenu(TextureLoader& textures, SoundLoader& sounds, FontLoader& fonts)
- : Menu(BUYMENUSTARTX, BUYMENUSTARTY, textures, "StartMenu.png")
+BuyMenu::BuyMenu(Player& inPlayer)
+ : Menu(BUYMENUSTARTX, BUYMENUSTARTY, "StartMenu.png"), player(inPlayer)
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                      textures, sounds, fonts, TOWERBUTTON, CLICKSOUND, "", "ett billigt och bra torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "ett billigt och bra torn"));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                      textures, sounds, fonts, TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
 
     //lägg till låsatsknappar för utritandet
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, BASTORN, CLICKSOUND, "", ""));
+                       BASTORN, CLICKSOUND, "", ""));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, 0, 0,
-                      textures, sounds, fonts, ANNATTORN, CLICKSOUND, "", ""));
+                       ANNATTORN, CLICKSOUND, "", ""));
     // lägg till priserna på tornen
     priceVector.push_back(100);
     priceVector.push_back(300);
@@ -43,6 +43,16 @@ BuyMenu::~BuyMenu()
     //dtor
 }
 
+bool BuyMenu::purchase()
+{
+    if(player.canAfford(currentTowerCost))
+    {
+        player.addMoney(- currentTowerCost);
+        return true;
+    }
+    return false;
+}
+
 bool BuyMenu::update()
 {
     for(unsigned int i = 0; i < priceVector.size(); ++i)
@@ -51,8 +61,10 @@ bool BuyMenu::update()
         {
             state = IDvector[i];
             currentTowerCost = priceVector[i];
+            newIteration();
             return true;
         }
     }
+    newIteration();
     return false;
 }

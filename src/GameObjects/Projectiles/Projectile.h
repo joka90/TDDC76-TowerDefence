@@ -8,7 +8,7 @@
 class Projectile : public GameObject
 {
 public:
-    Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference, TextureLoader& inTextureLoader, SoundLoader& inSoundLoader);
+    Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference);
 
     //virtual bool drawSprite(sf::RenderWindow& canvas);  // Ärvs från GameObject, behövs inte.. /T
 
@@ -38,7 +38,6 @@ protected:
     int dirX;
     int dirY;
     Enemy* enemy;
-    SoundLoader& sounds;
 
 };
 #endif //end PROJECTILE_H

@@ -3,8 +3,8 @@
 #include "Menu.h"
 
 using namespace std;
-Menu::Menu(int x, int y, TextureLoader& inTextures, string textureReference)
-    : GameObject(x, y, inTextures, textureReference), state("")
+Menu::Menu(int x, int y, string textureReference)
+    : GameObject(x, y, textureReference), state("")
 {
 }
 
@@ -40,6 +40,10 @@ void Menu::drawMenu(sf::RenderWindow& canvas)
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
         buttons[i]->drawButton(canvas, getPosX(), getPosY());
+    }
+    for(int i = 0; i < (int)buttons.size(); ++i)
+    {
+        buttons[i]->drawHooverText(canvas);
     }
     return;
 }
