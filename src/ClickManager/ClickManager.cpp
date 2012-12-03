@@ -43,13 +43,22 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
     vector<Tower*>::iterator it;
-    /*
-    for (it = towerVector.begin ; it != towerVector.end(); ++it)
+    if(mapMatrix.isTaken(x,y))
     {
-        //Gå igenom tornvektor för träffar på dessa koordinater
-        //Sätt träffen till markedTower
+        for (it = towerVector.begin() ; it != towerVector.end(); ++it)
+        {
+            if(((*it)->getPosX() == (x/SIDE)*SIDE) && ((*it)->getPosY() == (y/SIDE)*SIDE))
+            {
+                upgradeMenu.selectTower(*it);
+                break;
+            }
+        }
     }
-    */
+    if(event.mouseButton.button == sf::Mouse::Right)
+    {
+        upgradeMenu.deselectTower();
+    }
+
 }
 void ClickManager::mouseButtonReleasedListener(sf::Event event)
 {
@@ -87,7 +96,25 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
 void ClickManager::update()
 {
     string buyMenuState,upgradeMenuState;
-    upgradeMenu.update();
+    if(upgradeMenu.update())
+    {
+        upgradeMenuState = upgradeMenu.readState();
+        if(upgradeMenuState == "SELL")
+        {
+            Tower* removeTower = upgradeMenu.getSelected();
+            for (vector<Tower*>::iterator it = towerVector.begin() ; it != towerVector.end(); ++it)
+            {
+                if((*it) == removeTower)
+                {
+                    towerVector.erase(it);
+                    upgradeMenu.deselectTower();
+                    mapMatrix.removeTower(removeTower->getPosX(), removeTower->getPosY());
+                    delete(removeTower);
+                    break;
+                }
+            }
+        }
+    }
     if(buyMenu.update())
     {
     	buyMenuState = buyMenu.readState();

@@ -29,6 +29,7 @@ bool NextWaveMenu::update()
     if(buttons[0]->gotPressed())
     {
         state = "NEXTWAVE";
+        newIteration();
         return true;
     }
     return false;

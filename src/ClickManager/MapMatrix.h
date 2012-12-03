@@ -21,6 +21,7 @@ class MapMatrix
 		void setMatrix(std::string value, int row, int col);
 		bool isTaken(int x, int y);
 		void setTower(int x, int y);
+		void removeTower(int x, int y);
 		bool isPath(int x, int y);
 		std::pair<int, int> getNextCoord(int currentPosition);  //Pixelkoordinater mitt i rutan
                                                                 //Tex. (0.0) -> (25.25) med 50px-rutor

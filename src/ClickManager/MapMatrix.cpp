@@ -73,6 +73,20 @@ void MapMatrix::setTower(int pixelX, int pixelY)
 	}
 }
 
+void MapMatrix::removeTower(int pixelX, int pixelY)
+{
+	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX ,pixelY );
+	 if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight()
+       && matrixPixel.first >= 0 && matrixPixel.second >= 0)
+	{
+		matrix[matrixPixel.second][matrixPixel.first] = 0; //Tower = 2
+	}
+	else
+	{
+		cout << "ERROR: Outside MapMatrix" << endl;
+	}
+}
+
 bool MapMatrix::isPath(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);

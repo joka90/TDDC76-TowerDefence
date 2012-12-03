@@ -32,6 +32,7 @@ class Menu : public GameObject
     protected:
         std::string state;
         std::vector<Button*> buttons;
+        bool invisible;
     private:
 };
 
