@@ -93,7 +93,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
         }
     }
 
-    if((closestRange <= range) & (closestRange != 0))
+    if((closestRange <= range) && (closestRange != 0))
     {
         return closestEnemy;
     }

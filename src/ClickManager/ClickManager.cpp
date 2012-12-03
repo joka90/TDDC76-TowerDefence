@@ -27,7 +27,7 @@ using namespace std;
 
 
 ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, Player& player)
-:    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player), upgradeMenu()
+:    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player), upgradeMenu(player)
 {
     EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));

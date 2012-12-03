@@ -3,8 +3,8 @@
 #define UPPGMENUSTARTY 0
 
 using namespace std;
-UpgradeMenu::UpgradeMenu(/*Player& inPlayer*/)
-: Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png")//, selectedTower(NULL), player(inPlayer)
+UpgradeMenu::UpgradeMenu(Player& inPlayer)
+: Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), selectedTower(NULL), player(inPlayer)
 {
 }
 

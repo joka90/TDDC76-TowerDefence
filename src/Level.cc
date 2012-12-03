@@ -110,7 +110,7 @@ Level::Level(string saveFile)
 		// get pos from towers
 		for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 		{
-			map.setTower((*it)->getPosX(), (*it)->getPosY()); 
+			map.setTower((*it)->getPosX(), (*it)->getPosY());
 			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;//TODO reomve this line when mapmatrix is working.
 		}
 	}
@@ -150,6 +150,8 @@ bool Level::update()
 	{
 		(*it)->update(enemies);
 	}
+
+	// Update menus
 	if(nextWaveMenu.update())
     {
         string message = nextWaveMenu.readState();
