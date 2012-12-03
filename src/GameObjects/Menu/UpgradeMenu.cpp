@@ -13,7 +13,7 @@ UpgradeMenu::~UpgradeMenu()
 {
     //dtor
 }
-=======
+
 #define CLICKSOUND "CLICK.WAW"
 
 bool UpgradeMenu::upgrade()
