@@ -10,9 +10,10 @@ class UpgradeMenu : public Menu
     public:
         UpgradeMenu(Player& inPlayer);
         virtual ~UpgradeMenu();
-        bool upgrade();
+        bool update();
         void selectTower(Tower* inTower);
         void deselectTower();
+        Tower* getSelected();
     protected:
     private:
         Player& player;

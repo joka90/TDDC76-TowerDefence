@@ -4,7 +4,7 @@
 
 using namespace std;
 Menu::Menu(int x, int y, string textureReference)
-    : GameObject(x, y, textureReference), state(""), buttons()
+    : GameObject(x, y, textureReference), state(""), buttons(), invisible(false)
 {
     buttons.clear();
 }
@@ -40,6 +40,10 @@ bool Menu::buttonGotPressed(int buttonIndex)
 
 void Menu::drawMenu(sf::RenderWindow& canvas)
 {
+    if(invisible)
+    {
+        return;
+    }
     this->drawSprite(canvas);
     for(int i = 0; i < (int)buttons.size(); ++i)
     {

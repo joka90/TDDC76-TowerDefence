@@ -26,7 +26,7 @@ Tower* ClassManager::createTowerInstance(const string& towerTypeName)
     }
     if(towerTypeName == "BASIC")
     {
-        return new LongTower(0, 0, 0, 10, 90, 30);
+        return new LongTower(0, 0, 80, 10, 90, 30);
     }
     return NULL;
 }
