@@ -41,11 +41,12 @@ void Level::loadBase(string trackFile, int index)
     string waveHandlerData;
     while(loadData.good())
     {
-        char temp;
-        loadData>>temp;
-        waveHandlerData = waveHandlerData+temp;
+        string temp;
+        getline(loadData,temp);
+        //loadData>>temp;
+        waveHandlerData = waveHandlerData+temp + "\n";
     }
-    loadData.ignore();
+    //loadData.ignore();
     waves = new WaveHandler(waveHandlerData, index);
 }
 

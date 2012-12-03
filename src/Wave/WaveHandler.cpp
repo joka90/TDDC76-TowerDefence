@@ -16,7 +16,7 @@ WaveHandler::WaveHandler(string wavesString) : isRunning(false)
 {
     string w, waveString;
     stringstream ss;
-
+    cout << wavesString;
     ss << wavesString;
 
     while(std::getline(ss, waveString)){
@@ -28,7 +28,7 @@ WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
     string w, waveString;
     stringstream ss;
-
+    cout << wavesString;
     ss << wavesString;
 
     while(std::getline(ss, waveString)){

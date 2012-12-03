@@ -7,7 +7,7 @@
 class Enemy : public GameObject
 {
 public:
-
+    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference);
     ~Enemy();
 
     int getLife() const;
@@ -25,7 +25,6 @@ public:
 private:
 
 protected:
-    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference);
 
     int life;
     int speed; // Ex: speed = 10: flyttar 1 pixel var 10:e frame

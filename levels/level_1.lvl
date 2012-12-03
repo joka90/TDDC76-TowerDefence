@@ -7,6 +7,5 @@ test.png
 0 1 0 1 0 0 1
 0 1 0 1 0 0 1 
 0 1 1 1 0 0 1
-0 2
-grunt 8000
-grunt 10000
+Badger 2000
+Badger 5000
