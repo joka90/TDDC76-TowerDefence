@@ -1,12 +1,12 @@
 #include "StatusBarMenu.h"
 #define MENUSTARTX 0
-#define MENUSTARTY 0
+#define MENUSTARTY 400
 #define SAVEX 50
 #define SAVEY 0
 #define QUITX 160
 #define QUITY 0
 #define BUTTONWIDTH 100
-#define BUTTONHEIGHT 70
+#define BUTTONHEIGHT 40
 #define CLICK "CLICK.WAW"
 #define BUTTON "statusbarButton.png"
 #include <iostream>
@@ -18,9 +18,9 @@ StatusBarMenu::StatusBarMenu()
 {
 	playerMoney=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
 	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
-	playerMoney.setPosition(300, 0);
-	playerLife.setPosition(400, 0);
-	
+	playerMoney.setPosition(300, 400);
+	playerLife.setPosition(400, 400);
+
     addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Quit", ""));
 }

@@ -47,7 +47,7 @@ void MapMatrix::setMatrix(string value, int row, int col)
 bool MapMatrix::isTaken(int pixelX, int pixelY)
 {
     pair<int,int>matrixPixel = convertPixelToMatrix(pixelX,pixelY);
-     if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight()
+     if(matrixPixel.first < getWidth()  && matrixPixel.second < getHeight()
        && matrixPixel.first >= 0 && matrixPixel.second >= 0)
 	{
 		return !(matrix[matrixPixel.second][matrixPixel.first] == 0);
@@ -62,7 +62,7 @@ bool MapMatrix::isTaken(int pixelX, int pixelY)
 void MapMatrix::setTower(int pixelX, int pixelY)
 {
 	pair<int,int>matrixPixel = convertPixelToMatrix(pixelX ,pixelY );
-	 if(matrixPixel.first < getWidth() && matrixPixel.second < getHeight()
+	 if(matrixPixel.first < getWidth()  && matrixPixel.second < getHeight()
        && matrixPixel.first >= 0 && matrixPixel.second >= 0)
 	{
 		matrix[matrixPixel.second][matrixPixel.first] = 2; //Tower = 2
@@ -96,11 +96,11 @@ pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
 }
 int MapMatrix::getHeight()
 {
-    return matrix[0].size();
+    return matrix.size();
 }
 int MapMatrix::getWidth()
 {
-    return matrix.size();
+    return matrix[0].size();
 }
 pair<int,int> MapMatrix::convertPixelToMatrix(int pixelX,int pixelY)
 {
