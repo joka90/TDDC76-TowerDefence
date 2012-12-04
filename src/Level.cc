@@ -129,6 +129,7 @@ bool Level::update()
     if(enemyToBePlaced != NULL)
     {
         enemies.push_back(enemyToBePlaced);
+        cout << "Ny enemy ute!" << enemies.size() << endl;
     }
 
     //Update enemies
@@ -187,6 +188,11 @@ void Level::draw(sf::RenderWindow& canvas)
 	map.draw(canvas);//For debuging
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+    {
+        (*it)->drawSprite(canvas);
+    }
+    // draw Enemies
+    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
         (*it)->drawSprite(canvas);
     }

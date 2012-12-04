@@ -7,6 +7,7 @@
 
 #include "Wave.h"
 #include <string>
+#include <vector>
 #include <sstream>
 #include "../ClassManager.h"
 using namespace std;

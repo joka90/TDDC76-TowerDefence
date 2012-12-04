@@ -101,12 +101,12 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 	}
 }
 
-pair<int, int> MapMatrix::getNextCoord(int currentPathPosition)
+pair<int, int> MapMatrix::getCoord(int currentPathPosition)
 {
     if(currentPathPosition < path.size())
     {
-        int pixelX = ((path[currentPathPosition].first + 0.5) * SIDE);
-        int pixelY = ((path[currentPathPosition].second + 0.5) * SIDE);
+        int pixelX = ((path[currentPathPosition].first) * SIDE);
+        int pixelY = ((path[currentPathPosition].second) * SIDE);
         return make_pair(pixelX,pixelY);
     }
     else

@@ -8,6 +8,7 @@
 #ifndef WAVE_H
 #define WAVE_H
 #include <string>
+#include <vector>
 #include <map>
 #include "../GameObjects/Enemies/Enemy.h"
 class Wave {
