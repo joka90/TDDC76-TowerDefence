@@ -17,6 +17,11 @@ public:
     LongProjectile(int newX, int newY, int newDamage, Enemy* newEnemy);
     ~LongProjectile();
 
+    /**
+     * Ganska oklart vad denna ska göra. Om vi inte använder målsökande bör den endast
+     * uppdatera dess position. Onödigt att då ha den i LongProjecile. Bör istället
+     * kunna byggas i projectile.
+     */
     void update(std::vector<Enemy*>& enemies);
 
 protected:

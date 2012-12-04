@@ -4,7 +4,7 @@ Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* n
 : GameObject(newX, newY, textureReference),
   damage(newDamage), speed(newSpeed), enemy(newEnemy)
 {
-
+    setDirection(enemy);
 }
 
 /*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T
@@ -54,12 +54,61 @@ void Projectile::setDirection(int newDirX, int newDirY)
     return;
 }
 
+
+void Projectile::setDirection(Enemy* aim)
+{
+    int enemyPosX;
+    int enemyPosY;
+    double directionRatio;
+    double directionAngle;
+    double PI = 3.14159265;
+
+    if((enemy != NULL))
+    {
+        enemyPosX = enemy->getPosX();
+        enemyPosY = enemy->getPosY();
+        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
+
+        // Om fiende i projektils första kvadrant
+        if ((directionRatio >= 0) && (enemyPosY >= yPos))
+        {
+            directionAngle = atan(directionRatio);
+            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+        }
+        // Om fiende i projektils tredje kvadrant
+        else if ((directionRatio >= 0) && (enemyPosY <= 0))
+        {
+            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
+            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+        }
+        //Om fiende i projektils andra kvadrant
+        else if((directionRatio < 0) && (enemyPosY >= yPos))
+        {
+            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
+            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+        }
+        //Om fiende i projektils fjarde kvadrant
+        else if((directionRatio < 0) && (enemyPosY <= yPos))
+        {
+            directionAngle = atan(directionRatio);
+            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
+        }
+    }
+    return;
+}
+
+
 void Projectile::move()//SFML's move fungerar som denna. använda den istället för setPosition?
 {
     xPos = xPos + dirX;
     yPos = yPos +dirY;
     return;
 }
+
 
 void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 {
