@@ -20,6 +20,7 @@ class UpgradeMenu : public Menu
         Player& player;
         Tower* selectedTower;
 		sf::RectangleShape towerMarker;
+		sf::CircleShape towerRange;
 };
 
 #endif // UPGRADEMENU_H
