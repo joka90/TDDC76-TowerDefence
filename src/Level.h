@@ -36,6 +36,7 @@ public:
     bool update();
     void draw(sf::RenderWindow& canvas);
     std::string readState();
+    std::string getMusic();
 
 private:
     WaveHandler* waves;

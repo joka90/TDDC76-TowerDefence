@@ -122,7 +122,7 @@ pair<int, int> MapMatrix::getCoord(int currentPathPosition)
     }
     else
     {
-        return make_pair(NULL,NULL); //Ta bort ett liv
+        return make_pair(-1, -1); //Ta bort ett liv
     }
 }
 int MapMatrix::getHeight()

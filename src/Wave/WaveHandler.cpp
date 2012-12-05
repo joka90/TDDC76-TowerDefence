@@ -26,14 +26,25 @@ WaveHandler::WaveHandler(string wavesString) : isRunning(false), currentWaveInde
 
 WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
-    string w, waveString;
-    stringstream ss;
-
-    ss << wavesString;
+    cout << "string: " <<  wavesString << endl;
+    string wave;
+    istringstream ss(wavesString);
+/*
+    cout << wavesString;
 
     while(std::getline(ss, waveString)){
         wavesVector.push_back(new Wave(waveString));
+        cout << "adderat en våg" << endl;
     }
+*/
+    ss >> wavesString;
+    while(ss.good())
+    {
+        ss >> wave;
+        wavesVector.push_back(new Wave(wave));
+    }
+
+
 
     currentWaveIndex = startIndex;
 }
@@ -56,7 +67,7 @@ void WaveHandler::startNextWave()
 Enemy* WaveHandler::update(){
     if(isRunning)
     {
-        return wavesVector[currentWaveIndex]->getEnemy(clock.getElapsedTime().asMilliseconds());
+            return wavesVector[currentWaveIndex]->getEnemy(clock.getElapsedTime().asMilliseconds());
     }
     return NULL;
 }

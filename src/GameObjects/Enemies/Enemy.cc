@@ -48,16 +48,44 @@ void Enemy::setValue(int newValue)
 }
 
 
-void Enemy::update(MapMatrix& map){
-    /*if(stepsMoved == 0){
+bool Enemy::update(MapMatrix& map){
+    if(stepsMoved == 0){
         nextCoord = map.getCoord(0);
         xPos = nextCoord.first;
         yPos = nextCoord.second;
-    }*/
-
-    // If arrived at a coord, start walk to next
-    //if(xPos == nextCoord.first && yPos == nextCoord.second){
-    if(frames % speed == 0){
+        nextCoord = map.getCoord(1);
+        newDirection(map);
+    }
+      // If arrived at a coord, start walk to next
+      //if(xPos == nextCoord.first && yPos == nextCoord.second){
+    //har man passerat nästa nod
+    if(passedNextStep())
+    {
+        ++stepsMoved;
+        newDirection(map);
+        nextCoord = map.getCoord(stepsMoved+1);
+    }
+    if(nextCoord.first == -1 && nextCoord.second == -1)
+    {
+        return true;
+    }
+    if(direction = LEFT)
+    {
+        xPos += speed;
+    }
+    else if(direction = RIGHT)
+    {
+        xPos -= speed;
+    }
+    else if(direction = UP)
+    {
+        yPos -= speed;
+    }
+    else
+    {
+        yPos += speed;
+    }
+    /*
         frames = 0;
 
         nextCoord = map.getCoord(stepsMoved);
@@ -75,8 +103,59 @@ void Enemy::update(MapMatrix& map){
             yPos = (nextCoord.second > yPos)? yPos + 1: yPos - 1;
         }
     }*/
-    ++frames;
 }
+
+bool Enemy::passedNextStep()
+{
+    if(direction == LEFT && xPos > nextCoord.first*SIDE)
+    {
+        xPos = nextCoord.first*SIDE;
+        return true;
+    }
+    else if(direction == RIGHT && xPos < nextCoord.first*SIDE)
+    {
+        xPos = nextCoord.first*SIDE;
+        return true;
+    }
+    else if(direction == UP && yPos < nextCoord.second*SIDE)
+    {
+        yPos = nextCoord.second*SIDE;
+        return true;
+    }
+    else if(direction == DOWN && yPos > nextCoord.second*SIDE)
+    {
+        yPos = nextCoord.second*SIDE;
+        return true;
+    }
+    return false;
+
+}
+
+void Enemy::newDirection(MapMatrix& map)
+    {
+        std::pair<int, int> last = map.getCoord(stepsMoved);
+        std::pair<int, int> next = map.getCoord(stepsMoved+1);
+        if(last.first < next.first)
+        {
+            direction = RIGHT;
+            return;
+        }
+        else if(last.first > next.first)
+        {
+            direction = LEFT;
+            return;
+        }
+        else if(last.second < next.second)
+        {
+            direction = DOWN;
+            return;
+        }
+        else
+        {
+            direction = UP;
+            return;
+        }
+    }
 
 void Enemy::hit(int damage)
 {
