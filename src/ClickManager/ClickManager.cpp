@@ -71,7 +71,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
         {
             if(buyMenu.purchase())
             {
-                markedTower->setPos((x/SIDE)*SIDE ,(y/SIDE)*SIDE);
+                markedTower->setPos((x/SIDE)*SIDE+SIDE/2 ,(y/SIDE)*SIDE+SIDE/2);
                 markedTower->setColor(sf::Color(255, 255, 255, 255));//reset color
                 mapMatrix.setTower(x, y);
                 towerVector.push_back(markedTower);
@@ -144,7 +144,7 @@ void ClickManager::drawMenus(sf::RenderWindow& canvas)
     if(markedTower != NULL)
     {
 		sf::Vector2i pos=sf::Mouse::getPosition(canvas);
-		markedTower->setPos((pos.x/SIDE)*SIDE ,(pos.y/SIDE)*SIDE);
+		markedTower->setPos((pos.x/SIDE)*SIDE+SIDE/2, (pos.y/SIDE)*SIDE+SIDE/2);
 		if(!mapMatrix.isTaken(pos.x,pos.y))
 		{
 			markedTower->setColor(sf::Color(255, 255, 255, 200));
