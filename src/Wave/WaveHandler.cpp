@@ -46,6 +46,10 @@ WaveHandler::~WaveHandler(){
  */
 void WaveHandler::startNextWave()
 {
+    if(wavesVector[currentWaveIndex]->getFinished())
+    {
+
+    }
 	clock.restart();
 	isRunning = true;
 }
