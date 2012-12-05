@@ -7,7 +7,7 @@
 #define SELLBUTTONWIDTH 66
 #define SELLBUTTONHEIGHT 66
 #define SELLBUTTONIMG "button.png"
-#define CLICK "CLICK.WAv"
+#define CLICK "CLICK.WAV"
 #define SIDE 50
 
 using namespace std;

@@ -7,7 +7,7 @@
 #define QUITY 0
 #define BUTTONWIDTH 100
 #define BUTTONHEIGHT 40
-#define CLICK "CLICK.WAW"
+#define CLICK "CLICK.WAV"
 #define BUTTON "statusbarButton.png"
 #include <iostream>
 
