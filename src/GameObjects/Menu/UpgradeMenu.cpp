@@ -9,7 +9,7 @@
 #define BUTTONWIDTH 66
 #define BUTTONHEIGHT 66
 #define BUTTONIMG "button.png"
-#define CLICK "CLICK.WAV"
+#define CLICK "thozi_daClick.ogg"
 #define SIDE 50
 
 using namespace std;
