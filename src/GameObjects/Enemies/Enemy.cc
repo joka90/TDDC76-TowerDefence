@@ -6,6 +6,7 @@ Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReferen
 
  : GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
 {
+    sprite.setOrigin(SIDE/2, SIDE/2);
     nextCoord = make_pair(0,0);
     stepsMoved = 0;
 }
@@ -88,24 +89,6 @@ bool Enemy::update(MapMatrix& map){
         yPos += speed;
     }
     return false;
-    /*
-        frames = 0;
-
-        nextCoord = map.getCoord(stepsMoved);
-        xPos = nextCoord.first;
-        yPos = nextCoord.second;
-
-        stepsMoved = stepsMoved +1;
-    }
-    // if we should move this iteration
-    /*if(frames % speed == 0){
-        if(xPos != nextCoord.first){
-            xPos = (nextCoord.first > xPos)? xPos + 1: xPos - 1;
-        }
-        if(yPos != nextCoord.second){
-            yPos = (nextCoord.second > yPos)? yPos + 1: yPos - 1;
-        }
-    }*/
 }
 
 bool Enemy::passedNextStep()
@@ -140,21 +123,25 @@ void Enemy::newDirection(MapMatrix& map)
         if(last.first < next.first)
         {
             direction = RIGHT;
+            sprite.setRotation(0);
             return;
         }
         else if(last.first > next.first)
         {
             direction = LEFT;
+            sprite.setRotation(180);
             return;
         }
         else if(last.second < next.second)
         {
             direction = DOWN;
+            sprite.setRotation(90);
             return;
         }
         else
         {
             direction = UP;
+            sprite.setRotation(270);
             return;
         }
     }
@@ -165,6 +152,13 @@ void Enemy::hit(int damage)
     return;
 }
 
+bool Enemy::drawSprite(sf::RenderWindow& canvas)
+{
+    sprite.setPosition(xPos+SIDE/2, yPos+SIDE/2);
+
+    canvas.draw(sprite);
+    return true;
+}
 
 
 
