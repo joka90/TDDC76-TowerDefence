@@ -13,6 +13,8 @@ class Enemy : public GameObject
 public:
     Enemy(int newLife, int newSpeed, int newValue, std::string textureReference);
     ~Enemy();
+    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference, unsigned int inSpriteWidth, unsigned int inSpriteHeight,
+     unsigned int inNuberOfSprites = 0, unsigned int inFpf = 1);
 
     int getLife() const;
     void setLife(int newLife);
