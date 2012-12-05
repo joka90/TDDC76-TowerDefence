@@ -56,6 +56,8 @@ void WaveHandler::startNextWave()
 Enemy* WaveHandler::update(){
     if(isRunning)
     {
+        cout << wavesVector.size() << endl;
+        cout << "aaa" << endl;
         return wavesVector[currentWaveIndex]->getEnemy(clock.getElapsedTime().asMilliseconds());
     }
     return NULL;
