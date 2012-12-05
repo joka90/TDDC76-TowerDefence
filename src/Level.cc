@@ -41,7 +41,6 @@ void Level::loadBase(string trackFile, int index)
     loadData.getline(stringBuffer, 256, '\n');
     path = string(stringBuffer) + string(" ");
     map.setMatrix(MapMatrixData, row, col, path);
-	map.setMatrix(MapMatrixData, row, col, path);
     //ladda waveHandler
 
     string waveHandlerData;
@@ -138,11 +137,29 @@ bool Level::update()
     }
 
     //Update enemies
+    vector<Enemy*> deleteVector;
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
-        (*it)->update(map);
+        if((*it)->update(map))
+        {
+            deleteVector.push_back(*it);
+        }
     }
-
+    while(!deleteVector.empty())
+    {
+        for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+        {
+            if(deleteVector[0] == *it)
+            {
+                delete(*it);
+                enemies.erase(it);
+                player.eraseLife();
+                deleteVector.erase(deleteVector.begin());
+                break;
+            }
+        }
+        cout << deleteVector.size() <<endl;
+    }
 	// Update towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 	{

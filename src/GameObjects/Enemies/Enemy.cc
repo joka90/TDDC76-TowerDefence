@@ -66,6 +66,7 @@ bool Enemy::update(MapMatrix& map){
         ++stepsMoved;
         newDirection(map);
         nextCoord = map.getCoord(stepsMoved);
+        cout << "first: " << nextCoord.first << "sec: " << nextCoord.second << endl;
     }
     if(nextCoord.first == -1 && nextCoord.second == -1)
     {
