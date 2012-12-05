@@ -30,11 +30,11 @@
 #define BACKY 500
 #define BACKWIDTH 70
 #define BACKHEIGHT 70
-#define BACKIMG "BACKBUTTON.png"
+#define BACKIMG "StartButton_BG.png"
 #define LEVELFOLDER "levels/"
 using namespace std;
 TrackMenu::TrackMenu()
-:Menu(MENULOADX, MENULOADY, "StartMenu.png"), scrollLenght(0)
+:Menu(MENULOADX, MENULOADY, "Track_BG.png"), scrollLenght(0)
 {
     //Ladda in vilka sparfiler som finns
     ifstream loadData;
@@ -56,7 +56,7 @@ TrackMenu::TrackMenu()
     addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
                        ARROWDOWN, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                       BACKIMG, CLICK, "", ""));
+                       BACKIMG, CLICK, "Back", ""));
     updateLoadButtons();
 }
 
