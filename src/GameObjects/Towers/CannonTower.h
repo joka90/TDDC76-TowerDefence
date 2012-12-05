@@ -1,5 +1,5 @@
-#ifndef CANONTOWER_H
-#define CANONTOWER_H
+#ifndef CannonTOWER_H
+#define CannonTOWER_H
 #include "../GameObject.h"
 #include "Tower.h"
 #include "../Enemies/Enemy.h"
@@ -10,15 +10,15 @@
 #include <string>
 #include <sstream>
 
-class CanonTower : public Tower
+class CannonTower : public Tower
 {
     public:
-        CanonTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax);
-        ~CanonTower();
+        CannonTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax);
+        ~CannonTower();
         LongProjectile* update(std::vector<Enemy*>& enemies);
 
     protected:
     private:
 };
 
-#endif // CANONTOWER_H
+#endif // CannonTOWER_H
