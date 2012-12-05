@@ -17,9 +17,10 @@ LongProjectile::~LongProjectile()
 
 //Inte färdig. Oklart vad denna ska göra.
 //Fortsätt med olika directions beroende på kvadrant.
-void LongProjectile::update(std::vector<Enemy*>& enemies)
+bool LongProjectile::update(std::vector<Enemy*>& enemies)
 {
     move();
+    return isHit(enemies);
 
 
 
@@ -63,5 +64,4 @@ void LongProjectile::update(std::vector<Enemy*>& enemies)
     }
     */
 
-    return;
 }

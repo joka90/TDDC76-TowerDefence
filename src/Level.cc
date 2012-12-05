@@ -156,7 +156,6 @@ bool Level::update()
                 break;
             }
         }
-        cout << deleteVector.size() <<endl;
     }
 	// Update towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)

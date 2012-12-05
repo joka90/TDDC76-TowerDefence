@@ -22,7 +22,8 @@ public:
      * uppdatera dess position. Onödigt att då ha den i LongProjecile. Bör istället
      * kunna byggas i projectile.
      */
-    void update(std::vector<Enemy*>& enemies);
+
+    bool update(std::vector<Enemy*>& enemies);
 
 protected:
 private:
