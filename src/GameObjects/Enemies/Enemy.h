@@ -21,8 +21,8 @@ public:
     void setSpeed(int newSpeed);
     int getValue() const;
     void setValue(int newValue);
-
     void hit(int damage);
+    bool isDead();
 
     // Moves the enemy
     bool update(MapMatrix& map);

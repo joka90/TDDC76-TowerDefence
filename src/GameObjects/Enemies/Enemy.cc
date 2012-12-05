@@ -156,6 +156,19 @@ void Enemy::hit(int damage)
     return;
 }
 
+bool Enemy::isDead()
+{
+    if(life <= 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
 
 
 

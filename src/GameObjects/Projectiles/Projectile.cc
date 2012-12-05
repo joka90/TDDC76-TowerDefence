@@ -125,9 +125,13 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
 		y = (*it)->getPosY();
 		if( (pow(getPosX() - x , 2) + pow(getPosY() - y,2)) < RADIE )
 		{
-            deleteVector.push_back(*it);
+		    (*it)->hit(damage);
+		    if((*it)->isDead())
+		    {
+		        deleteVector.push_back(*it);
+		    }
+		    cout << "TRAFF" << endl;
             hit = true;
-            cout << "TRÄFF" << endl;
 		}
 	}
 	while(!deleteVector.empty())
