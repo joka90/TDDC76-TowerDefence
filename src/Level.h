@@ -30,19 +30,19 @@ public:
     Level(std::string saveFile);
     Level(std::string trackName, int);
 
-    std::string name;
+    std::string trackName;
 
     bool update();
     void draw(sf::RenderWindow& canvas);
     std::string readState();
+
+    std::string getSongName();
 
 private:
     WaveHandler* waves;
     MapMatrix map;
     Player player;
     ClickManager clickManager;
-
-    std::string trackName;
 
     std::vector<Enemy*> enemies;
     std::vector<Tower*> towers;
@@ -58,6 +58,8 @@ private:
     StatusBarMenu statusBarMenu;
 
     std::string state;
+
+    std::string songName;
 };
 
 #endif //end H

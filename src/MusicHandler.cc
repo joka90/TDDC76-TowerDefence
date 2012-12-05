@@ -1,7 +1,7 @@
 #include "MusicHandler.h"
 #include <SFML/Audio.hpp>
+#include <iostream>
 
-#define totalFadeTime 3
 
 using namespace std;
 
@@ -9,23 +9,92 @@ using namespace std;
 
 /*
 * Spelar upp en sång genom att först 'fadea ut' den föregående
-* och sedan 'fadea in' den nya, tar in en pekare från getMusic.
+* och sedan spela upp den nya.
 */
-void MusicHandler::playSong(sf::Music* inSong)
+
+/*
+* initierar startvärden
+*/
+MusicHandler::MusicHandler()
 {
-    if(isSongPlaying(inSong))
+    previousSong = NULL;
+    currentSong = NULL;
+    previousSongStatus = "stopped";
+    currentSongStatus = "stopped";
+    return;
+}
+
+/*
+* möjlig status för en sång:
+* playing, waitingToPlay, stopped, fading.
+* Fadear ut sånger med statusen "fading" och börjar spela upp nästa sång när previousSång inte spelas längre
+*/
+void MusicHandler::update()
+{
+    if(currentSongStatus == "playing")
+    {
+        return;
+    }
+    if(previousSongStatus == "fading")
+    {
+        sf::Time timeStep = sf::seconds(0.0025);
+        sf::Clock clock;
+        while(clock.getElapsedTime() <= timeStep)
+        {}
+        previousSong->setVolume(previousSong->getVolume()-1);
+        clock.restart();
+        if(previousSong->getVolume() <= 1)
+        {
+            previousSong->stop();
+            previousSongStatus = "stopped";
+        }
+    }
+    if(previousSongStatus == "stopped")
+    {
+        if(currentSongStatus != "playing")
+        {
+            if(currentSong->getVolume() != 100)
+            {
+                currentSong->setVolume(100);
+            }
+            currentSong->setLoop(true);
+            currentSong->play();
+            currentSongStatus = "playing";
+        }
+    }
+    return;
+}
+
+/*
+* Sätter currentSong till den sång som ska spelas och gör så att update() kan fadea ut den gamla sången
+*/
+void MusicHandler::setCurrentSong(sf::Music* inSong)
+{
+    if(currentSong == inSong)
     {
         return;
     }
     previousSong = currentSong;
     currentSong = inSong;
-    fadeOutSong(previousSong);
-    fadeInSong(currentSong);
+    previousSongStatus = "fading";
+    currentSongStatus = "waitingToPlay";
     return;
 }
 
 /*
-* Stoppar en sång(utan fade)
+* Spelar upp en sång med loop, används enbart för att starta den första sången
+*/
+void MusicHandler::playSong(sf::Music* inSong)
+{
+    currentSong = inSong;
+    currentSongStatus = "playing";
+    currentSong->setLoop(true);
+    currentSong->play();
+    return;
+}
+
+/*
+* Stoppar en sång
 */
 void MusicHandler::stopSong(sf::Music* inSong)
 {
@@ -33,20 +102,9 @@ void MusicHandler::stopSong(sf::Music* inSong)
     return;
 }
 
-/*
-* Kollar om en sång spelas upp
-*/
-bool MusicHandler::isSongPlaying(const sf::Music* inSong) const
-{
-    if(inSong->getStatus() == sf::SoundSource::Playing)
-    {
-        return true;
-    }
-    return false;
-}
 
 /*
-* Stoppar alla sånger(utan fade)
+* Stoppar alla sånger
 */
 void MusicHandler::stopAllSongs()
 {
@@ -55,54 +113,4 @@ void MusicHandler::stopAllSongs()
     return;
 }
 
-/* Ökar volymen på en sång från 0 till 100 under ett tidsintervall
-* som bestäms av timeStep*100
-*/
-void MusicHandler::fadeInSong(sf::Music* inSong)
-{
-    if((inSong == NULL) || (isSongPlaying(inSong)))
-    {
-        return;
-    }
-    inSong->setVolume(0);
-    inSong->play();
-    inSong->setLoop(true);
-    int currentVolume = inSong->getVolume();
-    sf::Time timeStep = sf::seconds(0.03);
-    sf::Clock clock;
-    while(currentVolume < 100)
-    {
-        if(clock.getElapsedTime() >= timeStep)
-        {
-            inSong->setVolume(currentVolume+1);
-            clock.restart();
-        }
-    }
-     return;
-}
-
-/*
-* Minskar volymen på en sång från 100 till 0 under ett tidsintervall
-* som bestäms av timeStep*100
-*/
-void MusicHandler::fadeOutSong(sf::Music* inSong)
-{
-    if((inSong == NULL) || (!isSongPlaying(inSong)))
-    {
-        return;
-    }
-    int currentVolume = inSong->getVolume();
-    sf::Time timeStep = sf::seconds(0.03);
-    sf::Clock clock;
-    while(currentVolume > 0)
-    {
-        if(clock.getElapsedTime() >= timeStep)
-        {
-            inSong->setVolume(currentVolume-1);
-            clock.restart();
-        }
-    }
-    inSong->stop();
-    return;
-}
 

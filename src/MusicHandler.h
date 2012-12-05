@@ -6,15 +6,17 @@
 class MusicHandler
 {
  public:
+  MusicHandler();
+  void update();
   void playSong(sf::Music* inSong);
   void stopSong(sf::Music* inSong);
-  bool isSongPlaying(const sf::Music* inSong) const;
   void stopAllSongs();
+  void setCurrentSong(sf::Music* inSong);
  private:
-  void fadeInSong(sf::Music* inSong);
-  void fadeOutSong(sf::Music* inSong);
   sf::Music* currentSong;
   sf::Music* previousSong;
+  std::string currentSongStatus;
+  std::string previousSongStatus;
 };
 
 #endif
