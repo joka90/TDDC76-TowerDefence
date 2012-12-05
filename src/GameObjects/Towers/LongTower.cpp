@@ -28,9 +28,9 @@ LongTower::~LongTower()
 
 LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
 {
+    Enemy* enemy = getClosestEnemy(enemies);
     if(counter >= counterMax)
     {
-        Enemy* enemy = getClosestEnemy(enemies);
         if(!(enemy == NULL))
         {
             counter = 0;
