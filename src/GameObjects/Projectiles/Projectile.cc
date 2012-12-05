@@ -84,7 +84,7 @@ void Projectile::setDirection(Enemy* aim)
 void Projectile::move()//SFML's move fungerar som denna. använda den istället för setPosition?
 {
     xPos = xPos + dirX;
-    yPos = yPos +dirY;
+    yPos = yPos + dirY;
     return;
 }
 
