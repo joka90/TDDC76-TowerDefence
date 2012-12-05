@@ -11,6 +11,7 @@ class UpgradeMenu : public Menu
         UpgradeMenu(Player& inPlayer);
         virtual ~UpgradeMenu();
         bool update();
+        void drawMenu(sf::RenderWindow& canvas);
         void selectTower(Tower* inTower);
         void deselectTower();
         Tower* getSelected();
@@ -18,6 +19,7 @@ class UpgradeMenu : public Menu
     private:
         Player& player;
         Tower* selectedTower;
+		sf::RectangleShape towerMarker;
 };
 
 #endif // UPGRADEMENU_H
