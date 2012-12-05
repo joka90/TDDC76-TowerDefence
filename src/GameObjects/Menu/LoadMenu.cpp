@@ -4,7 +4,7 @@
 #include "LoadMenu.h"
 
 
-#define CLICK "CLICK.WAV"
+#define CLICK "thozi_daClick.ogg"
 
 #define MENULOADX 0
 #define MENULOADY 0

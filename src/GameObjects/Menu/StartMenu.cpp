@@ -11,7 +11,7 @@
 #define QUITY 517
 #define BUTTONWIDTH 141
 #define BUTTONHEIGHT 51
-#define CLICK "CLICK.WAV"
+#define CLICK "thozi_daClick.ogg"
 #define BUTTON "StartButton_BG.png"
 #define MENUSBACKGROUND "StartMenu.png"
 using namespace std;

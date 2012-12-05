@@ -10,7 +10,7 @@
 #define TOWERHEIGHT 66
 #define TOWERDRAWSPACEX 80
 #define TOWERBUTTON "button.png"
-#define CLICKSOUND "CLICK.WAV"
+#define CLICKSOUND "thozi_daClick.ogg"
 
 #define BASTORN "Sprites/Bunny/Original/bunny_1_small.png"
 #define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies_small.png"

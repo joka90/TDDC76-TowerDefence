@@ -5,7 +5,7 @@
 #define NEWWAVEY 32
 #define BUTTONWIDTH 66
 #define BUTTONHEIGHT 66
-#define CLICK "CLICK.WAV"
+#define CLICK "thozi_daClick.ogg"
 #define BUTTON "button.png"
 #include <iostream>
 
