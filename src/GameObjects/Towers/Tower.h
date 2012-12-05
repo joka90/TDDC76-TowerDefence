@@ -23,7 +23,6 @@ public:
 
     //virtual Projectile* update(std::vector<Enemy*>) = 0;//fix to compile TODO
     bool drawSprite(sf::RenderWindow& canvas);
-	double directionAngle;//sprite angle
 
     int getPrice() const;
     void setPrice(int newPrice);
@@ -49,6 +48,7 @@ protected:
     int range;
     int counter;
     int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
+    double directionAngle;//sprite angle
     Enemy* getClosestEnemy(std::vector<Enemy*>& enemyVector);
     std::string towerType;
 

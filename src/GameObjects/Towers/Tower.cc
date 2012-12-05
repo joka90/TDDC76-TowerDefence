@@ -8,7 +8,7 @@ using namespace std;
 
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference)
 : GameObject(newX, newY, textureReference), //skall denna vara har, pure virtual senare?
-  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
+  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	sprite.setOrigin(SIDE/2,SIDE/2);
 
