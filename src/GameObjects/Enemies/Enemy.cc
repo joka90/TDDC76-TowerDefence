@@ -131,7 +131,6 @@ bool Enemy::passedNextStep()
         return true;
     }
     return false;
-
 }
 
 void Enemy::newDirection(MapMatrix& map)

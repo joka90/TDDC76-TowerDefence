@@ -12,7 +12,7 @@
 #include "../ClassManager.h"
 using namespace std;
 
-Wave::Wave(string waveString) : nextIndex(0) // str1 str2 str3 ..
+Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 ..
 {
     cout << waveString << endl;
     string w;
@@ -34,6 +34,11 @@ Wave::~Wave() {
 Enemy* Wave::getEnemy(int timeDelta)
 {
     // If the next enemy shall be placed
+    if(enemies.size() <= nextIndex)
+    {
+        return NULL;
+        finished = true;
+    }
     cout << "Size: " << enemies.size() << " nextIndex: " << enemies[nextIndex].first << " timeDelta: " << timeDelta << endl;
     if(enemies[nextIndex].first <= timeDelta){
         cout << "hej"  <<endl;
@@ -42,3 +47,8 @@ Enemy* Wave::getEnemy(int timeDelta)
     }
     return NULL;
 }
+
+bool Wave::getFinished()
+    {
+        return finished;
+    }

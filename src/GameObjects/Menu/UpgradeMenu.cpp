@@ -1,17 +1,17 @@
 #include "UpgradeMenu.h"
-#define UPPGMENUSTARTX 500
-#define UPPGMENUSTARTY 0
+#define UPPGMENUSTARTX 660
+#define UPPGMENUSTARTY 10
 
-#define SELLBUTTONX 50
-#define SELLBUTTONY 50
-#define SELLBUTTONWIDTH 50
-#define SELLBUTTONHEIGHT 50
+#define SELLBUTTONX 35
+#define SELLBUTTONY 42
+#define SELLBUTTONWIDTH 66
+#define SELLBUTTONHEIGHT 66
 #define SELLBUTTONIMG "button.png"
 #define CLICK "CLICK.WAW"
 
 using namespace std;
 UpgradeMenu::UpgradeMenu(Player& inPlayer)
-: Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "StartMenu.png"), player(inPlayer), selectedTower(NULL)
+: Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "TowerMenu_BG.png"), player(inPlayer), selectedTower(NULL)
 {
     invisible = true;
     addButton(new Button(UPPGMENUSTARTX, UPPGMENUSTARTY, SELLBUTTONX, SELLBUTTONY, SELLBUTTONWIDTH, SELLBUTTONHEIGHT,
