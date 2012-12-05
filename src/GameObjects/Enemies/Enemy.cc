@@ -53,6 +53,7 @@ bool Enemy::update(MapMatrix& map){
         xPos = nextCoord.first;
         yPos = nextCoord.second;
         nextCoord = map.getCoord(1);
+        ++stepsMoved;
         newDirection(map);
     }
 
@@ -61,9 +62,10 @@ bool Enemy::update(MapMatrix& map){
     // har man passerat nästa nod
     if(passedNextStep())
     {
+        cout << "hej då på dig" << endl;
         ++stepsMoved;
         newDirection(map);
-        nextCoord = map.getCoord(stepsMoved+1);
+        nextCoord = map.getCoord(stepsMoved);
     }
     if(nextCoord.first == -1 && nextCoord.second == -1)
     {
@@ -85,6 +87,7 @@ bool Enemy::update(MapMatrix& map){
     {
         yPos += speed;
     }
+    return false;
     /*
         frames = 0;
 
@@ -107,24 +110,24 @@ bool Enemy::update(MapMatrix& map){
 
 bool Enemy::passedNextStep()
 {
-    if((direction == LEFT) && (xPos < nextCoord.first*SIDE))
+    if((direction == LEFT) && (xPos < nextCoord.first))
     {
-        xPos = nextCoord.first*SIDE;
+        xPos = nextCoord.first;
         return true;
     }
-    else if((direction == RIGHT) && (xPos > nextCoord.first*SIDE))
+    else if((direction == RIGHT) && (xPos > nextCoord.first))
     {
-        xPos = nextCoord.first*SIDE;
+        xPos = nextCoord.first;
         return true;
     }
-    else if((direction == UP) && (yPos < nextCoord.second*SIDE))
+    else if((direction == UP) && (yPos < nextCoord.second))
     {
-        yPos = nextCoord.second*SIDE;
+        yPos = nextCoord.second;
         return true;
     }
-    else if((direction == DOWN) && (yPos > nextCoord.second*SIDE))
+    else if((direction == DOWN) && (yPos > nextCoord.second))
     {
-        yPos = nextCoord.second*SIDE;
+        yPos = nextCoord.second;
         return true;
     }
     return false;
@@ -133,8 +136,8 @@ bool Enemy::passedNextStep()
 
 void Enemy::newDirection(MapMatrix& map)
     {
-        std::pair<int, int> last = map.getCoord(stepsMoved);
-        std::pair<int, int> next = map.getCoord(stepsMoved+1);
+        std::pair<int, int> last = map.getCoord(stepsMoved-1);
+        std::pair<int, int> next = map.getCoord(stepsMoved);
         if(last.first < next.first)
         {
             direction = RIGHT;
