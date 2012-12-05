@@ -43,7 +43,7 @@ void MapMatrix::setMatrix(string value, int row, int col, string pathString)
         Fixar path-vektorn
     */
     istringstream pathSs(pathString);
-    int x,y,i(-1);
+    int x,y;
     char deleteComma;
     while(pathSs.good())
     {
@@ -114,7 +114,7 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 
 pair<int, int> MapMatrix::getCoord(int currentPathPosition)
 {
-    if(currentPathPosition < path.size())
+    if(currentPathPosition < (int) path.size())
     {
         int pixelX = ((path[currentPathPosition].first) * SIDE);
         int pixelY = ((path[currentPathPosition].second) * SIDE);
