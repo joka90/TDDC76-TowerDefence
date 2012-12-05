@@ -4,17 +4,15 @@
 #define SCALE 0.3
 
 LongTower::LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax)
-: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/tower_bunnies.png")
+: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
-	sprite.scale(0.4,0.4);
 }
 
 LongTower::LongTower(std::string parms)
-: Tower(parms,"Sprites/Bunny/tower_bunnies.png")
+: Tower(parms,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
-	sprite.scale(0.4,0.4);
 }
 
 
