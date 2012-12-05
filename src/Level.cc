@@ -35,7 +35,7 @@ void Level::loadBase(string trackFile, int index)
         loadData.getline(stringBuffer, 256, '\n');
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
-    map.setMatrix(MapMatrixData, row, col);
+    map.setMatrix(MapMatrixData, row, col,"");
     //ladda waveHandler
 
     string waveHandlerData;
