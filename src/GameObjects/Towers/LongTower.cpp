@@ -1,4 +1,5 @@
 #include "LongTower.h"
+#include <iostream>
 #include "../Projectiles/LongProjectile.h"
 
 #define SCALE 0.3
@@ -33,7 +34,6 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, enemy);
-
             return longProjectile;
         }
         else
@@ -43,6 +43,7 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
     }
     else
     {
+        counter++;
         return NULL;
     }
 }

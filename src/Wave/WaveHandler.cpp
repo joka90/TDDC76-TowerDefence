@@ -71,7 +71,6 @@ Enemy* WaveHandler::update(){
     {
         if(wavesVector[currentWaveIndex]->getFinished())
         {
-            cout << "asd" << endl;
             isRunning = false;
         }
         return wavesVector[currentWaveIndex]->getEnemy(clock.getElapsedTime().asMilliseconds());
