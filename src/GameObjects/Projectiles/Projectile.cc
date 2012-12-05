@@ -59,44 +59,17 @@ void Projectile::setDirection(Enemy* aim)
 {
     int enemyPosX;
     int enemyPosY;
-    double directionRatio;
     double directionAngle;
-    double PI = 3.14159265;
 
     if((enemy != NULL))
     {
         enemyPosX = enemy->getPosX();
         enemyPosY = enemy->getPosY();
-        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
 
-        // Om fiende i projektils första kvadrant
-        if ((directionRatio >= 0) && (enemyPosY >= yPos))
-        {
-            directionAngle = atan(directionRatio);
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        // Om fiende i projektils tredje kvadrant
-        else if ((directionRatio >= 0) && (enemyPosY <= 0))
-        {
-            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        //Om fiende i projektils andra kvadrant
-        else if((directionRatio < 0) && (enemyPosY >= yPos))
-        {
-            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        //Om fiende i projektils fjarde kvadrant
-        else if((directionRatio < 0) && (enemyPosY <= yPos))
-        {
-            directionAngle = atan(directionRatio);
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
+        directionAngle = atan2(enemyPosY-yPos,enemyPosX- xPos);
+        dirX = speed * cos(directionAngle) + 0.5;
+        dirY = speed * sin(directionAngle) + 0.5;
+
     }
     return;
 }
