@@ -43,7 +43,8 @@ class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUs
 
 		BuyMenu buyMenu;
         UpgradeMenu upgradeMenu;
-
+        
+		sf::RectangleShape towerMarker;
 };
 
 #endif /* CLICKMANAGER_H_ */

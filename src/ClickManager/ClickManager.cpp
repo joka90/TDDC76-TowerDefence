@@ -31,6 +31,7 @@ ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatr
 {
     EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
+	towerMarker.setSize(sf::Vector2f(SIDE, SIDE));
 }
 
 ClickManager::~ClickManager()
@@ -71,7 +72,7 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
         {
             if(buyMenu.purchase())
             {
-                markedTower->setPos((x/SIDE)*SIDE ,(y/SIDE)*SIDE);
+                markedTower->setPos((x/SIDE)*SIDE+SIDE/2, (y/SIDE)*SIDE+SIDE/2);
                 markedTower->setColor(sf::Color(255, 255, 255, 255));//reset color
                 mapMatrix.setTower(x, y);
                 towerVector.push_back(markedTower);
@@ -139,20 +140,26 @@ void ClickManager::createTower(int x, int y)
 
 void ClickManager::drawMenus(sf::RenderWindow& canvas)
 {
+ 	sf::Color badPlacmentColor(255, 0, 0, 180); // red
+ 	sf::Color okPlacmentColor(0, 255, 0, 180); // green
     buyMenu.drawMenu(canvas);
     upgradeMenu.drawMenu(canvas);
     if(markedTower != NULL)
     {
 		sf::Vector2i pos=sf::Mouse::getPosition(canvas);
-		markedTower->setPos((pos.x/SIDE)*SIDE ,(pos.y/SIDE)*SIDE);
+		towerMarker.setPosition((pos.x/SIDE)*SIDE, (pos.y/SIDE)*SIDE);
+		markedTower->setPos(pos.x, pos.y);
 		if(!mapMatrix.isTaken(pos.x,pos.y))
 		{
 			markedTower->setColor(sf::Color(255, 255, 255, 200));
+			towerMarker.setFillColor(okPlacmentColor);
 		}
 		else
 		{
 			markedTower->setColor(sf::Color(255, 100, 100, 200));
+			towerMarker.setFillColor(badPlacmentColor);
 		}
+		canvas.draw(towerMarker);
 		markedTower->drawSprite(canvas);
     }
 }

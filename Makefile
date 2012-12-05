@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o UpgradeMenu.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o UpgradeMenu.o MusicHandler.o
 
 # Huvudmål
 TD: $(OBJECTS) Makefile
@@ -35,6 +35,9 @@ AnimatedSprite.o: src/AnimatedSprite.h src/AnimatedSprite.cc
 
 GameHandler.o: src/GameHandler.h src/GameHandler.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameHandler.cc
+	
+MusicHandler.o: src/MusicHandler.h src/MusicHandler.cc
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/MusicHandler.cc
 
 EventHandler.o: src/EventHandler.h src/EventHandler.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/EventHandler.cc
