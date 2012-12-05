@@ -38,11 +38,8 @@ void Level::loadBase(string trackFile, int index)
     string path;
     int pathLength;
     loadData>>pathLength;
-    for(int i = 0; i < row; ++i)
-    {
-        loadData.getline(stringBuffer, 256, '\n');
-        path = path + string(stringBuffer) + string(" ");
-    }
+    loadData.getline(stringBuffer, 256, '\n');
+    path = string(stringBuffer) + string(" ");
     map.setMatrix(MapMatrixData, row, col, path);
 	map.setMatrix(MapMatrixData, row, col, path);
     //ladda waveHandler
