@@ -22,7 +22,8 @@ public:
     ~Tower();
 
     //virtual Projectile* update(std::vector<Enemy*>) = 0;//fix to compile TODO
-    //virtual bool drawSprite(sf::RenderWindow& canvas); //Ärvs från GameObject ist.. /T
+    bool drawSprite(sf::RenderWindow& canvas);
+	double directionAngle;//sprite angle
 
     int getPrice() const;
     void setPrice(int newPrice);
