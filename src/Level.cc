@@ -7,7 +7,7 @@ using namespace std;
 Level::Level(string trackFile, int)
  : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state("")
  {
-     loadBase(trackFile, 0);
+     loadBase(trackFile, -1);
  }
 
 void Level::loadBase(string trackFile, int index)
@@ -38,8 +38,6 @@ void Level::loadBase(string trackFile, int index)
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
     string path;
-    int pathLength;
-    loadData>>pathLength;
     loadData.getline(stringBuffer, 256, '\n');
     path = string(stringBuffer) + string(" ");
     map.setMatrix(MapMatrixData, row, col, path);

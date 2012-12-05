@@ -36,10 +36,9 @@ Enemy* Wave::getEnemy(int timeDelta)
     // If the next enemy shall be placed
     if(enemies.size() <= nextIndex)
     {
-        return NULL;
         finished = true;
+        return NULL;
     }
-    cout << "Size: " << enemies.size() << " nextIndex: " << enemies[nextIndex].first << " timeDelta: " << timeDelta << endl;
     if(enemies[nextIndex].first <= timeDelta){
         cout << "hej"  <<endl;
         nextIndex++;
