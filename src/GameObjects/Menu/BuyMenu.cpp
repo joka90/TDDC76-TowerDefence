@@ -1,23 +1,23 @@
 #include "BuyMenu.h"
 #include <iostream>
 
-#define BUYMENUSTARTX 100
-#define BUYMENUSTARTY 400
+#define BUYMENUSTARTX 13
+#define BUYMENUSTARTY 408
 
-#define TOWERDRAWSTARTX 40
-#define TOWERDRAWSTARTY 40
-#define TOWERWIDTH 100
-#define TOWERHEIGHT 100
-#define TOWERDRAWSPACEX 160
-#define TOWERBUTTON "BuyButton.png"
+#define TOWERDRAWSTARTX 30
+#define TOWERDRAWSTARTY 50
+#define TOWERWIDTH 66
+#define TOWERHEIGHT 66
+#define TOWERDRAWSPACEX 80
+#define TOWERBUTTON "button.png"
 #define CLICKSOUND "CLICK.WAV"
 
-#define BASTORN "Sprites/Bunny/Blue/bunny_1.png"
-#define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies.png"
+#define BASTORN "Sprites/Bunny/Original/bunny_1_small.png"
+#define ANNATTORN "Sprites/Bunny/TowerBunnie/tower_bunnies_small.png"
 
 using namespace std;
 BuyMenu::BuyMenu(Player& inPlayer)
- : Menu(BUYMENUSTARTX, BUYMENUSTARTY, "StartMenu.png"), player(inPlayer)
+ : Menu(BUYMENUSTARTX, BUYMENUSTARTY, "BuyMenu_BG.png"), player(inPlayer)
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
@@ -26,9 +26,9 @@ BuyMenu::BuyMenu(Player& inPlayer)
                        TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
 
     //lägg till låsatsknappar för utritandet
-    addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, 0, 0,
+    addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+5, TOWERDRAWSTARTY+10, 0, 0,
                        BASTORN, CLICKSOUND, "", ""));
-    addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, 0, 0,
+    addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX+1, TOWERDRAWSTARTY+1, 0, 0,
                        ANNATTORN, CLICKSOUND, "", ""));
     // lägg till priserna på tornen
     priceVector.push_back(100);

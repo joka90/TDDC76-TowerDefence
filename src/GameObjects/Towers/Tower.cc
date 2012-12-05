@@ -1,6 +1,7 @@
 #include "Tower.h"
 #include <cmath>
 
+#define SIDE 50
 
 //--------------- Public -----------------
 
@@ -8,7 +9,7 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
 : GameObject(newX, newY, textureReference), //skall denna vara har, pure virtual senare?
   price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
 {
-
+	sprite.setOrigin(SIDE/2,SIDE/2);
 }
 
 Tower::Tower(std::string parms, std::string textureReference)
@@ -21,6 +22,7 @@ Tower::Tower(std::string parms, std::string textureReference)
 
 Tower::~Tower()
 {
+
 }
 
 int Tower::getPrice() const
@@ -92,7 +94,33 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
             }
         }
     }
+    //calculate tower rotation
+    int enemyPosX;
+    int enemyPosY;
+    double directionRatio;
+    double PI = 3.14159265;
+    if((closestEnemy != NULL))
+    {
+        enemyPosX = closestEnemy->getPosX();
+        enemyPosY = closestEnemy->getPosY();
+        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
 
+        // Om fiende i projektils första kvadrant
+        //Om fiende i projektils fjarde kvadrant
+        if (directionRatio >= 0)
+        {
+            directionAngle = atan(directionRatio);
+        }
+        // Om fiende i projektils tredje kvadrant
+        //Om fiende i projektils andra kvadrant
+        else if(directionRatio < 0)
+        {
+            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
+        }
+    }
+    sprite.setRotation(directionAngle*180/PI);
+    
+    //return projectile if in range
     if((closestRange <= range) && (closestRange != 0))
     {
         return closestEnemy;
@@ -101,6 +129,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     {
         return NULL;
     }
+    
 }
 
 
@@ -110,9 +139,9 @@ Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
 }
 
 
-/*bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
+bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
 {
-   sprite.setPosition(xPos,xPos);
+   sprite.setPosition(xPos-SIDE/2,yPos-SIDE/2);
    canvas.draw(sprite);//game object always have a sprite
    return true;
-}*/
+}
