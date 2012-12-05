@@ -11,6 +11,10 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
   price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
 {
 	sprite.setOrigin(SIDE/2,SIDE/2);
+
+    // Set counter
+    counter = newCounterMax;
+
 }
 
 Tower::Tower(std::string parms, std::string textureReference)

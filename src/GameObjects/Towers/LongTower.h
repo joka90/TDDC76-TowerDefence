@@ -14,7 +14,7 @@
 class LongTower : public Tower
 {
 public:
-    LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax);
+    LongTower(int newX, int newY, int upgradePack = 0);
 
     LongTower(std::string parms);
 
@@ -27,6 +27,8 @@ public:
      * Annars returnerar den NULL.
      */
     LongProjectile* update(std::vector<Enemy*>& enemies);
+
+    void upgrade();
 
 protected:
 

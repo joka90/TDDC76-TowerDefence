@@ -15,7 +15,7 @@
 class Tower : public GameObject
 {
 public:
-    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,  std::string textureReference);
+    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference);
 
 	Tower(std::string parms,  std::string textureReference);
 
@@ -27,18 +27,24 @@ public:
 
     int getPrice() const;
     void setPrice(int newPrice);
+    int getUpgradePrice() const;
     int getDamage() const;
     void setDamage(int newDamage);
     int getRange() const;
     void setRange(int newRange);
     std::string getSaveString();
-    virtual Projectile* update(std::vector<Enemy*>& enemyVector)=0;
+    virtual Projectile* update(std::vector<Enemy*>& enemyVector) = 0;
+
+    // Upgrades
+    int currentUpgradePack;
+    virtual void upgrade() = 0;
 
 private:
 
 
 protected:
     int price;
+    int upgradePrice;
     int damage;
     int range;
     int counter;

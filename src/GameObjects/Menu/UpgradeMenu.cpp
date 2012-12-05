@@ -4,9 +4,11 @@
 
 #define SELLBUTTONX 35
 #define SELLBUTTONY 42
-#define SELLBUTTONWIDTH 66
-#define SELLBUTTONHEIGHT 66
-#define SELLBUTTONIMG "button.png"
+#define UPGRADEBUTTONX 35
+#define UPGRADEBUTTONY 112
+#define BUTTONWIDTH 66
+#define BUTTONHEIGHT 66
+#define BUTTONIMG "button.png"
 #define CLICK "CLICK.WAv"
 #define SIDE 50
 
@@ -15,8 +17,12 @@ UpgradeMenu::UpgradeMenu(Player& inPlayer)
 : Menu(UPPGMENUSTARTX, UPPGMENUSTARTY, "TowerMenu_BG.png"), player(inPlayer), selectedTower(NULL)
 {
     invisible = true;
-    addButton(new Button(UPPGMENUSTARTX, UPPGMENUSTARTY, SELLBUTTONX, SELLBUTTONY, SELLBUTTONWIDTH, SELLBUTTONHEIGHT,
-                      SELLBUTTONIMG, CLICK, "Sell", ""));
+    addButton(new Button(UPPGMENUSTARTX, UPPGMENUSTARTY, SELLBUTTONX, SELLBUTTONY, BUTTONWIDTH, BUTTONHEIGHT,
+                      BUTTONIMG, CLICK, "Sell", ""));
+
+    addButton(new Button(UPPGMENUSTARTX, UPPGMENUSTARTY, UPGRADEBUTTONX, UPGRADEBUTTONY, BUTTONWIDTH, BUTTONHEIGHT,
+                      BUTTONIMG, CLICK, "Upgrade", ""));
+
 	towerMarker.setSize(sf::Vector2f(SIDE, SIDE));
 	towerMarker.setFillColor(sf::Color(255, 255, 255, 0)); // transp
 	towerMarker.setOutlineColor(sf::Color::Black);

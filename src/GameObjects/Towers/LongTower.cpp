@@ -2,13 +2,19 @@
 #include <iostream>
 #include "../Projectiles/LongProjectile.h"
 
-#define SCALE 0.3
 
-LongTower::LongTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax)
-: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/Original/bunny_1_small.png")
+LongTower::LongTower(int newX, int newY, int upgradePack)
+: Tower(newX, newY, 80, 10, 200, 30, "Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
-	counter = newCounterMax;
+
+    // Upgrade if it should be upgraded
+	currentUpgradePack = 0;
+	upgradePrice = 100;
+    while(currentUpgradePack < upgradePack){
+        upgrade();
+    }
+
 }
 
 LongTower::LongTower(std::string parms)
@@ -22,9 +28,6 @@ LongTower::~LongTower()
 {
 
 }
-
-
-
 
 LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
 {
@@ -47,4 +50,16 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         counter++;
         return NULL;
     }
+}
+
+
+void LongTower::upgrade(){
+
+    ++currentUpgradePack;
+
+    if(currentUpgradePack == 1){
+        upgradePrice = 200;
+        range = 300;
+    }
+
 }
