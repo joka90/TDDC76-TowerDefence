@@ -48,7 +48,7 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     {
         for (it = towerVector.begin(); it != towerVector.end(); ++it)
         {
-            if(((*it)->getPosX() == (x/SIDE)*SIDE)-SIDE/2 && ((*it)->getPosY() == (y/SIDE)*SIDE)-SIDE/2)
+            if(((*it)->getPosX() == (x/SIDE)*SIDE+SIDE/2) && ((*it)->getPosY() == (y/SIDE)*SIDE+SIDE/2))
             {
                 upgradeMenu.selectTower(*it);
                 break;
@@ -67,7 +67,6 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     int y = event.mouseButton.y;
     if(markedTower != NULL)
     {
-        cout << "test" << endl;
         if(!mapMatrix.isTaken(x,y))
         {
             if(buyMenu.purchase())
