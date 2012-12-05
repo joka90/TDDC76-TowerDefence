@@ -19,8 +19,9 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <iostream>
+#include <sstream>
 #include <fstream>
+#include <time.h>
 
 class Level
 {
