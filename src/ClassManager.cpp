@@ -38,7 +38,7 @@ Tower* ClassManager::createTowerInstance(const string& towerTypeName)
 Enemy* ClassManager::createEnemyInstance(const string& enemyTypeName)
 {
     if(enemyTypeName == "Badger"){
-            return new Enemy(100,10,500, "/Sprites/Badger/Gray/badger_01_small.png");
+            return new Enemy(100,2,500, "/Sprites/Badger/Gray/badger_01_small.png");
     }
     return NULL;
 }
