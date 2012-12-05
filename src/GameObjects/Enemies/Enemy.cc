@@ -51,8 +51,8 @@ bool Enemy::update(MapMatrix& map){
     if(stepsMoved == 0)
     {
         nextCoord = map.getCoord(0);
-        xPos = nextCoord.first;
-        yPos = nextCoord.second;
+        xPos = nextCoord.first+SIDE/2;
+        yPos = nextCoord.second+SIDE/2;
         nextCoord = map.getCoord(1);
         ++stepsMoved;
         newDirection(map);
@@ -93,24 +93,24 @@ bool Enemy::update(MapMatrix& map){
 
 bool Enemy::passedNextStep()
 {
-    if((direction == LEFT) && (xPos < nextCoord.first))
+    if((direction == LEFT) && (xPos < nextCoord.first+SIDE/2))
     {
-        xPos = nextCoord.first;
+        xPos = nextCoord.first+SIDE/2;
         return true;
     }
-    else if((direction == RIGHT) && (xPos > nextCoord.first))
+    else if((direction == RIGHT) && (xPos > nextCoord.first+SIDE/2))
     {
-        xPos = nextCoord.first;
+        xPos = nextCoord.first+SIDE/2;
         return true;
     }
-    else if((direction == UP) && (yPos < nextCoord.second))
+    else if((direction == UP) && (yPos < nextCoord.second+SIDE/2))
     {
-        yPos = nextCoord.second;
+        yPos = nextCoord.second+SIDE/2;
         return true;
     }
-    else if((direction == DOWN) && (yPos > nextCoord.second))
+    else if((direction == DOWN) && (yPos > nextCoord.second+SIDE/2))
     {
-        yPos = nextCoord.second;
+        yPos = nextCoord.second+SIDE/2;
         return true;
     }
     return false;
@@ -150,14 +150,6 @@ void Enemy::hit(int damage)
 {
     life = life - damage;
     return;
-}
-
-bool Enemy::drawSprite(sf::RenderWindow& canvas)
-{
-    sprite.setPosition(xPos+SIDE/2, yPos+SIDE/2);
-
-    canvas.draw(sprite);
-    return true;
 }
 
 

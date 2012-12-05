@@ -25,7 +25,6 @@ public:
 
     // Moves the enemy
     bool update(MapMatrix& map);
-    bool drawSprite(sf::RenderWindow& canvas);
 
 private:
 
