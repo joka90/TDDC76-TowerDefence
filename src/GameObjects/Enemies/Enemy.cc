@@ -63,7 +63,6 @@ bool Enemy::update(MapMatrix& map){
     // har man passerat nästa nod
     if(passedNextStep())
     {
-        cout << "hej då på dig" << endl;
         ++stepsMoved;
         newDirection(map);
         nextCoord = map.getCoord(stepsMoved);

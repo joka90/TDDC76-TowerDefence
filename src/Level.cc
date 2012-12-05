@@ -5,7 +5,7 @@
 using namespace std;
 
 Level::Level(string trackFile, int)
- : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state("")
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state(""), songName("")
  {
      loadBase(trackFile, 0);
  }
@@ -20,6 +20,9 @@ void Level::loadBase(string trackFile, int index)
     //ladda bakgrund
     background.setTextureAnimation(TextureLoader::getTexture(stringBuffer));
     background.setPosition(0,0);
+    //namn på levelns musikfil
+    loadData.getline(stringBuffer, 256, '\n');
+    songName = stringBuffer;
     //initiera spelaren
     int money, lives;
     loadData>>money;
@@ -274,4 +277,9 @@ bool Level::saveLevel(string saveFile)
 
 	fb.close();
 	return true;
+}
+
+string Level::getSongName()
+{
+    return songName;
 }

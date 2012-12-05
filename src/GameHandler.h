@@ -18,6 +18,7 @@
 #include "Loader/TextureLoader.h"
 #include "Loader/SoundLoader.h"
 #include "Loader/FontLoader.h"
+#include "MusicHandler.h"
 
 #define WINDOWWIDTH 800
 #define WINDOWHEIGHT 600
@@ -49,6 +50,9 @@ protected:
 	StartMenu startMenu;
 	LoadMenu loadMenu;
 	TrackMenu trackMenu;
+
+private:
+    MusicHandler musicHandler;
 
 };
 
