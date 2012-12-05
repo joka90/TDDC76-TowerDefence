@@ -1,9 +1,11 @@
 #include "Projectile.h"
 #include <cmath>
+using namespace std;
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),
   damage(newDamage), speed(newSpeed), enemy(newEnemy)
 {
+    sprite.setOrigin(5,21);
     setDirection(enemy);
 }
 
@@ -59,45 +61,21 @@ void Projectile::setDirection(Enemy* aim)
 {
     int enemyPosX;
     int enemyPosY;
-    double directionRatio;
-    double directionAngle;
-    double PI = 3.14159265;
+    double directionAngle = 0;
+    double PI = 3.1415;
 
     if((enemy != NULL))
     {
         enemyPosX = enemy->getPosX();
         enemyPosY = enemy->getPosY();
-        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
 
-        // Om fiende i projektils första kvadrant
-        if ((directionRatio >= 0) && (enemyPosY >= yPos))
-        {
-            directionAngle = atan(directionRatio);
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        // Om fiende i projektils tredje kvadrant
-        else if ((directionRatio >= 0) && (enemyPosY <= 0))
-        {
-            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        //Om fiende i projektils andra kvadrant
-        else if((directionRatio < 0) && (enemyPosY >= yPos))
-        {
-            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
-        //Om fiende i projektils fjarde kvadrant
-        else if((directionRatio < 0) && (enemyPosY <= yPos))
-        {
-            directionAngle = atan(directionRatio);
-            dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-            dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
-        }
+        directionAngle = atan2(enemyPosY-yPos,enemyPosX-xPos);
+        dirX = speed * cos(directionAngle) + 0.5;
+        dirY = speed * sin(directionAngle) + 0.5;
+
     }
+
+    sprite.setRotation(directionAngle * 180 / PI);
     return;
 }
 
@@ -120,7 +98,6 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
     {
         Enemy* closestEnemy = enemyVector[0];
         closestRange = sqrt(((enemyVector[0]->getPosX() - xPos)^2) + ((enemyVector[0]->getPosY() - yPos)^2));
-
         for (unsigned int i = 1; i < enemyVector.size(); ++i)
         {
             rangeToEnemy = sqrt(((enemyVector[i]->getPosX() - xPos)^2) + ((enemyVector[i]->getPosY() - yPos)^2));
