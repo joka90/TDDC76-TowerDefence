@@ -18,7 +18,7 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 }
 
 LongTower::LongTower(std::string parms)
-: Tower(parms,"Sprites/Bunny/Original/bunny_1_small.png")
+: Tower(parms,30,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
 }

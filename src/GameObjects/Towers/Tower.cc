@@ -8,7 +8,7 @@ using namespace std;
 
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference)
 : GameObject(newX, newY, textureReference), //skall denna vara har, pure virtual senare?
-  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
+  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	sprite.setOrigin(SIDE/2,SIDE/2);
 
@@ -17,12 +17,15 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
 
 }
 
-Tower::Tower(std::string parms, std::string textureReference)
-:GameObject(parms, textureReference)
+Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
+:GameObject(parms, textureReference),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	int dummyInt;
 	//How to scan parameters in towers an other stuff
 	sscanf(parms.c_str(),"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+    // Set counter
+    counter = newCounterMax;
+    sprite.setOrigin(SIDE/2,SIDE/2);
 }
 
 Tower::~Tower()
