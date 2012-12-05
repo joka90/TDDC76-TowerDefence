@@ -2,9 +2,9 @@
 
 using namespace std;
 
-Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReference, Player& inPlayer)
+Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReference)
 
- : GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue), player(inPlayer)
+ : GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
 {
     sprite.setOrigin(SIDE/2, SIDE/2);
     nextCoord = make_pair(0,0);
@@ -49,7 +49,7 @@ void Enemy::setValue(int newValue)
 
 void Enemy::onDeath()
 {
-    player.addMoney(value);
+    return;
 }
 
 bool Enemy::update(MapMatrix& map){

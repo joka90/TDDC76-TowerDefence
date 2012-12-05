@@ -12,7 +12,7 @@
 class Enemy : public GameObject
 {
 public:
-    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference, Player& inPlayer);
+    Enemy(int newLife, int newSpeed, int newValue, std::string textureReference);
     ~Enemy();
 
     int getLife() const;
@@ -42,6 +42,5 @@ protected:
     int frames; // Antalet frames sedan enemyn påbörjat animering från senaste ruta
 
     std::pair<int, int> nextCoord;
-    Player& player;
 };
 #endif //end ENEMY_H
