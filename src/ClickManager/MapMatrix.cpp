@@ -47,7 +47,6 @@ void MapMatrix::setMatrix(string value, int row, int col, string pathString)
     char deleteComma;
     while(pathSs.good())
     {
-        cout << i++ << endl;
         pathSs >> x;
         pathSs >> deleteComma;
         pathSs >> y;
@@ -115,8 +114,6 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 
 pair<int, int> MapMatrix::getCoord(int currentPathPosition)
 {
-    cout << currentPathPosition << endl;
-    cout << path.size() << endl;
     if(currentPathPosition < (int) path.size())
     {
         int pixelX = ((path[currentPathPosition].first) * SIDE);

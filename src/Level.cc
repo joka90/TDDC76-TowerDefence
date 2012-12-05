@@ -89,7 +89,6 @@ Level::Level(string saveFile)
 				{
 					tmpPtr=new LongTower(parmsStr);
 				}
-				cout << "New tower " << subTypeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
@@ -104,16 +103,13 @@ Level::Level(string saveFile)
 			{
 				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
 			}
-			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
 
 		//Init Level and wave, load from file
 		loadBase(string(tmpTrackFile),tmpWave);
-		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
 
 		//init player after Level to overwrite life and money
 		player=Player(tmpMoney, tmpLife);
-		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 
 		//load towers into map matrix
 		// get pos from towers
@@ -136,7 +132,6 @@ bool Level::update()
     if(enemyToBePlaced != NULL)
     {
         enemies.push_back(enemyToBePlaced);
-        cout << "Ny enemy ute!" << enemies.size() << endl;
     }
 
     //Update enemies
@@ -219,7 +214,6 @@ bool Level::update()
 				cout << "Error opening file." << endl;
 			}
 
-            cout << "Saveing done. Quiting." << endl;
             state="START";
         }
         if(message == "QUIT")
