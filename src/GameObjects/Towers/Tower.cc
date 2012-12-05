@@ -83,11 +83,10 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     if(!enemyVector.empty())
     {
         closestEnemy = enemyVector[0];
-        closestRange = sqrt(((enemyVector[0]->getPosX() - xPos)^2) + ((enemyVector[0]->getPosY() - yPos)^2));
-
+        closestRange = sqrt(pow((enemyVector[0]->getPosX() - xPos),2) + pow((enemyVector[0]->getPosY() - yPos),2));
         for (unsigned int i = 1; i < enemyVector.size(); ++i)
         {
-            rangeToEnemy = sqrt(((enemyVector[i]->getPosX() - xPos)^2) + ((enemyVector[i]->getPosY() - yPos)^2));
+            rangeToEnemy = sqrt(pow((enemyVector[i]->getPosX() - xPos),2) + pow((enemyVector[i]->getPosY() - yPos),2));
             if (rangeToEnemy < closestRange)
             {
                 closestRange = rangeToEnemy;
@@ -120,7 +119,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
         }
     }
     sprite.setRotation(directionAngle*180/PI);
-    
+
     //return projectile if in range
     if((closestRange <= range) && (closestRange != 0))
     {
@@ -130,7 +129,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     {
         return NULL;
     }
-    
+
 }
 
 
