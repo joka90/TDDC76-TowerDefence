@@ -17,7 +17,7 @@ class Tower : public GameObject
 public:
     Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference);
 
-	Tower(std::string parms,  std::string textureReference);
+	Tower(std::string parms, int newCounterMax,  std::string textureReference);
 
     ~Tower();
 

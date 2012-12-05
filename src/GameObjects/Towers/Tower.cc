@@ -17,12 +17,15 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
 
 }
 
-Tower::Tower(std::string parms, std::string textureReference)
+Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
 :GameObject(parms, textureReference)
 {
 	int dummyInt;
 	//How to scan parameters in towers an other stuff
 	sscanf(parms.c_str(),"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+    // Set counter
+    counter = newCounterMax;
+    sprite.setOrigin(SIDE/2,SIDE/2);
 }
 
 Tower::~Tower()
