@@ -95,6 +95,8 @@
 		<Unit filename="src\GameObjects\Projectiles\LongProjectile.h" />
 		<Unit filename="src\GameObjects\Projectiles\Projectile.cc" />
 		<Unit filename="src\GameObjects\Projectiles\Projectile.h" />
+		<Unit filename="src\GameObjects\Towers\CanonTower.cpp" />
+		<Unit filename="src\GameObjects\Towers\CanonTower.h" />
 		<Unit filename="src\GameObjects\Towers\LongTower.cpp" />
 		<Unit filename="src\GameObjects\Towers\LongTower.h" />
 		<Unit filename="src\GameObjects\Towers\Tower.cc" />
@@ -113,6 +115,8 @@
 		<Unit filename="src\Loader\SoundLoader.h" />
 		<Unit filename="src\Loader\TextureLoader.cc" />
 		<Unit filename="src\Loader\TextureLoader.h" />
+		<Unit filename="src\MusicHandler.cc" />
+		<Unit filename="src\MusicHandler.h" />
 		<Unit filename="src\Wave\Wave.cpp" />
 		<Unit filename="src\Wave\Wave.h" />
 		<Unit filename="src\Wave\WaveHandler.cpp" />
