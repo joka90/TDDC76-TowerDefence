@@ -3,20 +3,20 @@
 
 #define MENUSTARTX 0
 #define MENUSTARTY 0
-#define TRACKX 100
-#define TRACKY 100
-#define LOADX 100
-#define LOADY 200
-#define QUITX 100
-#define QUITY 400
-#define BUTTONWIDTH 100
-#define BUTTONHEIGHT 70
+#define TRACKX 38
+#define TRACKY 447
+#define LOADX 38
+#define LOADY 517
+#define QUITX 200
+#define QUITY 517
+#define BUTTONWIDTH 141
+#define BUTTONHEIGHT 51
 #define CLICK "CLICK.WAV"
-#define BUTTON "button.png"
+#define BUTTON "StartButton_BG.png"
 #define MENUSBACKGROUND "StartMenu.png"
 using namespace std;
 StartMenu::StartMenu()
-:Menu(MENUSTARTX,MENUSTARTY, "StartMenu.png")
+:Menu(MENUSTARTX,MENUSTARTY, "Start_BG.png")
 {
     addButton(new Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
                       BUTTON, CLICK, "Tracks", ""));

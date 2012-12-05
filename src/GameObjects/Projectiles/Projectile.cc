@@ -1,5 +1,6 @@
 #include "Projectile.h"
 #include <cmath>
+using namespace std;
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),
   damage(newDamage), speed(newSpeed), enemy(newEnemy)
@@ -97,7 +98,6 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
     {
         Enemy* closestEnemy = enemyVector[0];
         closestRange = sqrt(((enemyVector[0]->getPosX() - xPos)^2) + ((enemyVector[0]->getPosY() - yPos)^2));
-
         for (unsigned int i = 1; i < enemyVector.size(); ++i)
         {
             rangeToEnemy = sqrt(((enemyVector[i]->getPosX() - xPos)^2) + ((enemyVector[i]->getPosY() - yPos)^2));

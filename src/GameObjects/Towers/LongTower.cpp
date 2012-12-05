@@ -8,6 +8,7 @@ LongTower::LongTower(int newX, int newY, int newPrice, int newDamage, int newRan
 : Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
+	counter = newCounterMax;
 }
 
 LongTower::LongTower(std::string parms)
@@ -27,9 +28,9 @@ LongTower::~LongTower()
 
 LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
 {
+    Enemy* enemy = getClosestEnemy(enemies);
     if(counter >= counterMax)
     {
-        Enemy* enemy = getClosestEnemy(enemies);
         if(!(enemy == NULL))
         {
             counter = 0;
