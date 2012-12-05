@@ -14,7 +14,6 @@ Enemy::~Enemy()
 {
 }
 
-
 int Enemy::getLife() const
 {
     return life;
@@ -47,18 +46,19 @@ void Enemy::setValue(int newValue)
     return;
 }
 
-
 bool Enemy::update(MapMatrix& map){
-    if(stepsMoved == 0){
+    if(stepsMoved == 0)
+    {
         nextCoord = map.getCoord(0);
         xPos = nextCoord.first;
         yPos = nextCoord.second;
         nextCoord = map.getCoord(1);
         newDirection(map);
     }
-      // If arrived at a coord, start walk to next
-      //if(xPos == nextCoord.first && yPos == nextCoord.second){
-    //har man passerat nästa nod
+
+    // If arrived at a coord, start walk to next
+    // if(xPos == nextCoord.first && yPos == nextCoord.second){
+    // har man passerat nästa nod
     if(passedNextStep())
     {
         ++stepsMoved;
@@ -69,15 +69,15 @@ bool Enemy::update(MapMatrix& map){
     {
         return true;
     }
-    if(direction = LEFT)
-    {
-        xPos += speed;
-    }
-    else if(direction = RIGHT)
+    if(direction == LEFT)
     {
         xPos -= speed;
     }
-    else if(direction = UP)
+    else if(direction == RIGHT)
+    {
+        xPos += speed;
+    }
+    else if(direction == UP)
     {
         yPos -= speed;
     }
@@ -107,22 +107,22 @@ bool Enemy::update(MapMatrix& map){
 
 bool Enemy::passedNextStep()
 {
-    if(direction == LEFT && xPos > nextCoord.first*SIDE)
+    if((direction == LEFT) && (xPos < nextCoord.first*SIDE))
     {
         xPos = nextCoord.first*SIDE;
         return true;
     }
-    else if(direction == RIGHT && xPos < nextCoord.first*SIDE)
+    else if((direction == RIGHT) && (xPos > nextCoord.first*SIDE))
     {
         xPos = nextCoord.first*SIDE;
         return true;
     }
-    else if(direction == UP && yPos < nextCoord.second*SIDE)
+    else if((direction == UP) && (yPos < nextCoord.second*SIDE))
     {
         yPos = nextCoord.second*SIDE;
         return true;
     }
-    else if(direction == DOWN && yPos > nextCoord.second*SIDE)
+    else if((direction == DOWN) && (yPos > nextCoord.second*SIDE))
     {
         yPos = nextCoord.second*SIDE;
         return true;
