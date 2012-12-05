@@ -10,11 +10,12 @@
 #define PI 3.14159265
 
 #include "src/EventHandler.h"
+#include "src/ClickManager/MapMatrix.h"
 
 int main()
 {
 	GameHandler currentGame;
 	currentGame.run();
     return 0;
-}
 
+}

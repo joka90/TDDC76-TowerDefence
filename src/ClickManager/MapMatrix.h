@@ -17,8 +17,8 @@ class MapMatrix
 {
     public:
 		MapMatrix();
-		MapMatrix(std::string value, int row, int col);
-		void setMatrix(std::string value, int row, int col);
+		MapMatrix(std::string value, int row, int col, std::string);
+		void setMatrix(std::string value, int row, int col, std::string);
 		bool isTaken(int x, int y);
 		void setTower(int x, int y);
 		void removeTower(int x, int y);
