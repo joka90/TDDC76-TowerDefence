@@ -1,5 +1,7 @@
 #include "Tower.h"
 #include <cmath>
+#include <iostream>
+using namespace std;
 
 
 //--------------- Public -----------------

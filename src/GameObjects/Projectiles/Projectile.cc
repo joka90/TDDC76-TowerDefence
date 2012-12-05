@@ -59,16 +59,24 @@ void Projectile::setDirection(Enemy* aim)
 {
     int enemyPosX;
     int enemyPosY;
-    double directionRatio;
+    //double directionRatio;
     double directionAngle;
-    double PI = 3.14159265;
+    //double PI = 3.14159265;
 
     if((enemy != NULL))
     {
         enemyPosX = enemy->getPosX();
         enemyPosY = enemy->getPosY();
-        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
 
+        directionAngle = atan2(enemyPosX- xPos, enemyPosY-yPos);
+        dirX = speed * cos(directionAngle) + 0.5;
+        dirY = speed * sin(directionAngle) + 0.5;
+
+
+        // Utkommenterat för att man borde kunna använda atan2 som över.
+        // Plus att detta skjuter åt fel håll... =)
+        /**
+        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
         // Om fiende i projektils första kvadrant
         if ((directionRatio >= 0) && (enemyPosY >= yPos))
         {
@@ -97,6 +105,7 @@ void Projectile::setDirection(Enemy* aim)
             dirX = speed * cos(directionAngle) + 0.5; // +0.5 För korrekt avrundning
             dirY = speed * sin(directionAngle) + 0.5; // +0.5 För korrekt avrundning
         }
+        */
     }
     return;
 }
