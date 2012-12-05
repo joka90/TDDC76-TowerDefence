@@ -20,10 +20,6 @@ ClassManager::~ClassManager()
   */
 Tower* ClassManager::createTowerInstance(const string& towerTypeName)
 {
-    if(towerTypeName != "")
-    {
-        cout << towerTypeName << endl;
-    }
     if(towerTypeName == "BASIC")
     {
         return new LongTower(0, 0, 80, 10, 200, 30);

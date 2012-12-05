@@ -2,6 +2,7 @@
 #define ENEMY_H
 #include "../GameObject.h"
 #include "../../ClickManager/MapMatrix.h"
+#include "../../ClickManager/Player.h"
 #include <SFML/Graphics.hpp>
 #define LEFT 0
 #define RIGHT 1
@@ -27,6 +28,7 @@ public:
 
     // Moves the enemy
     bool update(MapMatrix& map);
+    virtual void onDeath();
 
 private:
 

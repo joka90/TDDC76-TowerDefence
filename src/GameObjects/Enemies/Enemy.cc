@@ -55,6 +55,11 @@ void Enemy::setValue(int newValue)
     return;
 }
 
+void Enemy::onDeath()
+{
+    return;
+}
+
 bool Enemy::update(MapMatrix& map){
     if(stepsMoved == 0)
     {
@@ -74,7 +79,6 @@ bool Enemy::update(MapMatrix& map){
         ++stepsMoved;
         newDirection(map);
         nextCoord = map.getCoord(stepsMoved);
-        cout << "first: " << nextCoord.first << "sec: " << nextCoord.second << endl;
     }
     if(nextCoord.first == -1 && nextCoord.second == -1)
     {
