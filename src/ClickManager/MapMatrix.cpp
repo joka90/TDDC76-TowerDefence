@@ -43,10 +43,11 @@ void MapMatrix::setMatrix(string value, int row, int col, string pathString)
         Fixar path-vektorn
     */
     istringstream pathSs(pathString);
-    int x,y;
+    int x,y,i(0);
     char deleteComma;
     while(pathSs.good())
     {
+        cout << i++ << endl;
         pathSs >> x;
         pathSs >> deleteComma;
         pathSs >> y;

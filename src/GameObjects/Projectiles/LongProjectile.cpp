@@ -19,6 +19,10 @@ LongProjectile::~LongProjectile()
 //Fortsätt med olika directions beroende på kvadrant.
 void LongProjectile::update(std::vector<Enemy*>& enemies)
 {
+    move();
+
+
+
     /*
     int enemyPosX;
     int enemyPosY;
