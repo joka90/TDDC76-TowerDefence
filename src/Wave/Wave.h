@@ -24,10 +24,12 @@ class Wave {
         // Returns the enemy that should be placed to the track at the time given by timeDelta.
         //   timeDelta - the time (in ms) since the start of the wave.
 		Enemy* getEnemy(int timeDelta);
+		bool getFinished();
 
 	private:
         std::vector<std::pair<int,std::string> > enemies;
         int nextIndex;
+        bool finished;
 };
 
 #endif /* WAVE_H_ */
