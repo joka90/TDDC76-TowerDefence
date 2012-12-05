@@ -1,5 +1,7 @@
 #include "Level.h"
 
+#define LOADFOLDER "saves/"
+
 using namespace std;
 
 Level::Level(string trackFile, int)
@@ -35,7 +37,13 @@ void Level::loadBase(string trackFile, int index)
         loadData.getline(stringBuffer, 256, '\n');
         MapMatrixData = MapMatrixData + string(stringBuffer) + string(" ");
     }
-    map.setMatrix(MapMatrixData, row, col);
+    string path;
+    int pathLength;
+    loadData>>pathLength;
+    loadData.getline(stringBuffer, 256, '\n');
+    path = string(stringBuffer) + string(" ");
+    map.setMatrix(MapMatrixData, row, col, path);
+	map.setMatrix(MapMatrixData, row, col, path);
     //ladda waveHandler
 
     string waveHandlerData;
@@ -112,7 +120,6 @@ Level::Level(string saveFile)
 		for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
 		{
 			map.setTower((*it)->getPosX(), (*it)->getPosY());
-			cout << (*it)->getPosX() << " " << (*it)->getPosY() << endl;//TODO reomve this line when mapmatrix is working.
 		}
 	}
 	else
@@ -168,8 +175,32 @@ bool Level::update()
         string message = statusBarMenu.readState();
         if(message == "SAVE")
         {
-            cout << "SAVING" << endl;
-            saveLevel("saves/testSave.txt");//TODO non const save path
+            time_t secs;
+            struct tm * timeinfo;
+            
+            time(&secs);//set time
+            timeinfo=localtime(&secs);//get time obj
+            
+            std::stringstream fileName;
+            char timeString[80];
+        	fileName << LOADFOLDER << secs << ".sav";
+        	
+            saveLevel(fileName.str());
+            
+
+			strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
+            ofstream saveData;
+			saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
+			if(saveData.is_open())
+			{
+				saveData << timeString << " " << secs << ".sav\n"; 
+				saveData.close();
+			}
+			else
+			{
+				cout << "Error opening file." << endl;
+			}
+			
             cout << "Saveing done. Quiting." << endl;
             state="START";
         }

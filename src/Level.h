@@ -19,8 +19,9 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <iostream>
+#include <sstream>
 #include <fstream>
+#include <time.h>
 
 class Level
 {
@@ -35,6 +36,7 @@ public:
     bool update();
     void draw(sf::RenderWindow& canvas);
     std::string readState();
+    std::string getMusic();
 
 private:
     WaveHandler* waves;
