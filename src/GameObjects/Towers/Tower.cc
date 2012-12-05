@@ -97,27 +97,16 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     //calculate tower rotation
     int enemyPosX;
     int enemyPosY;
-    double directionRatio;
-    double PI = 3.14159265;
+    double PI = 3.1415;
+
     if((closestEnemy != NULL))
     {
         enemyPosX = closestEnemy->getPosX();
         enemyPosY = closestEnemy->getPosY();
-        directionRatio = (enemyPosY - yPos)/(enemyPosX - xPos);
 
-        // Om fiende i projektils första kvadrant
-        //Om fiende i projektils fjarde kvadrant
-        if (directionRatio >= 0)
-        {
-            directionAngle = atan(directionRatio);
-        }
-        // Om fiende i projektils tredje kvadrant
-        //Om fiende i projektils andra kvadrant
-        else if(directionRatio < 0)
-        {
-            directionAngle = atan(directionRatio) + PI/2; // Atan -> vinkel i fjarde kvadranten, adderar därför Pi/2
-        }
+        directionAngle = atan2(enemyPosY-yPos,enemyPosX-xPos);
     }
+
     sprite.setRotation(directionAngle*180/PI);
 
     //return projectile if in range

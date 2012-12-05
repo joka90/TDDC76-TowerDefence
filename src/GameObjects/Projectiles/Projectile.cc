@@ -5,6 +5,7 @@ Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* n
 : GameObject(newX, newY, textureReference),
   damage(newDamage), speed(newSpeed), enemy(newEnemy)
 {
+    sprite.setOrigin(5,21);
     setDirection(enemy);
 }
 
@@ -60,18 +61,21 @@ void Projectile::setDirection(Enemy* aim)
 {
     int enemyPosX;
     int enemyPosY;
-    double directionAngle;
+    double directionAngle = 0;
+    double PI = 3.1415;
 
     if((enemy != NULL))
     {
         enemyPosX = enemy->getPosX();
         enemyPosY = enemy->getPosY();
 
-        directionAngle = atan2(enemyPosY-yPos,enemyPosX- xPos);
+        directionAngle = atan2(enemyPosY-yPos,enemyPosX-xPos);
         dirX = speed * cos(directionAngle) + 0.5;
         dirY = speed * sin(directionAngle) + 0.5;
 
     }
+
+    sprite.setRotation(directionAngle * 180 / PI);
     return;
 }
 
