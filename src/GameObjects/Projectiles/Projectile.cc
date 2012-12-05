@@ -114,7 +114,13 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
-bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
+bool Projectile::update(std::vector<Enemy*>& enemies, Player& player)
+{
+    move();
+    return isHit(enemies, player);
+}
+
+bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
 {
     bool hit = false;
     int x,y;
@@ -136,7 +142,8 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
         {
             if(deleteVector[0] == *it)
             {
-               // (*it)->onDeath();
+                (*it)->onDeath();
+                player.addMoney((*it)->getValue());
                 delete(*it);
                 enemyVector.erase(it);
                 deleteVector.erase(deleteVector.begin());

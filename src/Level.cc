@@ -169,7 +169,7 @@ bool Level::update()
 	// Update projectiles
 	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
 	{
-		(*it)->update(enemies);
+		(*it)->update(enemies, player);
 	}
 
 	// Update menus
