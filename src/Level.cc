@@ -89,7 +89,6 @@ Level::Level(string saveFile)
 				{
 					tmpPtr=new LongTower(parmsStr);
 				}
-				cout << "New tower " << subTypeStr <<  " parms: " << parmsStr << endl;
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
@@ -104,16 +103,13 @@ Level::Level(string saveFile)
 			{
 				sscanf(parms,"%i,%i",&tmpMoney,&tmpLife);
 			}
-			//cout << "Type: " <<  type << "\tSubType: " <<  subType << "\tParameters: " << parms << endl;
 		}
 
 		//Init Level and wave, load from file
 		loadBase(string(tmpTrackFile),tmpWave);
-		cout << "Loading level " << tmpTrackFile <<  " wave: " << tmpWave << endl;
 
 		//init player after Level to overwrite life and money
 		player=Player(tmpMoney, tmpLife);
-		cout << "Life " << tmpLife <<  " Money: " << tmpMoney << endl;
 
 		//load towers into map matrix
 		// get pos from towers
@@ -136,32 +132,30 @@ bool Level::update()
     if(enemyToBePlaced != NULL)
     {
         enemies.push_back(enemyToBePlaced);
-        cout << "Ny enemy ute!" << enemies.size() << endl;
     }
 
     //Update enemies
-    vector<Enemy*> deleteVector;
+    vector<Enemy*> deleteEnemyVector;
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
         if((*it)->update(map))
         {
-            deleteVector.push_back(*it);
+            deleteEnemyVector.push_back(*it);
         }
     }
-    while(!deleteVector.empty())
+    while(!deleteEnemyVector.empty())
     {
         for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if(deleteVector[0] == *it)
+            if(deleteEnemyVector[0] == *it)
             {
                 delete(*it);
                 enemies.erase(it);
                 player.eraseLife();
-                deleteVector.erase(deleteVector.begin());
+                deleteEnemyVector.erase(deleteEnemyVector.begin());
                 break;
             }
         }
-        cout << deleteVector.size() <<endl;
     }
 	// Update towers
 	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
@@ -170,13 +164,32 @@ bool Level::update()
 		if(p != NULL){
 			projectiles.push_back(p);
 		}
-
 	}
+
 	// Update projectiles
+	vector<Projectile*> deleteProjectileVector;
 	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
 	{
-		(*it)->update(enemies);
+		if((*it)->update(enemies))
+		{
+            deleteProjectileVector.push_back(*it);
+		}
+
 	}
+	while(!deleteProjectileVector.empty())
+    {
+        for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+        {
+            if(deleteProjectileVector[0] == *it)
+            {
+                delete(*it);
+                projectiles.erase(it);
+                deleteProjectileVector.erase(deleteProjectileVector.begin());
+                break;
+            }
+        }
+    }
+
 
 	// Update menus
 	if(nextWaveMenu.update())
@@ -219,7 +232,6 @@ bool Level::update()
 				cout << "Error opening file." << endl;
 			}
 
-            cout << "Saveing done. Quiting." << endl;
             state="START";
         }
         if(message == "QUIT")

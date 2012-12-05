@@ -3,12 +3,20 @@
 using namespace std;
 
 Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReference)
-
- : GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
+: GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
 {
     sprite.setOrigin(SIDE/2, SIDE/2);
     nextCoord = make_pair(0,0);
     stepsMoved = 0;
+}
+Enemy::Enemy(int newLife, int newSpeed, int newValue, std::string textureReference, unsigned int inSpriteWidth, unsigned int inSpriteHeight,
+ unsigned int inNuberOfSprites, unsigned int inFpf)
+: GameObject(0, 0, textureReference), life(newLife), speed(newSpeed), value(newValue)
+{
+    sprite.setOrigin(SIDE/2, SIDE/2);
+    nextCoord = make_pair(0,0);
+    stepsMoved = 0;
+    sprite.setAnimationProps(inSpriteWidth,inSpriteHeight,inNuberOfSprites,inFpf,true);
 }
 
 Enemy::~Enemy()
@@ -47,6 +55,11 @@ void Enemy::setValue(int newValue)
     return;
 }
 
+void Enemy::onDeath()
+{
+    return;
+}
+
 bool Enemy::update(MapMatrix& map){
     if(stepsMoved == 0)
     {
@@ -57,7 +70,7 @@ bool Enemy::update(MapMatrix& map){
         ++stepsMoved;
         newDirection(map);
     }
-
+    sprite.update();
     // If arrived at a coord, start walk to next
     // if(xPos == nextCoord.first && yPos == nextCoord.second){
     // har man passerat nästa nod
@@ -66,7 +79,6 @@ bool Enemy::update(MapMatrix& map){
         ++stepsMoved;
         newDirection(map);
         nextCoord = map.getCoord(stepsMoved);
-        cout << "first: " << nextCoord.first << "sec: " << nextCoord.second << endl;
     }
     if(nextCoord.first == -1 && nextCoord.second == -1)
     {
@@ -151,6 +163,19 @@ void Enemy::hit(int damage)
     life = life - damage;
     return;
 }
+
+bool Enemy::isDead()
+{
+    if(life <= 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 
 

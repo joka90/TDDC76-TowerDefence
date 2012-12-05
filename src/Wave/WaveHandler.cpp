@@ -26,13 +26,11 @@ WaveHandler::WaveHandler(string wavesString) : isRunning(false), currentWaveInde
 
 WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
-    cout << "string: " <<  wavesString << endl;
     string waveString;
     istringstream ss(wavesString);
 
     while(std::getline(ss, waveString)){
         wavesVector.push_back(new Wave(waveString));
-        cout << "adderat en våg" << endl;
     }
     currentWaveIndex = startIndex;
 }

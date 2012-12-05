@@ -125,14 +125,12 @@ void GameHandler::run()
 				if(currentState == LOADMENU && nextState != "")
 				{
 				    currentState=LEVEL;
-				    cout << "loading: " << nextState << endl;
 				    currentLevel = new Level(nextState); // hur man nu laddar/initierar banor
                     musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
 				}
 				if(currentState == TRACKMENU && nextState != "")
 				{
 				    currentState=LEVEL;
-				    cout << "starting: " << nextState << endl;
 				    currentLevel = new Level(nextState, 0);
 				    musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
 

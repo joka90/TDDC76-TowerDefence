@@ -67,7 +67,6 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
     int y = event.mouseButton.y;
     if(markedTower != NULL)
     {
-        cout << "test" << endl;
         if(!mapMatrix.isTaken(x,y))
         {
             if(buyMenu.purchase())

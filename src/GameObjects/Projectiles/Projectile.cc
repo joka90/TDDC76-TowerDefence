@@ -1,5 +1,6 @@
 #include "Projectile.h"
 #include <cmath>
+#define RADIE 50
 using namespace std;
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),
@@ -83,7 +84,7 @@ void Projectile::setDirection(Enemy* aim)
 void Projectile::move()//SFML's move fungerar som denna. använda den istället för setPosition?
 {
     xPos = xPos + dirX;
-    yPos = yPos +dirY;
+    yPos = yPos + dirY;
     return;
 }
 
@@ -113,7 +114,42 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
-
+bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
+{
+    bool hit = false;
+    int x,y;
+    vector<Enemy*> deleteVector;
+    for(vector<Enemy*>::iterator it = enemyVector.begin(); it != enemyVector.end(); ++it)
+	{
+		x = (*it)->getPosX();
+		y = (*it)->getPosY();
+		if( (pow(getPosX() - x , 2) + pow(getPosY() - y,2)) < RADIE )
+		{
+		    (*it)->hit(damage);
+		    if((*it)->isDead())
+		    {
+		        deleteVector.push_back(*it);
+		    }
+		    cout << "TRAFF" << endl;
+            hit = true;
+		}
+	}
+	while(!deleteVector.empty())
+    {
+        for(vector<Enemy*>::iterator it = enemyVector.begin(); it != enemyVector.end(); ++it)
+        {
+            if(deleteVector[0] == *it)
+            {
+               // (*it)->onDeath();
+                delete(*it);
+                enemyVector.erase(it);
+                deleteVector.erase(deleteVector.begin());
+                break;
+            }
+        }
+    }
+    return hit;
+}
 
 
 

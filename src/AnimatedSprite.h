@@ -19,7 +19,9 @@ public:
 
     //void setTexture(const sf::Texture& texture, bool resetRect);// not working m_texture is private
 	void setTextureAnimation(const sf::Texture& texture,unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
-    /**
+	
+	void setAnimationProps(unsigned int inSpriteWidth, unsigned int inSpriteHeight, unsigned int inNuberOfSprites=0, unsigned int inFpf = 1, bool inPlaying = false);
+	/**
     * setFrame
     * @param inFrame set a specific frame.
     */

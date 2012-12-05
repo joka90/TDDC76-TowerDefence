@@ -9,7 +9,7 @@
 #define BUTTONWIDTH 66
 #define BUTTONHEIGHT 66
 #define BUTTONIMG "button.png"
-#define CLICK "CLICK.WAv"
+#define CLICK "CLICK.WAV"
 #define SIDE 50
 
 using namespace std;
@@ -27,6 +27,9 @@ UpgradeMenu::UpgradeMenu(Player& inPlayer)
 	towerMarker.setFillColor(sf::Color(255, 255, 255, 0)); // transp
 	towerMarker.setOutlineColor(sf::Color::Black);
 	towerMarker.setOutlineThickness(2);
+	towerRange.setOutlineThickness(2);
+	towerRange.setOutlineColor(sf::Color::Red);
+	towerRange.setFillColor(sf::Color(255, 255, 255, 0)); // transp
 }
 
 UpgradeMenu::~UpgradeMenu()
@@ -39,6 +42,7 @@ void UpgradeMenu::drawMenu(sf::RenderWindow& canvas)
     if(selectedTower!=NULL)
     {
     	canvas.draw(towerMarker);//Show selection
+    	canvas.draw(towerRange);
     }
     if(invisible)
     {
@@ -83,7 +87,10 @@ void UpgradeMenu::selectTower(Tower* inTower)
     activate();
     invisible = false;
     //update selector position
-    towerMarker.setPosition(selectedTower->getPosX()-SIDE/2,selectedTower->getPosY()-SIDE/2);
+    towerMarker.setPosition((selectedTower->getPosX()-SIDE/2),(selectedTower->getPosY()-SIDE/2));
+    towerRange.setRadius(selectedTower->getRange());
+    towerRange.setOrigin(selectedTower->getRange(),selectedTower->getRange());
+    towerRange.setPosition((selectedTower->getPosX()),(selectedTower->getPosY()));
 }
 void UpgradeMenu::deselectTower()
 {
