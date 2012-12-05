@@ -103,7 +103,7 @@ bool MapMatrix::isPath(int pixelX, int pixelY)
 
 pair<int, int> MapMatrix::getCoord(int currentPathPosition)
 {
-    if(currentPathPosition < path.size())
+    if(currentPathPosition < (int) path.size())
     {
         int pixelX = ((path[currentPathPosition].first) * SIDE);
         int pixelY = ((path[currentPathPosition].second) * SIDE);
@@ -111,7 +111,7 @@ pair<int, int> MapMatrix::getCoord(int currentPathPosition)
     }
     else
     {
-        return make_pair(NULL,NULL); //Ta bort ett liv
+        return make_pair(-1, -1); //Ta bort ett liv
     }
 }
 int MapMatrix::getHeight()

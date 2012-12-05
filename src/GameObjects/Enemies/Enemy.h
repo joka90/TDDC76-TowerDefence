@@ -3,6 +3,10 @@
 #include "../GameObject.h"
 #include "../../ClickManager/MapMatrix.h"
 #include <SFML/Graphics.hpp>
+#define LEFT 0
+#define RIGHT 1
+#define UP 2
+#define DOWN 3
 
 class Enemy : public GameObject
 {
@@ -20,16 +24,19 @@ public:
     void hit(int damage);
 
     // Moves the enemy
-    void update(MapMatrix& map);
+    bool update(MapMatrix& map);
 
 private:
 
 protected:
+    void newDirection(MapMatrix& map);
+    bool passedNextStep();
 
     int life;
-    int speed; // Ex: speed = 10: flyttar 1 pixel var 10:e frame
+    int speed;
     int value;
     int stepsMoved;
+    int direction;
     int frames; // Antalet frames sedan enemyn påbörjat animering från senaste ruta
 
     std::pair<int, int> nextCoord;
