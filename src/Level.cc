@@ -135,24 +135,24 @@ bool Level::update()
     }
 
     //Update enemies
-    vector<Enemy*> deleteVector;
+    vector<Enemy*> deleteEnemyVector;
     for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
     {
         if((*it)->update(map))
         {
-            deleteVector.push_back(*it);
+            deleteEnemyVector.push_back(*it);
         }
     }
-    while(!deleteVector.empty())
+    while(!deleteEnemyVector.empty())
     {
         for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if(deleteVector[0] == *it)
+            if(deleteEnemyVector[0] == *it)
             {
                 delete(*it);
                 enemies.erase(it);
                 player.eraseLife();
-                deleteVector.erase(deleteVector.begin());
+                deleteEnemyVector.erase(deleteEnemyVector.begin());
                 break;
             }
         }
@@ -164,13 +164,32 @@ bool Level::update()
 		if(p != NULL){
 			projectiles.push_back(p);
 		}
-
 	}
+
 	// Update projectiles
+	vector<Projectile*> deleteProjectileVector;
 	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
 	{
-		(*it)->update(enemies, player);
+		if((*it)->update(enemies, player))
+		{
+            deleteProjectileVector.push_back(*it);
+		}
+
 	}
+	while(!deleteProjectileVector.empty())
+    {
+        for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+        {
+            if(deleteProjectileVector[0] == *it)
+            {
+                delete(*it);
+                projectiles.erase(it);
+                deleteProjectileVector.erase(deleteProjectileVector.begin());
+                break;
+            }
+        }
+    }
+
 
 	// Update menus
 	if(nextWaveMenu.update())
