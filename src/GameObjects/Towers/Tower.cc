@@ -1,7 +1,7 @@
 #include "Tower.h"
 #include <cmath>
-
-
+#include <iostream>
+using namespace std;
 //--------------- Public -----------------
 
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference)
@@ -79,7 +79,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     if(!enemyVector.empty())
     {
-        Enemy* closestEnemy = enemyVector[0];
+        closestEnemy = enemyVector[0];
         closestRange = sqrt(((enemyVector[0]->getPosX() - xPos)^2) + ((enemyVector[0]->getPosY() - yPos)^2));
 
         for (unsigned int i = 1; i < enemyVector.size(); ++i)
@@ -101,12 +101,6 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     {
         return NULL;
     }
-}
-
-
-Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
-{
-   return NULL;//TODO
 }
 
 

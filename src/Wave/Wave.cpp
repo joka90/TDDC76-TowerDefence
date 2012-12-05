@@ -39,7 +39,6 @@ Enemy* Wave::getEnemy(int timeDelta)
         finished = true;
     }
     if(enemies[nextIndex].first <= timeDelta){
-        cout << "hej"  <<endl;
         nextIndex++;
         return ClassManager::createEnemyInstance(enemies[nextIndex-1].second);
     }

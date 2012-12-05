@@ -31,8 +31,7 @@ public:
     int getRange() const;
     void setRange(int newRange);
     std::string getSaveString();
-
-    Projectile* update(std::vector<Enemy*>& enemyVector);
+    virtual Projectile* update(std::vector<Enemy*>& enemyVector)=0;
 
 private:
 
