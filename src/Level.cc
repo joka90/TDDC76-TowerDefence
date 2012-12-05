@@ -177,30 +177,30 @@ bool Level::update()
         {
             time_t secs;
             struct tm * timeinfo;
-            
+
             time(&secs);//set time
             timeinfo=localtime(&secs);//get time obj
-            
+
             std::stringstream fileName;
             char timeString[80];
         	fileName << LOADFOLDER << secs << ".sav";
-        	
+
             saveLevel(fileName.str());
-            
+
 
 			strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
             ofstream saveData;
 			saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
 			if(saveData.is_open())
 			{
-				saveData << timeString << " " << secs << ".sav\n"; 
+				saveData << timeString << " " << secs << ".sav\n";
 				saveData.close();
 			}
 			else
 			{
 				cout << "Error opening file." << endl;
 			}
-			
+
             cout << "Saveing done. Quiting." << endl;
             state="START";
         }
@@ -216,7 +216,7 @@ bool Level::update()
 void Level::draw(sf::RenderWindow& canvas)
 {
     canvas.draw(background);
-	map.draw(canvas);//For debuging
+	//map.draw(canvas);//For debuging
     // draw Tower
     for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
     {
