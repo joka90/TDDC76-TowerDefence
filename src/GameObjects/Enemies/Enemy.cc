@@ -138,21 +138,25 @@ void Enemy::newDirection(MapMatrix& map)
         if(last.first < next.first)
         {
             direction = RIGHT;
+            sprite.setRotation(0);
             return;
         }
         else if(last.first > next.first)
         {
             direction = LEFT;
+            sprite.setRotation(180);
             return;
         }
         else if(last.second < next.second)
         {
             direction = DOWN;
+            sprite.setRotation(270);
             return;
         }
         else
         {
             direction = UP;
+            sprite.setRotation(90);
             return;
         }
     }
