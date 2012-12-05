@@ -13,7 +13,7 @@ class ClassManager
         static Enemy* createEnemyInstance(const std::string& enemyTypeName);
 
         static Tower* createTowerInstance(const std::string& towerTypeName);
-
+    private:
 };
 
 #endif // CLASSMANAGER_H
