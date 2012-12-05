@@ -46,9 +46,9 @@ void ClickManager::mouseButtonPressedListener(sf::Event event)
     vector<Tower*>::iterator it;
     if(mapMatrix.isTaken(x,y))
     {
-        for (it = towerVector.begin() ; it != towerVector.end(); ++it)
+        for (it = towerVector.begin(); it != towerVector.end(); ++it)
         {
-            if(((*it)->getPosX() == (x/SIDE)*SIDE) && ((*it)->getPosY() == (y/SIDE)*SIDE))
+            if(((*it)->getPosX() == (x/SIDE)*SIDE)+SIDE/2 && ((*it)->getPosY() == (y/SIDE)*SIDE)+SIDE/2)
             {
                 upgradeMenu.selectTower(*it);
                 break;
