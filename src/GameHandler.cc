@@ -9,8 +9,8 @@ GameHandler::GameHandler()
 {
     // init all loaders
     FontLoader::load(std::string("appleberry_with_cyrillic.ttf"));
-    MusicLoader::load(std::string("menu.wav"));
-    MusicLoader::load(std::string("level_1.wav"));
+    MusicLoader::load(std::string("menu.ogg"));
+    MusicLoader::load(std::string("level_1.ogg"));
 }
 
 
@@ -41,7 +41,7 @@ void GameHandler::run()
 	sf::Clock frameTime;
 
 	//initiera musik (börjar med menymusik)
-	//musicHandler.playSong(MusicLoader::getMusic("menu.wav")); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+	musicHandler.playSong(MusicLoader::getMusic("menu.ogg"));
 
     EventHandler::addListener(sf::Event::Closed, this);
     //sleep all the inactive menus
@@ -100,19 +100,19 @@ void GameHandler::run()
 		{
 			if(nextState=="TRACK")
 			{
-                //musicHandler.setCurrentSong(MusicLoader::getMusic("menu.wav")); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+                musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 				currentState=TRACKMENU;
 				trackMenu.activate();
 			}
 			else if(nextState=="START")
 			{
-                //musicHandler.setCurrentSong(MusicLoader::getMusic("menu.wav")); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+                musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 				currentState=STARTMENU;
 				startMenu.activate();
 			}
 			else if(nextState=="LOAD")
 			{
-			    //musicHandler.setCurrentSong(MusicLoader::getMusic("menu.wav")); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+                musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 				currentState=LOADMENU;
 				loadMenu.activate();
 			}
@@ -127,14 +127,14 @@ void GameHandler::run()
 				    currentState=LEVEL;
 				    cout << "loading: " << nextState << endl;
 				    currentLevel = new Level(nextState); // hur man nu laddar/initierar banor
-                    //musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName())); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+                    musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
 				}
 				if(currentState == TRACKMENU && nextState != "")
 				{
 				    currentState=LEVEL;
 				    cout << "starting: " << nextState << endl;
 				    currentLevel = new Level(nextState, 0);
-				    //musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName())); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+				    musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
 
 				}
 			}
@@ -148,7 +148,7 @@ void GameHandler::run()
 		canvas.draw(text);
 		canvas.display();
 		//uppdatera musik
-		//musicHandler.update(); KOMMENTERA IN NÄR VI INTE HAR MONGOMUSIK
+		musicHandler.update();
 
 	}
 	return;
