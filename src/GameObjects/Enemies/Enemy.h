@@ -25,6 +25,7 @@ public:
     void setValue(int newValue);
     void hit(int damage);
     bool isDead();
+    int getSteps();
 
     // Moves the enemy
     bool update(MapMatrix& map);

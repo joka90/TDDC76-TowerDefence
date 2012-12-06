@@ -1,6 +1,6 @@
 #include "Projectile.h"
 #include <cmath>
-#define RADIE 20
+
 using namespace std;
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),

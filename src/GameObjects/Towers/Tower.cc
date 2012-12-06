@@ -95,8 +95,14 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
             rangeToEnemy = sqrt(pow(((*it)->getPosX() - xPos),2) + pow(((*it)->getPosY() - yPos),2));
             if (rangeToEnemy < range)
             {
-                closestEnemy = (*it);
-                break;
+                if(closestEnemy == NULL)
+                {
+                    closestEnemy = (*it);
+                }
+                else if(closestEnemy->getSteps() < (*it)->getSteps())
+                {
+                    closestEnemy = (*it);
+                }
             }
         }
     }
