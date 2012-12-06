@@ -27,6 +27,7 @@ public:
     int getPrice() const;
     void setPrice(int newPrice);
     int getUpgradePrice() const;
+    std::string getUpgradeText() const;
     int getDamage() const;
     void setDamage(int newDamage);
     int getRange() const;
@@ -44,6 +45,7 @@ private:
 protected:
     int price;
     int upgradePrice;
+    std::string upgradeText;
     int damage;
     int range;
     int counter;
