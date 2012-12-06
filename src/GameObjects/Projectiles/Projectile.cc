@@ -130,7 +130,6 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
 		    {
 		        deleteVector.push_back(*it);
 		    }
-		    cout << "TRAFF" << endl;
             hit = true;
             break;
 		}

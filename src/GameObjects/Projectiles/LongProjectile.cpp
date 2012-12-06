@@ -15,8 +15,6 @@ LongProjectile::~LongProjectile()
 
 }
 
-//Inte färdig. Oklart vad denna ska göra.
-//Fortsätt med olika directions beroende på kvadrant.
 bool LongProjectile::update(std::vector<Enemy*>& enemies)
 {
     move();
