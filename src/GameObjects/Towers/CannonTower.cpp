@@ -1,20 +1,27 @@
 #include "CannonTower.h"
 #include <iostream>
-#include "../Projectiles/LongProjectile.h"
+#include "../Projectiles/CannonProjectile.h"
 
 #define SCALE 0.3
-CannonTower::CannonTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax)
-: Tower(newX, newY, newPrice, newDamage, newRange, newCounterMax,"Sprites/Bunny/TowerBunnie/tower_bunnies_small")
+CannonTower::CannonTower(int newX, int newY, int upgradePack)
+: Tower(newX, newY, 80, 20, 400, 50, "Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
-	counter = newCounterMax;
+
+    // Upgrade if it should be upgraded
+	currentUpgradePack = 0;
+	upgradePrice = 100;
+    while(currentUpgradePack < upgradePack){
+        upgrade();
+    }
+
 }
 
 CannonTower::~CannonTower()
 {
     //dtor
 }
-LongProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
+CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
 {
     Enemy* enemy = getClosestEnemy(enemies);
     if(counter >= counterMax)
@@ -22,8 +29,8 @@ LongProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         if(!(enemy == NULL))
         {
             counter = 0;
-            LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, enemy);
-            return longProjectile;
+            CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, enemy);
+            return cannonProjectile;
         }
         else
         {
@@ -35,4 +42,14 @@ LongProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         counter++;
         return NULL;
     }
+}
+void CannonTower::upgrade(){
+
+    ++currentUpgradePack;
+
+    if(currentUpgradePack == 1){
+        upgradePrice = 200;
+        range = 300;
+    }
+
 }

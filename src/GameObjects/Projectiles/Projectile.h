@@ -4,7 +4,7 @@
 #include "../GameObject.h"
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
-
+#define RADIE 20
 class Projectile : public GameObject
 {
 public:

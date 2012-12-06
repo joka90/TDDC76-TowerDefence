@@ -83,7 +83,6 @@ void ClickManager::mouseButtonReleasedListener(sf::Event event)
         }
         else
         {
-            cout << "occupied" << endl;
             delete(markedTower);
         }
         markedTower = NULL;

@@ -4,7 +4,7 @@
 #include "Tower.h"
 #include "../Enemies/Enemy.h"
 #include "../Projectiles/Projectile.h"
-#include "../Projectiles/LongProjectile.h"
+#include "../Projectiles/CannonProjectile.h"
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 #include <string>
@@ -13,10 +13,10 @@
 class CannonTower : public Tower
 {
     public:
-        CannonTower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax);
+        CannonTower(int newX, int newY, int upgradePack = 0);
         ~CannonTower();
-        LongProjectile* update(std::vector<Enemy*>& enemies);
-
+        CannonProjectile* update(std::vector<Enemy*>& enemies);
+        void upgrade();
     protected:
     private:
 };

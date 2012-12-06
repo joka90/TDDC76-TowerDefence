@@ -175,6 +175,10 @@ bool Enemy::isDead()
         return false;
     }
 }
+int Enemy::getSteps()
+{
+    return stepsMoved;
+}
 
 
 
