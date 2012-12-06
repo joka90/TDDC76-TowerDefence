@@ -8,7 +8,7 @@ using namespace std;
 
 Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference)
 : GameObject(newX, newY, textureReference), //skall denna vara har, pure virtual senare?
-  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax)
+  price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	sprite.setOrigin(SIDE/2,SIDE/2);
 
@@ -17,12 +17,15 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
 
 }
 
-Tower::Tower(std::string parms, std::string textureReference)
-:GameObject(parms, textureReference)
+Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
+:GameObject(parms, textureReference),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	int dummyInt;
 	//How to scan parameters in towers an other stuff
 	sscanf(parms.c_str(),"%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range);
+    // Set counter
+    counter = newCounterMax;
+    sprite.setOrigin(SIDE/2,SIDE/2);
 }
 
 Tower::~Tower()
@@ -34,6 +37,15 @@ int Tower::getPrice() const
 {
     return price;
 }
+
+int Tower::getUpgradePrice() const {
+    return upgradePrice;
+}
+
+string Tower::getUpgradeText() const {
+    return upgradeText;
+}
+
 
 void Tower::setPrice(int newPrice)
 {
@@ -83,18 +95,23 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     Enemy* closestEnemy = NULL;
     double closestRange = 0;
     double rangeToEnemy;
-
+    bool done = false;
+    //Skjuter alltid mot första fienden!
     if(!enemyVector.empty())
     {
-        closestEnemy = enemyVector[0];
-        closestRange = sqrt(pow((enemyVector[0]->getPosX() - xPos),2) + pow((enemyVector[0]->getPosY() - yPos),2));
-        for (unsigned int i = 1; i < enemyVector.size(); ++i)
+        for(vector<Enemy*>::iterator it = enemyVector.begin(); it != enemyVector.end(); ++it)
         {
-            rangeToEnemy = sqrt(pow((enemyVector[i]->getPosX() - xPos),2) + pow((enemyVector[i]->getPosY() - yPos),2));
-            if (rangeToEnemy < closestRange)
+            rangeToEnemy = sqrt(pow(((*it)->getPosX() - xPos),2) + pow(((*it)->getPosY() - yPos),2));
+            if (rangeToEnemy < range)
             {
-                closestRange = rangeToEnemy;
-                closestEnemy = enemyVector[i];
+                if(closestEnemy == NULL)
+                {
+                    closestEnemy = (*it);
+                }
+                else if(closestEnemy->getSteps() < (*it)->getSteps())
+                {
+                    closestEnemy = (*it);
+                }
             }
         }
     }
@@ -114,14 +131,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     sprite.setRotation(directionAngle*180/PI);
 
     //return projectile if in range
-    if((closestRange <= range) && (closestRange != 0))
-    {
-        return closestEnemy;
-    }
-    else
-    {
-        return NULL;
-    }
+    return closestEnemy;
 
 }
 
@@ -132,9 +142,10 @@ Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
 }
 
 
-bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
+bool Tower::drawSprite(sf::RenderWindow& canvas)
 {
    sprite.setPosition(xPos,yPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
 }
+

@@ -10,6 +10,7 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
+	upgradeText = "+Range\nCost: 100";
 	upgradePrice = 100;
     while(currentUpgradePack < upgradePack){
         upgrade();
@@ -18,7 +19,7 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 }
 
 LongTower::LongTower(std::string parms)
-: Tower(parms,"Sprites/Bunny/Original/bunny_1_small.png")
+: Tower(parms,30,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
 }
@@ -28,7 +29,6 @@ LongTower::~LongTower()
 {
 
 }
-
 LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
 {
     Enemy* enemy = getClosestEnemy(enemies);
@@ -58,7 +58,8 @@ void LongTower::upgrade(){
     ++currentUpgradePack;
 
     if(currentUpgradePack == 1){
-        upgradePrice = 200;
+        upgradePrice = 0;
+        upgradeText = "Fully upgraded!";
         range = 300;
     }
 

@@ -1,6 +1,6 @@
 #include "Projectile.h"
 #include <cmath>
-#define RADIE 50
+
 using namespace std;
 Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
 : GameObject(newX, newY, textureReference),
@@ -123,15 +123,15 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
 	{
 		x = (*it)->getPosX();
 		y = (*it)->getPosY();
-		if( (pow(getPosX() - x , 2) + pow(getPosY() - y,2)) < RADIE )
+		if( sqrt((pow(getPosX() - x , 2) + pow(getPosY() - y,2))) < RADIE )
 		{
 		    (*it)->hit(damage);
 		    if((*it)->isDead())
 		    {
 		        deleteVector.push_back(*it);
 		    }
-		    cout << "TRAFF" << endl;
             hit = true;
+            break;
 		}
 	}
 	while(!deleteVector.empty())

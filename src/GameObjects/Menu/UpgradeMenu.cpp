@@ -30,6 +30,7 @@ UpgradeMenu::UpgradeMenu(Player& inPlayer)
 	towerRange.setOutlineThickness(2);
 	towerRange.setOutlineColor(sf::Color::Red);
 	towerRange.setFillColor(sf::Color(255, 255, 255, 0)); // transp
+
 }
 
 UpgradeMenu::~UpgradeMenu()
@@ -71,9 +72,23 @@ bool UpgradeMenu::update()
         newIteration();
         player.addMoney(selectedTower->getPrice());
         return true;
+    }else if(buttons[1]->gotPressed())
+    {
+        state = "UPGRADE";
+        newIteration();
+        if(player.canAfford(selectedTower->getUpgradePrice()) && selectedTower->getUpgradePrice() != 0){
+            player.subractMoney(selectedTower->getUpgradePrice());
+            selectedTower->upgrade();
+            buttons[1]->setButtonText(selectedTower->getUpgradeText());
+            towerRange.setRadius(selectedTower->getRange());
+            towerRange.setOrigin(selectedTower->getRange(),selectedTower->getRange());
+            towerRange.setPosition((selectedTower->getPosX()),(selectedTower->getPosY()));
+            cout << "UPGRADED!" << endl;
+        }
+        return true;
     }
     newIteration();
-    return true;
+    return false;
 }
 
 Tower* UpgradeMenu::getSelected()
@@ -91,6 +106,8 @@ void UpgradeMenu::selectTower(Tower* inTower)
     towerRange.setRadius(selectedTower->getRange());
     towerRange.setOrigin(selectedTower->getRange(),selectedTower->getRange());
     towerRange.setPosition((selectedTower->getPosX()),(selectedTower->getPosY()));
+
+    buttons[1]->setButtonText(selectedTower->getUpgradeText());
 }
 void UpgradeMenu::deselectTower()
 {

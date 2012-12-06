@@ -5,9 +5,8 @@ VisualEffect::VisualEffect(int newX, int newY, int newSpeed, std::string texture
 {
 }
 
-bool VisualEffect::drawSprite(sf::RenderWindow& canvas)
+bool VisualEffect::drawSprite()
 {
    sprite.setPosition(xPos,xPos);
-   canvas.draw(sprite);//game object always have a sprite
    return true;
 }

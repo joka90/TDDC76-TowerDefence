@@ -11,7 +11,7 @@ Button::Button(int MenuX, int MenuY, int relativeX, int relativeY, int inWidthX,
        clickSound = new sf::Sound(SoundLoader::getSoundBuffer(soundKey));
     }
 	FontLoader::load("appleberry_with_cyrillic.ttf");
-	buttonText=sf::Text(inButtonText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
+	buttonText=sf::Text(inButtonText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),20);
 	mouseOverText=sf::Text(inMouseOverText,FontLoader::getFont("appleberry_with_cyrillic.ttf"),20);
 	EventHandler::addListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::addListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
@@ -98,6 +98,10 @@ void Button::activate()
     sleeping = false;
 }
 
+void Button::setButtonText(string newText){
+    mouseOverText.setString(newText);
+}
+
 
 void Button::mouseButtonPressedListener(sf::Event event)
 {
@@ -176,7 +180,7 @@ void Button::drawHooverText(sf::RenderWindow& canvas)
     if(hoover)
     {
         sf::Vector2i pos=sf::Mouse::getPosition(canvas);
-        mouseOverText.setPosition(pos.x+10,pos.y+10);
+        mouseOverText.setPosition(pos.x-50,pos.y+10);
         canvas.draw(mouseOverText);
     }
     return; //TODO

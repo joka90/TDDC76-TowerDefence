@@ -1,5 +1,0 @@
-T LongTower 5,43,100,100,100
-T LongTower 50,100,100,100,100
-T LongTower 400,333,100,100,100
-Level Level 0,levels/level_1.lvl
-Player Player 55000,15

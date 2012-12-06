@@ -21,9 +21,9 @@ BuyMenu::BuyMenu(Player& inPlayer)
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                       TOWERBUTTON, CLICKSOUND, "", "ett billigt och bra torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "Piltorn"));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                       TOWERBUTTON, CLICKSOUND, "", "ett annat torn"));
+                       TOWERBUTTON, CLICKSOUND, "", "Kanontorn"));
 
     //lägg till låsatsknappar för utritandet
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+5, TOWERDRAWSTARTY+10, 0, 0,
@@ -34,8 +34,8 @@ BuyMenu::BuyMenu(Player& inPlayer)
     priceVector.push_back(100);
     priceVector.push_back(300);
     //lägg till tornen i IDvector
-    IDvector.push_back("BASIC");
-    IDvector.push_back("OTHER");
+    IDvector.push_back("LONG");
+    IDvector.push_back("CANNON");
 }
 
 BuyMenu::~BuyMenu()
