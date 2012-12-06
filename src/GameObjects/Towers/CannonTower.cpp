@@ -29,7 +29,7 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         if(!(enemy == NULL))
         {
             counter = 0;
-            CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, enemy);
+            CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 180, enemy);
             return cannonProjectile;
         }
         else

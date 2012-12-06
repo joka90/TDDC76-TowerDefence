@@ -2,9 +2,8 @@
 #include <cmath>
 
 using namespace std;
-Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
-: GameObject(newX, newY, textureReference),
-  damage(newDamage), speed(newSpeed), enemy(newEnemy)
+Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int newSpeed, Enemy* newEnemy, std::string textureReference)
+: GameObject(newX, newY, textureReference), damage(newDamage), speed(newSpeed), enemy(newEnemy), lifetime(inLifetime)
 {
     sprite.setOrigin(5,21);
     setDirection(enemy);
@@ -114,7 +113,7 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
-bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
+bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects)
 {
     bool hit = false;
     int x,y;
@@ -140,7 +139,7 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
         {
             if(deleteVector[0] == *it)
             {
-               // (*it)->onDeath();
+                (*it)->onDeath(visualeffects);
                 delete(*it);
                 enemyVector.erase(it);
                 deleteVector.erase(deleteVector.begin());
@@ -151,8 +150,16 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector)
     return hit;
 }
 
-
-
+bool Projectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects)
+{
+    move();
+    --lifetime;
+    if(lifetime<0)
+    {
+        return true;
+    }
+    return isHit(enemies, visualeffects);
+}
 
 
 
