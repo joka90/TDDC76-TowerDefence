@@ -38,6 +38,15 @@ int Tower::getPrice() const
     return price;
 }
 
+int Tower::getUpgradePrice() const {
+    return upgradePrice;
+}
+
+string Tower::getUpgradeText() const {
+    return upgradeText;
+}
+
+
 void Tower::setPrice(int newPrice)
 {
     price = newPrice;
@@ -133,9 +142,10 @@ Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
 }
 
 
-bool Tower::drawSprite(sf::RenderWindow& canvas) // Ärvs från GameObject ist.. /T
+bool Tower::drawSprite(sf::RenderWindow& canvas)
 {
    sprite.setPosition(xPos,yPos);
    canvas.draw(sprite);//game object always have a sprite
    return true;
 }
+

@@ -31,6 +31,8 @@ class Button : public GameObject, public MouseButtonPressedUser, public MouseBut
         void drawHooverText(sf::RenderWindow& canvas);
         void sleep();
         void activate();
+
+        void setButtonText(std::string newText);
     protected:
     private:
         bool sleeping;
