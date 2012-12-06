@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include "../VisualEffects/VisualEffect.h"
 
+#define CANONPROJECTILESPEED 15
+
 /**
  * class CannonProjectile
  *
@@ -15,7 +17,7 @@
 class CannonProjectile : public Projectile
 {
 public:
-    CannonProjectile(int newX, int newY, int newDamage, Enemy* newEnemy);
+    CannonProjectile(int newX, int newY, int newDamage, int lifetime, int splashradius, Enemy* newEnemy);
     ~CannonProjectile();
 
     /**
@@ -24,11 +26,12 @@ public:
      * kunna byggas i projectile.
      */
 
-    bool update(std::vector<Enemy*>& enemies);
-    bool isHit(std::vector<Enemy*>& enemyVector);
+    bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects);
+    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects);
 
 
 protected:
+    int splashradius;
 private:
 };
 

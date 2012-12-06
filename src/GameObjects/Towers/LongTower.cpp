@@ -37,7 +37,8 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         if(!(enemy == NULL))
         {
             counter = 0;
-            LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, enemy);
+            LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, range/PROJECTILESPEED, enemy);
+            std::cout << range/PROJECTILESPEED << std::endl;
             return longProjectile;
         }
         else

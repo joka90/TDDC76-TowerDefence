@@ -1,4 +1,5 @@
 #include "Tower.h"
+#include "../VisualEffects/VisualEffect.h"
 #include <cmath>
 #include <iostream>
 using namespace std;

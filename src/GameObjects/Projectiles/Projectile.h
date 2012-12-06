@@ -2,6 +2,7 @@
 #define PROJECTILE_H
 
 #include "../GameObject.h"
+#include "../VisualEffects/VisualEffect.h"
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
 #define RADIE 20
@@ -14,11 +15,11 @@ public:
      * har till följd av Projektilen ricktas in på den fiende tornet har sagt åt
      * projektilen att sikta på.
      */
-    Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference);
+    Projectile(int newX, int newY, int newDamage, int newSpeed, int inLifetime, Enemy* newEnemy, std::string textureReference);
 
     //virtual bool drawSprite(sf::RenderWindow& canvas);  // Ärvs från GameObject, behövs inte.. /T
 
-    virtual bool update(std::vector<Enemy*>& enemies) = 0;
+    virtual bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects);
 
     // Frågeställning: Hur/vart kollas om en viss fiende är träffad av en viss projektil? Hur tas fienden & projektilen bort?
     //                 Ska en projektil kunna träffa flera fiender? Hur hanteras det isåfall?
@@ -40,7 +41,7 @@ public:
      */
     void setDirection(Enemy* aim);
     void move();
-    bool isHit(std::vector<Enemy*>& enemyVector);
+    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects);
 
 
 private:
@@ -51,6 +52,7 @@ protected:
     int dirX;
     int dirY;
     Enemy* enemy;
+    int lifetime;
 
     /**
      * Denna kommer endast behövas om vi använder målsökande missiler
