@@ -20,7 +20,8 @@ StatusBarMenu::StatusBarMenu()
 	playerLife=sf::Text("test",FontLoader::getFont("appleberry_with_cyrillic.ttf"),30);
 	playerMoney.setPosition(300, 560);
 	playerLife.setPosition(450, 560);
-
+    sprite.setPosition(MENUSTARTX, MENUSTARTY);
+    sprite.setScale(800,1);
 
     addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Quit", ""));
@@ -32,8 +33,6 @@ StatusBarMenu::~StatusBarMenu()
 }
 void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
 {
-    sprite.setPosition(MENUSTARTX, MENUSTARTY);//Fult
-    sprite.setScale(800,1);
     canvas.draw(sprite);
     for(int i = 0; i < (int)buttons.size(); ++i)
     {
