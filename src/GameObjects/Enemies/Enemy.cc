@@ -58,7 +58,13 @@ void Enemy::setValue(int newValue)
 void Enemy::onDeath(vector<VisualEffect*>& visualeffects)
 {
     visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
-                           120, 60, 5, 5));
+                           120, 60, 5, 5, true));
+    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
+                           120, 60, 5, 5, true));
+    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
+                           120, 60, 5, 5, true));
+    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
+                           120, 60, 5, 5, true));
     return;
 }
 

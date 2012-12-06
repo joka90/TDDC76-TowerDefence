@@ -9,7 +9,7 @@ class VisualEffect : public GameObject
 public:
     VisualEffect(int newX, int newY, int newSpeed, int timer, std::string textureReference,
                     unsigned int inSpriteWidth, unsigned int inSpriteHeight,
-                    unsigned int inNuberOfSprites, unsigned int inFpf);
+                    unsigned int inNuberOfSprites, unsigned int inFpf, bool rotate);
     bool update();
 private:
 

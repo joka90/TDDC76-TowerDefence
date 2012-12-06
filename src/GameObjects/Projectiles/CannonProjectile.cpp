@@ -57,7 +57,7 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
             }
         }
          visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 75, "Explosion.png",
-                           55, 60, 15, 5));
+                           55, 60, 15, 5, true));
         return true;
     }
     return false;
