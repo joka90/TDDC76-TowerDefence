@@ -22,7 +22,7 @@ SoundMenu::SoundMenu()
     addButton(new Button(MENUSTARTX, MENUSTARTY, LESSX, LESSY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, " -", ""));
     addButton(new Button(MENUSTARTX, MENUSTARTY, MUTEX, MUTEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, " ", ""));
 	soundIcon.setPosition(MENUSTARTX+MUTEX,MENUSTARTY+MUTEY);
-	soundIcon.setFrame(3);//3=max volyme
+	soundIcon.setFrame(3);//3=max volume
 }
 
 SoundMenu::~SoundMenu()
@@ -78,8 +78,10 @@ bool SoundMenu::update(MusicHandler& musicHandler)
 			soundVolume = 100;
 		}
 		//update sprite
-		soundIcon.setFrame(soundVolume/30);//hope this works ok
-		/* TODO put code here to update music and sound volume. */
+		soundIcon.setFrame(soundVolume/30);//TODO fix to not show mute sound 10-30 
+		/* TODO put code here to update music(Maybe pause if muted) */
+ 		sf::Listener::setGlobalVolume(soundVolume);//set global volume
+
 	}
     newIteration();
     return false;
