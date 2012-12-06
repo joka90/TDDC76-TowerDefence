@@ -11,7 +11,7 @@ CPPFLAGS += -I../SFML/include/
 LDFLAGS += -L../SFML/lib/
 
 # Objektkodsmoduler som ingår i den kompletta kalkylatorn.
-OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o UpgradeMenu.o MusicHandler.o CannonTower.o CannonProjectile.o VisualEffect.o
+OBJECTS = main.o AnimatedSprite.o GameHandler.o EventHandler.o Level.o Wave.o WaveHandler.o ClickManager.o MapMatrix.o Player.o GameObject.o Enemy.o Tower.o Projectile.o Menu.o Button.o StartMenu.o LoadMenu.o TrackMenu.o Loader.o SoundLoader.o MusicLoader.o TextureLoader.o FontLoader.o ClassManager.o BuyMenu.o LongTower.o LongProjectile.o NextWaveMenu.o StatusBarMenu.o UpgradeMenu.o MusicHandler.o CannonTower.o CannonProjectile.o VisualEffect.o SoundMenu.o
 
 # Huvudmål
 TD: $(OBJECTS) Makefile
@@ -101,6 +101,9 @@ LoadMenu.o: src/GameObjects/Menu/LoadMenu.h src/GameObjects/Menu/LoadMenu.cpp
 
 TrackMenu.o: src/GameObjects/Menu/TrackMenu.h src/GameObjects/Menu/TrackMenu.cpp
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/TrackMenu.cpp
+
+SoundMenu.o: src/GameObjects/Menu/SoundMenu.h src/GameObjects/Menu/SoundMenu.cpp
+	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/GameObjects/Menu/SoundMenu.cpp
 
 Loader.o: src/Loader/Loader.h src/Loader/Loader.cc
 	$(CXX) $(CPPFLAGS) $(CCFLAGS) -c src/Loader/Loader.cc
