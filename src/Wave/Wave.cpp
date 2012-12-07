@@ -22,19 +22,18 @@ Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 
     ss << waveString;
     while(ss >> w)
     {
-        ss >> timeDelta;
+        timeDelta = 0;
         //Gör så att djur på samma tid kommer förskjutas 400ms vilket gör att
         // de inte hamnar på varandra
         for(vector<std::pair<int,std::string> >::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if((*it).first == timeDelta)
-            {
-                if(w == "Badger")
-                    timeDelta = timeDelta + 400;
-                if(w == "RedBadger")
+                if((*it).second == "Badger"){
                     timeDelta = timeDelta + 800;
-
-            }
+                }else if((*it).second == "RedBadger"){
+                    timeDelta = timeDelta + 800;
+                }else if(w == "BlueBadger"){
+                    timeDelta = timeDelta + 400;
+                }
         }
 
         enemies.push_back(make_pair(timeDelta, w));

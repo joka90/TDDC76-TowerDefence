@@ -19,7 +19,7 @@ public:
 
     //virtual bool drawSprite(sf::RenderWindow& canvas);  // Ärvs från GameObject, behövs inte.. /T
 
-    virtual bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects);
+    virtual bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player);
 
     // Frågeställning: Hur/vart kollas om en viss fiende är träffad av en viss projektil? Hur tas fienden & projektilen bort?
     //                 Ska en projektil kunna träffa flera fiender? Hur hanteras det isåfall?
@@ -41,7 +41,7 @@ public:
      */
     void setDirection(Enemy* aim);
     void move();
-    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects);
+    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects,Player& player);
 
 
 private:

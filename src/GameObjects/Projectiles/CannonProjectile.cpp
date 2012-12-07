@@ -18,7 +18,7 @@ CannonProjectile::~CannonProjectile()
 }
 
 
-bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects)
+bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player)
 {
     bool hit = false;
     move();
@@ -27,7 +27,7 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
     {
         return true;
     }
-    if(isHit(enemies, visualeffects))
+    if(isHit(enemies, visualeffects,player))
     {
         int x,y;
         vector<Enemy*> deleteVector;
@@ -51,7 +51,7 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
             {
                 if(deleteVector[0] == *it)
                 {
-                (*it)->onDeath(visualeffects);
+                (*it)->onDeath(visualeffects,player);
                 delete(*it);
                 enemies.erase(it);
                 deleteVector.erase(deleteVector.begin());
@@ -67,7 +67,7 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
 
 }
 
-bool CannonProjectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects)
+bool CannonProjectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects,Player& player)
 {
     bool hit = false;
     int x,y;
