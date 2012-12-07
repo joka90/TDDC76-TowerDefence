@@ -233,9 +233,9 @@ bool Level::update()
             done = true;
         }
 
-        if(waves->waveDone())
+        if(waves->waveDone() && enemies.empty())
         {
-            if(waves->onLastWave() && waves->waveDone() && enemies.empty())
+            if(waves->onLastWave() && waves->waveDone())
             {
                 visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 300,
                                 1, 100, false));
@@ -243,7 +243,7 @@ bool Level::update()
             }
             else
             {
-                visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "waveDone.png", 300, 300,
+                visualEffects.push_back(new VisualEffect(500, 400, 0, 2, "waveDone.png", 300, 300,
                                 1, 100, false));
             }
         }
