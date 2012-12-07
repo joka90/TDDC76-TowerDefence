@@ -301,7 +301,7 @@ bool Level::update()
 				cout << "Error opening file." << endl;
 			}
 
-            state="START";
+            //state="START";//TODO visa att vi sparade
         }
         if(message == "QUIT")
         {

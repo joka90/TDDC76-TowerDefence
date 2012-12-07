@@ -52,13 +52,15 @@ bool StatusBarMenu::update()
     if(buttons[0]->gotPressed())
     {
         state = "SAVE";
+    	newIteration();
         return true;
     }
     if(buttons[1]->gotPressed())
     {
         state = "QUIT";
+    	newIteration();
         return true;
     }
-    newIteration();//TODO
+    newIteration();
     return false;
 }

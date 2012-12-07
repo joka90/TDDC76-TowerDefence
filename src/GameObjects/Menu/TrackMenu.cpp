@@ -110,7 +110,8 @@ bool TrackMenu::update()
         newIteration();
         return true;
     }
-    for(int i = 0; i < LEVELDRAWS; ++i)
+	int i = 0;
+   	while(i < LEVELDRAWS && i+3 < (int)buttons.size())
     {
         if(buttons[i+3]->gotPressed())
         {
@@ -118,6 +119,7 @@ bool TrackMenu::update()
             newIteration();
             return true;
         }
+		i++;
     }
     newIteration();
     return false;

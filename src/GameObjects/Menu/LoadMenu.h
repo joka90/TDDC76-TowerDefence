@@ -11,6 +11,7 @@ class LoadMenu : public Menu
         LoadMenu();
         virtual ~LoadMenu();
         bool update();
+		void loadSaveData();//Load or reload savedata for buttons
     protected:
     private:
         std::vector<LoadPair> loadVectorData;

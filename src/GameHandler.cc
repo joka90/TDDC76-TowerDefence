@@ -114,6 +114,7 @@ void GameHandler::run()
 			{
                 musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 				currentState=LOADMENU;
+				loadMenu.loadSaveData();//load savedata and update buttons.
 				loadMenu.activate();
 			}
 			else if(nextState=="QUIT")
