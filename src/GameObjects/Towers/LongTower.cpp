@@ -58,9 +58,17 @@ void LongTower::upgrade(){
     ++currentUpgradePack;
 
     if(currentUpgradePack == 1){
+        price = 140; // Sell price
+        range = 300;
+
+        upgradePrice = 90;
+        upgradeText = "+Damage\nCost: 90";
+    }else if(currentUpgradePack == 2){
+        price = 180;// Sell price
+        damage = 20;
+
         upgradePrice = 0;
         upgradeText = "Fully upgraded!";
-        range = 300;
     }
 
 }
