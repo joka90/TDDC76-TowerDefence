@@ -26,8 +26,10 @@ WaveHandler::WaveHandler(string wavesString) : isRunning(false), currentWaveInde
 
 WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
-    string waveString;
-    istringstream ss(wavesString);
+    string w, waveString;
+    stringstream ss;
+
+    ss << wavesString;
 
     while(std::getline(ss, waveString)){
         wavesVector.push_back(new Wave(waveString));

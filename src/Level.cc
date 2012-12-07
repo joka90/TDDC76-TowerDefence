@@ -144,12 +144,13 @@ Level::Level(string saveFile)
 		{
 			map.setTower((*it)->getPosX(), (*it)->getPosY());
 		}
+		fclose(pFile);
 	}
 	else
 	{
 		cout << "error reading save file: " << saveFile << endl;
 	}
-	fclose(pFile);
+
 }
 
 bool Level::update()
