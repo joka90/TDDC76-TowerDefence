@@ -12,6 +12,7 @@ Level::Level(string trackFile, int)
 
 void Level::loadBase(string trackFile, int index)
 {
+    done = false;
     trackName = trackFile;
     ifstream loadData;
     char stringBuffer[256];
@@ -127,99 +128,124 @@ Level::Level(string saveFile)
 
 bool Level::update()
 {
-    // Update WaveHandler (place new enemy if one)
-    Enemy* enemyToBePlaced = waves->update();
-    if(enemyToBePlaced != NULL)
-    {
-        enemies.push_back(enemyToBePlaced);
-    }
-
-    //Update enemies
-    vector<Enemy*> deleteEnemyVector;
-    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
-    {
-        if((*it)->update(map))
+    if(!done)
         {
-            deleteEnemyVector.push_back(*it);
+        // Update WaveHandler (place new enemy if one)
+        Enemy* enemyToBePlaced = waves->update();
+        if(enemyToBePlaced != NULL)
+        {
+            enemies.push_back(enemyToBePlaced);
         }
-    }
-    while(!deleteEnemyVector.empty())
-    {
+
+        //Update enemies
+        vector<Enemy*> deleteEnemyVector;
         for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if(deleteEnemyVector[0] == *it)
+            if((*it)->update(map))
             {
-                delete(*it);
-                enemies.erase(it);
-                player.eraseLife();
-                deleteEnemyVector.erase(deleteEnemyVector.begin());
-                break;
+                deleteEnemyVector.push_back(*it);
             }
         }
-    }
-	// Update towers
-	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
-	{
-		Projectile* p = (*it)->update(enemies);
-		if(p != NULL){
-			projectiles.push_back(p);
-		}
-	}
+        while(!deleteEnemyVector.empty())
+        {
+            for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+            {
+                if(deleteEnemyVector[0] == *it)
+                {
+                    delete(*it);
+                    enemies.erase(it);
+                    player.eraseLife();
+                    deleteEnemyVector.erase(deleteEnemyVector.begin());
+                    break;
+                }
+            }
+        }
+        // Update towers
+        for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+        {
+            Projectile* p = (*it)->update(enemies);
+            if(p != NULL){
+                projectiles.push_back(p);
+            }
+        }
 
-	// Update projectiles
-	vector<Projectile*> deleteProjectileVector;
-	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
-	{
-		if((*it)->update(enemies, visualEffects, player))
-		{
-            deleteProjectileVector.push_back(*it);
-		}
-
-	}
-	while(!deleteProjectileVector.empty())
-    {
+        // Update projectiles
+        vector<Projectile*> deleteProjectileVector;
         for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
         {
-            if(deleteProjectileVector[0] == *it)
+            if((*it)->update(enemies, visualEffects, player))
             {
-                delete(*it);
-                projectiles.erase(it);
-                deleteProjectileVector.erase(deleteProjectileVector.begin());
-                break;
+                deleteProjectileVector.push_back(*it);
+            }
+
+        }
+        while(!deleteProjectileVector.empty())
+        {
+            for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+            {
+                if(deleteProjectileVector[0] == *it)
+                {
+                    delete(*it);
+                    projectiles.erase(it);
+                    deleteProjectileVector.erase(deleteProjectileVector.begin());
+                    break;
+                }
             }
         }
-    }
-    vector<VisualEffect*> deleteVisualEffectVector;
-    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
-	{
-		if((*it)->update())
-		{
-            deleteVisualEffectVector.push_back(*it);
-		}
-
-	}
-	while(!deleteVisualEffectVector.empty())
-    {
+        vector<VisualEffect*> deleteVisualEffectVector;
         for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
         {
-            if(deleteVisualEffectVector[0] == *it)
+            if((*it)->update())
             {
-                delete(*it);
-                visualEffects.erase(it);
-                deleteVisualEffectVector.erase(deleteVisualEffectVector.begin());
-                break;
+                deleteVisualEffectVector.push_back(*it);
+            }
+
+        }
+        while(!deleteVisualEffectVector.empty())
+        {
+            for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+            {
+                if(deleteVisualEffectVector[0] == *it)
+                {
+                    delete(*it);
+                    visualEffects.erase(it);
+                    deleteVisualEffectVector.erase(deleteVisualEffectVector.begin());
+                    break;
+                }
             }
         }
-    }
 
 
-	// Update menus
-	if(nextWaveMenu.update())
-    {
-        string message = nextWaveMenu.readState();
-        if(message == "NEXTWAVE")
+        // Update menus
+        if(nextWaveMenu.update())
         {
-            waves->startNextWave();
+            string message = nextWaveMenu.readState();
+            if(message == "NEXTWAVE")
+            {
+                waves->startNextWave();
+            }
+        }
+
+        if(player.getLife() <= 0)
+        {
+            visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "gameover.png", 300, 300,
+                                1, 100, false));
+            done = true;
+        }
+
+        if(waves->waveDone())
+        {
+            if(waves->onLastWave() && waves->waveDone() && enemies.empty())
+            {
+                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 300,
+                                1, 100, false));
+                done = true;
+            }
+            else
+            {
+                visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "waveDone.png", 300, 300,
+                                1, 100, false));
+            }
         }
     }
     nextWaveMenu.newIteration();
