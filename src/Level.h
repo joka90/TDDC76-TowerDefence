@@ -6,6 +6,7 @@
 #include "ClickManager/MapMatrix.h"
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Towers/LongTower.h"
+#include "GameObjects/Towers/CannonTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 #include "GameObjects/VisualEffects/VisualEffect.h"
 #include "GameObjects/Menu/NextWaveMenu.h"

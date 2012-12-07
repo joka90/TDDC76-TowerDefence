@@ -124,7 +124,7 @@ bool LoadMenu::update()
 
         if(buttons[i+3]->gotPressed())
         {
-            state =  string(LOADFOLDER) + ((loadVectorData[scrollLenght+i]).file).c_str();
+            state =  string(LOADFOLDER) + ((loadVectorData[loadVectorData.size()-2-scrollLenght-i]).file).c_str();
             newIteration();
             return true;
         }

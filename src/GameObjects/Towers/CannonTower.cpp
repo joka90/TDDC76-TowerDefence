@@ -19,6 +19,12 @@ CannonTower::CannonTower(int newX, int newY, int upgradePack)
 
 }
 
+CannonTower::CannonTower(std::string parms)
+: Tower(parms,50,"Sprites/Bunny/Original/tower_bunnies_small.png")
+{
+	towerType="CannonTower";
+}
+
 CannonTower::~CannonTower()
 {
     //dtor

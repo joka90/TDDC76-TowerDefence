@@ -81,7 +81,7 @@ Level::~Level()
 }
 
 Level::Level(string saveFile)
- : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state("")
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state(""), songName("")
 {
 	char type[20];
 	char subType[20];
@@ -111,6 +111,10 @@ Level::Level(string saveFile)
 				{
 					tmpPtr=new LongTower(parmsStr);
 				}
+				else if(subTypeStr=="CannonTower")
+				{
+					tmpPtr=new CannonTower(parmsStr);
+				}
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
@@ -120,6 +124,7 @@ Level::Level(string saveFile)
 			else if(typeStr=="Level")
 			{
 				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
+				cout << "W: " << tmpWave << " L: " << tmpTrackFile <<endl;
 			}
 			else if(typeStr=="Player")
 			{
@@ -366,6 +371,7 @@ bool Level::saveLevel(string saveFile)
 
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
+	cout << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
 	//save player
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 
