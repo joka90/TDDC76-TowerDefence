@@ -84,3 +84,14 @@ bool WaveHandler::getIsRunning(){
     return isRunning;
 }
 
+bool WaveHandler::waveDone(){
+    if(currentWaveIndex == -1)
+    {
+        return false;
+    }
+    return wavesVector[currentWaveIndex]->getFinished();
+}
+
+bool WaveHandler::onLastWave(){
+    return currentWaveIndex == (int) wavesVector.size();
+}

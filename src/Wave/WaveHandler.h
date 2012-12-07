@@ -25,6 +25,8 @@ class WaveHandler {
 
 		int getCurrentWaveIndex();
         bool getIsRunning();
+        bool waveDone();
+        bool onLastWave();
 
 	private:
 		void printMatrix();
