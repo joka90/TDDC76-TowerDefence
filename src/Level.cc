@@ -59,6 +59,27 @@ void Level::loadBase(string trackFile, int index)
     waves = new WaveHandler(waveHandlerData, index);
 }
 
+Level::~Level()
+{
+    delete(waves);
+    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+    {
+        delete(*it);
+    }
+}
+
 Level::Level(string saveFile)
  : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state("")
 {
@@ -237,7 +258,7 @@ bool Level::update()
         {
             if(waves->onLastWave() && waves->waveDone())
             {
-                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 300,
+                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 250,
                                 1, 100, false));
                 done = true;
             }

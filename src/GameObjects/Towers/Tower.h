@@ -43,6 +43,7 @@ private:
 
 
 protected:
+    sf::Sound* firingSound;
     int price;
     int upgradePrice;
     std::string upgradeText;

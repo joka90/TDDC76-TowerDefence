@@ -32,6 +32,8 @@ public:
     Level(std::string saveFile);
     Level(std::string trackName, int);
 
+    ~Level();
+
     std::string trackName;
 
     bool update();

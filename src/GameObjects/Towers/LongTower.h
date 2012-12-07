@@ -35,7 +35,6 @@ protected:
 
 
 private:
-    sf::Sound* firingSound;
 };
 
 #endif // LONGTOWER_H

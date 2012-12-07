@@ -19,7 +19,6 @@ class CannonTower : public Tower
         void upgrade();
     protected:
     private:
-        sf::Sound* firingSound;
 };
 
 #endif // CannonTOWER_H

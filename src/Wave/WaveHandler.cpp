@@ -93,5 +93,5 @@ bool WaveHandler::waveDone(){
 }
 
 bool WaveHandler::onLastWave(){
-    return currentWaveIndex == (int) wavesVector.size();
+    return currentWaveIndex == (int) wavesVector.size()-1;
 }

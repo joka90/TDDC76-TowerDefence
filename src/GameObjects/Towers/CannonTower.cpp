@@ -8,7 +8,7 @@ CannonTower::CannonTower(int newX, int newY, int upgradePack)
 {
 	towerType="CannonTower";
 	firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
-	firingSound->setVolume(50);
+	firingSound->setVolume(80);
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
@@ -32,6 +32,7 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 180, enemy);
+            firingSound->setVolume(80);
             firingSound->play();
             return cannonProjectile;
         }

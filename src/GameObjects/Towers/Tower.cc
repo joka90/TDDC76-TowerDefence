@@ -31,7 +31,7 @@ Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
 
 Tower::~Tower()
 {
-
+    delete(firingSound);
 }
 
 int Tower::getPrice() const
