@@ -30,7 +30,7 @@ Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 
             if((*it).first == timeDelta)
             {
                 if(w == "Badger")
-                    timeDelta = timeDelta + 400;
+                    timeDelta = timeDelta + 800;
                 if(w == "RedBadger")
                     timeDelta = timeDelta + 800;
 
