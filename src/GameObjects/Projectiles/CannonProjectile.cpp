@@ -8,6 +8,8 @@ using namespace std;
 CannonProjectile::CannonProjectile(int newX, int newY, int newDamage, int lifetime, int inSplashradius, Enemy* newEnemy)
 : Projectile(newX, newY, newDamage, lifetime, CANONPROJECTILESPEED, newEnemy,"Sprites/cannon.png"), splashradius(inSplashradius)
 {
+    onDeathSound = new sf::Sound(SoundLoader::getSoundBuffer("death_scream.wav"));
+	onDeathSound->setVolume(50);
 }
 
 CannonProjectile::~CannonProjectile()
@@ -38,6 +40,7 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
                 (*it)->hit(damage);
                 if((*it)->isDead())
                 {
+                    onDeathSound->play();
                     deleteVector.push_back(*it);
                 }
             }

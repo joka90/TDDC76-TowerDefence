@@ -7,6 +7,9 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 : Tower(newX, newY, 80, 10, 200, 60, "Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
+    firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
+	firingSound->setVolume(50);
+
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
@@ -38,6 +41,7 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, range/PROJECTILESPEED, enemy);
+            firingSound->play();
             return longProjectile;
         }
         else
@@ -58,9 +62,17 @@ void LongTower::upgrade(){
     ++currentUpgradePack;
 
     if(currentUpgradePack == 1){
+        price = 140; // Sell price
+        range = 300;
+
+        upgradePrice = 90;
+        upgradeText = "+Damage\nCost: 90";
+    }else if(currentUpgradePack == 2){
+        price = 180;// Sell price
+        damage = 20;
+
         upgradePrice = 0;
         upgradeText = "Fully upgraded!";
-        range = 300;
     }
 
 }

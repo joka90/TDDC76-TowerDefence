@@ -45,7 +45,7 @@ public:
 
 
 private:
-
+    sf::Sound* onDeathSound;
 protected:
     int damage;
     int speed;

@@ -33,6 +33,7 @@ public:
 protected:
     int splashradius;
 private:
+    sf::Sound* onDeathSound;
 };
 
 #endif // CannonPROJECTILE_H
