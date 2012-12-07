@@ -243,7 +243,7 @@ bool Level::update()
             }
             else
             {
-                visualEffects.push_back(new VisualEffect(500, 400, 0, 2, "waveDone.png", 300, 300,
+                visualEffects.push_back(new VisualEffect(500, 400, 0, 2, "wavedone.png", 300, 300,
                                 1, 100, false));
             }
         }
