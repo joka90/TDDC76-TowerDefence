@@ -7,6 +7,8 @@ CannonTower::CannonTower(int newX, int newY, int upgradePack)
 : Tower(newX, newY, 80, 20, 400, 50, "Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
+	firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
+	firingSound->setVolume(50);
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
@@ -30,6 +32,7 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 180, enemy);
+            firingSound->play();
             return cannonProjectile;
         }
         else
