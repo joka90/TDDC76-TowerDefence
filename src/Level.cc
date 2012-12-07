@@ -170,7 +170,7 @@ bool Level::update()
 	vector<Projectile*> deleteProjectileVector;
 	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
 	{
-		if((*it)->update(enemies, visualEffects))
+		if((*it)->update(enemies, visualEffects, player))
 		{
             deleteProjectileVector.push_back(*it);
 		}
