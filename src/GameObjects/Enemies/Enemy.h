@@ -31,7 +31,7 @@ public:
 
     // Moves the enemy
     bool update(MapMatrix& map);
-    virtual void onDeath(std::vector<VisualEffect*>& visualeffects);
+    virtual void onDeath(std::vector<VisualEffect*>& visualeffects, Player& player);
 
 private:
 

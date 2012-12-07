@@ -1,18 +1,15 @@
-test.png
+Levels/Level2_BG.png
 level_1.ogg
 5000 20
 8 13
-0 0 0 0 0 0 0 0 0 0 0 0 1
-0 0 0 0 0 0 0 0 0 0 0 0 1
-1 1 1 1 0 0 0 0 0 0 0 0 1
-0 0 0 1 0 0 1 1 1 1 0 0 1
-0 1 1 1 0 0 1 0 0 1 0 0 1
-0 1 0 0 0 0 1 0 0 1 0 0 1
-0 1 1 0 0 1 1 0 0 1 0 0 1
-0 0 1 1 1 1 0 0 0 1 1 1 1
--1,2 3,2 3,4 1,4 1,6 2,6 2,7 5,7 5,6 6,6 6,3 9,3 9,7 12,7 12,-1
-Badger 1000 Badger 1300 Badger 1043 Badger 1600 Badger 1100 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger
-Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1130 Badger 2450 Badger 4065 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 1300 Badger 1043 Badger 1600 Badger 1100
-Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger Badger 1000 Badger 1300 Badger 1043 Badger 1600 Badger 1100
-Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 1300 Badger 1043 Badger 1600 Badger 1100 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger
-Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000 Badger 1000 Badger 2000 Badger 4000 Badger 5000
+0 0 0 1 0 0 0 0 0 0 0 1 0
+0 0 0 1 0 1 1 1 1 1 0 1 0
+0 0 0 1 0 1 0 0 0 1 0 1 0
+0 1 1 1 0 1 1 1 0 1 0 1 0
+0 1 0 0 0 0 0 1 0 1 0 1 0
+0 1 1 1 0 1 1 1 0 1 0 1 0
+0 0 0 1 0 1 0 0 0 1 0 1 0
+0 0 0 1 1 1 0 0 0 1 1 1 0
+3,-1 3,3 1,3 1,5 3,5 3,7 5,7 5,5 7,5 7,3 5,3 5,1 9,1 9,7 11,7 11,-1
+Badger 1000 Badger 2000 Badger 4000 Badger 5000
+

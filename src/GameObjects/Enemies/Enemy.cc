@@ -55,16 +55,11 @@ void Enemy::setValue(int newValue)
     return;
 }
 
-void Enemy::onDeath(vector<VisualEffect*>& visualeffects)
+void Enemy::onDeath(vector<VisualEffect*>& visualeffects, Player& player)
 {
     visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
                            120, 60, 5, 5, true));
-    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
-                           120, 60, 5, 5, true));
-    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
-                           120, 60, 5, 5, true));
-    visualeffects.push_back(new VisualEffect(getPosX(), getPosY(), 0, 25, "bloodsplatter.png",
-                           120, 60, 5, 5, true));
+    player.addMoney(value);
     return;
 }
 
