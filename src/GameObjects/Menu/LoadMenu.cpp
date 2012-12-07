@@ -12,7 +12,7 @@
 #define LOADIMG "transp-1px.png"
 #define LOADDRAWS 6
 #define LOADSTARTX 100
-#define LOADSTARTY 80
+#define LOADSTARTY 30
 #define LOADGAPY 50
 #define LOADWIDTHX 300
 #define LOADWIDTHY 40
@@ -80,14 +80,13 @@ void LoadMenu::updateLoadButtons()
     {
         removeButton(3);
     }
-    for(int i = 0; i < LOADDRAWS; ++i)
-        {
-            if(i+scrollLenght < (int) loadVectorData.size())
-            {
-                addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY,
-                      LOADIMG, CLICK, (loadVectorData[scrollLenght+i]).name, ""));
-            }
-        }
+	int lastElement = loadVectorData.size()-1;
+	int i = 1;
+    while(LOADDRAWS >= i && lastElement-i-scrollLenght >= 0)
+    {
+		addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY, LOADIMG, CLICK, (loadVectorData[lastElement-i-scrollLenght]).name, ""));
+		i++;
+    }
 }
 
 bool LoadMenu::update()
