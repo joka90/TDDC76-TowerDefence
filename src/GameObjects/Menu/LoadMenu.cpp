@@ -9,10 +9,10 @@
 #define MENULOADX 0
 #define MENULOADY 0
 
-#define LOADIMG "LOADIMG.png"
-#define LOADDRAWS 4
+#define LOADIMG "transp-1px.png"
+#define LOADDRAWS 6
 #define LOADSTARTX 100
-#define LOADSTARTY 100
+#define LOADSTARTY 80
 #define LOADGAPY 50
 #define LOADWIDTHX 300
 #define LOADWIDTHY 40
@@ -25,17 +25,17 @@
 #define ARROWDOWNY 200
 #define ARROWUP "ARROWUP.png"
 #define ARROWDOWN "ARROWDOWN.png"
-#define LOADBUTTON "LOADBUTTON.png"
+#define LOADBUTTON "transp-1px.png"
 
 #define BACKX 100
 #define BACKY 500
-#define BACKWIDTH 70
-#define BACKHEIGHT 70
-#define BACKIMG "BACKBUTTON.png"
+#define BACKWIDTH 141
+#define BACKHEIGHT 51
+#define BACKIMG "StartButton_BG.png"
 #define LOADFOLDER "saves/"
 using namespace std;
 LoadMenu::LoadMenu()
-:Menu(MENULOADX, MENULOADY, "StartMenu.png"), scrollLenght(0)
+:Menu(MENULOADX, MENULOADY, "Track_BG.png"), scrollLenght(0)
 {
     //Ladda in vilka sparfiler som finns
     ifstream loadData;
@@ -58,7 +58,7 @@ LoadMenu::LoadMenu()
     addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
                       ARROWDOWN, CLICK, "", ""));
     addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                      BACKIMG, CLICK, "", ""));
+                      BACKIMG, CLICK, "Back", ""));
     updateLoadButtons();
 }
 
@@ -75,7 +75,7 @@ void LoadMenu::updateLoadButtons()
     }
     for(int i = 0; i < LOADDRAWS; ++i)
         {
-            if(i+scrollLenght < (int) loadVectorData.size()-1)
+            if(i+scrollLenght < (int) loadVectorData.size())
             {
                 addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY,
                       LOADIMG, CLICK, (loadVectorData[scrollLenght+i]).name, ""));

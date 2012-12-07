@@ -9,9 +9,9 @@
 #define MENULOADY 0
 
 #define TRACKLEVELIMG "TRACKLEVELIMG.png"
-#define LEVELDRAWS 4
+#define LEVELDRAWS 6
 #define LEVELSTARTX 100
-#define LEVELSTARTY 100
+#define LEVELSTARTY 80
 #define LEVELGAPY 50
 #define LEVELWIDTHX 300
 #define LEVELWIDTHY 40
@@ -28,8 +28,8 @@
 
 #define BACKX 100
 #define BACKY 500
-#define BACKWIDTH 70
-#define BACKHEIGHT 70
+#define BACKWIDTH 141
+#define BACKHEIGHT 51
 #define BACKIMG "StartButton_BG.png"
 #define LEVELFOLDER "levels/"
 using namespace std;
@@ -73,7 +73,7 @@ void TrackMenu::updateLoadButtons()
     }
     for(int i = 0; i < LEVELDRAWS; ++i)
         {
-            if(i+scrollLenght < (int) trackVectorData.size() -1)
+            if(i+scrollLenght < (int) trackVectorData.size())
             {
                 addButton(new Button(MENULOADX, MENULOADY, LEVELSTARTX, LEVELSTARTY+LEVELGAPY*i, LEVELWIDTHX, LEVELWIDTHY,
                       TRACKLEVELIMG, CLICK, (trackVectorData[scrollLenght+i]).name, ""));
