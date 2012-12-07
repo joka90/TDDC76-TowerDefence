@@ -7,6 +7,7 @@
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Towers/LongTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
+#include "GameObjects/VisualEffects/VisualEffect.h"
 #include "GameObjects/Menu/NextWaveMenu.h"
 #include "GameObjects/Menu/StatusBarMenu.h"
 #include "AnimatedSprite.h"
@@ -48,6 +49,7 @@ private:
     std::vector<Enemy*> enemies;
     std::vector<Tower*> towers;
     std::vector<Projectile*> projectiles;
+    std::vector<VisualEffect*> visualEffects;
 
     void runWave();
     bool saveLevel(std::string saveFile);

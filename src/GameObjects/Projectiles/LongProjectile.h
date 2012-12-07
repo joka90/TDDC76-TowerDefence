@@ -4,6 +4,7 @@
 #include "Projectile.h"
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
+#define PROJECTILESPEED 10
 
 /**
  * class LongProjectile
@@ -14,7 +15,7 @@
 class LongProjectile : public Projectile
 {
 public:
-    LongProjectile(int newX, int newY, int newDamage, Enemy* newEnemy);
+    LongProjectile(int newX, int newY, int newDamage, int lifetime, Enemy* newEnemy);
     ~LongProjectile();
 
     /**
@@ -22,8 +23,6 @@ public:
      * uppdatera dess position. Onödigt att då ha den i LongProjecile. Bör istället
      * kunna byggas i projectile.
      */
-
-    bool update(std::vector<Enemy*>& enemies);
 
 protected:
 private:

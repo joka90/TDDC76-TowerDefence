@@ -1,10 +1,9 @@
 #include "Projectile.h"
 #include <cmath>
-#define RADIE 50
+
 using namespace std;
-Projectile::Projectile(int newX, int newY, int newDamage, int newSpeed, Enemy* newEnemy, std::string textureReference)
-: GameObject(newX, newY, textureReference),
-  damage(newDamage), speed(newSpeed), enemy(newEnemy)
+Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int newSpeed, Enemy* newEnemy, std::string textureReference)
+: GameObject(newX, newY, textureReference), damage(newDamage), speed(newSpeed), enemy(newEnemy), lifetime(inLifetime)
 {
     sprite.setOrigin(5,21);
     setDirection(enemy);
@@ -84,7 +83,7 @@ void Projectile::setDirection(Enemy* aim)
 void Projectile::move()//SFML's move fungerar som denna. använda den istället för setPosition?
 {
     xPos = xPos + dirX;
-    yPos = yPos +dirY;
+    yPos = yPos + dirY;
     return;
 }
 
@@ -114,6 +113,7 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
+<<<<<<< HEAD
 bool Projectile::update(std::vector<Enemy*>& enemies, Player& player)
 {
     move();
@@ -121,6 +121,9 @@ bool Projectile::update(std::vector<Enemy*>& enemies, Player& player)
 }
 
 bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
+=======
+bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects)
+>>>>>>> c6889b922f5b63a887dcc90a9ee182557417d833
 {
     bool hit = false;
     int x,y;
@@ -129,11 +132,15 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
 	{
 		x = (*it)->getPosX();
 		y = (*it)->getPosY();
-		if( (pow(getPosX() - x , 2) + pow(getPosY() - y,2)) < RADIE )
+		if( sqrt((pow(getPosX() - x , 2) + pow(getPosY() - y,2))) < RADIE )
 		{
-            deleteVector.push_back(*it);
+		    (*it)->hit(damage);
+		    if((*it)->isDead())
+		    {
+		        deleteVector.push_back(*it);
+		    }
             hit = true;
-            cout << "TRÄFF" << endl;
+            break;
 		}
 	}
 	while(!deleteVector.empty())
@@ -142,8 +149,12 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
         {
             if(deleteVector[0] == *it)
             {
+<<<<<<< HEAD
                 (*it)->onDeath();
                 player.addMoney((*it)->getValue());
+=======
+                (*it)->onDeath(visualeffects);
+>>>>>>> c6889b922f5b63a887dcc90a9ee182557417d833
                 delete(*it);
                 enemyVector.erase(it);
                 deleteVector.erase(deleteVector.begin());
@@ -154,8 +165,16 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
     return hit;
 }
 
-
-
+bool Projectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects)
+{
+    move();
+    --lifetime;
+    if(lifetime<0)
+    {
+        return true;
+    }
+    return isHit(enemies, visualeffects);
+}
 
 
 

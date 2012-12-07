@@ -24,7 +24,6 @@ AnimatedSprite::AnimatedSprite(const sf::Texture &inTexture, unsigned int inSpri
         animationMask.width=imgSize.x;
         setTextureRect(animationMask);
     }
-
 }
 
 void AnimatedSprite::setTextureAnimation(const sf::Texture& texture, unsigned int inSpriteWidth, unsigned int inNuberOfSprites, unsigned int inFpf, bool inPlaying)
@@ -43,6 +42,20 @@ void AnimatedSprite::setTextureAnimation(const sf::Texture& texture, unsigned in
         animationMask.width=imgSize.x;
         setTextureRect(animationMask);
     }
+    fpf=inFpf;
+    playing=inPlaying;
+    nuberOfSprites=inNuberOfSprites;
+    spriteWidth=inSpriteWidth;
+}
+void AnimatedSprite::setAnimationProps(unsigned int inSpriteWidth, unsigned int inSpriteHeight, unsigned int inNuberOfSprites, unsigned int inFpf, bool inPlaying)
+{
+    animationMask.width=inSpriteWidth;//set mask size
+    animationMask.height=inSpriteHeight;
+    setTextureRect(animationMask);
+    fpf=inFpf;
+    playing=inPlaying;
+    nuberOfSprites=inNuberOfSprites;
+    spriteWidth=inSpriteWidth;
 }
 
 AnimatedSprite::~AnimatedSprite()

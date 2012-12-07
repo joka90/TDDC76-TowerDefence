@@ -15,34 +15,42 @@
 class Tower : public GameObject
 {
 public:
-    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax,  std::string textureReference);
+    Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference);
 
-	Tower(std::string parms,  std::string textureReference);
+	Tower(std::string parms, int newCounterMax,  std::string textureReference);
 
     ~Tower();
 
     //virtual Projectile* update(std::vector<Enemy*>) = 0;//fix to compile TODO
     bool drawSprite(sf::RenderWindow& canvas);
-	double directionAngle;//sprite angle
 
     int getPrice() const;
     void setPrice(int newPrice);
+    int getUpgradePrice() const;
+    std::string getUpgradeText() const;
     int getDamage() const;
     void setDamage(int newDamage);
     int getRange() const;
     void setRange(int newRange);
     std::string getSaveString();
-    virtual Projectile* update(std::vector<Enemy*>& enemyVector)=0;
+    virtual Projectile* update(std::vector<Enemy*>& enemyVector) = 0;
+
+    // Upgrades
+    int currentUpgradePack;
+    virtual void upgrade() = 0;
 
 private:
 
 
 protected:
     int price;
+    int upgradePrice;
+    std::string upgradeText;
     int damage;
     int range;
     int counter;
     int counterMax; //Om counter > counterMax, SKJUT(dvs skapa Projectile*)
+    double directionAngle;//sprite angle
     Enemy* getClosestEnemy(std::vector<Enemy*>& enemyVector);
     std::string towerType;
 

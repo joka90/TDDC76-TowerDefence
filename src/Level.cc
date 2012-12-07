@@ -170,7 +170,11 @@ bool Level::update()
 	vector<Projectile*> deleteProjectileVector;
 	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
 	{
+<<<<<<< HEAD
 		if((*it)->update(enemies, player))
+=======
+		if((*it)->update(enemies, visualEffects))
+>>>>>>> c6889b922f5b63a887dcc90a9ee182557417d833
 		{
             deleteProjectileVector.push_back(*it);
 		}
@@ -185,6 +189,28 @@ bool Level::update()
                 delete(*it);
                 projectiles.erase(it);
                 deleteProjectileVector.erase(deleteProjectileVector.begin());
+                break;
+            }
+        }
+    }
+    vector<VisualEffect*> deleteVisualEffectVector;
+    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+	{
+		if((*it)->update())
+		{
+            deleteVisualEffectVector.push_back(*it);
+		}
+
+	}
+	while(!deleteVisualEffectVector.empty())
+    {
+        for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+        {
+            if(deleteVisualEffectVector[0] == *it)
+            {
+                delete(*it);
+                visualEffects.erase(it);
+                deleteVisualEffectVector.erase(deleteVisualEffectVector.begin());
                 break;
             }
         }
@@ -259,6 +285,10 @@ void Level::draw(sf::RenderWindow& canvas)
     }
     // draw projectiles
     for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+    {
+        (*it)->drawSprite(canvas);
+    }
+    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
     {
         (*it)->drawSprite(canvas);
     }

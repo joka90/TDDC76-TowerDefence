@@ -5,7 +5,7 @@ using namespace std;
 
 GameHandler::GameHandler()
 
-:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu()
+:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu(), soundMenu()
 {
     // init all loaders
     FontLoader::load(std::string("appleberry_with_cyrillic.ttf"));
@@ -138,6 +138,9 @@ void GameHandler::run()
 			}
 			nextState="";
 		}
+		//always show soundMenu
+		soundMenu.update(musicHandler);
+		soundMenu.drawMenu(canvas);
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";

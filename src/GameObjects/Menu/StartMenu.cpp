@@ -11,12 +11,12 @@
 #define QUITY 517
 #define BUTTONWIDTH 141
 #define BUTTONHEIGHT 51
-#define CLICK "CLICK.WAV"
+#define CLICK "thozi_daClick.ogg"
 #define BUTTON "StartButton_BG.png"
-#define MENUSBACKGROUND "StartMenu.png"
+#define MENUSBACKGROUND "Start_BG.png"
 using namespace std;
 StartMenu::StartMenu()
-:Menu(MENUSTARTX,MENUSTARTY, "Start_BG.png")
+:Menu(MENUSTARTX,MENUSTARTY, MENUSBACKGROUND)
 {
     addButton(new Button(MENUSTARTX, MENUSTARTY, TRACKX, TRACKY, BUTTONWIDTH, BUTTONHEIGHT,
                       BUTTON, CLICK, "Tracks", ""));

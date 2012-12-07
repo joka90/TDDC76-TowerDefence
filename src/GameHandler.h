@@ -10,6 +10,7 @@
 #include "GameObjects/Menu/StartMenu.h"
 #include "GameObjects/Menu/LoadMenu.h"
 #include "GameObjects/Menu/TrackMenu.h"
+#include "GameObjects/Menu/SoundMenu.h"
 
 #include "ClickManager/ClickManager.h"
 #include "EventHandler.h"
@@ -50,6 +51,7 @@ protected:
 	StartMenu startMenu;
 	LoadMenu loadMenu;
 	TrackMenu trackMenu;
+	SoundMenu soundMenu;
 
 private:
     MusicHandler musicHandler;
