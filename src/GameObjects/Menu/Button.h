@@ -33,6 +33,7 @@ class Button : public GameObject, public MouseButtonPressedUser, public MouseBut
         void activate();
 
         void setButtonText(std::string newText);
+		void setButtonHoverText(std::string newText);
     protected:
     private:
         bool sleeping;

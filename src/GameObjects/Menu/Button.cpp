@@ -99,9 +99,12 @@ void Button::activate()
 }
 
 void Button::setButtonText(string newText){
-    mouseOverText.setString(newText);
+    buttonText.setString(newText);
 }
 
+void Button::setButtonHoverText(string newText){
+    mouseOverText.setString(newText);
+}
 
 void Button::mouseButtonPressedListener(sf::Event event)
 {

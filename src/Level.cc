@@ -276,38 +276,45 @@ bool Level::update()
         }
     }
     nextWaveMenu.newIteration();
-    if(statusBarMenu.update())
+    if(statusBarMenu.update(waves->waveDone()&& enemies.empty()))
     {
         string message = statusBarMenu.readState();
         if(message == "SAVE")
         {
-            time_t secs;
-            struct tm * timeinfo;
-
-            time(&secs);//set time
-            timeinfo=localtime(&secs);//get time obj
-
-            std::stringstream fileName;
-            char timeString[80];
-        	fileName << LOADFOLDER << secs << ".sav";
-
-            saveLevel(fileName.str());
-
-
-			strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
-            ofstream saveData;
-			saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
-			if(saveData.is_open())
+			if(waves->waveDone()&&enemies.empty())
 			{
-				saveData << timeString << " " << secs << ".sav\n";
-				saveData.close();
+		        time_t secs;
+		        struct tm * timeinfo;
+
+		        time(&secs);//set time
+		        timeinfo=localtime(&secs);//get time obj
+
+		        std::stringstream fileName;
+		        char timeString[80];
+		    	fileName << LOADFOLDER << secs << ".sav";
+
+		        saveLevel(fileName.str());
+
+
+				strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
+		        ofstream saveData;
+				saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
+				if(saveData.is_open())
+				{
+					saveData << timeString << " " << secs << ".sav\n";
+					saveData.close();
+				}
+				else
+				{
+					cout << "Error opening file." << endl;
+				}
+
+		        //state="START";//TODO visa att vi sparade
 			}
 			else
 			{
-				cout << "Error opening file." << endl;
+				cout << "Can not save during wave." << endl;
 			}
-
-            //state="START";//TODO visa att vi sparade
         }
         if(message == "QUIT")
         {

@@ -14,7 +14,7 @@ class StatusBarMenu : public Menu
         StatusBarMenu();
         virtual ~StatusBarMenu();
         void drawMenu(sf::RenderWindow&, Player&);
-        bool update();
+        bool update(bool waveDone);
     protected:
     private:
     sf::Text playerMoney;
