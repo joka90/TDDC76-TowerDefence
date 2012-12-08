@@ -63,3 +63,8 @@ bool Wave::getFinished()
     {
         return finished;
     }
+
+void Wave::setFinished()//needed if loading from savefile
+{
+        finished=true;
+}
