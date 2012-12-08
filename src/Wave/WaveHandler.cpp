@@ -35,7 +35,10 @@ WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
         wavesVector.push_back(new Wave(waveString));
     }
     currentWaveIndex = startIndex;
-	wavesVector[currentWaveIndex]->setFinished();
+	if(currentWaveIndex != -1)
+	{
+		wavesVector[currentWaveIndex]->setFinished();
+	}
 }
 
 WaveHandler::~WaveHandler(){
