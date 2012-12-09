@@ -8,7 +8,7 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
     sprite.setOrigin(5,21);
     setDirection(enemy);
     onDeathSound = new sf::Sound(SoundLoader::getSoundBuffer("death_scream.wav"));
-	onDeathSound->setVolume(80);
+	//onDeathSound->setVolume(80);
 }
 
 /*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T

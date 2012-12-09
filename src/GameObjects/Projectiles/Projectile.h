@@ -5,7 +5,7 @@
 #include "../VisualEffects/VisualEffect.h"
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
-#define RADIE 20
+#define RADIE 30
 class Projectile : public GameObject
 {
 public:
