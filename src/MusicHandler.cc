@@ -113,4 +113,14 @@ void MusicHandler::stopAllSongs()
     return;
 }
 
+/*
+* Kan ändra pitch på nuvarande sång om livet är lågt, används ev. inte
+*/
+
+void MusicHandler::increasePitch()
+{
+    currentSong->setPitch(currentSong->getPitch() + 0.01);
+}
+
+
 

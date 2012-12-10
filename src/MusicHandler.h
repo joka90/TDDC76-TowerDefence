@@ -12,6 +12,7 @@ class MusicHandler
   void stopSong(sf::Music* inSong);
   void stopAllSongs();
   void setCurrentSong(sf::Music* inSong);
+  void increasePitch();
  private:
   sf::Music* currentSong;
   sf::Music* previousSong;
