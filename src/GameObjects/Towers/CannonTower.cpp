@@ -23,6 +23,8 @@ CannonTower::CannonTower(std::string parms)
 : Tower(parms,50,"Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
+    firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
+	firingSound->setVolume(80);
 }
 
 CannonTower::~CannonTower()

@@ -24,6 +24,8 @@ LongTower::LongTower(std::string parms)
 : Tower(parms,30,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
+    firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
+	firingSound->setVolume(80);
 }
 
 
