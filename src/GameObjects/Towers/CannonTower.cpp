@@ -21,7 +21,7 @@
 
 #define SCALE 0.3
 CannonTower::CannonTower(int newX, int newY, int upgradePack)
-: Tower(newX, newY, 80, 20, 400, 50, "Sprites/Bunny/Original/tower_bunnies_small.png")
+: Tower(newX, newY, 80, 20, 200, 140, "Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
 	firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
@@ -40,6 +40,8 @@ CannonTower::CannonTower(std::string parms)
 : Tower(parms,50,"Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
+    firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
+	firingSound->setVolume(80);
 }
 
 CannonTower::~CannonTower()
@@ -54,7 +56,7 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         if(!(enemy == NULL))
         {
             counter = 0;
-            CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 180, enemy);
+            CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 70, enemy);
             firingSound->play();
             return cannonProjectile;
         }

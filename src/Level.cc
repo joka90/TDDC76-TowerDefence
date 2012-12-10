@@ -237,6 +237,7 @@ bool Level::update()
             }
         }
         vector<VisualEffect*> deleteVisualEffectVector;
+
         for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
         {
             if((*it)->update())
@@ -413,4 +414,9 @@ bool Level::saveLevel(string saveFile)
 string Level::getSongName()
 {
     return songName;
+}
+
+int Level::getCurrentLife()
+{
+    return player.getLife();
 }
