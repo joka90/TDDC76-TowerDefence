@@ -5,7 +5,7 @@
 #include "../VisualEffects/VisualEffect.h"
 #include "../Enemies/Enemy.h"
 #include <SFML/Graphics.hpp>
-#define RADIE 20
+#define RADIE 30
 class Projectile : public GameObject
 {
 public:
@@ -16,7 +16,7 @@ public:
      * projektilen att sikta på.
      */
     Projectile(int newX, int newY, int newDamage, int newSpeed, int inLifetime, Enemy* newEnemy, std::string textureReference);
-
+    ~Projectile();
     //virtual bool drawSprite(sf::RenderWindow& canvas);  // Ärvs från GameObject, behövs inte.. /T
 
     virtual bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player);
@@ -45,8 +45,8 @@ public:
 
 
 private:
-
 protected:
+    sf::Sound* onDeathSound;
     int damage;
     int speed;
     int dirX;

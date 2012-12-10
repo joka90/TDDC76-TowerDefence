@@ -35,7 +35,6 @@ protected:
 
 
 private:
-
 };
 
 #endif // LONGTOWER_H

@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    GameHandler.cc
+ * Enhetsnamn: GameHandler
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul delegerar alla uppgifter till andra klasser
+ *
+ */
+
 #include "GameHandler.h"
 #include <iostream>
 
@@ -114,6 +131,7 @@ void GameHandler::run()
 			{
                 musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 				currentState=LOADMENU;
+				loadMenu.loadSaveData();//load savedata and update buttons.
 				loadMenu.activate();
 			}
 			else if(nextState=="QUIT")

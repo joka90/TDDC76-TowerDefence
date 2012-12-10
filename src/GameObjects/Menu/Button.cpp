@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Button.cpp
+ * Enhetsnamn: Button
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en knapp i spelet
+ *
+ */
+
 #include "Button.h"
 #include "../../EventHandler.h"
 #include <iostream>
@@ -99,9 +116,12 @@ void Button::activate()
 }
 
 void Button::setButtonText(string newText){
-    mouseOverText.setString(newText);
+    buttonText.setString(newText);
 }
 
+void Button::setButtonHoverText(string newText){
+    mouseOverText.setString(newText);
+}
 
 void Button::mouseButtonPressedListener(sf::Event event)
 {

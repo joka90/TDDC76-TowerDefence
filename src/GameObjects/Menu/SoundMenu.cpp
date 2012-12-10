@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    SoundMenu.cpp
+ * Enhetsnamn: SoundMenu
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar höja/sänka musik och ljudeffekter i spelet
+ *
+ */
+
 #include "SoundMenu.h"
 #define MENUSTARTX 650
 #define MENUSTARTY 560
@@ -78,7 +95,7 @@ bool SoundMenu::update(MusicHandler& musicHandler)
 			soundVolume = 100;
 		}
 		//update sprite
-		soundIcon.setFrame(soundVolume/30);//TODO fix to not show mute sound 10-30 
+		soundIcon.setFrame(soundVolume/30);//TODO fix to not show mute sound 10-30
 		/* TODO put code here to update music(Maybe pause if muted) */
  		sf::Listener::setGlobalVolume(soundVolume);//set global volume
 

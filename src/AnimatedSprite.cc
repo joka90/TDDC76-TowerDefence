@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    AnimatedSprite.cc
+ * Enhetsnamn: AnimatedSprite
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar animationer av bilder
+ *
+ */
+
 #include "AnimatedSprite.h"
 
 

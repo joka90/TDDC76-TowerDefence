@@ -14,6 +14,7 @@ class CannonTower : public Tower
 {
     public:
         CannonTower(int newX, int newY, int upgradePack = 0);
+	    CannonTower(std::string parms);
         ~CannonTower();
         CannonProjectile* update(std::vector<Enemy*>& enemies);
         void upgrade();

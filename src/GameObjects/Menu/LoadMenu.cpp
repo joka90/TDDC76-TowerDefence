@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.cpp
+ * Enhetsnamn: LoadMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul låter spelaren välja vilken startfil som skall laddas då man är i huvudmenyn
+ *
+ */
+
 #include <iostream>
 #include <fstream>
 
@@ -9,10 +26,10 @@
 #define MENULOADX 0
 #define MENULOADY 0
 
-#define LOADIMG "LOADIMG.png"
-#define LOADDRAWS 4
+#define LOADIMG "transp-1px.png"
+#define LOADDRAWS 6
 #define LOADSTARTX 100
-#define LOADSTARTY 100
+#define LOADSTARTY 30
 #define LOADGAPY 50
 #define LOADWIDTHX 300
 #define LOADWIDTHY 40
@@ -25,19 +42,37 @@
 #define ARROWDOWNY 200
 #define ARROWUP "ARROWUP.png"
 #define ARROWDOWN "ARROWDOWN.png"
-#define LOADBUTTON "LOADBUTTON.png"
+#define LOADBUTTON "transp-1px.png"
 
 #define BACKX 100
 #define BACKY 500
-#define BACKWIDTH 70
-#define BACKHEIGHT 70
-#define BACKIMG "BACKBUTTON.png"
+#define BACKWIDTH 141
+#define BACKHEIGHT 51
+#define BACKIMG "StartButton_BG.png"
 #define LOADFOLDER "saves/"
 using namespace std;
 LoadMenu::LoadMenu()
-:Menu(MENULOADX, MENULOADY, "StartMenu.png"), scrollLenght(0)
+:Menu(MENULOADX, MENULOADY, "Track_BG.png"), scrollLenght(0)
 {
-    //Ladda in vilka sparfiler som finns
+    //lägg till knappar
+    addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
+                      ARROWUP, CLICK, "", ""));
+    addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
+                      ARROWDOWN, CLICK, "", ""));
+    addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
+                      BACKIMG, CLICK, "Back", ""));
+	loadSaveData();//Load data for save buttons and create them
+}
+
+LoadMenu::~LoadMenu()
+{
+
+}
+
+void LoadMenu::loadSaveData()
+{
+ 	loadVectorData.clear();//Clear vector. If reloading.
+	//Ladda in vilka sparfiler som finns
     ifstream loadData;
     char stringBuffer[256];
     string loadDataPath = string(LOADFOLDER) + string("SaveData.dat");
@@ -52,18 +87,7 @@ LoadMenu::LoadMenu()
         loadVectorData.push_back(tempLoadPair);
     }
     loadData.close();
-    //lägg till knappar
-    addButton(new Button(MENULOADX, MENULOADY, ARROWUPX, ARROWUPY, ARROWWIDTH, ARROWHEIGHT,
-                      ARROWUP, CLICK, "", ""));
-    addButton(new Button(MENULOADX, MENULOADY, ARROWDOWNX, ARROWDOWNY, ARROWWIDTH, ARROWHEIGHT,
-                      ARROWDOWN, CLICK, "", ""));
-    addButton(new Button(MENULOADX, MENULOADY, BACKX, BACKY, BACKWIDTH, BACKHEIGHT,
-                      BACKIMG, CLICK, "", ""));
-    updateLoadButtons();
-}
-
-LoadMenu::~LoadMenu()
-{
+	updateLoadButtons();
 
 }
 
@@ -73,14 +97,13 @@ void LoadMenu::updateLoadButtons()
     {
         removeButton(3);
     }
-    for(int i = 0; i < LOADDRAWS; ++i)
-        {
-            if(i+scrollLenght < (int) loadVectorData.size()-1)
-            {
-                addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY,
-                      LOADIMG, CLICK, (loadVectorData[scrollLenght+i]).name, ""));
-            }
-        }
+	int lastElement = loadVectorData.size()-1;
+	int i = 1;
+    while(LOADDRAWS >= i && lastElement-i-scrollLenght >= 0)
+    {
+		addButton(new Button(MENULOADX, MENULOADY, LOADSTARTX, LOADSTARTY+LOADGAPY*i, LOADWIDTHX, LOADWIDTHY, LOADIMG, CLICK, (loadVectorData[lastElement-i-scrollLenght]).name, ""));
+		i++;
+    }
 }
 
 bool LoadMenu::update()
@@ -112,14 +135,17 @@ bool LoadMenu::update()
         newIteration();
         return true;
     }
-    for(int i = 0; i < LOADDRAWS; ++i)
+	int i = 0;
+    while(i < LOADDRAWS && i+3 < (int)buttons.size())
     {
+
         if(buttons[i+3]->gotPressed())
         {
-            state =  string(LOADFOLDER) + ((loadVectorData[scrollLenght+i]).file).c_str();
+            state =  string(LOADFOLDER) + ((loadVectorData[loadVectorData.size()-2-scrollLenght-i]).file).c_str();
             newIteration();
             return true;
         }
+		i++;
 
     }
     newIteration();

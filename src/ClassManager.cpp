@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    AnimatedSprite.cpp
+ * Enhetsnamn: AnimatedSprite
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar animationer av bilder
+ *
+ */
+
 #include "ClassManager.h"
 #include "GameObjects/Enemies/Enemy.h"
 #include "GameObjects/Towers/Tower.h"
@@ -39,13 +56,19 @@ Tower* ClassManager::createTowerInstance(const string& towerTypeName)
   */
 Enemy* ClassManager::createEnemyInstance(const string& enemyTypeName)
 {
-    if(enemyTypeName == "Badger"){
-            return new Enemy(10,1,20, "/Sprites/Badger/Gray/badger_01_smallani.png", 50, 50, 2, 5);
-    }else if(enemyTypeName == "RedBadger"){
-            return new Enemy(20,1,30, "/Sprites/Badger/Red/badger_02_smallani.png", 50, 50, 2, 5);
-    }else if(enemyTypeName == "BlueBadger"){
-            return new Enemy(30,2,50, "/Sprites/Badger/Blue/badger_01_smallani.png", 50, 50, 2, 5);
+    if(enemyTypeName == "Badger")
+    {
+        return new Enemy(10,1,5, "/Sprites/Badger/Gray/badger_01_smallani.png", 50, 50, 2, 5);
     }
+    else if(enemyTypeName == "RedBadger")
+    {
+        return new Enemy(20,1,7, "/Sprites/Badger/Red/badger_02_smallani.png", 50, 50, 2, 5);
+    }
+    else if(enemyTypeName == "BlueBadger")
+    {
+        return new Enemy(30,2,10, "/Sprites/Badger/Blue/badger_01_smallani.png", 50, 50, 2, 5);
+    }
+
     return NULL;
 }
 

@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TextureLoader.cc
+ * Enhetsnamn: TextureLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av bilder för senare använding i programmet
+ *
+ */
+
 #include "TextureLoader.h"
 #include <SFML/Graphics.hpp>
 
@@ -11,17 +28,17 @@ std::string TextureLoader::directory = IMG;
 std::map<std::string, sf::Texture> TextureLoader::textures;
 
 using namespace std;
-///Klass för att ladda in texturer
+///Statisk klass för att ladda in texturer
 
 /**
-* Tillfällig konstruktor, tar in ett directory och ett filnamn och laddar sedan in
+* Tar in ett filnamn och laddar sedan in
 * filen i en map ex:
 *
-* #define IMAGEDIRECTORY "../media/img/"
-* TextureLoader* test = new TextureLoader(IMAGEDIRECTORY,"apa.JPG")
+* #define IMG "path till filen"
 * En referens till en textur kan sedan fås ur map:en med funktionen getTexture, ex
-* test->getTexture(IMAGEDIRECTORY,"apa.JPG")
-* om filen inte finns inladdad så laddas den in
+* TextureLoader::getTexture("apa.JPG")
+* om filen inte finns inladdad så laddas den in och om en fil som inte finns
+* försöker laddas in så sätts det in en tom textur istället.
 */
 /*
 * Konstruktor
@@ -32,7 +49,7 @@ TextureLoader::TextureLoader()
 }
 
 /*
-* Laddar in en fil i map:en, tar in ett directory och namnet på filen.
+* Laddar in en fil i map:en, tar innamnet på filen.
 */
 void TextureLoader::load(const std::string& filename)
 {
@@ -43,7 +60,9 @@ void TextureLoader::load(const std::string& filename)
     sf::Texture texture;
     if (!texture.loadFromFile(directory+filename))
     {
-        cout << "Loading of texture failed" << endl;
+
+        cout << "Loading of texture failed, empty texture inserted instead." << endl;
+        insert(filename, texture);
         return;
     }
     insert(filename, texture);

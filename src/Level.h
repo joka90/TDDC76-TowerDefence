@@ -6,6 +6,7 @@
 #include "ClickManager/MapMatrix.h"
 #include "GameObjects/Towers/Tower.h"
 #include "GameObjects/Towers/LongTower.h"
+#include "GameObjects/Towers/CannonTower.h"
 #include "GameObjects/Projectiles/Projectile.h"
 #include "GameObjects/VisualEffects/VisualEffect.h"
 #include "GameObjects/Menu/NextWaveMenu.h"
@@ -32,6 +33,8 @@ public:
     Level(std::string saveFile);
     Level(std::string trackName, int);
 
+    ~Level();
+
     std::string trackName;
 
     bool update();
@@ -54,6 +57,7 @@ private:
     void runWave();
     bool saveLevel(std::string saveFile);
 	void loadBase(std::string trackFile, int index = 0);
+	bool done;
 
 	AnimatedSprite background;
 

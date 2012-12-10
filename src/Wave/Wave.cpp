@@ -1,8 +1,18 @@
-/*
- * Wave.cpp
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    Wave.cpp
+ * Enhetsnamn: Wave
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en fiendevåg i spelet
+ *
  */
 
 #include "Wave.h"
@@ -16,33 +26,57 @@ using namespace std;
 Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 ..
 {
     string w;
-    int timeDelta;
+    int timeDelta, number;
     stringstream ss;
 
     ss << waveString;
     while(ss >> w)
     {
-        ss >> timeDelta;
+        timeDelta = 0;
+        ss >> number;
         //Gör så att djur på samma tid kommer förskjutas 400ms vilket gör att
         // de inte hamnar på varandra
         for(vector<std::pair<int,std::string> >::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if((*it).first == timeDelta)
+
+            if((*it).second == "Badger")
             {
-                if(w == "Badger")
-                    timeDelta = timeDelta + 800;
-                if(w == "RedBadger")
-                    timeDelta = timeDelta + 800;
-
+                timeDelta = timeDelta + 800;
             }
-        }
+            else if((*it).second == "RedBadger")
+            {
+                timeDelta = timeDelta + 800;
+            }
+            else if((*it).second == "BlueBadger")
+            {
+                timeDelta = timeDelta + 400;
+            }
 
-        enemies.push_back(make_pair(timeDelta, w));
+        }
+        for(int i = 0; i < number; i++)
+        {
+            enemies.push_back(make_pair(timeDelta, w));
+
+            if(w == "Badger")
+            {
+                timeDelta = timeDelta + 800;
+            }
+            else if(w == "RedBadger")
+            {
+                timeDelta = timeDelta + 800;
+            }
+            else if(w == "BlueBadger")
+            {
+                timeDelta = timeDelta + 400;
+            }
+
+        }
 
     }
 }
 
-Wave::~Wave() {
+Wave::~Wave()
+{
 }
 
 Enemy* Wave::getEnemy(int timeDelta)
@@ -53,7 +87,8 @@ Enemy* Wave::getEnemy(int timeDelta)
         finished = true;
         return NULL;
     }
-    if(enemies[nextIndex].first <= timeDelta){
+    if(enemies[nextIndex].first <= timeDelta)
+    {
         nextIndex++;
         return ClassManager::createEnemyInstance(enemies[nextIndex-1].second);
     }
@@ -61,6 +96,11 @@ Enemy* Wave::getEnemy(int timeDelta)
 }
 
 bool Wave::getFinished()
-    {
-        return finished;
-    }
+{
+    return finished;
+}
+
+void Wave::setFinished()//needed if loading from savefile
+{
+    finished=true;
+}

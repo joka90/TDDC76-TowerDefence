@@ -1,6 +1,6 @@
-Levels/Level1_BG.png
+test.png
 level_1.ogg
-200 100
+190 20
 8 13
 0 0 0 0 0 0 0 0 0 0 0 0 1
 0 0 0 0 0 0 0 0 0 0 0 0 1
@@ -11,6 +11,8 @@ level_1.ogg
 0 1 1 0 0 1 1 0 0 1 0 0 1
 0 0 1 1 1 1 0 0 0 1 1 1 1
 -1,2 3,2 3,4 1,4 1,6 2,6 2,7 5,7 5,6 6,6 6,3 9,3 9,7 12,7 12,-1
-Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000
-RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000 Badger 1000
-BlueBadger 1000 RedBadger 1000 BlueBadger 1000 RedBadger 1000 BlueBadger 1000 RedBadger 1000 BlueBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000 RedBadger 1000
+Badger 9
+RedBadger 6 Badger 9
+BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 17
+BlueBadger 16
+RedBadger 8 BlueBadger 14

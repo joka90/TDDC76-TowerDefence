@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Level.cc
+ * Enhetsnamn: Level
+ * Typ:        implementering
+ * Skriven av: T. Nordlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar en bana i spelet
+ *
+ */
+
 #include "Level.h"
 
 #define LOADFOLDER "saves/"
@@ -12,6 +29,7 @@ Level::Level(string trackFile, int)
 
 void Level::loadBase(string trackFile, int index)
 {
+    done = false;
     trackName = trackFile;
     ifstream loadData;
     char stringBuffer[256];
@@ -58,8 +76,29 @@ void Level::loadBase(string trackFile, int index)
     waves = new WaveHandler(waveHandlerData, index);
 }
 
+Level::~Level()
+{
+    delete(waves);
+    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+    {
+        delete(*it);
+    }
+    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+    {
+        delete(*it);
+    }
+}
+
 Level::Level(string saveFile)
- : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state("")
+ : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state(""), songName("")
 {
 	char type[20];
 	char subType[20];
@@ -89,6 +128,10 @@ Level::Level(string saveFile)
 				{
 					tmpPtr=new LongTower(parmsStr);
 				}
+				else if(subTypeStr=="CannonTower")
+				{
+					tmpPtr=new CannonTower(parmsStr);
+				}
 				//add tower if created
 				if(tmpPtr!=NULL)
 				{
@@ -98,6 +141,7 @@ Level::Level(string saveFile)
 			else if(typeStr=="Level")
 			{
 				sscanf(parms,"%i,%s",&tmpWave,tmpTrackFile);
+				cout << "W: " << tmpWave << " L: " << tmpTrackFile <<endl;
 			}
 			else if(typeStr=="Player")
 			{
@@ -117,144 +161,177 @@ Level::Level(string saveFile)
 		{
 			map.setTower((*it)->getPosX(), (*it)->getPosY());
 		}
+		fclose(pFile);
 	}
 	else
 	{
 		cout << "error reading save file: " << saveFile << endl;
 	}
-	fclose(pFile);
+
 }
 
 bool Level::update()
 {
-    // Update WaveHandler (place new enemy if one)
-    Enemy* enemyToBePlaced = waves->update();
-    if(enemyToBePlaced != NULL)
-    {
-        enemies.push_back(enemyToBePlaced);
-    }
-
-    //Update enemies
-    vector<Enemy*> deleteEnemyVector;
-    for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
-    {
-        if((*it)->update(map))
+    if(!done)
         {
-            deleteEnemyVector.push_back(*it);
+        // Update WaveHandler (place new enemy if one)
+        Enemy* enemyToBePlaced = waves->update();
+        if(enemyToBePlaced != NULL)
+        {
+            enemies.push_back(enemyToBePlaced);
         }
-    }
-    while(!deleteEnemyVector.empty())
-    {
+
+        //Update enemies
+        vector<Enemy*> deleteEnemyVector;
         for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
         {
-            if(deleteEnemyVector[0] == *it)
+            if((*it)->update(map))
             {
-                delete(*it);
-                enemies.erase(it);
-                player.eraseLife();
-                deleteEnemyVector.erase(deleteEnemyVector.begin());
-                break;
+                deleteEnemyVector.push_back(*it);
             }
         }
-    }
-	// Update towers
-	for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
-	{
-		Projectile* p = (*it)->update(enemies);
-		if(p != NULL){
-			projectiles.push_back(p);
-		}
-	}
+        while(!deleteEnemyVector.empty())
+        {
+            for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it)
+            {
+                if(deleteEnemyVector[0] == *it)
+                {
+                    delete(*it);
+                    enemies.erase(it);
+                    player.eraseLife();
+                    deleteEnemyVector.erase(deleteEnemyVector.begin());
+                    break;
+                }
+            }
+        }
+        // Update towers
+        for(vector<Tower*>::iterator it = towers.begin(); it != towers.end(); ++it)
+        {
+            Projectile* p = (*it)->update(enemies);
+            if(p != NULL){
+                projectiles.push_back(p);
+            }
+        }
 
-	// Update projectiles
-	vector<Projectile*> deleteProjectileVector;
-	for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
-	{
-		if((*it)->update(enemies, visualEffects, player))
-		{
-            deleteProjectileVector.push_back(*it);
-		}
-
-	}
-	while(!deleteProjectileVector.empty())
-    {
+        // Update projectiles
+        vector<Projectile*> deleteProjectileVector;
         for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
         {
-            if(deleteProjectileVector[0] == *it)
+            if((*it)->update(enemies, visualEffects, player))
             {
-                delete(*it);
-                projectiles.erase(it);
-                deleteProjectileVector.erase(deleteProjectileVector.begin());
-                break;
+                deleteProjectileVector.push_back(*it);
+            }
+
+        }
+        while(!deleteProjectileVector.empty())
+        {
+            for(vector<Projectile*>::iterator it = projectiles.begin(); it != projectiles.end(); ++it)
+            {
+                if(deleteProjectileVector[0] == *it)
+                {
+                    delete(*it);
+                    projectiles.erase(it);
+                    deleteProjectileVector.erase(deleteProjectileVector.begin());
+                    break;
+                }
             }
         }
-    }
-    vector<VisualEffect*> deleteVisualEffectVector;
-    for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
-	{
-		if((*it)->update())
-		{
-            deleteVisualEffectVector.push_back(*it);
-		}
-
-	}
-	while(!deleteVisualEffectVector.empty())
-    {
+        vector<VisualEffect*> deleteVisualEffectVector;
         for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
         {
-            if(deleteVisualEffectVector[0] == *it)
+            if((*it)->update())
             {
-                delete(*it);
-                visualEffects.erase(it);
-                deleteVisualEffectVector.erase(deleteVisualEffectVector.begin());
-                break;
+                deleteVisualEffectVector.push_back(*it);
+            }
+
+        }
+        while(!deleteVisualEffectVector.empty())
+        {
+            for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
+            {
+                if(deleteVisualEffectVector[0] == *it)
+                {
+                    delete(*it);
+                    visualEffects.erase(it);
+                    deleteVisualEffectVector.erase(deleteVisualEffectVector.begin());
+                    break;
+                }
             }
         }
-    }
 
 
-	// Update menus
-	if(nextWaveMenu.update())
-    {
-        string message = nextWaveMenu.readState();
-        if(message == "NEXTWAVE")
+        // Update menus
+        if(nextWaveMenu.update())
         {
-            waves->startNextWave();
+            string message = nextWaveMenu.readState();
+            if(message == "NEXTWAVE")
+            {
+                waves->startNextWave();
+            }
+        }
+
+        if(player.getLife() <= 0)
+        {
+            visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "gameover.png", 300, 300,
+                                1, 100, false));
+            done = true;
+        }
+
+        if(waves->waveDone() && enemies.empty())
+        {
+            if(waves->onLastWave() && waves->waveDone())
+            {
+                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 250,
+                                1, 100, false));
+                done = true;
+            }
+            else
+            {
+                visualEffects.push_back(new VisualEffect(500, 400, 0, 2, "wavedone.png", 300, 300,
+                                1, 100, false));
+            }
         }
     }
     nextWaveMenu.newIteration();
-    if(statusBarMenu.update())
+    if(statusBarMenu.update(waves->waveDone()&& enemies.empty()))
     {
         string message = statusBarMenu.readState();
         if(message == "SAVE")
         {
-            time_t secs;
-            struct tm * timeinfo;
-
-            time(&secs);//set time
-            timeinfo=localtime(&secs);//get time obj
-
-            std::stringstream fileName;
-            char timeString[80];
-        	fileName << LOADFOLDER << secs << ".sav";
-
-            saveLevel(fileName.str());
-
-
-			strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
-            ofstream saveData;
-			saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
-			if(saveData.is_open())
+			if(waves->waveDone()&&enemies.empty())
 			{
-				saveData << timeString << " " << secs << ".sav\n";
-				saveData.close();
+		        time_t secs;
+		        struct tm * timeinfo;
+
+		        time(&secs);//set time
+		        timeinfo=localtime(&secs);//get time obj
+
+		        std::stringstream fileName;
+		        char timeString[80];
+		    	fileName << LOADFOLDER << secs << ".sav";
+
+		        saveLevel(fileName.str());
+
+
+				strftime(timeString, 80, "%H:%M_%Y-%m-%d",timeinfo);
+		        ofstream saveData;
+				saveData.open(string(LOADFOLDER)+"/SaveData.dat", ios::app);
+				if(saveData.is_open())
+				{
+					saveData << timeString << " " << secs << ".sav\n";
+					saveData.close();
+				}
+				else
+				{
+					cout << "Error opening file." << endl;
+				}
+
+		        //state="START";//TODO visa att vi sparade
 			}
 			else
 			{
-				cout << "Error opening file." << endl;
+				cout << "Can not save during wave." << endl;
 			}
-
-            state="START";
         }
         if(message == "QUIT")
         {
@@ -319,6 +396,7 @@ bool Level::saveLevel(string saveFile)
 
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
+	cout << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
 	//save player
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 

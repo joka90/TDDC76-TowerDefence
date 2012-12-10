@@ -1,8 +1,18 @@
-/*
- * Player.cpp
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    MapMatrix.cpp
+ * Enhetsnamn: MapMatrix
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en spelare
+ *
  */
 
 #include "Player.h"

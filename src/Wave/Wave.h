@@ -25,6 +25,7 @@ class Wave {
         //   timeDelta - the time (in ms) since the start of the wave.
 		Enemy* getEnemy(int timeDelta);
 		bool getFinished();
+		void setFinished();//needed if loading from savefile
 
 	private:
         std::vector<std::pair<int,std::string> > enemies;

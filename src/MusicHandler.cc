@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Level.cc
+ * Enhetsnamn: Level
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar uppspelning av musik osv.
+ *
+ */
+
 #include "MusicHandler.h"
 #include <SFML/Audio.hpp>
 #include <iostream>

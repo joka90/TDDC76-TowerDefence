@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Tower.cpp
+ * Enhetsnamn: Tower
+ * Typ:        implementering
+ * Skriven av: C. Schmidt M. Karlsson
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den generella funktionaltet som alla torn i spelet bör ha.
+ *
+ */
+
 #include "Tower.h"
 #include "../VisualEffects/VisualEffect.h"
 #include <cmath>
@@ -31,7 +48,7 @@ Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
 
 Tower::~Tower()
 {
-
+    delete(firingSound);
 }
 
 int Tower::getPrice() const

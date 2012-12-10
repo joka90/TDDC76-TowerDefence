@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Projectile.cc
+ * Enhetsnamn: Projectile
+ * Typ:        implementering
+ * Skriven av: C. Schmidt M. Karlsson
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den funktionalitet som alla projektiler i spelet bör ha
+ *
+ */
+
 #include "Projectile.h"
 #include <cmath>
 
@@ -7,6 +24,8 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
 {
     sprite.setOrigin(5,21);
     setDirection(enemy);
+    onDeathSound = new sf::Sound(SoundLoader::getSoundBuffer("death_scream.wav"));
+	//onDeathSound->setVolume(80);
 }
 
 /*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T
@@ -16,6 +35,10 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
    return true;
 }*/
 
+Projectile::~Projectile()
+{
+    delete(onDeathSound);
+}
 
 int Projectile::getDamage() const
 {
@@ -127,6 +150,7 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffec
 		    (*it)->hit(damage);
 		    if((*it)->isDead())
 		    {
+		        onDeathSound->play();
 		        deleteVector.push_back(*it);
 		    }
             hit = true;

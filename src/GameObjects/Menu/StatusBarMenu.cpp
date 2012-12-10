@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    StartMenu.cpp
+ * Enhetsnamn: StartMenu
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar menyn längst ned på skärmen med spara, avsluta knappar samt ritar ut spelarens liv och pengar
+ *
+ */
+
 #include "StatusBarMenu.h"
 #define MENUSTARTX 0
 #define MENUSTARTY 560
@@ -23,7 +40,7 @@ StatusBarMenu::StatusBarMenu()
     sprite.setPosition(MENUSTARTX, MENUSTARTY);
     sprite.setScale(800,1);
 
-    addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", ""));
+    addButton(new Button(MENUSTARTX, MENUSTARTY, SAVEX, SAVEY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Save", "Can not save during wave."));
     addButton(new Button(MENUSTARTX, MENUSTARTY, QUITX, QUITY, BUTTONWIDTH, BUTTONHEIGHT, BUTTON, CLICK, "  Quit", ""));
 }
 
@@ -47,18 +64,30 @@ void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
 	canvas.draw(playerLife);
     return;
 }
-bool StatusBarMenu::update()
+bool StatusBarMenu::update(bool waveDone)
 {
+	if(waveDone)
+	{
+		buttons[0]->setButtonHoverText("");
+		buttons[0]->setColor(sf::Color(255,255,255,255));
+	}
+	else
+	{
+		buttons[0]->setButtonHoverText("Can not save during wave.");
+		buttons[0]->setColor(sf::Color(100,100,100,255));
+	}
     if(buttons[0]->gotPressed())
     {
         state = "SAVE";
+    	newIteration();
         return true;
     }
     if(buttons[1]->gotPressed())
     {
         state = "QUIT";
+    	newIteration();
         return true;
     }
-    newIteration();//TODO
+    newIteration();
     return false;
 }

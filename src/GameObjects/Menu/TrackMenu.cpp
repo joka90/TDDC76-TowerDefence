@@ -1,7 +1,23 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TrackMenu.cpp
+ * Enhetsnamn: TrackMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar menyn som låter spelaren välja bana
+ *
+ */
+
 #include "TrackMenu.h"
 #include <iostream>
 #include <fstream>
-
 
 #define CLICK "thozi_daClick.ogg"
 
@@ -9,9 +25,9 @@
 #define MENULOADY 0
 
 #define TRACKLEVELIMG "TRACKLEVELIMG.png"
-#define LEVELDRAWS 4
+#define LEVELDRAWS 6
 #define LEVELSTARTX 100
-#define LEVELSTARTY 100
+#define LEVELSTARTY 80
 #define LEVELGAPY 50
 #define LEVELWIDTHX 300
 #define LEVELWIDTHY 40
@@ -28,8 +44,8 @@
 
 #define BACKX 100
 #define BACKY 500
-#define BACKWIDTH 70
-#define BACKHEIGHT 70
+#define BACKWIDTH 141
+#define BACKHEIGHT 51
 #define BACKIMG "StartButton_BG.png"
 #define LEVELFOLDER "levels/"
 using namespace std;
@@ -73,7 +89,7 @@ void TrackMenu::updateLoadButtons()
     }
     for(int i = 0; i < LEVELDRAWS; ++i)
         {
-            if(i+scrollLenght < (int) trackVectorData.size() -1)
+            if(i+scrollLenght < (int) trackVectorData.size())
             {
                 addButton(new Button(MENULOADX, MENULOADY, LEVELSTARTX, LEVELSTARTY+LEVELGAPY*i, LEVELWIDTHX, LEVELWIDTHY,
                       TRACKLEVELIMG, CLICK, (trackVectorData[scrollLenght+i]).name, ""));
@@ -110,7 +126,8 @@ bool TrackMenu::update()
         newIteration();
         return true;
     }
-    for(int i = 0; i < LEVELDRAWS; ++i)
+	int i = 0;
+   	while(i < LEVELDRAWS && i+3 < (int)buttons.size())
     {
         if(buttons[i+3]->gotPressed())
         {
@@ -118,6 +135,7 @@ bool TrackMenu::update()
             newIteration();
             return true;
         }
+		i++;
     }
     newIteration();
     return false;

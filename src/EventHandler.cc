@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    EventHandler.cc
+ * Enhetsnamn: EventHandler
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar knapptryck och musklick mm.
+ *
+ */
+
 #include "EventHandler.h"
 #include <iostream>
 

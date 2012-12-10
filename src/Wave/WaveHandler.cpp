@@ -1,8 +1,18 @@
-/*
- * WaveHandler.cpp
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    WaveHandler.cpp
+ * Enhetsnamn: WaveHandler
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av alla fiendevågor för en bana
+ *
  */
 
 #include "WaveHandler.h"
@@ -26,13 +36,19 @@ WaveHandler::WaveHandler(string wavesString) : isRunning(false), currentWaveInde
 
 WaveHandler::WaveHandler(string wavesString, int startIndex) : isRunning(false)
 {
-    string waveString;
-    istringstream ss(wavesString);
+    string w, waveString;
+    stringstream ss;
+
+    ss << wavesString;
 
     while(std::getline(ss, waveString)){
         wavesVector.push_back(new Wave(waveString));
     }
     currentWaveIndex = startIndex;
+	if(currentWaveIndex != -1)
+	{
+		wavesVector[currentWaveIndex]->setFinished();
+	}
 }
 
 WaveHandler::~WaveHandler(){
@@ -84,3 +100,14 @@ bool WaveHandler::getIsRunning(){
     return isRunning;
 }
 
+bool WaveHandler::waveDone(){
+    if(currentWaveIndex == -1)
+    {
+        return false;
+    }
+    return wavesVector[currentWaveIndex]->getFinished();
+}
+
+bool WaveHandler::onLastWave(){
+    return currentWaveIndex == (int) wavesVector.size()-1;
+}

@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.cpp
+ * Enhetsnamn: LoadMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den funktionalitet som de flesta menyer bör ha, tillägg av knappar osv.
+ *
+ */
+
 #include <SFML/Graphics.hpp>
 
 #include "Menu.h"
