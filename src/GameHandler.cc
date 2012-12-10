@@ -5,7 +5,7 @@ using namespace std;
 
 GameHandler::GameHandler()
 
-:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu(), soundMenu()
+:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu(), soundMenu(), lifeLastUpdate(20)
 {
     // init all loaders
     FontLoader::load(std::string("appleberry_with_cyrillic.ttf"));
@@ -150,8 +150,18 @@ void GameHandler::run()
 		canvas.draw(text);
 		canvas.display();
 		//uppdatera musik
-		musicHandler.update();
+		//Stöd för att ändra musik beroende på liv kvar om det behövs. Kan lätt ändras till att byta låt istället för att ändra pitch.
+		/*if(currentLevel != NULL)
+		{
+            if(currentLevel->getCurrentLife() != lifeLastUpdate)
+            {
+                musicHandler.increasePitch();
+            }
+            lifeLastUpdate = currentLevel->getCurrentLife();
 
+		}
+		*/
+        musicHandler.update();
 	}
 	return;
 }

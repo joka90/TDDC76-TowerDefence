@@ -398,3 +398,8 @@ string Level::getSongName()
 {
     return songName;
 }
+
+int Level::getCurrentLife()
+{
+    return player.getLife();
+}

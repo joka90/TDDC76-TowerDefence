@@ -21,6 +21,8 @@ MusicHandler::MusicHandler()
     currentSong = NULL;
     previousSongStatus = "stopped";
     currentSongStatus = "stopped";
+    currentLife = NULL;
+    nextLife = NULL;
     return;
 }
 
@@ -112,5 +114,15 @@ void MusicHandler::stopAllSongs()
     currentSong->stop();
     return;
 }
+
+/*
+* Kan ändra pitch på nuvarande sång om livet är lågt, används ev. inte
+*/
+
+void MusicHandler::increasePitch()
+{
+    currentSong->setPitch(currentSong->getPitch() + 0.01);
+}
+
 
 
