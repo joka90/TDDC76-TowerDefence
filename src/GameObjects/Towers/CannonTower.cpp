@@ -38,7 +38,6 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             CannonProjectile* cannonProjectile = new CannonProjectile(xPos, yPos, damage, range/CANONPROJECTILESPEED, 70, enemy);
-            firingSound->setVolume(80);
             firingSound->play();
             return cannonProjectile;
         }
