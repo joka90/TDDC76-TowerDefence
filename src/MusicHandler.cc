@@ -21,8 +21,6 @@ MusicHandler::MusicHandler()
     currentSong = NULL;
     previousSongStatus = "stopped";
     currentSongStatus = "stopped";
-    currentLife = NULL;
-    nextLife = NULL;
     return;
 }
 
