@@ -39,7 +39,7 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, range/PROJECTILESPEED, enemy);
-            //firingSound->play();
+            firingSound->play();
             return longProjectile;
         }
         else
