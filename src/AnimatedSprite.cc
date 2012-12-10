@@ -1,7 +1,10 @@
 #include "AnimatedSprite.h"
+/**
+* @author Johan Källström
+* Date November-December 2012 
+* 
+*/
 
-
-//onödig atm ty vi ej kan ändra animationsinställningar
 AnimatedSprite::AnimatedSprite()
 :sf::Sprite(), spriteWidth(1), nuberOfSprites(1), fpf(1), fpfCounter(0), frame(0), playing(false), animationMask(0,0,1,1)
 {
@@ -59,7 +62,6 @@ void AnimatedSprite::setAnimationProps(unsigned int inSpriteWidth, unsigned int 
 }
 
 AnimatedSprite::~AnimatedSprite()
-//:sf::~Sprite()//not needed?
 {
 
 }
