@@ -12,6 +12,16 @@ std::map<std::string, sf::Music*> MusicLoader::songs;
 using namespace std;
 ///Klass för att ladda in musik
 
+/**
+* Tar in ett filnamn och laddar sedan in
+* filen i en map ex:
+*
+* #define MUSIC "path till filen"
+* En referens till en sång kan sedan fås ur map:en med funktionen getMusic, ex
+* MusicLoader::getMusic("apa.WAV")
+* om filen inte finns inladdad så laddas den in och om en fil som inte finns
+* försöker laddas in så sätts det in en tom textur istället.
+*/
 /*
 * Konstruktor
 */
@@ -21,7 +31,7 @@ MusicLoader::MusicLoader()
 }
 
 /*
-* Laddar in en pekare till musik i map:en, tar in ett directory och namnet på filen.
+* Laddar in en pekare till musik i map:en, tar in namnet på filen.
 */
 void MusicLoader::load(const std::string& filename)
 {
@@ -32,8 +42,8 @@ void MusicLoader::load(const std::string& filename)
     sf::Music* song = new sf::Music();
     if (!song->openFromFile(directory+filename))
     {
-        delete song;
-        cout << "Loading of song failed" << endl;
+        cout << "Loading of song failed, empty song inserted instead." << endl;
+        insert(filename, song);
         return;
     }
     insert(filename, song);

@@ -11,17 +11,17 @@ std::string SoundLoader::directory = SOUND;
 std::map<std::string, sf::SoundBuffer> SoundLoader::sounds;
 
 using namespace std;
-///Klass för att ladda in sounds
+///Statisk klass för att ladda in sounds
 
 /**
-* Tillfällig konstruktor, tar in ett directory och ett filnamn och laddar sedan in
+* Tar in ett filnamn och laddar sedan in
 * filen i en map ex:
 *
-* #define SOUNDDIRECTORY "../media/sounds/"
-* SoundLoader* test = new SoundLoader(SOUNDDIRECTORY,"poff.WAV")
-* En referens till en Soundbuffer kan sedan fås ur map:en med funktionen getSoundBuffer, ex
-* test->getSoundBuffer(SOUNDDIRECTORY,"poff.WAV")
-* om filen inte finns inladdad så laddas den in
+* #define SOUND "path till filen"
+* En referens till en soundbuffer kan sedan fås ur map:en med funktionen getSoundBuffer, ex
+* SoundLoader::getSoundBuffer("apa.WAV")
+* om filen inte finns inladdad så laddas den in och om en fil som inte finns
+* försöker laddas in så sätts det in en tom textur istället.
 */
 /*
 * Konstruktor
@@ -32,7 +32,7 @@ SoundLoader::SoundLoader()
 }
 
 /*
-* Laddar in en fil i map:en, tar in ett directory och namnet på filen.
+* Laddar in en fil i map:en, tar in namnet på filen.
 */
 void SoundLoader::load(const std::string& filename)
 {
@@ -43,7 +43,8 @@ void SoundLoader::load(const std::string& filename)
     sf::SoundBuffer buffer;
     if (!buffer.loadFromFile(directory+filename))
     {
-        cout << "Loading of Soundbuffer failed" << endl;
+        cout << "Loading of Soundbuffer failed, empty soundbuffer inserted instead." << endl;
+        insert(filename, buffer);
         return;
     }
     insert(filename, buffer);
