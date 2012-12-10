@@ -41,6 +41,10 @@ Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 
             {
                 timeDelta = timeDelta + 400;
             }
+            else if((*it).second == "GreenBadger")
+            {
+                timeDelta = timeDelta + 800;
+            }
 
         }
         for(int i = 0; i < number; i++)
@@ -58,6 +62,10 @@ Wave::Wave(string waveString) : nextIndex(0), finished(false) // str1 str2 str3 
             else if(w == "BlueBadger")
             {
                 timeDelta = timeDelta + 400;
+            }
+            else if(w == "GreenBadger")
+            {
+                timeDelta = timeDelta + 800;
             }
 
         }

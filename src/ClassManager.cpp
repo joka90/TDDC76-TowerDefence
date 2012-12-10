@@ -51,6 +51,10 @@ Enemy* ClassManager::createEnemyInstance(const string& enemyTypeName)
     {
         return new Enemy(30,2,10, "/Sprites/Badger/Blue/badger_01_smallani.png", 50, 50, 2, 5);
     }
+     else if(enemyTypeName == "GreenBadger")
+    {
+        return new Enemy(120,1,12, "/Sprites/Badger/Green/badger_02_smallani.png", 50, 50, 2, 5);
+    }
 
     return NULL;
 }
