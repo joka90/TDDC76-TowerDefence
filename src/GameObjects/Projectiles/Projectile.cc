@@ -113,17 +113,7 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
-<<<<<<< HEAD
-bool Projectile::update(std::vector<Enemy*>& enemies, Player& player)
-{
-    move();
-    return isHit(enemies, player);
-}
-
-bool Projectile::isHit(std::vector<Enemy*>& enemyVector, Player& player)
-=======
-bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects)
->>>>>>> c6889b922f5b63a887dcc90a9ee182557417d833
+bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects, Player& player)
 {
     bool hit = false;
     int x,y;
@@ -149,12 +139,7 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffec
         {
             if(deleteVector[0] == *it)
             {
-<<<<<<< HEAD
-                (*it)->onDeath();
-                player.addMoney((*it)->getValue());
-=======
-                (*it)->onDeath(visualeffects);
->>>>>>> c6889b922f5b63a887dcc90a9ee182557417d833
+                (*it)->onDeath(visualeffects, player);
                 delete(*it);
                 enemyVector.erase(it);
                 deleteVector.erase(deleteVector.begin());
@@ -165,7 +150,7 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffec
     return hit;
 }
 
-bool Projectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects)
+bool Projectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects, Player& player)
 {
     move();
     --lifetime;
@@ -173,7 +158,7 @@ bool Projectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>
     {
         return true;
     }
-    return isHit(enemies, visualeffects);
+    return isHit(enemies, visualeffects, player);
 }
 
 

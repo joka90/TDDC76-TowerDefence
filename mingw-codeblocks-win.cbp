@@ -21,11 +21,12 @@
 					<Add directory="../SFML/include" />
 				</Compiler>
 				<Linker>
+					<Add option="-pg -lgmon" />
 					<Add option="-pg" />
 					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
-					<Add library="sfml-audio" />
 					<Add directory="../SFML/lib" />
 				</Linker>
 			</Target>
@@ -83,6 +84,8 @@
 		<Unit filename="src/GameObjects/Menu/Menu.h" />
 		<Unit filename="src/GameObjects/Menu/NextWaveMenu.cpp" />
 		<Unit filename="src/GameObjects/Menu/NextWaveMenu.h" />
+		<Unit filename="src/GameObjects/Menu/SoundMenu.cpp" />
+		<Unit filename="src/GameObjects/Menu/SoundMenu.h" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.cpp" />
 		<Unit filename="src/GameObjects/Menu/StartMenu.h" />
 		<Unit filename="src/GameObjects/Menu/StatusBarMenu.cpp" />

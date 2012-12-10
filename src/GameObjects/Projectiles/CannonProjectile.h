@@ -26,8 +26,8 @@ public:
      * kunna byggas i projectile.
      */
 
-    bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects);
-    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects);
+    bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player);
+    bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects,Player& player);
 
 
 protected:

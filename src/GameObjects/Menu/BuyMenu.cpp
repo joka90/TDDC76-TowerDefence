@@ -21,9 +21,9 @@ BuyMenu::BuyMenu(Player& inPlayer)
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                       TOWERBUTTON, CLICKSOUND, "", "Piltorn"));
+                       TOWERBUTTON, CLICKSOUND, "", "Tack shooter\nCost: 100"));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                       TOWERBUTTON, CLICKSOUND, "", "Kanontorn"));
+                       TOWERBUTTON, CLICKSOUND, "", "Bunny Canon\nCost: 300"));
 
     //lägg till låsatsknappar för utritandet
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+5, TOWERDRAWSTARTY+10, 0, 0,

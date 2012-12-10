@@ -4,7 +4,7 @@
 
 
 LongTower::LongTower(int newX, int newY, int upgradePack)
-: Tower(newX, newY, 80, 10, 200, 30, "Sprites/Bunny/Original/bunny_1_small.png")
+: Tower(newX, newY, 80, 10, 200, 60, "Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
 
