@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    FontLoader.cc
+ * Enhetsnamn: FontLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av fonts för senare använding i programmet
+ *
+ */
+
 #include "FontLoader.h"
 #include <SFML/Graphics.hpp>
 
@@ -11,14 +28,14 @@ using namespace std;
 ///Klass för att ladda in fonter
 
 /**
-* Tillfällig konstruktor, tar in ett directory och ett filnamn och laddar sedan in
+* Tar in ett filnamn och laddar sedan in
 * filen i en map ex:
 *
-* #define FONTDIRECTORY "../media/fonts/"
-* FontLoader* test = new FontLoader(FONTDIRECTORY,"arial.ttf")
+* #define FONTS "path till filen"
 * En referens till en font kan sedan fås ur map:en med funktionen getFont, ex
-* test->getFont(FONTDIRECTORY,"arial.ttf")
-* om filen inte finns inladdad så laddas den in
+* FontLoader::getFont("apa.TTF")
+* om filen inte finns inladdad så laddas den in och om en fil som inte finns
+* försöker laddas in så sätts det in en tom textur istället.
 */
 /*
 * Konstruktor
@@ -33,7 +50,7 @@ FontLoader::FontLoader()
 }
 
 /*
-* Laddar in en fil i map:en, tar in ett directory och namnet på filen.
+* Laddar in en fil i map:en, tar in namnet på filen.
 */
 void FontLoader::load(const std::string& filename)
 {
@@ -45,7 +62,8 @@ void FontLoader::load(const std::string& filename)
     if (!font.loadFromFile(directory+filename))
     {
 
-        cout << "Loading of font failed" << endl;
+        cout << "Loading of font failed, empty font inserted instead." << endl;
+        insert(filename, font);
         return;
     }
     insert(filename, font);

@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Enemy.cc
+ * Enhetsnamn: Enemy
+ * Typ:        implementering
+ * Skriven av: M. Karlsson, T. Nordlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en fiende i spelet
+ *
+ */
+
 #include "Enemy.h"
 
 using namespace std;

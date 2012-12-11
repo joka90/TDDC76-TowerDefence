@@ -1,7 +1,23 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TrackMenu.cpp
+ * Enhetsnamn: TrackMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar menyn som låter spelaren välja bana
+ *
+ */
+
 #include "TrackMenu.h"
 #include <iostream>
 #include <fstream>
-
 
 #define CLICK "thozi_daClick.ogg"
 

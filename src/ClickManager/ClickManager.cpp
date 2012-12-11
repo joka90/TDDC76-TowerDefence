@@ -1,8 +1,18 @@
-/*
- * ClickManager.cpp
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    ClickManager.cpp
+ * Enhetsnamn: ClickManager
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul har hanterar knapptryck på spelplanen då man spelar en level
+ *
  */
 
 #include "ClickManager.h"
@@ -17,14 +27,6 @@
 #include <vector>
 
 using namespace std;
-/*
- * Fler saker ska in in konstruktorn så fort den koden är klar!
- */
-/*
- * Musens rörs, släpps, trycks ned.
- */
-
-
 
 ClickManager::ClickManager(vector<Tower*>& newTowervector, MapMatrix& newMapMatrix, Player& player)
 :    mapMatrix(newMapMatrix), towerVector(newTowervector), markedTower(NULL), buyMenu(player), upgradeMenu(player)

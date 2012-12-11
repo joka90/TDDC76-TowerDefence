@@ -1,8 +1,18 @@
-/*
- * WaveHandler.cpp
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    WaveHandler.cpp
+ * Enhetsnamn: WaveHandler
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av alla fiendevågor för en bana
+ *
  */
 
 #include "WaveHandler.h"

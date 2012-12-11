@@ -1,7 +1,23 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    CannonTower.cpp
+ * Enhetsnamn: CannonTower
+ * Typ:        implementering
+ * Skriven av: C. Schmidt M. Karlsson
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den de olika piltornen i spelet
+ *
+ */
+
 #include "LongTower.h"
 #include <iostream>
 #include "../Projectiles/LongProjectile.h"
-
 
 LongTower::LongTower(int newX, int newY, int upgradePack)
 : Tower(newX, newY, 80, 10, 140, 60, "Sprites/Bunny/Original/bunny_1_small.png")
@@ -24,6 +40,8 @@ LongTower::LongTower(std::string parms)
 : Tower(parms,30,"Sprites/Bunny/Original/bunny_1_small.png")
 {
 	towerType="LongTower";
+    firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
+	firingSound->setVolume(80);
 }
 
 
@@ -39,8 +57,7 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, range/PROJECTILESPEED, enemy);
-            //firingSound->setVolume(80);
-            //firingSound->play();
+            firingSound->play();
             return longProjectile;
         }
         else

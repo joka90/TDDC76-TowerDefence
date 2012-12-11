@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    VisualEffect.cc
+ * Enhetsnamn: VisualEffect
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den olika visual effects som spelet har, dvs animationer som ej påverkar spelet.
+ *
+ */
+
 #include <random>
 #include "../../ClickManager/MapMatrix.h"
 #include "VisualEffect.h"

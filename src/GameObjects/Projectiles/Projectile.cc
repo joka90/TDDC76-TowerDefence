@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Projectile.cc
+ * Enhetsnamn: Projectile
+ * Typ:        implementering
+ * Skriven av: C. Schmidt M. Karlsson
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den funktionalitet som alla projektiler i spelet bör ha
+ *
+ */
+
 #include "Projectile.h"
 #include <cmath>
 

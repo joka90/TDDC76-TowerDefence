@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LongProjectile.cpp
+ * Enhetsnamn: LongProjectile
+ * Typ:        implementering
+ * Skriven av: C. Schmidt M. Karlsson
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar pil Projektilerna i spelet
+ *
+ */
+
 #include "LongProjectile.h"
 #include <cmath>
 

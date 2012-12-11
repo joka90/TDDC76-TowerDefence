@@ -1,5 +1,21 @@
-using namespace std;
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    MapMatrix.cpp
+ * Enhetsnamn: MapMatrix
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul är en abstraktion av representationen av vad som finns på de olika kartkoordninaterna
+ *
+ */
 
+using namespace std;
 
 #include "MapMatrix.h"
 #include <vector>

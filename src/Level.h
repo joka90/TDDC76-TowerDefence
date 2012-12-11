@@ -43,6 +43,8 @@ public:
 
     std::string getSongName();
 
+    int getCurrentLife();
+
 private:
     WaveHandler* waves;
     MapMatrix map;

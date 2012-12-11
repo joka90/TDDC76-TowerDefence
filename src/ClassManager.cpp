@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    AnimatedSprite.cpp
+ * Enhetsnamn: AnimatedSprite
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar animationer av bilder
+ *
+ */
+
 #include "ClassManager.h"
 #include "GameObjects/Enemies/Enemy.h"
 #include "GameObjects/Towers/Tower.h"
@@ -50,6 +67,10 @@ Enemy* ClassManager::createEnemyInstance(const string& enemyTypeName)
     else if(enemyTypeName == "BlueBadger")
     {
         return new Enemy(30,2,10, "/Sprites/Badger/Blue/badger_01_smallani.png", 50, 50, 2, 5);
+    }
+     else if(enemyTypeName == "GreenBadger")
+    {
+        return new Enemy(120,1,12, "/Sprites/Badger/Green/badger_02_smallani.png", 50, 50, 2, 5);
     }
 
     return NULL;

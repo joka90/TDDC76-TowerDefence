@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Level.cc
+ * Enhetsnamn: Level
+ * Typ:        implementering
+ * Skriven av: T. Nordlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar en bana i spelet
+ *
+ */
+
 #include "Level.h"
 
 #define LOADFOLDER "saves/"
@@ -220,6 +237,7 @@ bool Level::update()
             }
         }
         vector<VisualEffect*> deleteVisualEffectVector;
+
         for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
         {
             if((*it)->update())
@@ -396,4 +414,9 @@ bool Level::saveLevel(string saveFile)
 string Level::getSongName()
 {
     return songName;
+}
+
+int Level::getCurrentLife()
+{
+    return player.getLife();
 }

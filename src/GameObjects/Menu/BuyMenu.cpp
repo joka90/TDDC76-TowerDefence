@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    BuyMenu.cpp
+ * Enhetsnamn: BuyMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hjälper clickManager med köp av olika torn
+ *
+ */
+
 #include "BuyMenu.h"
 #include <iostream>
 

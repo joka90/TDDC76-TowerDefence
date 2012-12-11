@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.cpp
+ * Enhetsnamn: LoadMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul låter spelaren välja vilken startfil som skall laddas då man är i huvudmenyn
+ *
+ */
+
 #include <iostream>
 #include <fstream>
 
@@ -54,7 +71,7 @@ LoadMenu::~LoadMenu()
 
 void LoadMenu::loadSaveData()
 {
- 	loadVectorData.clear();//Clear vector. If reloading. 
+ 	loadVectorData.clear();//Clear vector. If reloading.
 	//Ladda in vilka sparfiler som finns
     ifstream loadData;
     char stringBuffer[256];

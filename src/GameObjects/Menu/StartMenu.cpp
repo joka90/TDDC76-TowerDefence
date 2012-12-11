@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    StartMenu.cpp
+ * Enhetsnamn: StartMenu
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den första skärmen som spelaren möts aav då han startar spelet
+ *
+ */
+
 #include "StartMenu.h"
 #include <iostream>
 
