@@ -1,5 +1,26 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    CanonProjectile.h
+ * Enhetsnamn: CanonProjectile
+ * Typ:        implementering
+ * Skriven av: C. Karlsson Schmidt, D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar kanonProjektilerna i spelet
+ *
+ */
+
 #ifndef CannonPROJECTILE_H
 #define CannonPROJECTILE_H
+
+/**
+ * REFERERADE BIBLIOTEK OCH MODULER
+ */
 #include "../GameObject.h"
 #include "Projectile.h"
 #include "../Enemies/Enemy.h"

@@ -6,7 +6,7 @@
  * Filnamn:    CannonTower.cpp
  * Enhetsnamn: CannonTower
  * Typ:        implementering
- * Skriven av: C. Schmidt D. Molin
+ * Skriven av: C. Karlsson Schmidt, D. Molin
  *
  *
  * BESKRIVNING

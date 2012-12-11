@@ -6,7 +6,7 @@
  * Filnamn:    Projectile.cc
  * Enhetsnamn: Projectile
  * Typ:        implementering
- * Skriven av: C. Schmidt M. Karlsson
+ * Skriven av: M. Karlsson, C. Karlsson Schmidt
  *
  *
  * BESKRIVNING
@@ -25,15 +25,7 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
     sprite.setOrigin(5,21);
     setDirection(enemy);
     onDeathSound = new sf::Sound(SoundLoader::getSoundBuffer("death_scream.wav"));
-	//onDeathSound->setVolume(80);
 }
-
-/*bool Projectile::drawSprite(sf::RenderWindow& canvas) // Är redan implementerad i GameObject /T
-{
-   sprite.setPosition(xPos,xPos);
-   canvas.draw(sprite);//game object always have a sprite
-   return true;
-}*/
 
 Projectile::~Projectile()
 {
@@ -139,6 +131,8 @@ void Projectile::setClosestEnemy(std::vector<Enemy*>& enemyVector)
 
     return;
 }
+
+
 bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects, Player& player)
 {
     bool hit = false;

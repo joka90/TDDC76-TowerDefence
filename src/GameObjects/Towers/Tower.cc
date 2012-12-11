@@ -6,7 +6,7 @@
  * Filnamn:    Tower.cpp
  * Enhetsnamn: Tower
  * Typ:        implementering
- * Skriven av: C. Schmidt M. Karlsson
+ * Skriven av: M. Karlsson, C. Karlsson Schmidt
  *
  *
  * BESKRIVNING
@@ -20,6 +20,7 @@
 #include <cmath>
 #include <iostream>
 using namespace std;
+
 #define SIDE 50
 
 //--------------- Public -----------------
@@ -29,8 +30,6 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
   price(newPrice), damage(newDamage), range(newRange),counter(0), counterMax(newCounterMax), directionAngle(0)
 {
 	sprite.setOrigin(SIDE/2,SIDE/2);
-
-    // Set counter
     counter = newCounterMax;
 
 }
@@ -50,6 +49,13 @@ Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
 Tower::~Tower()
 {
     delete(firingSound);
+}
+
+bool Tower::drawSprite(sf::RenderWindow& canvas)
+{
+   sprite.setPosition(xPos,yPos);
+   canvas.draw(sprite);
+   return true;
 }
 
 int Tower::getPrice() const
@@ -107,14 +113,12 @@ std::string Tower::getSaveString()
 
 // -------------- Protected .----------------
 
-// Returnerar en pekare till den fiende som är närmast, fast endast om fienden
-// ligger inom tornets range. Annars returnerar den NULL.
 Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
 {
     Enemy* closestEnemy = NULL;
-    double closestRange = 0;
     double rangeToEnemy;
     bool done = false;
+
     //Skjuter alltid mot första fienden!
     if(!enemyVector.empty())
     {
@@ -134,6 +138,7 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
             }
         }
     }
+
     //calculate tower rotation
     int enemyPosX;
     int enemyPosY;
@@ -153,18 +158,3 @@ Enemy* Tower::getClosestEnemy(std::vector<Enemy*>& enemyVector)
     return closestEnemy;
 
 }
-
-
-Projectile* Tower::update(std::vector<Enemy*>& enemyVector)
-{
-   return NULL;//TODO
-}
-
-
-bool Tower::drawSprite(sf::RenderWindow& canvas)
-{
-   sprite.setPosition(xPos,yPos);
-   canvas.draw(sprite);//game object always have a sprite
-   return true;
-}
-

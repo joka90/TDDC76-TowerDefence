@@ -25,12 +25,10 @@ using namespace std;
 
 ClassManager::ClassManager()
 {
-    //ctor
 }
 
 ClassManager::~ClassManager()
 {
-    //dtor
 }
 /** @brief (one liner)
   *

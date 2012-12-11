@@ -6,7 +6,7 @@
  * Filnamn:    CanonProjectile.cpp
  * Enhetsnamn: CanonProjectile
  * Typ:        implementering
- * Skriven av: C. Schmidt D. Molin
+ * Skriven av: C. Karlsson Schmidt, D. Molin
  *
  *
  * BESKRIVNING
@@ -21,7 +21,6 @@
 
 using namespace std;
 
-// BESTÄMT ATT PROJEKTILEN HAR 15 I SPEED
 CannonProjectile::CannonProjectile(int newX, int newY, int newDamage, int lifetime, int inSplashradius, Enemy* newEnemy)
 : Projectile(newX, newY, newDamage, lifetime, CANONPROJECTILESPEED, newEnemy,"Sprites/cannon.png"), splashradius(inSplashradius)
 {

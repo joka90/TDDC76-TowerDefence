@@ -6,7 +6,7 @@
  * Filnamn:    LongProjectile.cpp
  * Enhetsnamn: LongProjectile
  * Typ:        implementering
- * Skriven av: C. Schmidt M. Karlsson
+ * Skriven av: M. Karlsson, C. Karlsson Schmidt
  *
  *
  * BESKRIVNING
@@ -19,7 +19,6 @@
 #include <cmath>
 
 
-// BESTÄMT ATT PROJEKTILEN HAR 15 I SPEED
 LongProjectile::LongProjectile(int newX, int newY, int newDamage, int lifetime,
                                Enemy* newEnemy)
 : Projectile(newX, newY, newDamage, lifetime, PROJECTILESPEED, newEnemy,"Sprites/arrow.png")
