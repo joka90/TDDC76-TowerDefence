@@ -44,6 +44,10 @@ Button::~Button()
     EventHandler::removeListener(sf::Event::MouseButtonPressed, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonPressedUser*>(this)));
     EventHandler::removeListener(sf::Event::MouseButtonReleased, dynamic_cast<EventUser*>(dynamic_cast<MouseButtonReleasedUser*>(this)));
     EventHandler::removeListener(sf::Event::MouseMoved, dynamic_cast<EventUser*>(dynamic_cast<MouseMovedUser*>(this)));
+	if(clickSound!=NULL)
+	{
+		delete(clickSound);
+	}
 }
 
 Button& Button::operator=(const Button& inButton)

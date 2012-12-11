@@ -36,9 +36,10 @@ Tower::Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int 
 }
 
 Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
-:GameObject(parms, textureReference),counter(0), counterMax(newCounterMax), directionAngle(0)
+:GameObject(parms, textureReference),counter(0), counterMax(newCounterMax), directionAngle(0), currentUpgradePack()
 {
 	int dummyInt;
+
 	//How to scan parameters in towers an other stuff
 	sscanf(parms.c_str(),"%i,%i,%i,%i,%i,%i",&dummyInt,&dummyInt,&price,&damage,&range,&currentUpgradePack);
     // Set counter

@@ -37,7 +37,10 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
 
 Projectile::~Projectile()
 {
-    delete(onDeathSound);
+	if(onDeathSound!=NULL)
+	{
+		delete(onDeathSound);
+	}
 }
 
 int Projectile::getDamage() const

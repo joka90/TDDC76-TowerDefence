@@ -47,6 +47,10 @@ LongTower::LongTower(std::string parms)
 
 LongTower::~LongTower()
 {
+	if(firingSound!=NULL)
+	{
+		delete(firingSound);
+	}
 }
 LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
 {
