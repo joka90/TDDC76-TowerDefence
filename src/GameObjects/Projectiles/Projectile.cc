@@ -24,15 +24,10 @@ Projectile::Projectile(int newX, int newY, int newDamage, int inLifetime, int ne
 {
     sprite.setOrigin(5,21);
     setDirection(enemy);
-    onDeathSound = new sf::Sound(SoundLoader::getSoundBuffer("death_scream.wav"));
 }
 
 Projectile::~Projectile()
 {
-	if(onDeathSound!=NULL)
-	{
-		delete(onDeathSound);
-	}
 }
 
 int Projectile::getDamage() const
@@ -119,7 +114,6 @@ bool Projectile::isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffec
 		    (*it)->hit(damage);
 		    if((*it)->isDead())
 		    {
-		        onDeathSound->play();
 		        deleteVector.push_back(*it);
 		    }
             hit = true;

@@ -14,13 +14,7 @@
  * Denna modul hanterar animationer av bilder
  *
  */
-
-#include "AnimatedSprite.h"
-/**
-* @author Johan Källström
-* Date November-December 2012 
-* 
-*/
+ #include "AnimatedSprite.h"
 
 AnimatedSprite::AnimatedSprite()
 :sf::Sprite(), spriteWidth(1), nuberOfSprites(1), fpf(1), fpfCounter(0), frame(0), playing(false), animationMask(0,0,1,1)

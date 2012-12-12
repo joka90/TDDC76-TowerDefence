@@ -40,15 +40,13 @@ using namespace std;
 * om filen inte finns inladdad så laddas den in och om en fil som inte finns
 * försöker laddas in så sätts det in en tom textur istället.
 */
-/*
-* Konstruktor
-*/
+
 TextureLoader::TextureLoader()
 {
     directory = IMG;
 }
 
-/*
+/**
 * Laddar in en fil i map:en, tar innamnet på filen.
 */
 void TextureLoader::load(const std::string& filename)
@@ -69,7 +67,7 @@ void TextureLoader::load(const std::string& filename)
     return;
 }
 
-/*
+/**
 * Privat funktion, Lägger in texturen i map:en
 */
 void TextureLoader::insert(const std::string& key, sf::Texture& inTexture)
@@ -81,7 +79,7 @@ void TextureLoader::insert(const std::string& key, sf::Texture& inTexture)
   return;
 }
 
-/*
+/**
 * Privat funktion, kollar om texturen finns i map:en
 */
 bool TextureLoader::find(const std::string& key)
@@ -90,7 +88,7 @@ bool TextureLoader::find(const std::string& key)
     return (it != textures.end());
 }
 
-/*
+/**
 * Tar bort en textur från map:en
 */
 void TextureLoader::remove(const std::string& key)
@@ -103,7 +101,7 @@ void TextureLoader::remove(const std::string& key)
   return;
 }
 
-/*
+/**
 * Tömmer map:en
 */
 void TextureLoader::clear()
@@ -111,7 +109,7 @@ void TextureLoader::clear()
     textures.clear(); // fixa med pekare istället blir det stora minnesläckor
 }
 
-/*
+/**
 * Kollar om map:en är tom
 */
 bool TextureLoader::empty()
@@ -119,7 +117,7 @@ bool TextureLoader::empty()
     return(textures.empty());
 }
 
-/*
+/**
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
 void TextureLoader::print()
@@ -132,7 +130,7 @@ void TextureLoader::print()
         }
 }
 
-/*
+/**
 * Hämtar ut en referens till en textur i map:en
 */
 sf::Texture& TextureLoader::getTexture(const std::string& key)

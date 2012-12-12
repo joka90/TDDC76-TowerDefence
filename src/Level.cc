@@ -26,6 +26,7 @@ Level::Level(string trackFile, int)
  {
      loadBase(trackFile, -1);
      victorySound = new sf::Sound(SoundLoader::getSoundBuffer("victory.wav"));
+     gameOverSound = new sf::Sound(SoundLoader::getSoundBuffer("game_over.ogg"));
  }
 
 void Level::loadBase(string trackFile, int index)
@@ -99,6 +100,10 @@ Level::~Level()
     if(victorySound != NULL)
     {
         delete(victorySound);
+    }
+    if(gameOverSound != NULL)
+    {
+        delete(gameOverSound);
     }
 }
 
@@ -279,6 +284,7 @@ bool Level::update()
         {
             visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "gameover.png", 300, 300,
                                 1, 100, false));
+            gameOverSound->play();
             done = true;
         }
 
@@ -286,7 +292,7 @@ bool Level::update()
         {
             if(waves->onLastWave() && waves->waveDone())
             {
-                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 200, 200,
+                visualEffects.push_back(new VisualEffect(250, 250, 0, 2, "youwin.png", 200, 200,
                                 1, 100, false));
                 victorySound->play();
                 done = true;
@@ -332,7 +338,7 @@ bool Level::update()
 					cout << "Error opening file." << endl;
 				}
 
-		        //state="START";//TODO visa att vi sparade
+                visualEffects.push_back(new VisualEffect(20, 350, 0, 60, "savedone.png", 200, 200, 1, 100, false));
 			}
 			else
 			{
@@ -397,7 +403,6 @@ bool Level::saveLevel(string saveFile)
 
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
-	cout << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
 	//save player
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 

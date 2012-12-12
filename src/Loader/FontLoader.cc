@@ -37,9 +37,7 @@ using namespace std;
 * om filen inte finns inladdad så laddas den in och om en fil som inte finns
 * försöker laddas in så sätts det in en tom textur istället.
 */
-/*
-* Konstruktor
-*/
+
 
 std::string FontLoader::directory = FONTS;
 std::map<std::string, sf::Font> FontLoader::fonts;
@@ -49,7 +47,7 @@ FontLoader::FontLoader()
     directory = FONTS;
 }
 
-/*
+/**
 * Laddar in en fil i map:en, tar in namnet på filen.
 */
 void FontLoader::load(const std::string& filename)
@@ -70,7 +68,7 @@ void FontLoader::load(const std::string& filename)
     return;
 }
 
-/*
+/**
 * Privat funktion, Lägger in fonten i map:en
 */
 void FontLoader::insert(const std::string& key, sf::Font inFont)
@@ -82,7 +80,7 @@ void FontLoader::insert(const std::string& key, sf::Font inFont)
   return;
 }
 
-/*
+/**
 * Privat funktion, kollar om fonten finns i map:en
 */
 bool FontLoader::find(const std::string& key)
@@ -91,7 +89,7 @@ bool FontLoader::find(const std::string& key)
     return (it != fonts.end());
 }
 
-/*
+/**
 * Tar bort en font från map:en
 */
 void FontLoader::remove(const std::string& key)
@@ -104,7 +102,7 @@ void FontLoader::remove(const std::string& key)
   return;
 }
 
-/*
+/**
 * Tömmer map:en
 */
 void FontLoader::clear()
@@ -112,7 +110,7 @@ void FontLoader::clear()
     fonts.clear();
 }
 
-/*
+/**
 * Kollar om map:en är tom
 */
 bool FontLoader::empty()
@@ -120,7 +118,7 @@ bool FontLoader::empty()
     return(fonts.empty());
 }
 
-/*
+/**
 * Printar ut alla keys i map:en, kan vara bra till debug
 */
 void FontLoader::print()
@@ -133,7 +131,7 @@ void FontLoader::print()
         }
 }
 
-/*
+/**
 * Hämtar ut en referens till en font i map:en
 */
 sf::Font& FontLoader::getFont(const std::string& key)

@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    TextureLoader.cc
+ * Enhetsnamn: TextureLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av bilder för senare använding i programmet
+ *
+ */
+
 #ifndef TEXTURELOADER
 #define TEXTURELOADER
 

@@ -8,12 +8,36 @@
 class UpgradeMenu : public Menu
 {
     public:
+         /**
+        * Konstruktor
+        * @param inPlayer spelaren som kan uppdatera tornen
+        */
         UpgradeMenu(Player& inPlayer);
+        /**
+        * dtor
+        */
         virtual ~UpgradeMenu();
+        /**
+        * sköter uppdatering av tornen, returnerar true om man försöker sälja tornet
+        */
         bool update();
+        /**
+        * ritar ut menyn
+        * @param canvas fönstret som man skall rita ut på
+        */
         void drawMenu(sf::RenderWindow& canvas);
+        /**
+        * markerar ett torn så att man kan upgradera det tornet
+        * @param inTower tornet som man skall merkera
+        */
         void selectTower(Tower* inTower);
+        /**
+        * avmarkerar tornet som är markerat
+        */
         void deselectTower();
+        /**
+        * returnerar vilket torn som är markerat
+        */
         Tower* getSelected();
     protected:
     private:

@@ -31,7 +31,6 @@ CannonProjectile::~CannonProjectile()
 
 }
 
-
 bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player)
 {
     bool hit = false;
@@ -54,7 +53,6 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
                 (*it)->hit(damage);
                 if((*it)->isDead())
                 {
-                    onDeathSound->play();
                     deleteVector.push_back(*it);
                 }
             }

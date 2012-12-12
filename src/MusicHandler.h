@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    MusicHandler.h
+ * Enhetsnamn: MusicHandler
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
+ */
+
 #ifndef MUSICHANDLER
 #define MUSICHANDLER
 
@@ -13,8 +30,6 @@ class MusicHandler
   void stopAllSongs();
   void setCurrentSong(sf::Music* inSong);
   void increasePitch();
-  void pauseSongs();
-  void startSongs();
  private:
   sf::Music* currentSong;
   sf::Music* previousSong;

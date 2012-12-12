@@ -1,8 +1,18 @@
-/*
- * WaveHandler.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    WaveHandler.h
+ * Enhetsnamn: WaveHandler
+ * Typ:        implementering
+ * Skriven av: T. Norlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
  */
 
 #ifndef WAVEHANDLER_H

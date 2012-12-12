@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    SoundLoader.cc
+ * Enhetsnamn: SoundLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av ljudeffekter för senare använding i programmet
+ *
+ */
+
 #ifndef SOUNDLOADER
 #define SOUNDLOADER
 

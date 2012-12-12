@@ -3,8 +3,8 @@
  *
  * IDENTIFIERING
  *
- * Filnamn:    Level.cc
- * Enhetsnamn: Level
+ * Filnamn:    MusicHandler.cc
+ * Enhetsnamn: MusicHandler
  * Typ:        implementering
  * Skriven av: I. Junaeus
  *
@@ -24,14 +24,11 @@ using namespace std;
 
 ///Klass för att hantera musik
 
-/*
+/**
 * Spelar upp en sång genom att först 'fadea ut' den föregående
 * och sedan spela upp den nya.
 */
 
-/*
-* initierar startvärden
-*/
 MusicHandler::MusicHandler()
 {
     previousSong = NULL;
@@ -41,7 +38,7 @@ MusicHandler::MusicHandler()
     return;
 }
 
-/*
+/**
 * möjlig status för en sång:
 * playing, waitingToPlay, stopped, fading.
 * Fadear ut sånger med statusen "fading" och börjar spela upp nästa sång när previousSång inte spelas längre
@@ -54,6 +51,10 @@ void MusicHandler::update()
     }
     if(previousSongStatus == "fading")
     {
+        if(previousSong->getStatus() == sf::SoundSource::Status::Stopped)
+        {
+            previousSongStatus == "stopped";
+        }
         sf::Time timeStep = sf::seconds(0.0025);
         sf::Clock clock;
         while(clock.getElapsedTime() <= timeStep)
@@ -82,7 +83,7 @@ void MusicHandler::update()
     return;
 }
 
-/*
+/**
 * Sätter currentSong till den sång som ska spelas och gör så att update() kan fadea ut den gamla sången
 */
 void MusicHandler::setCurrentSong(sf::Music* inSong)
@@ -98,7 +99,7 @@ void MusicHandler::setCurrentSong(sf::Music* inSong)
     return;
 }
 
-/*
+/**
 * Spelar upp en sång med loop, används enbart för att starta den första sången
 */
 void MusicHandler::playSong(sf::Music* inSong)
@@ -110,7 +111,7 @@ void MusicHandler::playSong(sf::Music* inSong)
     return;
 }
 
-/*
+/**
 * Stoppar en sång
 */
 void MusicHandler::stopSong(sf::Music* inSong)
@@ -120,17 +121,19 @@ void MusicHandler::stopSong(sf::Music* inSong)
 }
 
 
-/*
+/**
 * Stoppar alla sånger
 */
 void MusicHandler::stopAllSongs()
 {
     previousSong->stop();
+    previousSongStatus == "stopped";
     currentSong->stop();
+    currentSongStatus == "stopped";
     return;
 }
 
-/*
+/**
 * Kan ändra pitch på nuvarande sång om livet är lågt, används ev. inte
 */
 
@@ -139,21 +142,5 @@ void MusicHandler::increasePitch()
     currentSong->setPitch(currentSong->getPitch() + 0.01);
 }
 
-void MusicHandler::pauseSongs()
-{
-    if(currentSongStatus == "playing")
-    {
-        currentSong->pause();
-    }
-    if(previousSongStatus == "fading")
-    {
-        previousSong->pause();
-    }
-}
-
-void MusicHandler::startSongs()
-{
-    return;
-}
 
 
