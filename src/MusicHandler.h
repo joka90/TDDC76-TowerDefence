@@ -11,7 +11,7 @@
  *
  * BESKRIVNING
  *
- * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ * Denna modul hanterar uppspelning av musik osv.
  *
  */
 
