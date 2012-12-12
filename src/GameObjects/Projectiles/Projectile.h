@@ -134,12 +134,5 @@ protected:
     int dirY;
     Enemy* enemy;
     int lifetime;
-
-    /**
-     * Sätter medlemsvariabeln enemy till att peka på den fiende som är närmast projektilen.
-     * @param enemyVector En vektor som innehåller de nuvarande fienderna.
-     */
-    void setClosestEnemy(std::vector<Enemy*>& enemyVector);
-
 };
-#endif //end PROJECTILE_H
+#endif

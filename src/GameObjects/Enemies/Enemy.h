@@ -54,7 +54,7 @@ public:
      * @param inSpriteWidth Spritens bredd - Används till animationen
      * @param inSpriteHeight Spritens höjd - Används till animationen
      * @param inNuberOfSprites Antalet sprites - Används till animationen
-     * @param inFpf - Används till animationen
+     * @param inFpf Antal frames/frame - Används till animationen
      */
     Enemy(int newLife, int newSpeed, int newValue, std::string textureReference, unsigned int inSpriteWidth, unsigned int inSpriteHeight,
      unsigned int inNuberOfSprites = 0, unsigned int inFpf = 1);

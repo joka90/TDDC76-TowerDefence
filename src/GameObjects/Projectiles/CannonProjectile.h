@@ -41,20 +41,12 @@ public:
     CannonProjectile(int newX, int newY, int newDamage, int lifetime, int splashradius, Enemy* newEnemy);
     ~CannonProjectile();
 
-    /**
-     * Ganska oklart vad denna ska göra. Om vi inte använder målsökande bör den endast
-     * uppdatera dess position. Onödigt att då ha den i CannonProjecile. Bör istället
-     * kunna byggas i projectile.
-     */
-
     bool update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player);
     bool isHit(std::vector<Enemy*>& enemyVector, std::vector<VisualEffect*>& visualeffects,Player& player);
 
 
 protected:
     int splashradius;
-private:
 };
 
-#endif // CannonPROJECTILE_H
-
+#endif
