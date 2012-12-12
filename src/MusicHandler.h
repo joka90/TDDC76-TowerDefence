@@ -3,7 +3,7 @@
  *
  * IDENTIFIERING
  *
- * Filnamn:    MusicHandler.cc
+ * Filnamn:    MusicHandler.h
  * Enhetsnamn: MusicHandler
  * Typ:        implementering
  * Skriven av: I. Junaeus
@@ -11,9 +11,10 @@
  *
  * BESKRIVNING
  *
- * Denna modul hanterar uppspelning av musik osv.
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
  *
  */
+
 #ifndef MUSICHANDLER
 #define MUSICHANDLER
 

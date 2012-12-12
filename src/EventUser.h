@@ -1,3 +1,19 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    EventUser.h
+ * Enhetsnamn: EventUser
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
+ */s
 #ifndef EVENTUSER_H
 #define EVENTUSER_H
 

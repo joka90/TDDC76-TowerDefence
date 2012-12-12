@@ -31,7 +31,6 @@ CannonProjectile::~CannonProjectile()
 
 }
 
-
 bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEffect*>& visualeffects,Player& player)
 {
     bool hit = false;

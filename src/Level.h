@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Level.h
+ * Enhetsnamn: Level
+ * Typ:        implementering
+ * Skriven av: Alla
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
+ */
+
 #ifndef  LEVEL_H
 #define LEVEL_H
 #include <SFML/Graphics.hpp>
@@ -11,6 +28,8 @@
 #include "GameObjects/VisualEffects/VisualEffect.h"
 #include "GameObjects/Menu/NextWaveMenu.h"
 #include "GameObjects/Menu/StatusBarMenu.h"
+
+
 #include "AnimatedSprite.h"
 #include "Loader/MusicLoader.h"
 #include "Loader/TextureLoader.h"
@@ -57,7 +76,6 @@ private:
     std::vector<Projectile*> projectiles;
     std::vector<VisualEffect*> visualEffects;
 
-    void runWave();
     bool saveLevel(std::string saveFile);
 	void loadBase(std::string trackFile, int index = 0);
 	bool done;
