@@ -24,9 +24,7 @@
 class Wave {
 	public:
 
-        // Constructs a wave with the enemies and their insertion times (offset from wave start) described as:
-        //  "EnemyName 0 EnemyName 100"
-        // Remark: Only ONE enemy can be placed at a certain time
+        // Constructs a wave with the enemies Ex. "GrayBadger 4"
 		Wave(std::string waveString);
 
 		~Wave();
@@ -34,10 +32,16 @@ class Wave {
         // Returns the enemy that should be placed to the track at the time given by timeDelta.
         //   timeDelta - the time (in ms) since the start of the wave.
 		Enemy* getEnemy(int timeDelta);
+
+		// Returnerar om vågen är färdig
 		bool getFinished();
+
+		// Sätter om vågen är färdig
 		void setFinished();//needed if loading from savefile
 
 	private:
+
+        // Vektor med alla enemies
         std::vector<std::pair<int,std::string> > enemies;
         int nextIndex;
         bool finished;

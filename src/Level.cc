@@ -177,7 +177,6 @@ Level::Level(string saveFile)
 	{
 		cout << "error reading save file: " << saveFile << endl;
 	}
-
 }
 
 bool Level::update()

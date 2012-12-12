@@ -49,46 +49,68 @@ class Level
 public:
 
     Level() = delete;
+    // Konstruktor för att ladda en bana från en befintlig sparning
     Level(std::string saveFile);
     Level(std::string trackName, int);
 
     ~Level();
 
+    // Unikt namn för varje bana
     std::string trackName;
 
+    // Uppdaterar banan, körs varje frame
     bool update();
+    // Returnerar om banan är klar (om man dött eller klarat banan)
     bool isDone();
+    // Ritar ut banan på den canavs som skickas med, körs varje frame
     void draw(sf::RenderWindow& canvas);
+    // Läser aktuellt tillstånd (används vid navigering)
     std::string readState();
-
+    // Returnerar aktuell sång
     std::string getSongName();
-
+    // Returnerar aktuellt antal liv
     int getCurrentLife();
 
 private:
+    // WaveHandler för att hantera banans vågor
     WaveHandler* waves;
+    // MapMatrix för att representera banans karta
     MapMatrix map;
+    // Player för att representera spelaren
     Player player;
+    // ClickManager för att hantera klick
     ClickManager clickManager;
 
+    // Innehåller alla enemies som lever just nu
     std::vector<Enemy*> enemies;
+    // Innehåller alla torn som finns utplacerade just nu
     std::vector<Tower*> towers;
+    // Innehåller alla existerande projektiler just nu
     std::vector<Projectile*> projectiles;
+     // Innehåller alla VisualEffects som visas just nu
     std::vector<VisualEffect*> visualEffects;
 
+
+    // Sparar banan  dess aktuella tillstånd
     bool saveLevel(std::string saveFile);
+    // Laddar en bana från en given sparfil
 	void loadBase(std::string trackFile, int index = 0);
 	bool done;
 
+    // Banans bakgrund
 	AnimatedSprite background;
 
+    // Meny för att starta en ny wave
     NextWaveMenu nextWaveMenu;
+    // Meny för att spara, avsluta, ändra volym
     StatusBarMenu statusBarMenu;
 
+    // Innehålelr aktuellt tillstånd
     std::string state;
 
+    // Banans musik
     std::string songName;
-
+    // Segermusik
     sf::Sound* victorySound;
     sf::Sound* gameOverSound;
 };
