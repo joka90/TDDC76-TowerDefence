@@ -26,6 +26,7 @@ Level::Level(string trackFile, int)
  {
      loadBase(trackFile, -1);
      victorySound = new sf::Sound(SoundLoader::getSoundBuffer("victory.wav"));
+     gameOverSound = new sf::Sound(SoundLoader::getSoundBuffer("game_over.ogg"));
  }
 
 void Level::loadBase(string trackFile, int index)
@@ -99,6 +100,10 @@ Level::~Level()
     if(victorySound != NULL)
     {
         delete(victorySound);
+    }
+    if(gameOverSound != NULL)
+    {
+        delete(gameOverSound);
     }
 }
 
@@ -280,6 +285,7 @@ bool Level::update()
         {
             visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "gameover.png", 300, 300,
                                 1, 100, false));
+            gameOverSound->play();
             done = true;
         }
 
