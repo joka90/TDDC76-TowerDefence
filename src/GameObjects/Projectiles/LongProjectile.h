@@ -48,4 +48,4 @@ public:
     ~LongProjectile();
 };
 
-#endif // LONGPROJECTILE_H
+#endif
