@@ -1,6 +1,6 @@
 test.png
 level_1.ogg
-190 20
+190 5
 8 13
 0 0 0 0 0 0 0 0 0 0 0 0 1
 0 0 0 0 0 0 0 0 0 0 0 0 1
@@ -16,3 +16,4 @@ RedBadger 6 Badger 9
 BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 1 BlueBadger 1 RedBadger 17
 BlueBadger 16
 RedBadger 8 BlueBadger 14
+BlueBadger 20 RedBadger 2 BlueBadger 20 RedBadger 2
