@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    NextWaveMenu.h
+ * Enhetsnamn: NextWaveMenu
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar knappen "next wave" under spelets gång
+ *
+ */
+
 #ifndef NEXTWAVEMENU_H
 #define NEXTWAVEMENU_H
 

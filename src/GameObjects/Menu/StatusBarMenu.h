@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    StartMenu.h
+ * Enhetsnamn: StartMenu
+ * Typ:        defninition
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar menyn längst ned på skärmen med spara, avsluta knappar samt ritar ut spelarens liv och pengar
+ *
+ */
+
 #ifndef STATUSBARMENU_H
 #define STATUSBARMENU_H
 

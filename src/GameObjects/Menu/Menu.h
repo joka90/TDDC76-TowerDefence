@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.h
+ * Enhetsnamn: LoadMenu
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den funktionalitet som de flesta menyer bör ha, tillägg av knappar osv.
+ *
+ */
+
 #ifndef MENU_H
 #define MENU_H
 

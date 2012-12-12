@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.h
+ * Enhetsnamn: LoadMenu
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul låter spelaren välja vilken startfil som skall laddas då man är i huvudmenyn
+ *
+ */
+
 #ifndef LOADMENU_H
 #define LOADMENU_H
 #include <string>

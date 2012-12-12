@@ -5,6 +5,23 @@
 #include <SFML/Audio.hpp>
 #include <string>
 
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    Button.h
+ * Enhetsnamn: Button
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en knapp i spelet
+ *
+ */
+
 #include "../GameObject.h"
 #include "../../Loader/MusicLoader.h"
 #include "../../Loader/TextureLoader.h"

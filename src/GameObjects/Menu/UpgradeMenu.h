@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    UppgradeMenu.h
+ * Enhetsnamn: UppgradeMenu
+ * Typ:        definiton
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar menyn som låter spelaren sälja och uppgradera torn, samverkar med ClickManager
+ *
+ */
+
 #ifndef UPGRADEMENU_H
 #define UPGRADEMENU_H
 #include "../../ClickManager/Player.h"

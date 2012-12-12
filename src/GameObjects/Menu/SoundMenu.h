@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    SoundMenu.h
+ * Enhetsnamn: SoundMenu
+ * Typ:        definition
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar höja/sänka musik och ljudeffekter i spelet
+ *
+ */
+
 #ifndef SOUNDMENU_H
 #define SOUNDMENU_H
 

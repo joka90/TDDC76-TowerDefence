@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    StartMenu.h
+ * Enhetsnamn: StartMenu
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar den första skärmen som spelaren möts aav då han startar spelet
+ *
+ */
+
 #ifndef STARTMENU_H
 #define STARTMENU_H
 
