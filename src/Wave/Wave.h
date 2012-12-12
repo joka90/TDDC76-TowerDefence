@@ -1,10 +1,20 @@
-/*
- * Wave.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    Wave.h
+ * Enhetsnamn: Wave
+ * Typ:        implementering
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
  */
-//Include enemy.h
+
 #ifndef WAVE_H
 #define WAVE_H
 #include <string>

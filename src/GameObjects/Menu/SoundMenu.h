@@ -20,14 +20,15 @@ class SoundMenu : public Menu
         * dtor
         */
         virtual ~SoundMenu();
-        /**
-        * ritar ut menyn
-        * @param canvas fönstret som man ska rita ut på
-        */
-        void drawMenu(sf::RenderWindow& canvas);
-        /**
-        * ändrar ljudvolymen
-        */
+       	/**
+		* drawMenu
+		* @param sf::RenderWindow& Fönster att rita på. Överlagrad för att rita ut bild för ljudvolym.
+		*/
+        void drawMenu(sf::RenderWindow&);
+       	/**
+		* update
+		* @param MusicHandler& Om vi vill kunna pausa musiken från menyn.
+		*/
         bool update(MusicHandler&);
     protected:
     private:
