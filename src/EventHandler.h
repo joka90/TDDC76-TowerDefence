@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    EventHandler.h
+ * Enhetsnamn: EventHandler
+ * Typ:        implementering
+ * Skriven av: D. Molin, T. Norlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
+ */
+
 #ifndef  EVENTHANDLER_H
 #define EVENTHANDLER_H
 #include <SFML/Graphics.hpp>
