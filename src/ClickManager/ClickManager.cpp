@@ -107,7 +107,9 @@ void ClickManager::update()
             {
                 if((*it) == removeTower)
                 {
+                    cout << towerVector.size() << endl;
                     towerVector.erase(it);
+                    cout << towerVector.size() << endl;
                     upgradeMenu.deselectTower();
                     mapMatrix.removeTower(removeTower->getPosX(), removeTower->getPosY());
                     delete(removeTower);

@@ -172,7 +172,6 @@ Level::Level(string saveFile)
 	{
 		cout << "error reading save file: " << saveFile << endl;
 	}
-
 }
 
 bool Level::update()
@@ -383,11 +382,6 @@ string Level::readState()
     string temp = state;
     state = "";
     return temp;
-}
-
-void Level::runWave()
-{
-
 }
 
 bool Level::saveLevel(string saveFile)
