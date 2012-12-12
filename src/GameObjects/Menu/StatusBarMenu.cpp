@@ -48,6 +48,7 @@ StatusBarMenu::~StatusBarMenu()
 {
 
 }
+
 void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
 {
     canvas.draw(sprite);
@@ -64,6 +65,7 @@ void StatusBarMenu::drawMenu(sf::RenderWindow& canvas, Player& player)
 	canvas.draw(playerLife);
     return;
 }
+
 bool StatusBarMenu::update(bool waveDone)
 {
 	if(waveDone)

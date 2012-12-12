@@ -38,14 +38,9 @@ class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUs
 		void mouseButtonReleasedListener(sf::Event event);
 		void update();
         void drawMenus(sf::RenderWindow& canvas);
-		/*
-		vector<tower*>& towerVector;
-		void update(MapMatrix& matrix, vector<tower*>& towerVector);
-		void drawMenu(RenderWindow& canvas);
-		UpgradeMeny upgradeMenu;
-		 */
+
 	private:
-		//void updateMenu()
+
 		void createTower(int x, int y);
 
 		MapMatrix& mapMatrix;
