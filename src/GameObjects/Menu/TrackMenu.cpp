@@ -24,7 +24,7 @@
 #define MENULOADX 0
 #define MENULOADY 0
 
-#define TRACKLEVELIMG "TRACKLEVELIMG.png"
+#define TRACKLEVELIMG "transp-1px.png"
 #define LEVELDRAWS 6
 #define LEVELSTARTX 100
 #define LEVELSTARTY 80
