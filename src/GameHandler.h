@@ -37,17 +37,18 @@ public:
     GameHandler();
     ~GameHandler();
 
-    void run();
+    void run();//startar spellopen.
 
 protected:
     void closedListener(sf::Event);
 
-	Level* currentLevel;
+	Level* currentLevel;// Aktuell level
 
-	int currentState;
+	int currentState; // Nuvarande meny som visas, eller level
 
-	sf::RenderWindow canvas;
+	sf::RenderWindow canvas; // Fönstret
 
+	// Alla menyer.
 	StartMenu startMenu;
 	LoadMenu loadMenu;
 	TrackMenu trackMenu;

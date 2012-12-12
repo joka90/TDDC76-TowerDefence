@@ -49,12 +49,11 @@ void GameHandler::run()
 {
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
-    // Create a graphical text to display
 
 
-    // Create a graphical text to display
-    sf::Text text("Hello SFML", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 30);
-    text.move(600,0);
+    // Create a fps text
+    sf::Text fpsText("fps", FontLoader::getFont("appleberry_with_cyrillic.ttf"), 30);
+    fpsText.move(600,0);
 	sf::Clock frameTime;
 
 	//initiera musik (börjar med menymusik)
@@ -141,7 +140,7 @@ void GameHandler::run()
 			}
 			else if(nextState=="QUIT")
 			{
-				canvas.close();//do some more?
+				canvas.close();
 			}
 			else
 			{
@@ -161,16 +160,20 @@ void GameHandler::run()
 			}
 			nextState="";
 		}
+		
 		//always show soundMenu
 		soundMenu.update(musicHandler);
 		soundMenu.drawMenu(canvas);
+		
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";
-        text.setString(ss.str());
+        fpsText.setString(ss.str());
+        
 		// Update the canvas
-		canvas.draw(text);
+		canvas.draw(fpsText);
 		canvas.display();
+		
 		//uppdatera musik
         if(currentLevel != NULL)
         {
