@@ -110,6 +110,9 @@ Level::~Level()
 Level::Level(string saveFile)
  : player(0,0), clickManager(towers, map, player), nextWaveMenu(),  statusBarMenu(), state(""), songName("")
 {
+
+	victorySound = new sf::Sound(SoundLoader::getSoundBuffer("victory.wav"));
+	gameOverSound = new sf::Sound(SoundLoader::getSoundBuffer("game_over.ogg"));
 	char type[20];
 	char subType[20];
 	char parms[200];
