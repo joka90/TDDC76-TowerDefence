@@ -140,7 +140,6 @@ Level::Level(string saveFile)
 				if(subTypeStr=="LongTower")
 				{
 					tmpPtr=new LongTower(parmsStr);
-					cout << "New LongTower: " << parmsStr << endl;
 				}
 				else if(subTypeStr=="CannonTower")
 				{
