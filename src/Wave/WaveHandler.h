@@ -1,8 +1,18 @@
-/*
- * WaveHandler.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    WaveHandler.h
+ * Enhetsnamn: WaveHandler
+ * Typ:        implementering
+ * Skriven av: T. Norlund
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
  */
 
 #ifndef WAVEHANDLER_H
@@ -13,7 +23,9 @@
 
 class WaveHandler {
 	public:
+        // Konstruktor, tar in sträng med vågor, vågorna är radseparerade
 		WaveHandler(std::string wavesString);
+		// Konstruktor, tar in sträng med vågor, vågorna är radseparerade, med startIndex
         WaveHandler(std::string wavesString, int startIndex);
 		virtual ~WaveHandler();
 
@@ -23,7 +35,10 @@ class WaveHandler {
         // If a new enemy should be placed, it is returned
 		Enemy* update();
 
+        // Returnerar aktuellt vågindex
 		int getCurrentWaveIndex();
+
+
         bool getIsRunning();
         bool waveDone();
         bool onLastWave();

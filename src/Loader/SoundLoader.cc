@@ -40,15 +40,13 @@ using namespace std;
 * om filen inte finns inladdad så laddas den in och om en fil som inte finns
 * försöker laddas in så sätts det in en tom textur istället.
 */
-/*
-* Konstruktor
-*/
+
 SoundLoader::SoundLoader()
 {
     directory = SOUND;
 }
 
-/*
+/**
 * Laddar in en fil i map:en, tar in namnet på filen.
 */
 void SoundLoader::load(const std::string& filename)
@@ -68,7 +66,7 @@ void SoundLoader::load(const std::string& filename)
     return;
 }
 
-/*
+/**
 * Privat funktion, Lägger in soundbuffer i map:en
 */
 void SoundLoader::insert(const std::string& key, sf::SoundBuffer inSoundBuffer)
@@ -79,7 +77,8 @@ void SoundLoader::insert(const std::string& key, sf::SoundBuffer inSoundBuffer)
     }
   return;
 }
-/*
+
+/**
 * Privat funktion, kollar om soundbuffern finns i map:en
 */
 bool SoundLoader::find(const std::string& key)
@@ -87,7 +86,8 @@ bool SoundLoader::find(const std::string& key)
     map<std::string, sf::SoundBuffer>::const_iterator it  = sounds.find(key);
     return (it != sounds.end());
 }
-/*
+
+/**
 * Tar bort en soundbuffer från map:en
 */
 void SoundLoader::remove(const std::string& key)
@@ -99,7 +99,8 @@ void SoundLoader::remove(const std::string& key)
   sounds.erase(key);
   return;
 }
-/*
+
+/**
 * Tömmer map:en
 */
 void SoundLoader::clear()
@@ -107,14 +108,15 @@ void SoundLoader::clear()
     sounds.clear();
 }
 
-/*
+/**
 * Kollar om map:en är tom
 */
 bool SoundLoader::empty()
 {
     return(sounds.empty());
 }
-/*
+
+/**
 * Printar ut det alla keys i map:en, kan vara bra till debug
 */
 void SoundLoader::print()
@@ -126,7 +128,8 @@ void SoundLoader::print()
         //cout << "Value:" << pos->second << endl;
         }
 }
-/*
+
+/**
 * Hämtar ut en referens till en soundbuffer i map:en
 */
 sf::SoundBuffer& SoundLoader::getSoundBuffer(const std::string& key)

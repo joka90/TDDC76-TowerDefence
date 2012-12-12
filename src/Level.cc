@@ -180,7 +180,6 @@ Level::Level(string saveFile)
 	{
 		cout << "error reading save file: " << saveFile << endl;
 	}
-
 }
 
 bool Level::update()
@@ -296,7 +295,7 @@ bool Level::update()
         {
             if(waves->onLastWave() && waves->waveDone())
             {
-                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 200, 200,
+                visualEffects.push_back(new VisualEffect(250, 250, 0, 2, "youwin.png", 200, 200,
                                 1, 100, false));
                 victorySound->play();
                 done = true;

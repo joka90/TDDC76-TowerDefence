@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    SoundMenu.h
+ * Enhetsnamn: SoundMenu
+ * Typ:        definition
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar höja/sänka musik och ljudeffekter i spelet
+ *
+ */
+
 #ifndef SOUNDMENU_H
 #define SOUNDMENU_H
 
@@ -11,16 +28,23 @@
 class SoundMenu : public Menu
 {
     public:
+        /**
+        * Konstruktor
+        * skapar en meny för att kunna ändra ljudvolym
+        */
         SoundMenu();
+        /**
+        * dtor
+        */
         virtual ~SoundMenu();
        	/**
 		* drawMenu
-		* @param sf::RenderWindow& FÃ¶nster att rita pÃ¥. Ã–verlagrad fÃ¶r att rita ut bild fÃ¶r ljudvolym.
+		* @param sf::RenderWindow& Fönster att rita på. Överlagrad för att rita ut bild för ljudvolym.
 		*/
         void drawMenu(sf::RenderWindow&);
        	/**
 		* update
-		* @param MusicHandler& Om vi vill kunna pausa musiken frÃ¥n menyn.
+		* @param MusicHandler& Om vi vill kunna pausa musiken från menyn.
 		*/
         bool update(MusicHandler&);
     protected:

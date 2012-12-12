@@ -49,6 +49,7 @@ void GameHandler::run()
 {
     // Limit the framerate
     canvas.setFramerateLimit(FRAMERATE);
+    // Create a graphical text to display
 
 
     // Create a fps text

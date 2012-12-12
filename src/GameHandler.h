@@ -8,6 +8,24 @@
 #include "Level.h"
 
 #include "GameObjects/Menu/StartMenu.h"
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    GameHandler.h
+ * Enhetsnamn: GameHandler
+ * Typ:        implementering
+ * Skriven av: J. Källström
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
+ *
+ */
+
+
 #include "GameObjects/Menu/LoadMenu.h"
 #include "GameObjects/Menu/TrackMenu.h"
 #include "GameObjects/Menu/SoundMenu.h"

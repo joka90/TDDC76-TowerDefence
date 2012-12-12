@@ -6,7 +6,7 @@
  * Filnamn:    GameObject.h
  * Enhetsnamn: GameObject
  * Typ:        implementering
- * Skriven av: D. Molin
+ * Skriven av: M. Karlsson
  *
  *
  * BESKRIVNING

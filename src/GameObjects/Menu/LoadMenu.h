@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    LoadMenu.h
+ * Enhetsnamn: LoadMenu
+ * Typ:        definition
+ * Skriven av: D. Molin
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul låter spelaren välja vilken startfil som skall laddas då man är i huvudmenyn
+ *
+ */
+
 #ifndef LOADMENU_H
 #define LOADMENU_H
 #include <string>
@@ -8,15 +25,31 @@
 class LoadMenu : public Menu
 {
     public:
+        /**
+        * Konstruktor
+        * laddar in data om vilka sparfiler som finns
+        */
         LoadMenu();
+        /**
+        * dtor
+        */
         virtual ~LoadMenu();
+         /**
+        * returnerar true om man försöker ladda ett nytt spel, och ändrar state till filens namn
+        */
         bool update();
-		void loadSaveData();//Load or reload savedata for buttons
+        /**
+        * laddar om vilka filer som finns
+        */
+		void loadSaveData();
     protected:
     private:
         std::vector<LoadPair> loadVectorData;
         int scrollLenght;
 
+        /**
+        * uppdaterar vilka knappar som skall visas soch var dessa är
+        */
         void updateLoadButtons();
 };
 

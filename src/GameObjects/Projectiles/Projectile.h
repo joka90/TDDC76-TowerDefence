@@ -127,7 +127,6 @@ protected:
     /**
      * Medlemsvariabler
      */
-    sf::Sound* onDeathSound;
     int damage;
     int speed;
     int dirX;
