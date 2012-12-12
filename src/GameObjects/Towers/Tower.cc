@@ -48,7 +48,10 @@ Tower::Tower(std::string parms, int newCounterMax, std::string textureReference)
 
 Tower::~Tower()
 {
-    delete(firingSound);
+   if(firingSound!=NULL)
+	{
+		delete(firingSound);
+	}
 }
 
 bool Tower::drawSprite(sf::RenderWindow& canvas)

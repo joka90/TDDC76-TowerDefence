@@ -25,6 +25,7 @@ Level::Level(string trackFile, int)
  : player(0,0), clickManager(towers, map, player), nextWaveMenu(), statusBarMenu(), state(""), songName("")
  {
      loadBase(trackFile, -1);
+     victorySound = new sf::Sound(SoundLoader::getSoundBuffer("victory.wav"));
  }
 
 void Level::loadBase(string trackFile, int index)
@@ -94,6 +95,10 @@ Level::~Level()
     for(vector<VisualEffect*>::iterator it = visualEffects.begin(); it != visualEffects.end(); ++it)
     {
         delete(*it);
+    }
+    if(victorySound != NULL)
+    {
+        delete(victorySound);
     }
 }
 
@@ -282,8 +287,9 @@ bool Level::update()
         {
             if(waves->onLastWave() && waves->waveDone())
             {
-                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 250, 250,
+                visualEffects.push_back(new VisualEffect(350, 350, 0, 2, "youwin.png", 200, 200,
                                 1, 100, false));
+                victorySound->play();
                 done = true;
             }
             else
@@ -419,4 +425,9 @@ string Level::getSongName()
 int Level::getCurrentLife()
 {
     return player.getLife();
+}
+
+bool Level::isDone()
+{
+    return done;
 }

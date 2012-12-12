@@ -38,6 +38,7 @@ public:
     std::string trackName;
 
     bool update();
+    bool isDone();
     void draw(sf::RenderWindow& canvas);
     std::string readState();
 
@@ -69,6 +70,8 @@ private:
     std::string state;
 
     std::string songName;
+
+    sf::Sound* victorySound;
 };
 
 #endif //end H
