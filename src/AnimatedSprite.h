@@ -17,7 +17,14 @@ public:
     AnimatedSprite(const sf::Texture& inTexture, unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
     ~AnimatedSprite();
 
-    //void setTexture(const sf::Texture& texture, bool resetRect);// not working m_texture is private
+    /**
+    * setTextureAnimation
+    * @param texture a texture.
+    * @param inSpriteWidth the width of the partial image, inSpriteWidth*inNuberOfSprites = the total width of the image.
+    * @param inNuberOfSprites the number of partial images in the big one.
+    * @param inFpf number of frames(how often update() get called) the same image will show.
+    * @param inPlaying start counting frames.
+    */
 	void setTextureAnimation(const sf::Texture& texture,unsigned int inSpriteWidth = 0, unsigned int inNuberOfSprites= 0, unsigned int inFpf = 1, bool inPlaying = false);
 	
 	void setAnimationProps(unsigned int inSpriteWidth, unsigned int inSpriteHeight, unsigned int inNuberOfSprites=0, unsigned int inFpf = 1, bool inPlaying = false);
