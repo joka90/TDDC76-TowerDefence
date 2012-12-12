@@ -1,5 +1,8 @@
-Level1 levels/level_1.lvl
-Level2 levels/level_2.lvl
-Level3 levels/level_3.lvl
-Level4 levels/level_4.lvl
-Level5 levels/level_5.lvl
+GrassyHills levels/level_1.lvl
+RainBowRoad levels/level_2.lvl
+DEBUG levels/level_3.lvl
+EMPTY1 levels/level_3.lvl
+EMPTY2 levels/level_3.lvl
+EMPTY3 levels/level_3.lvl
+EMPTY4 levels/level_3.lvl
+EMPTY5 levels/level_3.lvl

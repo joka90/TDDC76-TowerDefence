@@ -46,10 +46,6 @@ CannonTower::CannonTower(std::string parms)
 
 CannonTower::~CannonTower()
 {
-	if(firingSound!=NULL)
-	{
-		delete(firingSound);
-	}
 }
 CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
 {

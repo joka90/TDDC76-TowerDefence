@@ -167,18 +167,29 @@ void GameHandler::run()
 		canvas.draw(text);
 		canvas.display();
 		//uppdatera musik
-		//Stöd för att ändra musik beroende på liv kvar om det behövs. Kan lätt ändras till att byta låt istället för att ändra pitch.
-		/*if(currentLevel != NULL)
-		{
-            if(currentLevel->getCurrentLife() != lifeLastUpdate)
+        if(currentLevel != NULL)
+        {
+            if(currentLevel->isDone())
             {
-                musicHandler.increasePitch();
+                musicHandler.pauseSongs();
             }
-            lifeLastUpdate = currentLevel->getCurrentLife();
+            //Stöd för att ändra musik beroende på liv kvar om det behövs. Kan lätt ändras till att byta låt istället för att ändra pitch.
+            /*if(currentLevel != NULL)
+            {
+                if(currentLevel->getCurrentLife() != lifeLastUpdate)
+                {
+                    musicHandler.increasePitch();
+                }
+                lifeLastUpdate = currentLevel->getCurrentLife();
 
-		}
-		*/
-        musicHandler.update();
+            }
+            */
+            musicHandler.update();
+        }
+        else
+        {
+            //musicHandler.startSongs();
+        }
 	}
 	return;
 }

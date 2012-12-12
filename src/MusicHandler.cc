@@ -139,5 +139,21 @@ void MusicHandler::increasePitch()
     currentSong->setPitch(currentSong->getPitch() + 0.01);
 }
 
+void MusicHandler::pauseSongs()
+{
+    if(currentSongStatus == "playing")
+    {
+        currentSong->pause();
+    }
+    if(previousSongStatus == "fading")
+    {
+        previousSong->pause();
+    }
+}
+
+void MusicHandler::startSongs()
+{
+    return;
+}
 
 
