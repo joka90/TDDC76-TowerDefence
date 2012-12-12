@@ -8,8 +8,18 @@
 class TrackMenu : public Menu
 {
     public:
+        /**
+        * Konstruktor
+        * skapar en meny som visar vilka banor som finns
+        */
         TrackMenu();
+        /**
+        * dtor
+        */
         virtual ~TrackMenu();
+         /**
+        * returnerar true om man försöker starta ett nytt spel, och ändrar state till filens namn
+        */
         bool update();
     protected:
     private:

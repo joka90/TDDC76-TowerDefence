@@ -6,8 +6,18 @@
 class StartMenu : public Menu
 {
     public:
+        /**
+        * Konstruktor
+        * skapar en startmeny
+        */
         StartMenu();
+        /**
+        * dtor
+        */
         virtual ~StartMenu();
+        /**
+        * returnerar true om man försöker avsluta spelet eller försöker byta meny, sättar state till "QUIT" "TRACKS" respektive "LOAD"
+        */
         bool update();
     protected:
     private:
