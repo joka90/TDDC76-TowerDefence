@@ -33,6 +33,7 @@ class MusicHandler
  private:
   sf::Music* currentSong;
   sf::Music* previousSong;
+  sf::Music* songInQueue;
   std::string currentSongStatus;
   std::string previousSongStatus;
 };

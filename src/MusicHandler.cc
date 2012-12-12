@@ -33,6 +33,7 @@ MusicHandler::MusicHandler()
 {
     previousSong = NULL;
     currentSong = NULL;
+    songInQueue = NULL;
     previousSongStatus = "stopped";
     currentSongStatus = "stopped";
     return;
@@ -45,10 +46,10 @@ MusicHandler::MusicHandler()
 */
 void MusicHandler::update()
 {
-    if(currentSongStatus == "playing")
+    /*if(currentSongStatus == "playing")
     {
         return;
-    }
+    }*/
     if(previousSongStatus == "fading")
     {
         if(previousSong->getStatus() == sf::SoundSource::Status::Stopped)
@@ -66,6 +67,15 @@ void MusicHandler::update()
             previousSong->stop();
             previousSongStatus = "stopped";
         }
+        return;
+    }
+    if(songInQueue != NULL)
+    {
+        previousSong = currentSong;
+        currentSong = songInQueue;
+        songInQueue = NULL;
+        previousSongStatus = "fading";
+        currentSongStatus = "waitingToPlay";
     }
     if(previousSongStatus == "stopped")
     {
@@ -90,6 +100,11 @@ void MusicHandler::setCurrentSong(sf::Music* inSong)
 {
     if(currentSong == inSong)
     {
+        return;
+    }
+    if(previousSongStatus == "fading")
+    {
+        songInQueue == inSong;
         return;
     }
     previousSong = currentSong;
