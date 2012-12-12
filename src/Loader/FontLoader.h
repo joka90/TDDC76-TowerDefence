@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    FontLoader.cc
+ * Enhetsnamn: FontLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av fonts för senare använding i programmet
+ *
+ */
+
 #ifndef FONTLOADER
 #define FONTLOADER
 

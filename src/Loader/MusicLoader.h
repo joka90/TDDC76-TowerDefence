@@ -1,3 +1,20 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    MusicLoader.cc
+ * Enhetsnamn: MusicLoader
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar inladdning och lagring av musik för senare använding i programmet
+ *
+ */
+
 #ifndef MUSICLOADER_H
 #define MUSICLOADER_H
 

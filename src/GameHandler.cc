@@ -171,7 +171,7 @@ void GameHandler::run()
 		// Update the canvas
 		canvas.draw(text);
 		canvas.display();
-		//uppdatera musik
+		//uppdatera musik, byter sång om man bara har 1 liv kvar, spelar upp en kort sång vid vinst/förlust.
         if(currentLevel != NULL)
         {
             if(currentLevel->isDone() || currentLevel->getCurrentLife() == 0)

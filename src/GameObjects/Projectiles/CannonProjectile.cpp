@@ -54,7 +54,6 @@ bool CannonProjectile::update(std::vector<Enemy*>& enemies, std::vector<VisualEf
                 (*it)->hit(damage);
                 if((*it)->isDead())
                 {
-                    onDeathSound->play();
                     deleteVector.push_back(*it);
                 }
             }

@@ -1,3 +1,19 @@
+/**
+ * TDDC76 TowerDefence
+ *
+ * IDENTIFIERING
+ *
+ * Filnamn:    MusicHandler.cc
+ * Enhetsnamn: MusicHandler
+ * Typ:        implementering
+ * Skriven av: I. Junaeus
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar uppspelning av musik osv.
+ *
+ */
 #ifndef MUSICHANDLER
 #define MUSICHANDLER
 
