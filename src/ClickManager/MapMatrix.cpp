@@ -6,7 +6,7 @@
  * Filnamn:    MapMatrix.cpp
  * Enhetsnamn: MapMatrix
  * Typ:        implementering
- * Skriven av: C. Schmidt
+ * Skriven av: C. Karlsson Schmidt
  *
  *
  * BESKRIVNING

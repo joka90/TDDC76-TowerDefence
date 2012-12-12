@@ -38,7 +38,7 @@ BuyMenu::BuyMenu(Player& inPlayer)
 {
     //HÅRDKODAT VILKAT TORN SOM FINNS ATT KÖPA
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
-                       TOWERBUTTON, CLICKSOUND, "", "Tack shooter\nCost: 100"));
+                       TOWERBUTTON, CLICKSOUND, "", "Arrow Tower\nCost: 100"));
     addButton(new Button(BUYMENUSTARTX, BUYMENUSTARTY, TOWERDRAWSTARTX+TOWERDRAWSPACEX, TOWERDRAWSTARTY, TOWERWIDTH, TOWERHEIGHT,
                        TOWERBUTTON, CLICKSOUND, "", "Bunny Canon\nCost: 300"));
 
