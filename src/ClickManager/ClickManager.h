@@ -1,9 +1,20 @@
-/*
- * ClickManager.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    ClickManager.h
+ * Enhetsnamn: ClickManager
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul har hanterar knapptryck på spelplanen då man spelar en level
+ *
  */
+
 
 #ifndef CLICKMANAGER_H_
 #define CLICKMANAGER_H_
@@ -43,7 +54,7 @@ class ClickManager : public MouseButtonPressedUser, public MouseButtonReleasedUs
 
 		BuyMenu buyMenu;
         UpgradeMenu upgradeMenu;
-        
+
 		sf::RectangleShape towerMarker;
 };
 

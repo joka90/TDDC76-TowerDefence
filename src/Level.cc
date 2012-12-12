@@ -6,7 +6,7 @@
  * Filnamn:    Level.cc
  * Enhetsnamn: Level
  * Typ:        implementering
- * Skriven av: T. Nordlund
+ * Skriven av: T. Norlund
  *
  *
  * BESKRIVNING

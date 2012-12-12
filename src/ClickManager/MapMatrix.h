@@ -1,8 +1,18 @@
-/*
- * MapMatrix.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 17 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    MapMatrix.h
+ * Enhetsnamn: MapMatrix
+ * Typ:        implementering
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul är en abstraktion av representationen av vad som finns på de olika kartkoordninaterna
+ *
  */
 #include <SFML/Graphics.hpp>
 

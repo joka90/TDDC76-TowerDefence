@@ -1,8 +1,18 @@
-/*
- * Player.h
+/**
+ * TDDC76 TowerDefence
  *
- *  Created on: 18 nov 2012
- *      Author: Calle
+ * IDENTIFIERING
+ *
+ * Filnamn:    Player.h
+ * Enhetsnamn: Player
+ * Typ:        header
+ * Skriven av: C. Schmidt
+ *
+ *
+ * BESKRIVNING
+ *
+ * Denna modul hanterar representationen av en spelare
+ *
  */
 
 #ifndef PLAYER_H_

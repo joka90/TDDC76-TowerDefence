@@ -5,8 +5,8 @@
  *
  * Filnamn:    Enemy.h
  * Enhetsnamn: Enemy
- * Typ:        implementering
- * Skriven av: M. Karlsson, T. Nordlund
+ * Typ:        header
+ * Skriven av: M. Karlsson, T. Norlund
  *
  *
  * BESKRIVNING

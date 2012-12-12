@@ -6,7 +6,7 @@
  * Filnamn:    Enemy.cc
  * Enhetsnamn: Enemy
  * Typ:        implementering
- * Skriven av: M. Karlsson, T. Nordlund
+ * Skriven av: M. Karlsson, T. Norlund
  *
  *
  * BESKRIVNING
