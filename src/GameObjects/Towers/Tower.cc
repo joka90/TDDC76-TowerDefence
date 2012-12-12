@@ -54,13 +54,6 @@ Tower::~Tower()
 	}
 }
 
-bool Tower::drawSprite(sf::RenderWindow& canvas)
-{
-   sprite.setPosition(xPos,yPos);
-   canvas.draw(sprite);
-   return true;
-}
-
 int Tower::getPrice() const
 {
     return price;

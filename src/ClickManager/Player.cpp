@@ -3,8 +3,8 @@
  *
  * IDENTIFIERING
  *
- * Filnamn:    MapMatrix.cpp
- * Enhetsnamn: MapMatrix
+ * Filnamn:    Player.cpp
+ * Enhetsnamn: Player
  * Typ:        implementering
  * Skriven av: C. Schmidt
  *

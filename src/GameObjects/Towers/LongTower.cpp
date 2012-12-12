@@ -28,12 +28,11 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
-	upgradeText = "+Range\nCost: 100";
-	upgradePrice = 100;
+	upgradeText = "+Range\nCost: 80";
+	upgradePrice = 80;
     while(currentUpgradePack < upgradePack){
         upgrade();
     }
-
 }
 
 LongTower::LongTower(std::string parms)
@@ -42,6 +41,12 @@ LongTower::LongTower(std::string parms)
 	towerType="LongTower";
     firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
 	firingSound->setVolume(80);
+
+    int upgradePack = currentUpgradePack;
+    currentUpgradePack = 0;
+    while(currentUpgradePack < upgradePack){
+        upgrade();
+    }
 }
 
 

@@ -43,8 +43,8 @@ public:
     LongTower(int newX, int newY, int upgradePack = 0);
 
     /**
-     * Konstruktor
-     * @param parms
+     * Konstruktor för initering via sparfil.
+     * @param parms Sträng för initiering via fil, se Tower::getSaveString()
      */
     LongTower(std::string parms);
 
@@ -57,7 +57,7 @@ public:
      * eller om det inte finns någon fiende inom räckvidden returnerar den NULL.
      * @param enemyVector En vektor innehållande alla nuvarande vektorer.
      * @return LongProjectile* En pekare till en Projectile om tornet kan skjuta samt det finns fiende
-     *                     inom räckvidd. Returnerar annars NULL
+     *                         inom räckvidd. Returnerar annars NULL
      */
     LongProjectile* update(std::vector<Enemy*>& enemies);
 

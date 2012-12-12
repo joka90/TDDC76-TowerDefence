@@ -6,7 +6,7 @@
  * Filnamn:    WaveHandler.cpp
  * Enhetsnamn: WaveHandler
  * Typ:        implementering
- * Skriven av: C. Schmidt
+ * Skriven av: T. Norlund
  *
  *
  * BESKRIVNING

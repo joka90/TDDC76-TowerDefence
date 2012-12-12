@@ -6,7 +6,7 @@
  * Filnamn:    Wave.cpp
  * Enhetsnamn: Wave
  * Typ:        implementering
- * Skriven av: C. Schmidt
+ * Skriven av: C. Schmidt & T. Norlund
  *
  *
  * BESKRIVNING

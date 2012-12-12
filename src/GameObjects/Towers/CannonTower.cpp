@@ -21,7 +21,7 @@
 
 #define SCALE 0.3
 CannonTower::CannonTower(int newX, int newY, int upgradePack)
-: Tower(newX, newY, 80, 20, 200, 140, "Sprites/Bunny/Original/tower_bunnies_small.png")
+: Tower(newX, newY, 200, 20, 200, 140, "Sprites/Bunny/Original/tower_bunnies_small.png")
 {
 	towerType="CannonTower";
 	firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
@@ -29,7 +29,8 @@ CannonTower::CannonTower(int newX, int newY, int upgradePack)
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
-	upgradePrice = 100;
+	upgradeText = "+Damage\nCost: 90";
+	upgradePrice = 90;
     while(currentUpgradePack < upgradePack){
         upgrade();
     }
@@ -42,6 +43,12 @@ CannonTower::CannonTower(std::string parms)
 	towerType="CannonTower";
     firingSound = new sf::Sound(SoundLoader::getSoundBuffer("canon_fire.wav"));
 	firingSound->setVolume(80);
+
+    int upgradePack = currentUpgradePack;
+    currentUpgradePack = 0;
+    while(currentUpgradePack < upgradePack){
+        upgrade();
+    }
 }
 
 CannonTower::~CannonTower()
@@ -72,11 +79,15 @@ CannonProjectile* CannonTower::update(std::vector<Enemy*>& enemies)
 }
 void CannonTower::upgrade(){
 
+
     ++currentUpgradePack;
 
     if(currentUpgradePack == 1){
-        upgradePrice = 200;
-        range = 300;
+        price = 250; // Sell price
+        damage = 30;
+
+        upgradePrice = 0;
+        upgradeText = "Fully Upgraded";
     }
 
 }

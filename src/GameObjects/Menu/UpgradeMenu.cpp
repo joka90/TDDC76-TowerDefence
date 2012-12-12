@@ -96,7 +96,7 @@ bool UpgradeMenu::update()
         if(player.canAfford(selectedTower->getUpgradePrice()) && selectedTower->getUpgradePrice() != 0){
             player.subractMoney(selectedTower->getUpgradePrice());
             selectedTower->upgrade();
-            buttons[1]->setButtonHoverText(selectedTower->getUpgradeText());
+            buttons[1]->setButtonText(selectedTower->getUpgradeText());
             towerRange.setRadius(selectedTower->getRange());
             towerRange.setOrigin(selectedTower->getRange(),selectedTower->getRange());
             towerRange.setPosition((selectedTower->getPosX()),(selectedTower->getPosY()));
