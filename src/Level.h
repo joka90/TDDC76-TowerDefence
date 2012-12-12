@@ -71,6 +71,7 @@ private:
     std::string songName;
 
     sf::Sound* victorySound;
+    sf::Sound* gameOverSound;
 };
 
 #endif //end H

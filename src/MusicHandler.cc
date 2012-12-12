@@ -54,6 +54,10 @@ void MusicHandler::update()
     }
     if(previousSongStatus == "fading")
     {
+        if(previousSong->getStatus() == sf::SoundSource::Status::Stopped)
+        {
+            previousSongStatus == "stopped";
+        }
         sf::Time timeStep = sf::seconds(0.0025);
         sf::Clock clock;
         while(clock.getElapsedTime() <= timeStep)
@@ -126,7 +130,9 @@ void MusicHandler::stopSong(sf::Music* inSong)
 void MusicHandler::stopAllSongs()
 {
     previousSong->stop();
+    previousSongStatus == "stopped";
     currentSong->stop();
+    currentSongStatus == "stopped";
     return;
 }
 
@@ -139,21 +145,5 @@ void MusicHandler::increasePitch()
     currentSong->setPitch(currentSong->getPitch() + 0.01);
 }
 
-void MusicHandler::pauseSongs()
-{
-    if(currentSongStatus == "playing")
-    {
-        currentSong->pause();
-    }
-    if(previousSongStatus == "fading")
-    {
-        previousSong->pause();
-    }
-}
-
-void MusicHandler::startSongs()
-{
-    return;
-}
 
 

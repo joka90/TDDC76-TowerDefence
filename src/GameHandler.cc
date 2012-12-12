@@ -22,7 +22,7 @@ using namespace std;
 
 GameHandler::GameHandler()
 
-:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu(), soundMenu(), lifeLastUpdate(20)
+:currentLevel(NULL), currentState(STARTMENU), canvas(sf::VideoMode(WINDOWWIDTH, WINDOWHEIGHT), WINDOWNAME), startMenu(), loadMenu(), trackMenu(), soundMenu()
 {
     // init all loaders
     FontLoader::load(std::string("appleberry_with_cyrillic.ttf"));
@@ -83,6 +83,11 @@ void GameHandler::run()
 				nextState=currentLevel->readState();
 			}
 			currentLevel->draw(canvas);
+			if(nextState != "")
+			{
+			    delete(currentLevel);
+			    currentLevel = NULL;
+			}
 		  	break;
 		case LOADMENU:
 			if(loadMenu.update())
@@ -169,27 +174,16 @@ void GameHandler::run()
 		//uppdatera musik
         if(currentLevel != NULL)
         {
-            if(currentLevel->isDone())
+            if(currentLevel->isDone() || currentLevel->getCurrentLife() == 0)
             {
-                musicHandler.pauseSongs();
+                musicHandler.stopAllSongs();
             }
-            //Stöd för att ändra musik beroende på liv kvar om det behövs. Kan lätt ändras till att byta låt istället för att ändra pitch.
-            /*if(currentLevel != NULL)
+            if(currentLevel->getCurrentLife() == 1)
             {
-                if(currentLevel->getCurrentLife() != lifeLastUpdate)
-                {
-                    musicHandler.increasePitch();
-                }
-                lifeLastUpdate = currentLevel->getCurrentLife();
-
+                musicHandler.setCurrentSong(MusicLoader::getMusic("low_health.ogg"));
             }
-            */
-            musicHandler.update();
         }
-        else
-        {
-            //musicHandler.startSongs();
-        }
+        musicHandler.update();
 	}
 	return;
 }

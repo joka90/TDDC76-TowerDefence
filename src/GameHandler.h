@@ -55,7 +55,6 @@ protected:
 
 private:
     MusicHandler musicHandler;
-    int lifeLastUpdate;
 
 };
 
