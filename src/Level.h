@@ -57,7 +57,6 @@ private:
     std::vector<Projectile*> projectiles;
     std::vector<VisualEffect*> visualEffects;
 
-    void runWave();
     bool saveLevel(std::string saveFile);
 	void loadBase(std::string trackFile, int index = 0);
 	bool done;

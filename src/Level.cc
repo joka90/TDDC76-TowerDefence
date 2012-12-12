@@ -333,7 +333,7 @@ bool Level::update()
 					cout << "Error opening file." << endl;
 				}
 
-		        //state="START";//TODO visa att vi sparade
+                visualEffects.push_back(new VisualEffect(20, 350, 0, 60, "savedone.png", 200, 200, 1, 100, false));
 			}
 			else
 			{
@@ -385,11 +385,6 @@ string Level::readState()
     return temp;
 }
 
-void Level::runWave()
-{
-
-}
-
 bool Level::saveLevel(string saveFile)
 {
 	filebuf fb;
@@ -403,7 +398,6 @@ bool Level::saveLevel(string saveFile)
 
 	//save level and waveHandler
 	os << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
-	cout << "Level" << " Level " << waves->getCurrentWaveIndex() << ","  << trackName << endl;
 	//save player
 	os << "Player" << " Player " << player.getMoney() << "," << player.getLife() << endl;
 
