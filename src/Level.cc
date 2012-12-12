@@ -290,7 +290,10 @@ bool Level::update()
         {
             visualEffects.push_back(new VisualEffect(300, 250, 0, 2, "gameover.png", 300, 300,
                                 1, 100, false));
-            gameOverSound->play();
+            if(gameOverSound != NULL)
+            {
+                gameOverSound->play();
+            }
             done = true;
         }
 
@@ -300,7 +303,10 @@ bool Level::update()
             {
                 visualEffects.push_back(new VisualEffect(250, 250, 0, 2, "youwin.png", 200, 200,
                                 1, 100, false));
+            if(gameOverSound != NULL)
+            {
                 victorySound->play();
+            }
                 done = true;
             }
             else

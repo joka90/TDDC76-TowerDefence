@@ -58,7 +58,7 @@ void GameHandler::run()
 	sf::Clock frameTime;
 
 	//initiera musik (börjar med menymusik)
-	musicHandler.playSong(MusicLoader::getMusic("menu.ogg"));
+    musicHandler.setCurrentSong(MusicLoader::getMusic("menu.ogg"));
 
     EventHandler::addListener(sf::Event::Closed, this);
     //sleep all the inactive menus
@@ -155,26 +155,26 @@ void GameHandler::run()
 				{
 				    currentState=LEVEL;
 				    currentLevel = new Level(nextState, 0);
-				    musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
+                    musicHandler.setCurrentSong(MusicLoader::getMusic(currentLevel->getSongName()));
 
 				}
 			}
 			nextState="";
 		}
-		
+
 		//always show soundMenu
 		soundMenu.update(musicHandler);
 		soundMenu.drawMenu(canvas);
-		
+
         // SHOW FPS
         std::stringstream ss;
         ss <<  1/renderTime.asSeconds() << " fps";
         fpsText.setString(ss.str());
-        
+
 		// Update the canvas
 		canvas.draw(fpsText);
 		canvas.display();
-		
+
 		//uppdatera musik
         if(currentLevel != NULL)
         {

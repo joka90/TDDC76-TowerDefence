@@ -46,12 +46,20 @@ MusicHandler::MusicHandler()
 */
 void MusicHandler::update()
 {
-    /*if(currentSongStatus == "playing")
-    {
-        return;
-    }*/
     if(previousSongStatus == "fading")
     {
+        if(previousSong == NULL)
+        {
+            if(currentSong->getVolume() != 100)
+            {
+                currentSong->setVolume(100);
+            }
+            currentSong->setLoop(true);
+            currentSong->play();
+            currentSongStatus = "playing";
+            previousSongStatus == "stopped";
+            return;
+        }
         if(previousSong->getStatus() == sf::SoundSource::Status::Stopped)
         {
             previousSongStatus == "stopped";
@@ -81,6 +89,11 @@ void MusicHandler::update()
     {
         if(currentSongStatus != "playing")
         {
+            if(currentSong == NULL)
+            {
+                currentSongStatus == "stopped";
+                return;
+            }
             if(currentSong->getVolume() != 100)
             {
                 currentSong->setVolume(100);
@@ -98,6 +111,17 @@ void MusicHandler::update()
 */
 void MusicHandler::setCurrentSong(sf::Music* inSong)
 {
+    if(inSong == NULL)
+    {
+        return;
+    }
+    if(previousSong == NULL && currentSong == NULL)
+    {
+        currentSong = inSong;
+        currentSongStatus = "playing";
+        currentSong->setLoop(true);
+        currentSong->play();
+    }
     if(currentSong == inSong)
     {
         return;
@@ -115,11 +139,16 @@ void MusicHandler::setCurrentSong(sf::Music* inSong)
 }
 
 /**
-* Spelar upp en sång med loop, används enbart för att starta den första sången
+* Spelar upp en sång med loop, används enbart för att starta den första sången(används inte längre)
 */
 void MusicHandler::playSong(sf::Music* inSong)
 {
     currentSong = inSong;
+    if(inSong == NULL)
+    {
+        currentSongStatus == "stopped";
+        return;
+    }
     currentSongStatus = "playing";
     currentSong->setLoop(true);
     currentSong->play();
@@ -149,7 +178,7 @@ void MusicHandler::stopAllSongs()
 }
 
 /**
-* Kan ändra pitch på nuvarande sång om livet är lågt, används ev. inte
+* Kan ändra pitch på nuvarande sång om livet är lågt, används inte i nuläget
 */
 
 void MusicHandler::increasePitch()

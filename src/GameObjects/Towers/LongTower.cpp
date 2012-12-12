@@ -24,7 +24,10 @@ LongTower::LongTower(int newX, int newY, int upgradePack)
 {
 	towerType="LongTower";
     firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
-	firingSound->setVolume(80);
+	if(firingSound != NULL)
+	{
+	    firingSound->setVolume(80);
+	}
 
     // Upgrade if it should be upgraded
 	currentUpgradePack = 0;
@@ -40,7 +43,10 @@ LongTower::LongTower(std::string parms)
 {
 	towerType="LongTower";
     firingSound = new sf::Sound(SoundLoader::getSoundBuffer("arrow_fire.wav"));
-	firingSound->setVolume(80);
+    if(firingSound != NULL)
+	{
+	    firingSound->setVolume(80);
+	}
 
     int upgradePack = currentUpgradePack;
     currentUpgradePack = 0;
@@ -62,7 +68,10 @@ LongProjectile* LongTower::update(std::vector<Enemy*>& enemies)
         {
             counter = 0;
             LongProjectile* longProjectile = new LongProjectile(xPos, yPos, damage, range/PROJECTILESPEED, enemy);
-            firingSound->play();
+            if(firingSound != NULL)
+            {
+                firingSound->play();
+            }
             return longProjectile;
         }
         else

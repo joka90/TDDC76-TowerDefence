@@ -57,8 +57,9 @@ void MusicLoader::load(const std::string& filename)
     sf::Music* song = new sf::Music();
     if (!song->openFromFile(directory+filename))
     {
-        cout << "Loading of song failed, empty song inserted instead." << endl;
-        insert(filename, song);
+        cout << "Loading of song failed, NULL inserted instead." << endl;
+        delete song;
+        insert(filename, NULL);
         return;
     }
     insert(filename, song);
