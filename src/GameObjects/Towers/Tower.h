@@ -46,8 +46,8 @@ public:
     Tower(int newX, int newY, int newPrice, int newDamage, int newRange, int newCounterMax, std::string textureReference);
 
     /**
-     * Konstruktor
-     * @param parms
+     * Konstruktor för initiering via sparfil
+     * @param parms Sträng för initiering från sparfil. Se getSaveString()
      * @param newCounterMax Antalet iterationer som definierar hur ofta tornet får skjuta
      * @param textureReference En texturreferens
      */
@@ -57,8 +57,6 @@ public:
      * Destruktor
      */
     ~Tower();
-
-    bool drawSprite(sf::RenderWindow& canvas);
 
     /**
      * Returnerar tornets pris
@@ -98,7 +96,7 @@ public:
 
     /**
      * Returnerar tornets räckvidd
-     * @int Tornets räckvidd
+     * @return int Tornets räckvidd
      */
     int getRange() const;
 
@@ -125,8 +123,6 @@ public:
      */
     virtual Projectile* update(std::vector<Enemy*>& enemyVector) = 0;
 
-    int currentUpgradePack;
-
     /**
      * Uppgraderar tornet.
      */
@@ -151,6 +147,7 @@ protected:
     int price;
     int upgradePrice;
     std::string upgradeText;
+    int currentUpgradePack;
     int damage;
     int range;
     int counter;
