@@ -127,6 +127,9 @@ Level::Level(string saveFile)
 	{
 		while (!feof(pFile))
 		{
+			type[0]='\0';//force clearing of vars
+			subType[0]='\0';
+			parms[0]='\0';
 			fscanf(pFile, "%s %s %s", type, subType, parms);
 			string typeStr= string(type);
 			string subTypeStr = string(subType);
@@ -137,6 +140,7 @@ Level::Level(string saveFile)
 				if(subTypeStr=="LongTower")
 				{
 					tmpPtr=new LongTower(parmsStr);
+					cout << "New LongTower: " << parmsStr << endl;
 				}
 				else if(subTypeStr=="CannonTower")
 				{
