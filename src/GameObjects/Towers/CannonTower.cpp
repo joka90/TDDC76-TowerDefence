@@ -87,7 +87,7 @@ void CannonTower::upgrade(){
         damage = 30;
 
         upgradePrice = 0;
-        upgradeText = "+";
+        upgradeText = "Fully Upgraded";
     }
 
 }
