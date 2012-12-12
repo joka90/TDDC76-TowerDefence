@@ -32,7 +32,7 @@ class NextWaveMenu : public Menu
         /**
         * dtor
         */
-        virtual ~NextWaveMenu();'
+        virtual ~NextWaveMenu();
         /**
         * update returnerar true om man har tryckt på new wave knappen och ändrar state
         */

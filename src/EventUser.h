@@ -13,7 +13,7 @@
  *
  * Denna modul implementerar basfunktionaliteten för saker som skall ha koordinater och skall ritas ut på spelplanen
  *
- */s
+ */
 #ifndef EVENTUSER_H
 #define EVENTUSER_H
 
