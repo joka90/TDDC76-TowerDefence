@@ -128,7 +128,7 @@ void MusicHandler::setCurrentSong(sf::Music* inSong)
     }
     if(previousSongStatus == "fading")
     {
-        songInQueue == inSong;
+        currentSong = inSong;
         return;
     }
     previousSong = currentSong;
