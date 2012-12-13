@@ -57,7 +57,7 @@ void MusicHandler::update()
             currentSong->setLoop(true);
             currentSong->play();
             currentSongStatus = "playing";
-            previousSongStatus == "stopped";
+            previousSongStatus = "stopped";
             return;
         }
         if(previousSong->getStatus() == sf::SoundSource::Status::Stopped)
@@ -91,7 +91,7 @@ void MusicHandler::update()
         {
             if(currentSong == NULL)
             {
-                currentSongStatus == "stopped";
+                currentSongStatus = "stopped";
                 return;
             }
             if(currentSong->getVolume() != 100)
@@ -146,7 +146,7 @@ void MusicHandler::playSong(sf::Music* inSong)
     currentSong = inSong;
     if(inSong == NULL)
     {
-        currentSongStatus == "stopped";
+        currentSongStatus = "stopped";
         return;
     }
     currentSongStatus = "playing";
@@ -171,9 +171,9 @@ void MusicHandler::stopSong(sf::Music* inSong)
 void MusicHandler::stopAllSongs()
 {
     previousSong->stop();
-    previousSongStatus == "stopped";
+    previousSongStatus = "stopped";
     currentSong->stop();
-    currentSongStatus == "stopped";
+    currentSongStatus = "stopped";
     return;
 }
 
